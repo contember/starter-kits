@@ -1,0 +1,4 @@
+api:
+  version: 0.12.0-beta.2
+projects:
+  headless-cms: .

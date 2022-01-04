@@ -1,0 +1,18 @@
+{
+  "scripts": {
+    "contember": "docker-compose run contember-cli",
+    "start-admin": "vite admin --port ${VITE_PORT:-4000} --host 0.0.0.0",
+    "build-admin": "tsc && vite build admin"
+  },
+  "devDependencies": {
+    "@contember/admin": "0.8.0-alpha.10",
+    "@contember/admin-i18n": "0.8.0-alpha.10",
+    "@contember/schema": "1.0.0-alpha.1",
+    "@contember/schema-definition": "1.0.0-alpha.1",
+    "@types/react": "17.0.5",
+    "@vitejs/plugin-react-refresh": "^1.3.6",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "vite": "^2.5.2"
+  }
+}
