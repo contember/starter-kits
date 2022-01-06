@@ -1,0 +1,1750 @@
+{
+	"formatVersion": 3,
+	"modifications": [
+		{
+			"modification": "createEnum",
+			"enumName": "ContentReferenceType",
+			"values": [
+				"link"
+			]
+		},
+		{
+			"modification": "createEnum",
+			"enumName": "ContentBlockType",
+			"values": [
+				"textWithImage",
+				"logos",
+				"text"
+			]
+		},
+		{
+			"modification": "createEnum",
+			"enumName": "One",
+			"values": [
+				"One"
+			]
+		},
+		{
+			"modification": "createEnum",
+			"enumName": "PageTypeEnum",
+			"values": [
+				"homePage",
+				"error404Page"
+			]
+		},
+		{
+			"modification": "createEnum",
+			"enumName": "LinkEnum",
+			"values": [
+				"url",
+				"article",
+				"page"
+			]
+		},
+		{
+			"modification": "createEnum",
+			"enumName": "ButtonTypes",
+			"values": [
+				"primary",
+				"secondary"
+			]
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Article",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "article"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Content",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "content"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "ContentPart",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "content_part"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "ContentReference",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "content_reference"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "ContentBlock",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "content_block"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "ContentImage",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "content_image"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Footer",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "footer"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Header",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "header"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Image",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "image"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Link",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "link"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Menu",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "menu"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "MenuItem",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "menu_item"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Page",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "page"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Seo",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "seo"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Button",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "button"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "ContentButton",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "content_button"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Article",
+			"field": {
+				"name": "title",
+				"columnName": "title",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Article",
+			"field": {
+				"name": "publishAt",
+				"columnName": "publish_at",
+				"nullable": true,
+				"type": "DateTime",
+				"columnType": "timestamptz"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Article",
+			"field": {
+				"name": "slug",
+				"columnName": "slug",
+				"nullable": false,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Article",
+			"field": {
+				"name": "perex",
+				"columnName": "perex",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ContentPart",
+			"field": {
+				"name": "order",
+				"columnName": "order",
+				"nullable": false,
+				"type": "Integer",
+				"columnType": "integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ContentPart",
+			"field": {
+				"name": "json",
+				"columnName": "json",
+				"nullable": false,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ContentReference",
+			"field": {
+				"name": "type",
+				"columnName": "type",
+				"nullable": false,
+				"type": "Enum",
+				"columnType": "ContentReferenceType"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ContentReference",
+			"field": {
+				"name": "primaryText",
+				"columnName": "primary_text",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ContentReference",
+			"field": {
+				"name": "text",
+				"columnName": "text",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ContentBlock",
+			"field": {
+				"name": "order",
+				"columnName": "order",
+				"nullable": false,
+				"type": "Integer",
+				"columnType": "integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ContentBlock",
+			"field": {
+				"name": "type",
+				"columnName": "type",
+				"nullable": false,
+				"type": "Enum",
+				"columnType": "ContentBlockType"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ContentBlock",
+			"field": {
+				"name": "primaryText",
+				"columnName": "primary_text",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ContentBlock",
+			"field": {
+				"name": "jsonContent",
+				"columnName": "json_content",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ContentImage",
+			"field": {
+				"name": "order",
+				"columnName": "order",
+				"nullable": false,
+				"type": "Integer",
+				"columnType": "integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Footer",
+			"field": {
+				"name": "unique",
+				"columnName": "unique",
+				"nullable": false,
+				"type": "Enum",
+				"columnType": "One"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Footer",
+			"field": {
+				"name": "jsonContent",
+				"columnName": "json_content",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Header",
+			"field": {
+				"name": "unique",
+				"columnName": "unique",
+				"nullable": false,
+				"type": "Enum",
+				"columnType": "One"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "url",
+				"columnName": "url",
+				"nullable": false,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "width",
+				"columnName": "width",
+				"nullable": true,
+				"type": "Integer",
+				"columnType": "integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "height",
+				"columnName": "height",
+				"nullable": true,
+				"type": "Integer",
+				"columnType": "integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "size",
+				"columnName": "size",
+				"nullable": true,
+				"type": "Integer",
+				"columnType": "integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "type",
+				"columnName": "type",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "alt",
+				"columnName": "alt",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Link",
+			"field": {
+				"name": "type",
+				"columnName": "type",
+				"nullable": false,
+				"type": "Enum",
+				"columnType": "LinkEnum"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Link",
+			"field": {
+				"name": "url",
+				"columnName": "url",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "MenuItem",
+			"field": {
+				"name": "order",
+				"columnName": "order",
+				"nullable": false,
+				"type": "Integer",
+				"columnType": "integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "MenuItem",
+			"field": {
+				"name": "label",
+				"columnName": "label",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "MenuItem",
+			"field": {
+				"name": "link",
+				"columnName": "link",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Page",
+			"field": {
+				"name": "title",
+				"columnName": "title",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Page",
+			"field": {
+				"name": "slug",
+				"columnName": "slug",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Page",
+			"field": {
+				"name": "type",
+				"columnName": "type",
+				"nullable": true,
+				"type": "Enum",
+				"columnType": "PageTypeEnum"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Page",
+			"field": {
+				"nullable": true,
+				"default": "now",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"name": "publishAt",
+				"columnName": "publish_at"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Seo",
+			"field": {
+				"name": "title",
+				"columnName": "title",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Seo",
+			"field": {
+				"name": "description",
+				"columnName": "description",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Seo",
+			"field": {
+				"name": "ogTitle",
+				"columnName": "og_title",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Seo",
+			"field": {
+				"name": "ogDescription",
+				"columnName": "og_description",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Button",
+			"field": {
+				"name": "label",
+				"columnName": "label",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Button",
+			"field": {
+				"name": "type",
+				"columnName": "type",
+				"nullable": false,
+				"default": "primary",
+				"type": "Enum",
+				"columnType": "ButtonTypes"
+			},
+			"fillValue": "primary"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ContentButton",
+			"field": {
+				"name": "order",
+				"columnName": "order",
+				"nullable": false,
+				"type": "Integer",
+				"columnType": "integer"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Article",
+			"owningSide": {
+				"name": "content",
+				"nullable": true,
+				"type": "OneHasOne",
+				"target": "Content",
+				"joiningColumn": {
+					"columnName": "content_id",
+					"onDelete": "restrict"
+				}
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Article",
+			"owningSide": {
+				"name": "seo",
+				"nullable": true,
+				"type": "OneHasOne",
+				"target": "Seo",
+				"joiningColumn": {
+					"columnName": "seo_id",
+					"onDelete": "restrict"
+				}
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ContentPart",
+			"owningSide": {
+				"name": "content",
+				"inversedBy": "parts",
+				"nullable": false,
+				"type": "ManyHasOne",
+				"target": "Content",
+				"joiningColumn": {
+					"columnName": "content_id",
+					"onDelete": "cascade"
+				}
+			},
+			"inverseSide": {
+				"name": "parts",
+				"ownedBy": "content",
+				"type": "OneHasMany",
+				"target": "ContentPart",
+				"orderBy": [
+					{
+						"path": [
+							"order"
+						],
+						"direction": "asc"
+					}
+				]
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ContentReference",
+			"owningSide": {
+				"name": "contentPart",
+				"inversedBy": "references",
+				"nullable": false,
+				"type": "ManyHasOne",
+				"target": "ContentPart",
+				"joiningColumn": {
+					"columnName": "content_part_id",
+					"onDelete": "cascade"
+				}
+			},
+			"inverseSide": {
+				"name": "references",
+				"ownedBy": "contentPart",
+				"type": "OneHasMany",
+				"target": "ContentReference"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ContentBlock",
+			"owningSide": {
+				"name": "page",
+				"inversedBy": "blocks",
+				"nullable": true,
+				"type": "ManyHasOne",
+				"target": "Page",
+				"joiningColumn": {
+					"columnName": "page_id",
+					"onDelete": "cascade"
+				}
+			},
+			"inverseSide": {
+				"name": "blocks",
+				"ownedBy": "page",
+				"type": "OneHasMany",
+				"target": "ContentBlock"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ContentBlock",
+			"owningSide": {
+				"name": "content",
+				"nullable": true,
+				"type": "OneHasOne",
+				"target": "Content",
+				"joiningColumn": {
+					"columnName": "content_id",
+					"onDelete": "restrict"
+				}
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ContentImage",
+			"owningSide": {
+				"name": "image",
+				"nullable": true,
+				"type": "OneHasOne",
+				"target": "Image",
+				"joiningColumn": {
+					"columnName": "image_id",
+					"onDelete": "restrict"
+				}
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ContentImage",
+			"owningSide": {
+				"name": "contentBlock",
+				"inversedBy": "images",
+				"nullable": true,
+				"type": "ManyHasOne",
+				"target": "ContentBlock",
+				"joiningColumn": {
+					"columnName": "content_block_id",
+					"onDelete": "restrict"
+				}
+			},
+			"inverseSide": {
+				"name": "images",
+				"ownedBy": "contentBlock",
+				"type": "OneHasMany",
+				"target": "ContentImage"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Footer",
+			"owningSide": {
+				"name": "menu",
+				"nullable": true,
+				"type": "OneHasOne",
+				"target": "Menu",
+				"joiningColumn": {
+					"columnName": "menu_id",
+					"onDelete": "restrict"
+				}
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Header",
+			"owningSide": {
+				"name": "logo",
+				"nullable": true,
+				"type": "ManyHasOne",
+				"target": "Image",
+				"joiningColumn": {
+					"columnName": "logo_id",
+					"onDelete": "restrict"
+				}
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Header",
+			"owningSide": {
+				"name": "menu",
+				"nullable": true,
+				"type": "OneHasOne",
+				"target": "Menu",
+				"joiningColumn": {
+					"columnName": "menu_id",
+					"onDelete": "restrict"
+				}
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Link",
+			"owningSide": {
+				"name": "article",
+				"inversedBy": "linkedFrom",
+				"nullable": true,
+				"type": "ManyHasOne",
+				"target": "Article",
+				"joiningColumn": {
+					"columnName": "article_id",
+					"onDelete": "set null"
+				}
+			},
+			"inverseSide": {
+				"name": "linkedFrom",
+				"ownedBy": "article",
+				"type": "OneHasMany",
+				"target": "Link"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Link",
+			"owningSide": {
+				"name": "page",
+				"inversedBy": "linkedFrom",
+				"nullable": true,
+				"type": "ManyHasOne",
+				"target": "Page",
+				"joiningColumn": {
+					"columnName": "page_id",
+					"onDelete": "set null"
+				}
+			},
+			"inverseSide": {
+				"name": "linkedFrom",
+				"ownedBy": "page",
+				"type": "OneHasMany",
+				"target": "Link"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "MenuItem",
+			"owningSide": {
+				"name": "menu",
+				"inversedBy": "items",
+				"nullable": true,
+				"type": "ManyHasOne",
+				"target": "Menu",
+				"joiningColumn": {
+					"columnName": "menu_id",
+					"onDelete": "restrict"
+				}
+			},
+			"inverseSide": {
+				"name": "items",
+				"ownedBy": "menu",
+				"type": "OneHasMany",
+				"target": "MenuItem"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Page",
+			"owningSide": {
+				"name": "seo",
+				"nullable": true,
+				"type": "OneHasOne",
+				"target": "Seo",
+				"joiningColumn": {
+					"columnName": "seo_id",
+					"onDelete": "restrict"
+				}
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Seo",
+			"owningSide": {
+				"name": "ogImage",
+				"nullable": true,
+				"type": "OneHasOne",
+				"target": "Image",
+				"joiningColumn": {
+					"columnName": "og_image_id",
+					"onDelete": "cascade"
+				}
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Button",
+			"owningSide": {
+				"name": "url",
+				"nullable": true,
+				"type": "OneHasOne",
+				"target": "Link",
+				"joiningColumn": {
+					"columnName": "url_id",
+					"onDelete": "restrict"
+				}
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ContentButton",
+			"owningSide": {
+				"name": "button",
+				"nullable": true,
+				"type": "OneHasOne",
+				"target": "Button",
+				"joiningColumn": {
+					"columnName": "button_id",
+					"onDelete": "restrict"
+				}
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ContentButton",
+			"owningSide": {
+				"name": "contentBlock",
+				"inversedBy": "buttons",
+				"nullable": true,
+				"type": "ManyHasOne",
+				"target": "ContentBlock",
+				"joiningColumn": {
+					"columnName": "content_block_id",
+					"onDelete": "restrict"
+				}
+			},
+			"inverseSide": {
+				"name": "buttons",
+				"ownedBy": "contentBlock",
+				"type": "OneHasMany",
+				"target": "ContentButton"
+			}
+		},
+		{
+			"modification": "createUniqueConstraint",
+			"entityName": "Article",
+			"unique": {
+				"fields": [
+					"slug"
+				],
+				"name": "unique_Article_slug_39abc3"
+			}
+		},
+		{
+			"modification": "createUniqueConstraint",
+			"entityName": "Footer",
+			"unique": {
+				"fields": [
+					"unique"
+				],
+				"name": "unique_Footer_unique_c0f335"
+			}
+		},
+		{
+			"modification": "createUniqueConstraint",
+			"entityName": "Header",
+			"unique": {
+				"fields": [
+					"unique"
+				],
+				"name": "unique_Header_unique_c704f9"
+			}
+		},
+		{
+			"modification": "createUniqueConstraint",
+			"entityName": "Page",
+			"unique": {
+				"fields": [
+					"slug"
+				],
+				"name": "unique_Page_slug_875597"
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/admin",
+					"value": {
+						"variables": {},
+						"stages": "*",
+						"entities": {
+							"Article": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"title": true,
+										"publishAt": true,
+										"slug": true,
+										"linkedFrom": true,
+										"content": true,
+										"seo": true,
+										"perex": true
+									},
+									"update": {
+										"id": true,
+										"title": true,
+										"publishAt": true,
+										"slug": true,
+										"linkedFrom": true,
+										"content": true,
+										"seo": true,
+										"perex": true
+									},
+									"read": {
+										"id": true,
+										"title": true,
+										"publishAt": true,
+										"slug": true,
+										"linkedFrom": true,
+										"content": true,
+										"seo": true,
+										"perex": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"Content": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"parts": true
+									},
+									"update": {
+										"id": true,
+										"parts": true
+									},
+									"read": {
+										"id": true,
+										"parts": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"ContentPart": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"content": true,
+										"order": true,
+										"json": true,
+										"references": true
+									},
+									"update": {
+										"id": true,
+										"content": true,
+										"order": true,
+										"json": true,
+										"references": true
+									},
+									"read": {
+										"id": true,
+										"content": true,
+										"order": true,
+										"json": true,
+										"references": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"ContentReference": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"contentPart": true,
+										"type": true,
+										"primaryText": true,
+										"text": true
+									},
+									"update": {
+										"id": true,
+										"contentPart": true,
+										"type": true,
+										"primaryText": true,
+										"text": true
+									},
+									"read": {
+										"id": true,
+										"contentPart": true,
+										"type": true,
+										"primaryText": true,
+										"text": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"ContentBlock": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"page": true,
+										"order": true,
+										"type": true,
+										"primaryText": true,
+										"jsonContent": true,
+										"images": true,
+										"content": true,
+										"buttons": true
+									},
+									"update": {
+										"id": true,
+										"page": true,
+										"order": true,
+										"type": true,
+										"primaryText": true,
+										"jsonContent": true,
+										"images": true,
+										"content": true,
+										"buttons": true
+									},
+									"read": {
+										"id": true,
+										"page": true,
+										"order": true,
+										"type": true,
+										"primaryText": true,
+										"jsonContent": true,
+										"images": true,
+										"content": true,
+										"buttons": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"ContentImage": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"image": true,
+										"order": true,
+										"contentBlock": true
+									},
+									"update": {
+										"id": true,
+										"image": true,
+										"order": true,
+										"contentBlock": true
+									},
+									"read": {
+										"id": true,
+										"image": true,
+										"order": true,
+										"contentBlock": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"Footer": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"unique": true,
+										"jsonContent": true,
+										"menu": true
+									},
+									"update": {
+										"id": true,
+										"unique": true,
+										"jsonContent": true,
+										"menu": true
+									},
+									"read": {
+										"id": true,
+										"unique": true,
+										"jsonContent": true,
+										"menu": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"Header": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"unique": true,
+										"logo": true,
+										"menu": true
+									},
+									"update": {
+										"id": true,
+										"unique": true,
+										"logo": true,
+										"menu": true
+									},
+									"read": {
+										"id": true,
+										"unique": true,
+										"logo": true,
+										"menu": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"Image": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"url": true,
+										"width": true,
+										"height": true,
+										"size": true,
+										"type": true,
+										"alt": true
+									},
+									"update": {
+										"id": true,
+										"url": true,
+										"width": true,
+										"height": true,
+										"size": true,
+										"type": true,
+										"alt": true
+									},
+									"read": {
+										"id": true,
+										"url": true,
+										"width": true,
+										"height": true,
+										"size": true,
+										"type": true,
+										"alt": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"Link": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"article": true,
+										"page": true,
+										"type": true,
+										"url": true
+									},
+									"update": {
+										"id": true,
+										"article": true,
+										"page": true,
+										"type": true,
+										"url": true
+									},
+									"read": {
+										"id": true,
+										"article": true,
+										"page": true,
+										"type": true,
+										"url": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"Menu": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"items": true
+									},
+									"update": {
+										"id": true,
+										"items": true
+									},
+									"read": {
+										"id": true,
+										"items": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"MenuItem": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"order": true,
+										"label": true,
+										"link": true,
+										"menu": true
+									},
+									"update": {
+										"id": true,
+										"order": true,
+										"label": true,
+										"link": true,
+										"menu": true
+									},
+									"read": {
+										"id": true,
+										"order": true,
+										"label": true,
+										"link": true,
+										"menu": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"Page": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"title": true,
+										"publishAt": true,
+										"slug": true,
+										"linkedFrom": true,
+										"blocks": true,
+										"seo": true,
+										"type": true
+									},
+									"update": {
+										"id": true,
+										"title": true,
+										"publishAt": true,
+										"slug": true,
+										"linkedFrom": true,
+										"blocks": true,
+										"seo": true,
+										"type": true
+									},
+									"read": {
+										"id": true,
+										"title": true,
+										"publishAt": true,
+										"slug": true,
+										"linkedFrom": true,
+										"blocks": true,
+										"seo": true,
+										"type": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"Seo": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"title": true,
+										"description": true,
+										"ogTitle": true,
+										"ogDescription": true,
+										"ogImage": true
+									},
+									"update": {
+										"id": true,
+										"title": true,
+										"description": true,
+										"ogTitle": true,
+										"ogDescription": true,
+										"ogImage": true
+									},
+									"read": {
+										"id": true,
+										"title": true,
+										"description": true,
+										"ogTitle": true,
+										"ogDescription": true,
+										"ogImage": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"Button": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"label": true,
+										"url": true,
+										"type": true
+									},
+									"update": {
+										"id": true,
+										"label": true,
+										"url": true,
+										"type": true
+									},
+									"read": {
+										"id": true,
+										"label": true,
+										"url": true,
+										"type": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"ContentButton": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"button": true,
+										"order": true,
+										"contentBlock": true
+									},
+									"read": {
+										"id": true,
+										"button": true,
+										"order": true,
+										"contentBlock": true
+									},
+									"update": {
+										"id": true,
+										"button": true,
+										"order": true,
+										"contentBlock": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							}
+						},
+						"s3": {
+							"**": {
+								"upload": true,
+								"read": true
+							}
+						}
+					}
+				}
+			]
+		},
+		{
+			"modification": "patchValidationSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/Page",
+					"value": {
+						"type": [
+							{
+								"validator": {
+									"operation": "conditional",
+									"args": [
+										{
+											"type": "validator",
+											"validator": {
+												"operation": "inContext",
+												"args": [
+													{
+														"type": "path",
+														"path": [
+															"slug"
+														]
+													},
+													{
+														"type": "validator",
+														"validator": {
+															"operation": "equals",
+															"args": [
+																{
+																	"type": "literal",
+																	"value": null
+																}
+															]
+														}
+													}
+												]
+											}
+										},
+										{
+											"type": "validator",
+											"validator": {
+												"operation": "not",
+												"args": [
+													{
+														"type": "validator",
+														"validator": {
+															"operation": "empty",
+															"args": []
+														}
+													}
+												]
+											}
+										}
+									]
+								},
+								"message": {
+									"text": "Type or Slug must not be empty."
+								}
+							},
+							{
+								"validator": {
+									"operation": "conditional",
+									"args": [
+										{
+											"type": "validator",
+											"validator": {
+												"operation": "inContext",
+												"args": [
+													{
+														"type": "path",
+														"path": [
+															"slug"
+														]
+													},
+													{
+														"type": "validator",
+														"validator": {
+															"operation": "not",
+															"args": [
+																{
+																	"type": "validator",
+																	"validator": {
+																		"operation": "equals",
+																		"args": [
+																			{
+																				"type": "literal",
+																				"value": null
+																			}
+																		]
+																	}
+																}
+															]
+														}
+													}
+												]
+											}
+										},
+										{
+											"type": "validator",
+											"validator": {
+												"operation": "empty",
+												"args": []
+											}
+										}
+									]
+								},
+								"message": {
+									"text": "Type or Slug must be empty."
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	]
+}

@@ -6,7 +6,14 @@ const aclFactory = (model: Model.Schema): Acl.Schema => ({
 		admin: {
 			variables: {},
 			stages: '*',
-			entities: PermissionsBuilder.create(model).allowAll().permissions,
+			entities: PermissionsBuilder.create(model).allowAll().allowCustomPrimary()
+				.permissions,
+			s3: {
+				'**': {
+					upload: true,
+					read: true,
+				},
+			},
 		},
 	},
 })

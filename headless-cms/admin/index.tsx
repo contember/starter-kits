@@ -3,7 +3,9 @@ import { ApplicationEntrypoint, Pages, runReactApp } from '@contember/admin'
 import { Layout } from './components/Layout'
 import '@contember/admin/style.css'
 
-const pages = Object.values(import.meta.globEager('./pages/*.tsx')).flatMap(Object.values)
+const pages = Object.values(import.meta.globEager('./pages/*.tsx')).flatMap(
+	Object.values
+)
 
 runReactApp(
 	<ApplicationEntrypoint
@@ -12,7 +14,8 @@ runReactApp(
 		sessionToken={import.meta.env.VITE_CONTEMBER_ADMIN_SESSION_TOKEN}
 		project={import.meta.env.VITE_CONTEMBER_ADMIN_PROJECT_NAME}
 		stage="live"
-		routes={{ dashboard: { path: '/' } }}
+		routes={{ articles: { path: '/' } }}
+		envVariables={{ WEB_URL: import.meta.env.VITE_CONTEMBER_ADMIN_WEB_URL as string }}
 		children={<Pages layout={Layout} children={pages} />}
-	/>,
+	/>
 )
