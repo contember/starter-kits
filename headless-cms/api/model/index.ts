@@ -1,5 +1,6 @@
 export * from './Article'
 export * from './Button'
+export * from './ContactMessage'
 export * from './Content'
 export * from './ContentBlock'
 export * from './Footer'

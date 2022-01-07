@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { Block, Component, DiscriminatedBlocks, HasOne, SelectField, TextField } from "@contember/admin"
 
 export interface LinkFieldProps {

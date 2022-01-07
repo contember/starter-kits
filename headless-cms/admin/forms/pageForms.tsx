@@ -1,14 +1,13 @@
-import { IconLogos, IconText, IconTextWithImage } from '../components/icons'
-import { Button, Conditional, LabelWithIcon, PreviewLink, Seo } from '../components'
+import * as React from 'react'
 import {
-	Block,
-	BlockEditor,
-	BlockRepeater,
+	Conditional,
+	ContentBlocks,
+	PreviewLink,
+	Seo
+} from '../components'
+import {
 	Component,
 	DateTimeField,
-	ImageFileRepeater,
-	Repeater,
-	RichTextField,
 	Section,
 	SelectField,
 	SlugField,
@@ -62,72 +61,7 @@ export const PageForm = Component(
 				<SlugField field="slug" label="Slug" derivedFrom="title" unpersistedHardPrefix="/" />
 			</Conditional>
 			<Section heading="Content">
-				<BlockRepeater
-					field="blocks"
-					label={undefined}
-					discriminationField="type"
-					sortableBy="order"
-					addButtonText="Add content block"
-				>
-					<Block
-						discriminateBy="textWithImage"
-						label={
-							<LabelWithIcon icon={<IconTextWithImage />} label="Text with image" />
-						}
-					>
-						<TextField field="primaryText" label="Headline" />
-						<RichTextField field="jsonContent" label="Content" />
-						<Repeater
-							field="buttons"
-							label="Buttons"
-							sortableBy="order"
-							initialEntityCount={0}
-							addButtonText="Add button"
-						>
-							<Button field="button" />
-						</Repeater>
-						<ImageFileRepeater
-							field="images"
-							label="Images"
-							orderBy="order"
-							urlField="image.url"
-							widthField="image.width"
-							heightField="image.height"
-						>
-							<TextField field="image.alt" label="Alternative text" />
-						</ImageFileRepeater>
-					</Block>
-
-					<Block
-						discriminateBy="logos"
-						label={<LabelWithIcon icon={<IconLogos />} label="Logos" />}
-					>
-						<RichTextField field="jsonContent" label="Content" />
-						<ImageFileRepeater
-							field="images"
-							label="Logos"
-							orderBy="order"
-							urlField="image.url"
-							widthField="image.width"
-							heightField="image.height"
-							description="image.alt"
-						>
-							<TextField field="image.alt" label="Alternative text" />
-						</ImageFileRepeater>
-					</Block>
-
-					<Block
-						discriminateBy="text"
-						label={<LabelWithIcon icon={<IconText />} label="Text" />}
-					>
-						<BlockEditor
-							contentField="json"
-							field="content.parts"
-							label="Content"
-							sortableBy="order"
-						/>
-					</Block>
-				</BlockRepeater>
+				<ContentBlocks />
 			</Section>
 			<Seo titleDerivedFrom="title" />
 		</>

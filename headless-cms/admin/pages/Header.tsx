@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { EditPage, HasOne, ImageUploadField, Repeater, RichTextField, Section, TextField } from '@contember/admin'
 
 export const Header = (

@@ -1,5 +1,6 @@
-import { Component, HasOne, RadioField, RadioGroup, TextField } from "@contember/admin"
-import { LinkField } from "."
+import * as React from 'react'
+import { Component, HasOne, RadioField, RadioGroup, TextField } from '@contember/admin'
+import { LinkField } from '.'
 
 type ButtonProps = {
 	field: string

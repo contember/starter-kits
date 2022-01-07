@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { Component, Field, useEnvironment, useField } from '@contember/admin'
 
 type PreviewButtonProps = {

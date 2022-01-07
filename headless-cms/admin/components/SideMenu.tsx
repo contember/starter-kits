@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { Menu } from '@contember/admin'
 
 export const SideMenu = () => (
@@ -5,6 +6,7 @@ export const SideMenu = () => (
 		<Menu.Item>
 			<Menu.Item title="Articles" to="articles" />
 			<Menu.Item title="Pages" to="pages" />
+			<Menu.Item title="Messages" to="messages" />
 			<Menu.Item title="Settings" >
 				<Menu.Item title="Header" to="header" />
 				<Menu.Item title="Footer" to="footer" />

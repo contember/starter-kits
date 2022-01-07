@@ -1,7 +1,8 @@
+import * as React from 'react'
 import { Component } from '@contember/admin'
 import './Icons.css'
 
-export const IconTextWithImage = Component(
+export const IconHeroSection = Component(
 	() => (
 		<svg
 			width="33"
@@ -26,5 +27,5 @@ export const IconTextWithImage = Component(
 			/>
 		</svg>
 	),
-	'IconTextWithImage'
+	'IconHeroSection'
 )

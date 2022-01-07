@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { EditPage, Repeater, RichTextField, Section } from '@contember/admin'
 
 export const Footer = (

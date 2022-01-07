@@ -1,4 +1,5 @@
-import { Component, EntityAccessor, useEntity } from "@contember/admin"
+import * as React from 'react'
+import { Component, EntityAccessor, useEntity } from '@contember/admin'
 
 export interface ConditionalProps {
 	showIf: (accessor: EntityAccessor) => boolean

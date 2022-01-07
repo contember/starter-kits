@@ -1,5 +1,5 @@
+import * as React from 'react'
 import {
-	BlockEditor,
 	Component,
 	DateTimeField,
 	Section,
@@ -7,7 +7,7 @@ import {
 	TextAreaField,
 	TextField,
 } from '@contember/admin'
-import { PreviewLink, Seo } from '../components'
+import { ContentField, PreviewLink, Seo } from '../components'
 
 type ArticleSideFormProps = {
 	isEditPage?: boolean
@@ -34,12 +34,7 @@ export const ArticleForm = Component(
 			<SlugField field="slug" label="Slug" derivedFrom="title" unpersistedHardPrefix="/blog/" />
 			<Section heading="Content">
 				<TextAreaField field="perex" label="Perex" />
-				<BlockEditor
-					contentField="json"
-					field="content.parts"
-					label="Text"
-					sortableBy="order"
-				/>
+				<ContentField label="Text" size="large" />
 			</Section>
 			<Seo titleDerivedFrom="title" descriptionDerivedFrom="perex" />
 		</>

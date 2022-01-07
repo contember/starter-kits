@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { ReactNode } from 'react'
 import { Layout as ContemberLayout } from '@contember/admin'
 import { SideMenu } from './SideMenu'

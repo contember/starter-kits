@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { ArticleForm, ArticleSideForm } from '../forms'
 import {
 	CreatePage,
