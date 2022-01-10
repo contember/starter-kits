@@ -48,7 +48,7 @@ export const ContentBlocks = Component(
 				<ImageFileRepeater
 					field="images"
 					label="Images"
-					orderBy="order"
+					sortableBy="order"
 					urlField="image.url"
 					widthField="image.width"
 					heightField="image.height"
@@ -65,7 +65,7 @@ export const ContentBlocks = Component(
 				<ImageFileRepeater
 					field="images"
 					label="Logos"
-					orderBy="order"
+					sortableBy="order"
 					urlField="image.url"
 					widthField="image.width"
 					heightField="image.height"
