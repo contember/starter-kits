@@ -82,7 +82,7 @@ export const ContentBlocks = Component(
 			</Block>
 
 			<Block
-				discriminateBy="FeaturesSection"
+				discriminateBy="featureSection"
 				label={<LabelWithIcon icon={<IconFeaturesSection />} label="Features section" />}
 			>
 				<TextField field="primaryText" label="Headline" />
