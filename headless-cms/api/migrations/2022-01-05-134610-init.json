@@ -32,6 +32,7 @@
 			"modification": "createEnum",
 			"enumName": "PageTypeEnum",
 			"values": [
+				"default",
 				"homePage",
 				"error404Page"
 			]
@@ -1057,13 +1058,27 @@
 			"modification": "createRelation",
 			"entityName": "Article",
 			"owningSide": {
+				"name": "coverPhoto",
+				"nullable": true,
+				"type": "ManyHasOne",
+				"target": "Image",
+				"joiningColumn": {
+					"columnName": "cover_photo_id",
+					"onDelete": "restrict"
+				}
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Article",
+			"owningSide": {
 				"name": "content",
 				"nullable": true,
 				"type": "OneHasOne",
 				"target": "Content",
 				"joiningColumn": {
 					"columnName": "content_id",
-					"onDelete": "restrict"
+					"onDelete": "cascade"
 				}
 			}
 		},
@@ -1077,22 +1092,16 @@
 				"target": "Seo",
 				"joiningColumn": {
 					"columnName": "seo_id",
-					"onDelete": "restrict"
-				}
-			}
-		},
-		{
-			"modification": "createRelation",
-			"entityName": "Article",
-			"owningSide": {
-				"name": "coverPhoto",
-				"nullable": true,
-				"type": "ManyHasOne",
-				"target": "Image",
-				"joiningColumn": {
-					"columnName": "cover_photo_id",
-					"onDelete": "restrict"
-				}
+					"onDelete": "cascade"
+				},
+				"inversedBy": "article"
+			},
+			"inverseSide": {
+				"name": "article",
+				"ownedBy": "seo",
+				"target": "Article",
+				"type": "OneHasOne",
+				"nullable": true
 			}
 		},
 		{
@@ -1149,27 +1158,6 @@
 			"modification": "createRelation",
 			"entityName": "ContentBlock",
 			"owningSide": {
-				"name": "page",
-				"inversedBy": "blocks",
-				"nullable": true,
-				"type": "ManyHasOne",
-				"target": "Page",
-				"joiningColumn": {
-					"columnName": "page_id",
-					"onDelete": "cascade"
-				}
-			},
-			"inverseSide": {
-				"name": "blocks",
-				"ownedBy": "page",
-				"type": "OneHasMany",
-				"target": "ContentBlock"
-			}
-		},
-		{
-			"modification": "createRelation",
-			"entityName": "ContentBlock",
-			"owningSide": {
 				"name": "content",
 				"nullable": true,
 				"type": "OneHasOne",
@@ -1192,6 +1180,27 @@
 					"columnName": "contact_form_id",
 					"onDelete": "restrict"
 				}
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ContentBlock",
+			"owningSide": {
+				"name": "page",
+				"inversedBy": "blocks",
+				"nullable": true,
+				"type": "ManyHasOne",
+				"target": "Page",
+				"joiningColumn": {
+					"columnName": "page_id",
+					"onDelete": "set null"
+				}
+			},
+			"inverseSide": {
+				"name": "blocks",
+				"ownedBy": "page",
+				"type": "OneHasMany",
+				"target": "ContentBlock"
 			}
 		},
 		{
@@ -1344,8 +1353,16 @@
 				"target": "Seo",
 				"joiningColumn": {
 					"columnName": "seo_id",
-					"onDelete": "restrict"
-				}
+					"onDelete": "cascade"
+				},
+				"inversedBy": "page"
+			},
+			"inverseSide": {
+				"name": "page",
+				"ownedBy": "seo",
+				"target": "Page",
+				"type": "OneHasOne",
+				"nullable": true
 			}
 		},
 		{
@@ -2008,7 +2025,9 @@
 										"description": true,
 										"ogTitle": true,
 										"ogDescription": true,
-										"ogImage": true
+										"ogImage": true,
+										"article": true,
+										"page": true
 									},
 									"update": {
 										"id": true,
@@ -2016,7 +2035,9 @@
 										"description": true,
 										"ogTitle": true,
 										"ogDescription": true,
-										"ogImage": true
+										"ogImage": true,
+										"article": true,
+										"page": true
 									},
 									"read": {
 										"id": true,
@@ -2024,7 +2045,9 @@
 										"description": true,
 										"ogTitle": true,
 										"ogDescription": true,
-										"ogImage": true
+										"ogImage": true,
+										"article": true,
+										"page": true
 									},
 									"delete": true,
 									"customPrimary": true
@@ -2270,7 +2293,7 @@
 															"args": [
 																{
 																	"type": "literal",
-																	"value": null
+																	"value": "default"
 																}
 															]
 														}
@@ -2326,7 +2349,7 @@
 																		"args": [
 																			{
 																				"type": "literal",
-																				"value": null
+																				"value": "default"
 																			}
 																		]
 																	}

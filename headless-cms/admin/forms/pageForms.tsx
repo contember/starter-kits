@@ -23,7 +23,7 @@ export const PageSideForm = Component<PageSideFormProps>(
 		<>
 			{isEditPage &&
 				<>
-					<Conditional showIf={(accessor) => accessor.getField('type').value === null}>
+					<Conditional showIf={(accessor) => accessor.getField('type').value === 'default'}>
 						<PreviewLink slugField="slug" />
 					</Conditional>
 					<Conditional showIf={(accessor) => accessor.getField('type').value === 'homePage'}>
@@ -42,8 +42,9 @@ export const PageSideForm = Component<PageSideFormProps>(
 			<SelectField
 				field="type"
 				label="Page type"
-				allowNull
+				defaultValue="default"
 				options={[
+					{ value: 'default', label: 'Default' },
 					{ value: 'homePage', label: 'HomePage' },
 					{ value: 'error404Page', label: "Error 404" }
 				]}
@@ -57,13 +58,13 @@ export const PageForm = Component(
 	() => (
 		<>
 			<TextField field="title" label="Title" />
-			<Conditional showIf={(accessor) => accessor.getField('type').value === null}>
+			<Conditional showIf={(accessor) => accessor.getField('type').value === 'default'}>
 				<SlugField field="slug" label="Slug" derivedFrom="title" unpersistedHardPrefix="/" />
 			</Conditional>
 			<Section heading="Content">
 				<ContentBlocks />
 			</Section>
-			<Seo titleDerivedFrom="title" />
+			<Seo titleDerivedFrom="title" seoPage="seoPages" />
 		</>
 	),
 	'PageForm'
