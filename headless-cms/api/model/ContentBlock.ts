@@ -19,10 +19,10 @@ export const ContentBlockType = def.createEnum(
 )
 
 export class ContentBlock {
-	page = def.manyHasOne(Page, 'blocks').cascadeOnDelete()
+	page = def.manyHasOne(Page, 'blocks').setNullOnDelete()
 	order = def.intColumn().notNull()
 	type = def.enumColumn(ContentBlockType).notNull()
-
+	
 	primaryText = def.stringColumn()
 	secondaryText = def.stringColumn()
 	jsonContent = def.stringColumn()

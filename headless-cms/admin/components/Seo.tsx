@@ -5,45 +5,66 @@ import {
 	DerivedFieldLinkProps,
 	HasOne,
 	ImageUploadField,
+	PageLinkButton,
 	Section,
 	TextAreaField,
 	TextField,
 } from '@contember/admin'
 
-export interface SeoFormProps {
-	titleDerivedFrom: DerivedFieldLinkProps['sourceField'],
-	descriptionDerivedFrom?: DerivedFieldLinkProps['sourceField'],
-	imageUrlDerivedFrom?: DerivedFieldLinkProps['sourceField']
-	titleTransform?: DerivedFieldLinkProps['transform']
+export type SeoFieldsProps = {
+	advancedOptions?: boolean
 }
 
+export type SeoFormProps = {
+	titleDerivedFrom?: DerivedFieldLinkProps['sourceField'],
+	descriptionDerivedFrom?: DerivedFieldLinkProps['sourceField'],
+	imageUrlDerivedFrom?: DerivedFieldLinkProps['sourceField']
+	titleTransform?: DerivedFieldLinkProps['transform'],
+	seoPage: string
+}
+
+export const SeoFields = Component<SeoFieldsProps>(
+	({ advancedOptions }) => (
+		<>
+			<TextField field="title" label="Title" />
+			<TextAreaField field="description" label="description" />
+			{advancedOptions &&
+				<>
+					<TextField field="ogTitle" label="OG title" />
+					<TextAreaField field="ogDescription" label="OG description" />
+				</>
+			}
+			<ImageUploadField urlField="ogImage.url" label="OG image" description="Recommended aspect ratio 19:10 (e.g.: 2400×1260 px)." />
+		</>
+	),
+	'SeoFields'
+)
+
+
 export const Seo = Component<SeoFormProps>(
-	props => (
+	({ titleDerivedFrom, descriptionDerivedFrom, imageUrlDerivedFrom, titleTransform, seoPage }) => (
 		<Section heading="SEO">
-			{props.titleDerivedFrom &&
+			{titleDerivedFrom &&
 				<>
-					<DerivedFieldLink sourceField={props.titleDerivedFrom} derivedField="seo.title" transform={props.titleTransform} />
-					<DerivedFieldLink sourceField={props.titleDerivedFrom} derivedField="seo.ogTitle" transform={props.titleTransform} />
+					<DerivedFieldLink sourceField={titleDerivedFrom} derivedField="seo.title" transform={titleTransform} />
+					<DerivedFieldLink sourceField={titleDerivedFrom} derivedField="seo.ogTitle" transform={titleTransform} />
 				</>
 			}
-			{props.descriptionDerivedFrom &&
+			{descriptionDerivedFrom &&
 				<>
-					<DerivedFieldLink sourceField={props.descriptionDerivedFrom} derivedField="seo.description" />
-					<DerivedFieldLink sourceField={props.descriptionDerivedFrom} derivedField="seo.ogDescription" />
+					<DerivedFieldLink sourceField={descriptionDerivedFrom} derivedField="seo.description" />
+					<DerivedFieldLink sourceField={descriptionDerivedFrom} derivedField="seo.ogDescription" />
 				</>
 			}
-			{props.imageUrlDerivedFrom &&
+			{imageUrlDerivedFrom &&
 				<>
-					<DerivedFieldLink sourceField={props.imageUrlDerivedFrom} derivedField="seo.ogImage.url" />
+					<DerivedFieldLink sourceField={imageUrlDerivedFrom} derivedField="seo.ogImage.url" />
 				</>
 			}
 			<HasOne field="seo">
-				<TextField field="title" label="Title" />
-				<TextAreaField field="description" label="description" />
-				<TextField field="ogTitle" label="OG title" />
-				<TextAreaField field="ogDescription" label="OG description" />
-				<ImageUploadField urlField="ogImage.url" label="OG image" description="Recommended aspect ratio 19:10 (e.g.: 2400×1260 px)." />
+				<SeoFields />
 			</HasOne>
+			<PageLinkButton to={seoPage}>Advanced website SEO</PageLinkButton>
 		</Section>
 	),
 	'Seo',

@@ -36,7 +36,7 @@ export const ArticleForm = Component(
 				<TextAreaField field="perex" label="Perex" />
 				<ContentField label="Text" size="large" />
 			</Section>
-			<Seo titleDerivedFrom="title" descriptionDerivedFrom="perex" />
+			<Seo titleDerivedFrom="title" descriptionDerivedFrom="perex" seoPage="seoArticles" />
 		</>
 	),
 	'ArticleForm'

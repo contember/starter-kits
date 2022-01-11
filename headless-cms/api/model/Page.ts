@@ -12,5 +12,5 @@ export class Page {
 	type = def.enumColumn(PageTypeEnum).nullable()
 	linkedFrom = def.oneHasMany(Link, 'page')
 	blocks = def.oneHasMany(ContentBlock, 'page')
-	seo = def.oneHasOne(Seo, 'page')
+	seo = def.oneHasOne(Seo, 'page').cascadeOnDelete()
 }

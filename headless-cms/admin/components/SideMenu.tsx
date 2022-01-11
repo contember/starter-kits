@@ -11,6 +11,10 @@ export const SideMenu = () => (
 				<Menu.Item title="Header" to="header" />
 				<Menu.Item title="Footer" to="footer" />
 			</Menu.Item>
+			<Menu.Item title="SEO">
+				<Menu.Item title="Articles" to="seoArticles" />
+				<Menu.Item title="Pages" to="seoPages" />
+			</Menu.Item>
 		</Menu.Item>
 	</Menu>
 )
