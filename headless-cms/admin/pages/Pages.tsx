@@ -35,6 +35,10 @@ export const Pages = (
 					header="Title"
 					format={(scalar) => <PageLink to="page(id: $entity.id)">{scalar}</PageLink>}
 				/>
+				<TextCell
+					field="slug"
+					header="Slug"
+				/>
 				<DateCell
 					field="publishAt"
 					header="Publish date"
