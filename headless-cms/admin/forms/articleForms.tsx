@@ -32,10 +32,8 @@ export const ArticleForm = Component(
 		<>
 			<TextField field="title" label="Title" />
 			<SlugField field="slug" label="Slug" derivedFrom="title" unpersistedHardPrefix="/blog/" />
-			<Section heading="Content">
-				<TextAreaField field="perex" label="Perex" />
-				<ContentField label="Text" size="large" />
-			</Section>
+			<TextAreaField field="perex" label="Perex" />
+			<ContentField label="Text" size="large" />
 			<Seo titleDerivedFrom="title" descriptionDerivedFrom="perex" seoPage="seoArticles" />
 		</>
 	),
