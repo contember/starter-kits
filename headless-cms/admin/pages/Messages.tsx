@@ -15,7 +15,7 @@ import {
 export const Messages = (
 	<GenericPage
 		pageName="messages"
-		title="Massages"
+		title="Messages"
 	>
 		<DataBindingProvider stateComponent={FeedbackRenderer}>
 			<DataGrid entities="ContactMessage" itemsPerPage={50}>
