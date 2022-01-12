@@ -8,7 +8,7 @@ export const SideMenu = () => (
 			<Menu.Item title="Articles" to="articles" />
 			<Menu.Item title="Messages" to="messages" />
 			<Menu.Item title="Settings" to="settings" />
-			<Menu.Item title="Navigation" to="navigation" />
+			<Menu.Item title="Navigation" to="navigations" />
 			<Menu.Item title="SEO">
 				<Menu.Item title="Articles" to="seoArticles" />
 				<Menu.Item title="Pages" to="seoPages" />
