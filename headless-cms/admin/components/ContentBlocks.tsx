@@ -6,17 +6,25 @@ import {
 	Component,
 	HasOne,
 	ImageFileRepeater,
+	ImageUploadField,
 	Repeater,
 	RichTextField,
 	TextField
-} from '@contember/admin'
+	} from '@contember/admin'
 import {
 	Button,
 	ContentField,
 	ImageField,
 	LabelWithIcon
-} from '.'
-import { IconContactSection, IconContentSection, IconCTASection, IconFeaturesSection, IconHeroSection, IconLogosSection } from './icons'
+	} from '.'
+import {
+	IconContactSection,
+	IconContentSection,
+	IconCTASection,
+	IconFeaturesSection,
+	IconHeroSection,
+	IconLogosSection
+	} from './icons'
 import { IconTestimonialSection } from './icons/IconTestimonialSection'
 
 export const ContentBlocks = Component(
@@ -45,16 +53,14 @@ export const ContentBlocks = Component(
 				>
 					<Button field="button" />
 				</Repeater>
-				<ImageFileRepeater
-					field="images"
-					label="Images"
-					sortableBy="order"
+				<ImageUploadField
+					label="Image"
 					urlField="image.url"
 					widthField="image.width"
 					heightField="image.height"
 				>
 					<TextField field="image.alt" label="Alternative text" />
-				</ImageFileRepeater>
+				</ImageUploadField>
 			</Block>
 
 			<Block

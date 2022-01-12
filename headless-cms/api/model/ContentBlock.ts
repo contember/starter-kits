@@ -26,6 +26,7 @@ export class ContentBlock {
 	primaryText = def.stringColumn()
 	secondaryText = def.stringColumn()
 	jsonContent = def.stringColumn()
+	image = def.manyHasOne(Image)
 	images = def.oneHasMany(ContentImage, 'contentBlock')
 	buttons = def.oneHasMany(ContentButton, 'contentBlock')
 	content = def.oneHasOne(Content)
