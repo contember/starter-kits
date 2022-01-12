@@ -55,6 +55,14 @@
 			]
 		},
 		{
+			"modification": "createEnum",
+			"enumName": "MenuPositions",
+			"values": [
+				"header",
+				"footer"
+			]
+		},
+		{
 			"modification": "createEntity",
 			"entity": {
 				"name": "Article",
@@ -166,44 +174,6 @@
 					}
 				},
 				"tableName": "content_image"
-			}
-		},
-		{
-			"modification": "createEntity",
-			"entity": {
-				"name": "Footer",
-				"primary": "id",
-				"primaryColumn": "id",
-				"unique": {},
-				"fields": {
-					"id": {
-						"name": "id",
-						"columnName": "id",
-						"nullable": false,
-						"type": "Uuid",
-						"columnType": "uuid"
-					}
-				},
-				"tableName": "footer"
-			}
-		},
-		{
-			"modification": "createEntity",
-			"entity": {
-				"name": "Header",
-				"primary": "id",
-				"primaryColumn": "id",
-				"unique": {},
-				"fields": {
-					"id": {
-						"name": "id",
-						"columnName": "id",
-						"nullable": false,
-						"type": "Uuid",
-						"columnType": "uuid"
-					}
-				},
-				"tableName": "header"
 			}
 		},
 		{
@@ -454,14 +424,22 @@
 			}
 		},
 		{
-			"modification": "createColumn",
-			"entityName": "Article",
-			"field": {
-				"name": "title",
-				"columnName": "title",
-				"nullable": true,
-				"type": "String",
-				"columnType": "text"
+			"modification": "createEntity",
+			"entity": {
+				"name": "Setting",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "setting"
 			}
 		},
 		{
@@ -492,6 +470,17 @@
 			"field": {
 				"name": "perex",
 				"columnName": "perex",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Article",
+			"field": {
+				"name": "headline",
+				"columnName": "headline",
 				"nullable": true,
 				"type": "String",
 				"columnType": "text"
@@ -620,39 +609,6 @@
 		},
 		{
 			"modification": "createColumn",
-			"entityName": "Footer",
-			"field": {
-				"name": "unique",
-				"columnName": "unique",
-				"nullable": false,
-				"type": "Enum",
-				"columnType": "One"
-			}
-		},
-		{
-			"modification": "createColumn",
-			"entityName": "Footer",
-			"field": {
-				"name": "jsonContent",
-				"columnName": "json_content",
-				"nullable": true,
-				"type": "String",
-				"columnType": "text"
-			}
-		},
-		{
-			"modification": "createColumn",
-			"entityName": "Header",
-			"field": {
-				"name": "unique",
-				"columnName": "unique",
-				"nullable": false,
-				"type": "Enum",
-				"columnType": "One"
-			}
-		},
-		{
-			"modification": "createColumn",
 			"entityName": "Image",
 			"field": {
 				"name": "url",
@@ -741,6 +697,17 @@
 		},
 		{
 			"modification": "createColumn",
+			"entityName": "Menu",
+			"field": {
+				"name": "position",
+				"columnName": "position",
+				"nullable": true,
+				"type": "Enum",
+				"columnType": "MenuPositions"
+			}
+		},
+		{
+			"modification": "createColumn",
 			"entityName": "MenuItem",
 			"field": {
 				"name": "order",
@@ -767,17 +734,6 @@
 			"field": {
 				"name": "link",
 				"columnName": "link",
-				"nullable": true,
-				"type": "String",
-				"columnType": "text"
-			}
-		},
-		{
-			"modification": "createColumn",
-			"entityName": "Page",
-			"field": {
-				"name": "title",
-				"columnName": "title",
 				"nullable": true,
 				"type": "String",
 				"columnType": "text"
@@ -1055,6 +1011,17 @@
 			"fillValue": "now"
 		},
 		{
+			"modification": "createColumn",
+			"entityName": "Setting",
+			"field": {
+				"name": "unique",
+				"columnName": "unique",
+				"nullable": false,
+				"type": "Enum",
+				"columnType": "One"
+			}
+		},
+		{
 			"modification": "createRelation",
 			"entityName": "Article",
 			"owningSide": {
@@ -1234,48 +1201,6 @@
 				"target": "Image",
 				"joiningColumn": {
 					"columnName": "image_id",
-					"onDelete": "restrict"
-				}
-			}
-		},
-		{
-			"modification": "createRelation",
-			"entityName": "Footer",
-			"owningSide": {
-				"name": "menu",
-				"nullable": true,
-				"type": "OneHasOne",
-				"target": "Menu",
-				"joiningColumn": {
-					"columnName": "menu_id",
-					"onDelete": "restrict"
-				}
-			}
-		},
-		{
-			"modification": "createRelation",
-			"entityName": "Header",
-			"owningSide": {
-				"name": "logo",
-				"nullable": true,
-				"type": "ManyHasOne",
-				"target": "Image",
-				"joiningColumn": {
-					"columnName": "logo_id",
-					"onDelete": "restrict"
-				}
-			}
-		},
-		{
-			"modification": "createRelation",
-			"entityName": "Header",
-			"owningSide": {
-				"name": "menu",
-				"nullable": true,
-				"type": "OneHasOne",
-				"target": "Menu",
-				"joiningColumn": {
-					"columnName": "menu_id",
 					"onDelete": "restrict"
 				}
 			}
@@ -1576,6 +1501,20 @@
 			}
 		},
 		{
+			"modification": "createRelation",
+			"entityName": "Setting",
+			"owningSide": {
+				"name": "footerCopyright",
+				"nullable": true,
+				"type": "OneHasOne",
+				"target": "Content",
+				"joiningColumn": {
+					"columnName": "footer_copyright_id",
+					"onDelete": "cascade"
+				}
+			}
+		},
+		{
 			"modification": "createUniqueConstraint",
 			"entityName": "Article",
 			"unique": {
@@ -1587,32 +1526,22 @@
 		},
 		{
 			"modification": "createUniqueConstraint",
-			"entityName": "Footer",
-			"unique": {
-				"fields": [
-					"unique"
-				],
-				"name": "unique_Footer_unique_c0f335"
-			}
-		},
-		{
-			"modification": "createUniqueConstraint",
-			"entityName": "Header",
-			"unique": {
-				"fields": [
-					"unique"
-				],
-				"name": "unique_Header_unique_c704f9"
-			}
-		},
-		{
-			"modification": "createUniqueConstraint",
 			"entityName": "Page",
 			"unique": {
 				"fields": [
 					"slug"
 				],
 				"name": "unique_Page_slug_875597"
+			}
+		},
+		{
+			"modification": "createUniqueConstraint",
+			"entityName": "Setting",
+			"unique": {
+				"fields": [
+					"unique"
+				],
+				"name": "unique_Setting_unique_be242d"
 			}
 		},
 		{
@@ -1630,36 +1559,36 @@
 								"operations": {
 									"create": {
 										"id": true,
-										"title": true,
 										"publishAt": true,
 										"slug": true,
 										"linkedFrom": true,
 										"content": true,
 										"seo": true,
 										"perex": true,
-										"coverPhoto": true
+										"coverPhoto": true,
+										"headline": true
 									},
 									"update": {
 										"id": true,
-										"title": true,
 										"publishAt": true,
 										"slug": true,
 										"linkedFrom": true,
 										"content": true,
 										"seo": true,
 										"perex": true,
-										"coverPhoto": true
+										"coverPhoto": true,
+										"headline": true
 									},
 									"read": {
 										"id": true,
-										"title": true,
 										"publishAt": true,
 										"slug": true,
 										"linkedFrom": true,
 										"content": true,
 										"seo": true,
 										"perex": true,
-										"coverPhoto": true
+										"coverPhoto": true,
+										"headline": true
 									},
 									"delete": true,
 									"customPrimary": true
@@ -1820,56 +1749,6 @@
 									"customPrimary": true
 								}
 							},
-							"Footer": {
-								"predicates": {},
-								"operations": {
-									"create": {
-										"id": true,
-										"unique": true,
-										"jsonContent": true,
-										"menu": true
-									},
-									"update": {
-										"id": true,
-										"unique": true,
-										"jsonContent": true,
-										"menu": true
-									},
-									"read": {
-										"id": true,
-										"unique": true,
-										"jsonContent": true,
-										"menu": true
-									},
-									"delete": true,
-									"customPrimary": true
-								}
-							},
-							"Header": {
-								"predicates": {},
-								"operations": {
-									"create": {
-										"id": true,
-										"unique": true,
-										"logo": true,
-										"menu": true
-									},
-									"update": {
-										"id": true,
-										"unique": true,
-										"logo": true,
-										"menu": true
-									},
-									"read": {
-										"id": true,
-										"unique": true,
-										"logo": true,
-										"menu": true
-									},
-									"delete": true,
-									"customPrimary": true
-								}
-							},
 							"Image": {
 								"predicates": {},
 								"operations": {
@@ -1937,15 +1816,18 @@
 								"operations": {
 									"create": {
 										"id": true,
-										"items": true
+										"items": true,
+										"position": true
 									},
 									"update": {
 										"id": true,
-										"items": true
+										"items": true,
+										"position": true
 									},
 									"read": {
 										"id": true,
-										"items": true
+										"items": true,
+										"position": true
 									},
 									"delete": true,
 									"customPrimary": true
@@ -1984,7 +1866,6 @@
 								"operations": {
 									"create": {
 										"id": true,
-										"title": true,
 										"publishAt": true,
 										"slug": true,
 										"linkedFrom": true,
@@ -1994,7 +1875,6 @@
 									},
 									"update": {
 										"id": true,
-										"title": true,
 										"publishAt": true,
 										"slug": true,
 										"linkedFrom": true,
@@ -2004,7 +1884,6 @@
 									},
 									"read": {
 										"id": true,
-										"title": true,
 										"publishAt": true,
 										"slug": true,
 										"linkedFrom": true,
@@ -2247,6 +2126,28 @@
 										"consent": true,
 										"viewed": true,
 										"createdAt": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"Setting": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"unique": true,
+										"footerCopyright": true
+									},
+									"update": {
+										"id": true,
+										"unique": true,
+										"footerCopyright": true
+									},
+									"read": {
+										"id": true,
+										"unique": true,
+										"footerCopyright": true
 									},
 									"delete": true,
 									"customPrimary": true
