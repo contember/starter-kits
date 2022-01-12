@@ -30,11 +30,11 @@ export const ArticleSideForm = Component<ArticleSideFormProps>(
 export const ArticleForm = Component(
 	() => (
 		<>
-			<TextField field="title" label="Title" />
+			<TextField field="headline" label="Headline" />
 			<SlugField field="slug" label="Slug" derivedFrom="title" unpersistedHardPrefix="/blog/" />
 			<TextAreaField field="perex" label="Perex" />
 			<ContentField label="Text" size="large" />
-			<Seo titleDerivedFrom="title" descriptionDerivedFrom="perex" seoPage="seoArticles" />
+			<Seo titleDerivedFrom="headline" descriptionDerivedFrom="perex" seoPage="seoArticles" />
 		</>
 	),
 	'ArticleForm'

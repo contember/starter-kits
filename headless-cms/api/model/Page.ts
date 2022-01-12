@@ -4,7 +4,6 @@ import { InputValidation as validation, SchemaDefinition as def } from '@contemb
 export const PageTypeEnum = def.createEnum('default', 'homePage', 'error404Page')
 
 export class Page {
-	title = def.stringColumn()
 	publishAt = def.dateTimeColumn().default('now')
 	slug = def.stringColumn().unique()
 	@validation.when(validation.rules.on('slug', validation.rules.equals('default'))).assertNotEmpty("Type or Slug must not be empty.")
