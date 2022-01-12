@@ -24,8 +24,8 @@ export const Articles = (
 		<DataBindingProvider stateComponent={FeedbackRenderer}>
 			<DataGrid entities="Article" itemsPerPage={50}>
 				<TextCell
-					field="title"
-					header="Title"
+					field="headline"
+					header="Headline"
 					format={(scalar) => <PageLink to="article(id: $entity.id)">{scalar}</PageLink>}
 				/>
 				<TextCell

@@ -8,10 +8,10 @@ import {
 import {
 	Component,
 	DateTimeField,
+	Field,
 	Section,
 	SelectField,
 	SlugField,
-	TextField,
 } from '@contember/admin'
 
 type PageSideFormProps = {
@@ -21,6 +21,7 @@ type PageSideFormProps = {
 export const PageSideForm = Component<PageSideFormProps>(
 	({ isEditPage }) => (
 		<>
+
 			{isEditPage &&
 				<>
 					<Conditional showIf={(accessor) => accessor.getField('type').value === 'default'}>
@@ -34,6 +35,9 @@ export const PageSideForm = Component<PageSideFormProps>(
 					</Conditional>
 				</>
 			}
+			<Conditional showIf={(accessor) => accessor.getField('type').value === 'default'}>
+				<SlugField field="slug" derivedFrom="seo.title" label="Slug" unpersistedHardPrefix="/" />
+			</Conditional>
 			<DateTimeField
 				field="publishAt"
 				label="Publish date"
@@ -57,14 +61,10 @@ export const PageSideForm = Component<PageSideFormProps>(
 export const PageForm = Component(
 	() => (
 		<>
-			<TextField field="title" label="Title" />
-			<Conditional showIf={(accessor) => accessor.getField('type').value === 'default'}>
-				<SlugField field="slug" label="Slug" derivedFrom="title" unpersistedHardPrefix="/" />
-			</Conditional>
 			<Section heading="Content">
 				<ContentBlocks />
 			</Section>
-			<Seo titleDerivedFrom="title" seoPage="seoPages" />
+			<Seo seoPage="seoPages" />
 		</>
 	),
 	'PageForm'

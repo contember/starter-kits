@@ -2,7 +2,6 @@ import * as React from 'react'
 import {
 	Component,
 	DateTimeField,
-	Section,
 	SlugField,
 	TextAreaField,
 	TextField,
@@ -17,6 +16,7 @@ export const ArticleSideForm = Component<ArticleSideFormProps>(
 	({ isEditPage }) => (
 		<>
 			{isEditPage && <PreviewLink slugField="slug" prefix="/blog/" />}
+			<SlugField field="slug" label="Slug" derivedFrom="headline" unpersistedHardPrefix="/blog/" />
 			<DateTimeField
 				field="publishAt"
 				label="Publish date"
@@ -31,10 +31,13 @@ export const ArticleForm = Component(
 	() => (
 		<>
 			<TextField field="headline" label="Headline" />
-			<SlugField field="slug" label="Slug" derivedFrom="title" unpersistedHardPrefix="/blog/" />
 			<TextAreaField field="perex" label="Perex" />
 			<ContentField label="Text" size="large" />
-			<Seo titleDerivedFrom="headline" descriptionDerivedFrom="perex" seoPage="seoArticles" />
+			<Seo
+				titleDerivedFrom="headline"
+				descriptionDerivedFrom="perex"
+				seoPage="seoArticles"
+			/>
 		</>
 	),
 	'ArticleForm'

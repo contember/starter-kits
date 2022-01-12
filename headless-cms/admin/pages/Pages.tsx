@@ -17,7 +17,7 @@ import { PageForm, PageSideForm } from '../forms'
 
 function clearSlugWhenPageHasType(entityAccessor: EntityAccessor.GetEntityAccessor) {
 	const entity = entityAccessor()
-	if (entity.getField('type').value) {
+	if (entity.getField('type').value !== 'default') {
 		entity.getField('slug').updateValue(null)
 	}
 }
@@ -31,13 +31,9 @@ export const Pages = (
 		<DataBindingProvider stateComponent={FeedbackRenderer}>
 			<DataGrid entities="Page" itemsPerPage={50}>
 				<TextCell
-					field="title"
-					header="Title"
-					format={(scalar) => <PageLink to="page(id: $entity.id)">{scalar}</PageLink>}
-				/>
-				<TextCell
 					field="slug"
 					header="Slug"
+					format={(scalar) => <PageLink to="page(id: $entity.id)">{scalar}</PageLink>}
 				/>
 				<DateCell
 					field="publishAt"

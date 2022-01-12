@@ -14,7 +14,7 @@ export const SeoArticles = (
 			}
 		}
 	>
-		<h2><Field field="article.title" /></h2>
+		<h2><Field field="article.headline" /></h2>
 		<SeoFields advancedOptions />
 	</MultiEditPage>
 )

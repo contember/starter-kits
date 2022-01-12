@@ -11,10 +11,10 @@ export const LinkField = Component<LinkFieldProps>(
 		return <HasOne field={field}>
 			<DiscriminatedBlocks label={label ?? 'Link'} field="type">
 				<Block discriminateBy="article" label="Articles">
-					<SelectField label={undefined} options="Article.title" field="article" />
+					<SelectField label={undefined} options="Article.slug" field="article" />
 				</Block>
 				<Block discriminateBy="page" label="Pages">
-					<SelectField label={undefined} options="Page.title" field="page" />
+					<SelectField label={undefined} options="Page.slug" field="page" />
 				</Block>
 				<Block discriminateBy="url" label="External link">
 					<TextField label="Url" field="url" />
