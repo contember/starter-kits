@@ -43,7 +43,7 @@ export const ContentBlocks = Component(
 				}
 			>
 				<TextField field="primaryText" label="Headline" />
-				<RichTextField field="jsonContent" label="Content" />
+				<ContentField />
 				<Repeater
 					field="buttons"
 					label="Buttons"
@@ -67,7 +67,7 @@ export const ContentBlocks = Component(
 				discriminateBy="logosSection"
 				label={<LabelWithIcon icon={<IconLogosSection />} label="Logos section" />}
 			>
-				<RichTextField field="jsonContent" label="Content" />
+				<ContentField />
 				<ImageFileRepeater
 					field="images"
 					label="Logos"
@@ -75,6 +75,7 @@ export const ContentBlocks = Component(
 					urlField="image.url"
 					widthField="image.width"
 					heightField="image.height"
+					description="You can upload any number of logos."
 				>
 					<TextField field="image.alt" label="Alternative text" />
 				</ImageFileRepeater>
@@ -151,5 +152,5 @@ export const ContentBlocks = Component(
 			</Block>
 		</BlockRepeater>
 	),
-	'ContentBlocks'
+	'ContentBlocks',
 )
