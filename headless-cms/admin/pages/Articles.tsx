@@ -8,8 +8,8 @@ import {
 	EditPage,
 	FeedbackRenderer,
 	GenericPage,
-	PageLink,
-	PageLinkButton,
+	Link,
+	LinkButton,
 	TextCell,
 } from '@contember/admin'
 
@@ -18,7 +18,7 @@ export const Articles = (
 		pageName="articles"
 		title="Articles"
 		actions={
-			<PageLinkButton to="articleCreate">Add new article</PageLinkButton>
+			<LinkButton to="articleCreate">Add new article</LinkButton>
 		}
 	>
 		<DataBindingProvider stateComponent={FeedbackRenderer}>
@@ -26,7 +26,7 @@ export const Articles = (
 				<TextCell
 					field="headline"
 					header="Headline"
-					format={(scalar) => <PageLink to="article(id: $entity.id)">{scalar}</PageLink>}
+					format={(scalar) => <Link to="article(id: $entity.id)">{scalar}</Link>}
 				/>
 				<TextCell
 					field="slug"

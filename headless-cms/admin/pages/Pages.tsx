@@ -9,15 +9,15 @@ import {
 	EnumCell,
 	FeedbackRenderer,
 	GenericPage,
-	PageLink,
-	PageLinkButton,
+	Link,
+	LinkButton,
 	TextCell,
 } from '@contember/admin'
 import { PageForm, PageSideForm } from '../forms'
 
 function clearSlugWhenPageHasType(entityAccessor: EntityAccessor.GetEntityAccessor) {
 	const entity = entityAccessor()
-	if (entity.getField('type').value !== 'default') {
+	if (entity.getField('role').value !== null) {
 		entity.getField('slug').updateValue(null)
 	}
 }
@@ -26,22 +26,22 @@ export const Pages = (
 	<GenericPage
 		pageName="pages"
 		title="Pages"
-		actions={<PageLinkButton to="pageCreate">Add new page</PageLinkButton>}
+		actions={<LinkButton to="pageCreate">Add new page</LinkButton>}
 	>
 		<DataBindingProvider stateComponent={FeedbackRenderer}>
 			<DataGrid entities="Page" itemsPerPage={50}>
 				<TextCell
 					field="slug"
 					header="Slug"
-					format={(scalar) => <PageLink to="page(id: $entity.id)">{scalar}</PageLink>}
+					format={(scalar) => <Link to="page(id: $entity.id)">{scalar}</Link>}
 				/>
 				<DateCell
 					field="publishAt"
 					header="Publish date"
 				/>
 				<EnumCell
-					field="type"
-					header="Type"
+					field="role"
+					header="Role"
 					options={{
 						homePage: 'Home page',
 						error404Page: 'Error 404',

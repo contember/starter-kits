@@ -8,7 +8,7 @@ import {
 	FeedbackRenderer,
 	Field,
 	GenericPage,
-	PageLink,
+	Link,
 	TextCell,
 } from '@contember/admin'
 
@@ -22,12 +22,12 @@ export const Messages = (
 				<TextCell
 					field="firstName"
 					header="First name"
-					format={(scalar) => <PageLink to="message(id: $entity.id)">{scalar}</PageLink>}
+					format={(scalar) => <Link to="message(id: $entity.id)">{scalar}</Link>}
 				/>
 				<TextCell
 					field="lastName"
 					header="Last name"
-					format={(scalar) => <PageLink to="message(id: $entity.id)">{scalar}</PageLink>}
+					format={(scalar) => <Link to="message(id: $entity.id)">{scalar}</Link>}
 				/>
 				<TextCell field="email" header="E-mail" />
 				<DateCell field="createdAt" header="Create date" />

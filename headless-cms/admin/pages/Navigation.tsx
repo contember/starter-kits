@@ -1,14 +1,24 @@
 import * as React from 'react'
-import { CreatePage, DataBindingProvider, DataGrid, DateCell, EditPage, EnumCell, FeedbackRenderer, GenericPage, PageLink, PageLinkButton, Repeater, SelectField, TextCell, TextField } from '@contember/admin'
 import { ArticleForm, ArticleSideForm, NavigationForm } from '../forms'
-import { LinkField } from '../components'
+import {
+	CreatePage,
+	DataBindingProvider,
+	DataGrid,
+	EditPage,
+	EnumCell,
+	FeedbackRenderer,
+	GenericPage,
+	Link,
+	LinkButton,
+	TextCell,
+	} from '@contember/admin'
 
 export const Navigations = (
 	<GenericPage
 		pageName="navigations"
 		title="Menus"
 		actions={
-			<PageLinkButton to="navigationCreate">Add new menu</PageLinkButton>
+			<LinkButton to="navigationCreate">Add new menu</LinkButton>
 		}
 	>
 		<DataBindingProvider stateComponent={FeedbackRenderer}>
@@ -16,7 +26,7 @@ export const Navigations = (
 				<TextCell
 					field="id"
 					header="Id"
-					format={(scalar) => <PageLink to="navigation(id: $entity.id)">{scalar}</PageLink>}
+					format={(scalar) => <Link to="navigation(id: $entity.id)">{scalar}</Link>}
 				/>
 				<EnumCell
 					field="position"
