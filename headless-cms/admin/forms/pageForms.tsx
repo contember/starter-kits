@@ -42,6 +42,7 @@ export const PageSideForm = Component<PageSideFormProps>(
 				field="role"
 				label="Page role"
 				defaultValue={null}
+				allowNull
 				options={[
 					{ value: null, label: 'Default' },
 					{ value: 'homePage', label: 'HomePage' },
