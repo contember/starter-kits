@@ -8,10 +8,8 @@ import {
 import {
 	Component,
 	DateTimeField,
-	Field,
 	Section,
 	SelectField,
-	SlugField,
 } from '@contember/admin'
 
 type PageSideFormProps = {
@@ -24,31 +22,28 @@ export const PageSideForm = Component<PageSideFormProps>(
 
 			{isEditPage &&
 				<>
-					<Conditional showIf={(accessor) => accessor.getField('type').value === 'default'}>
+					<Conditional showIf={(accessor) => accessor.getField('role').value === 'default'}>
 						<PreviewLink slugField="slug" />
 					</Conditional>
-					<Conditional showIf={(accessor) => accessor.getField('type').value === 'homePage'}>
+					<Conditional showIf={(accessor) => accessor.getField('role').value === 'homePage'}>
 						<PreviewLink slugField="slug" path={'/'} />
 					</Conditional>
-					<Conditional showIf={(accessor) => accessor.getField('type').value === 'error404Page'}>
+					<Conditional showIf={(accessor) => accessor.getField('role').value === 'error404Page'}>
 						<PreviewLink slugField="slug" path={'/404'} />
 					</Conditional>
 				</>
 			}
-			<Conditional showIf={(accessor) => accessor.getField('type').value === 'default'}>
-				<SlugField field="slug" derivedFrom="seo.title" label="Slug" unpersistedHardPrefix="/" />
-			</Conditional>
 			<DateTimeField
 				field="publishAt"
 				label="Publish date"
 				defaultValue={new Date().toISOString()}
 			/>
 			<SelectField
-				field="type"
-				label="Page type"
-				defaultValue="default"
+				field="role"
+				label="Page role"
+				defaultValue={null}
 				options={[
-					{ value: 'default', label: 'Default' },
+					{ value: null, label: 'Default' },
 					{ value: 'homePage', label: 'HomePage' },
 					{ value: 'error404Page', label: "Error 404" }
 				]}
@@ -64,7 +59,13 @@ export const PageForm = Component(
 			<Section heading="Content">
 				<ContentBlocks />
 			</Section>
-			<Seo seoPage="seoPages" />
+			<Seo
+				seoPage="seoPages"
+				seoFieldsProps={{
+					unpersistedHardPrefix: '/',
+					hasRoleField: true
+				}}
+			/>
 		</>
 	),
 	'PageForm'

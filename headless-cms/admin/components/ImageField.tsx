@@ -20,5 +20,5 @@ export const ImageField = Component<ImageFieldProps>(
 		</HasOne>
 
 	),
-	'ImageField'
+	'ImageField',
 )

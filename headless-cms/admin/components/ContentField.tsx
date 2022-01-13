@@ -45,5 +45,5 @@ export const ContentField = Component<ContentFieldProps>(
 			inlineButtons={inlineButtons}
 		/>
 	),
-	'ContentField'
+	'ContentField',
 )

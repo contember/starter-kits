@@ -1,6 +1,12 @@
 import * as React from 'react'
-import { EditPage, HasOne, ImageUploadField, Section, TextField } from '@contember/admin'
 import { ContentField } from '../components'
+import {
+	EditPage,
+	HasOne,
+	ImageUploadField,
+	Section,
+	TextField
+} from '@contember/admin'
 
 export const Header = (
 	<EditPage

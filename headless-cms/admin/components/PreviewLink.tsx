@@ -27,5 +27,5 @@ export const PreviewLink = Component<PreviewLinkProps>(
 	({ slugField }) => (
 		<Field field={slugField} />
 	),
-	'PreviewLink'
+	'PreviewLink',
 )

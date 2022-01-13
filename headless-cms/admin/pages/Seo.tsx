@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Field, MultiEditPage } from "@contember/admin"
+import { MultiEditPage } from "@contember/admin"
 import { SeoFields } from '../components'
 
 export const SeoArticles = (
@@ -14,8 +14,7 @@ export const SeoArticles = (
 			}
 		}
 	>
-		<h2><Field field="article.headline" /></h2>
-		<SeoFields advancedOptions />
+		<SeoFields advancedOptions referenceEntity="article" />
 	</MultiEditPage>
 )
 
@@ -31,7 +30,6 @@ export const SeoPages = (
 			}
 		}
 	>
-		<h2><Field field="page.title" /></h2>
-		<SeoFields advancedOptions />
+		<SeoFields advancedOptions hasRoleField referenceEntity="page" />
 	</MultiEditPage>
 )

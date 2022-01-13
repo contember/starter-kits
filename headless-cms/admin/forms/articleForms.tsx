@@ -2,7 +2,6 @@ import * as React from 'react'
 import {
 	Component,
 	DateTimeField,
-	SlugField,
 	TextAreaField,
 	TextField,
 } from '@contember/admin'
@@ -16,7 +15,6 @@ export const ArticleSideForm = Component<ArticleSideFormProps>(
 	({ isEditPage }) => (
 		<>
 			{isEditPage && <PreviewLink slugField="slug" prefix="/blog/" />}
-			<SlugField field="slug" label="Slug" derivedFrom="headline" unpersistedHardPrefix="/blog/" />
 			<DateTimeField
 				field="publishAt"
 				label="Publish date"
@@ -37,6 +35,9 @@ export const ArticleForm = Component(
 				titleDerivedFrom="headline"
 				descriptionDerivedFrom="perex"
 				seoPage="seoArticles"
+				seoFieldsProps={{
+					unpersistedHardPrefix: '/blog/',
+				}}
 			/>
 		</>
 	),

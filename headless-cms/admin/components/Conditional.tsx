@@ -19,5 +19,5 @@ export const Conditional = Component<ConditionalProps>(
 			{props.children}
 		</>
 	),
-	"Conditional"
+	'Conditional',
 )

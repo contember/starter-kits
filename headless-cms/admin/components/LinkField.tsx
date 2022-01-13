@@ -9,7 +9,7 @@ export interface LinkFieldProps {
 export const LinkField = Component<LinkFieldProps>(
 	({ field, label }) => {
 		return <HasOne field={field}>
-			<DiscriminatedBlocks label={label ?? 'Link'} field="type">
+			<DiscriminatedBlocks label={label ?? 'Link'} field="type" description="Select what you want to link.">
 				<Block discriminateBy="article" label="Articles">
 					<SelectField label={undefined} options="Article.slug" field="article" />
 				</Block>

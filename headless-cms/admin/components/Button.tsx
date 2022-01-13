@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Component, HasOne, RadioField, RadioGroup, TextField } from '@contember/admin'
+import { Component, HasOne, RadioField, TextField } from '@contember/admin'
 import { LinkField } from '.'
 
 type ButtonProps = {
@@ -22,5 +22,5 @@ export const Button = Component<ButtonProps>(
 			/>
 		</HasOne>
 	),
-	'Button'
+	'Button',
 )

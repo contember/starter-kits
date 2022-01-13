@@ -3,15 +3,26 @@ import {
 	Component,
 	DerivedFieldLink,
 	DerivedFieldLinkProps,
-	HasOne,
+	Environment,
+	Field,
 	ImageUploadField,
-	PageLinkButton,
+	LinkButton,
 	Section,
+	SlugField,
 	TextAreaField,
 	TextField,
 } from '@contember/admin'
+import { Conditional } from '.'
 
-export type SeoFieldsProps = {
+export type SeoSlugFieldProps = {
+	unpersistedHardPrefix?: string
+	webUrl?: string
+	referenceEntity?: string
+	hasRoleField?: boolean
+}
+
+export type SeoFieldsProps = SeoSlugFieldProps & {
+	field?: string
 	advancedOptions?: boolean
 }
 
@@ -20,29 +31,95 @@ export type SeoFormProps = {
 	descriptionDerivedFrom?: DerivedFieldLinkProps['sourceField'],
 	imageUrlDerivedFrom?: DerivedFieldLinkProps['sourceField']
 	titleTransform?: DerivedFieldLinkProps['transform'],
+	seoFieldsProps?: SeoFieldsProps
 	seoPage: string
 }
 
+function getSlugPrefix(environment: Environment, unpersistedHardPrefix?: string) {
+	const webUrl = environment.getValue('WEB_URL')
+	const prefix = unpersistedHardPrefix || ''
+
+	return (webUrl ? webUrl + prefix : prefix)
+}
+
+const SeoSlugField = Component<SeoFieldsProps>(
+	({ hasRoleField, referenceEntity, unpersistedHardPrefix }) => {
+		const fieldRole = referenceEntity ? referenceEntity + '.role' : 'role'
+		const fieldSlug = referenceEntity ? referenceEntity + '.slug' : 'slug'
+		const fieldTitle = referenceEntity ? referenceEntity + 'title' : 'seo.title'
+
+		if (hasRoleField) {
+			return (
+				<Conditional
+					showIf={(accessor) => accessor.getField(fieldRole).value === null}
+					additionalStaticChildren={<Field field={fieldRole} />}
+				>
+					<SlugField
+						field={fieldSlug}
+						derivedFrom={fieldTitle}
+						label="Slug"
+						unpersistedHardPrefix={(environment) => {
+							return getSlugPrefix(environment, unpersistedHardPrefix)
+						}}
+					/>
+				</Conditional>
+			)
+		} else {
+			return (
+				<SlugField
+					field={fieldSlug}
+					derivedFrom={fieldTitle}
+					label="Slug"
+					unpersistedHardPrefix={(environment) => {
+						return getSlugPrefix(environment, unpersistedHardPrefix)
+					}}
+				/>
+			)
+		}
+
+	},
+	'SeoSlugField'
+)
+
 export const SeoFields = Component<SeoFieldsProps>(
-	({ advancedOptions }) => (
-		<>
-			<TextField field="title" label="Title" />
-			<TextAreaField field="description" label="description" />
-			{advancedOptions &&
-				<>
-					<TextField field="ogTitle" label="OG title" />
-					<TextAreaField field="ogDescription" label="OG description" />
-				</>
-			}
-			<ImageUploadField urlField="ogImage.url" label="OG image" description="Recommended aspect ratio 19:10 (e.g.: 2400×1260 px)." />
-		</>
-	),
-	'SeoFields'
+	(props) => {
+		const { field, advancedOptions } = props
+		const fieldTitle = field ? field + '.title' : 'title'
+		const fieldDescription = field ? field + '.description' : 'description'
+		const fieldOgTitle = field ? field + '.ogTitle' : 'ogTitle'
+		const fieldOgDescription = field ? field + '.ogDescription' : 'ogDescription'
+		const fieldOgImageUrl = field ? field + '.ogImage.url' : 'ogImage.url'
+
+		return (
+			<>
+				<TextField field={fieldTitle} label="Title" required />
+				<SeoSlugField {...props} />
+				<TextAreaField
+					field={fieldDescription}
+					label="description"
+					description="Short summary of the page. Keep it between 120 and 158 characters."
+				/>
+				{advancedOptions &&
+					<>
+						<TextField field={fieldOgTitle} label="OG title" />
+						<TextAreaField field={fieldOgDescription} label="OG description" />
+					</>
+				}
+				<ImageUploadField
+					urlField={fieldOgImageUrl}
+					label="OG image"
+					description="Recommended aspect ratio 19:10 (e.g.: 2400×1260 px)."
+				/>
+			</>
+		)
+
+	},
+	'SeoFields',
 )
 
 
 export const Seo = Component<SeoFormProps>(
-	({ titleDerivedFrom, descriptionDerivedFrom, imageUrlDerivedFrom, titleTransform, seoPage }) => (
+	({ titleDerivedFrom, descriptionDerivedFrom, imageUrlDerivedFrom, titleTransform, seoPage, seoFieldsProps }) => (
 		<Section heading="SEO">
 			{titleDerivedFrom &&
 				<>
@@ -61,10 +138,8 @@ export const Seo = Component<SeoFormProps>(
 					<DerivedFieldLink sourceField={imageUrlDerivedFrom} derivedField="seo.ogImage.url" />
 				</>
 			}
-			<HasOne field="seo">
-				<SeoFields />
-			</HasOne>
-			<PageLinkButton to={seoPage}>Advanced website SEO</PageLinkButton>
+			<SeoFields field="seo" {...seoFieldsProps} />
+			<LinkButton to={seoPage}>Advanced website SEO</LinkButton>
 		</Section>
 	),
 	'Seo',
