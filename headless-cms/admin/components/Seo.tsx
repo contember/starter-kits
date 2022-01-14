@@ -46,7 +46,7 @@ const SeoSlugField = Component<SeoFieldsProps>(
 	({ hasRoleField, referenceEntity, unpersistedHardPrefix }) => {
 		const fieldRole = referenceEntity ? referenceEntity + '.role' : 'role'
 		const fieldSlug = referenceEntity ? referenceEntity + '.slug' : 'slug'
-		const fieldTitle = referenceEntity ? referenceEntity + 'title' : 'seo.title'
+		const fieldTitle = referenceEntity ? (!hasRoleField ? referenceEntity + '.headline' : referenceEntity + '.seo.title') : 'seo.title'
 
 		if (hasRoleField) {
 			return (
