@@ -31,8 +31,8 @@ export const Pages = (
 		<DataBindingProvider stateComponent={FeedbackRenderer}>
 			<DataGrid entities="Page" itemsPerPage={50}>
 				<TextCell
-					field="slug"
-					header="Slug"
+					field="seo.title"
+					header="Title"
 					format={(scalar) => <Link to="page(id: $entity.id)">{scalar}</Link>}
 				/>
 				<DateCell
