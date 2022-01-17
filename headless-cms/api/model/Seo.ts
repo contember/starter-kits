@@ -2,7 +2,7 @@ import { SchemaDefinition as def } from '@contember/schema-definition'
 import { Article, Image, Page } from '.'
 
 export class Seo {
-	title = def.stringColumn()
+	title = def.stringColumn().notNull()
 	description = def.stringColumn()
 	ogTitle = def.stringColumn()
 	ogDescription = def.stringColumn()

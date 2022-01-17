@@ -1,17 +1,30 @@
 {
   "scripts": {
     "contember": "docker-compose run contember-cli",
+    "dev-head": "next dev head",
+    "build-head": "next build head",
     "start-admin": "vite admin --port ${VITE_PORT:-4000} --host 0.0.0.0",
     "build-admin": "tsc && vite build admin"
+  },
+  "dependencies": {
+    "next": "12.0.7",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   },
   "devDependencies": {
     "@contember/admin": "1.0.0-alpha.3",
     "@contember/admin-i18n": "1.0.0-alpha.3",
+    "@contember/react-client": "^1.0.0-alpha.3",
     "@contember/schema": "1.0.0-alpha.1",
     "@contember/schema-definition": "1.0.0-alpha.1",
-    "@types/react": "17.0.5",
+    "@types/node": "17.0.8",
+    "@types/react": "17.0.38",
+    "eslint": "8.6.0",
+    "eslint-config-next": "12.0.7",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-refresh": "^0.8.3",
+    "typescript": "4.5.4",
     "vite": "^2.5.2"
   }
 }
