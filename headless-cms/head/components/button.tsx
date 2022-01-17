@@ -1,11 +1,10 @@
 export default function Button(props: any) {
 	const { label, url } = props
-	console.log('props', props)
-	const urlTypes = {
+	const urlTypes: any = {
 		url: url.url,
-		page: url.page.slug,
+		page: url.page?.slug,
 	}
-	const href = url.typ ? url.url : '#'
+	const href = url.type && urlTypes[url.type]
 	return (
 		<a href={href} className={`button ${props.type}`}>
 			{label}

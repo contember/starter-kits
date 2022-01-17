@@ -1,4 +1,4 @@
-export const homePage = `#graphql
+const homePage = `#graphql
   query {
     getPage(by: {role: homePage}) {
       id
@@ -25,10 +25,14 @@ export const homePage = `#graphql
         primaryText
         secondaryText
         content {
-				id
-				parts {
-            id
-            json
+          id
+          parts {
+              json
+              references {
+                type
+                primaryText
+                text
+              }
           }
         }
         buttons {
@@ -51,9 +55,72 @@ export const homePage = `#graphql
             }
           }
         }
+        image {
+          url
+          width
+          height
+          alt
+        }
+        images {
+          id
+          order
+          image {
+            url
+            width
+            height
+            alt
+          }
+        }
+        featureList {
+          id
+          order
+          primaryText
+          content {
+            parts {
+              json
+              references {
+                type
+                primaryText
+                text
+              }
+            }
+          }
+          icon {
+            url
+            width
+            height
+            alt
+          }
+        }
+        testimonials {
+          id
+          order
+          content {
+            parts {
+              json
+              references {
+                type
+                primaryText
+                text
+              }
+            }
+          }
+          author {
+            name
+            title
+            image {
+              url
+              width
+              height
+              alt
+            }
+          }
+        }
       }
       slug
       
     }
   }
 `
+
+export default homePage
