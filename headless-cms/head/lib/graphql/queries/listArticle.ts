@@ -1,27 +1,9 @@
-const listArticle = `#graphql
+import listArticle from "../partials/listArticle"
+
+const listArticleQuery = `#graphql
 	query {
-		listArticle {
-			id
-			headline
-			publishAt
-			slug
-			perex
-			coverPhoto {
-				id
-				url
-				width
-				height
-				alt
-			}
-			content {
-				id
-				parts {
-					id
-					json
-				}
-			}
-		}
+		${listArticle}
 	}
 `
 
-export default listArticle
+export default listArticleQuery

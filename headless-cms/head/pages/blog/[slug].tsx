@@ -6,9 +6,11 @@ import listArticle from '../../lib/graphql/queries/listArticle'
 import Seo from '../../components/seo'
 import { RichTextRenderer } from '@contember/react-client'
 import { serverSideFetch } from '../../lib/graphql/gqlfetch'
+import Header from '../../components/header'
 
 export default function Article(props: any) {
 	const articleData = props.data?.getArticle
+	const headerMenu = props.data?.getHeaderMenu
 
 	if (props.errors) {
 		return <Errors errors={props.errors} />
@@ -16,17 +18,23 @@ export default function Article(props: any) {
 
 	return (
 		<div>
+			<Seo
+				seo={articleData.seo}
+			/>
 			<Head>
-				<Seo
-					seo={articleData.seo}
-				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
+
+			<Header menu={headerMenu} />
 
 			<main>
 				<h1>
 					{articleData.headline}
 				</h1>
+				{articleData.coverPhoto &&
+					<img src={articleData.coverPhoto.url} width={articleData.coverPhoto.width} height={articleData.coverPhoto.height} alt={articleData.coverPhoto.alt} />
+				}
+				<p>{articleData.perex}</p>
 				{articleData.content &&
 					<RichTextRenderer blocks={articleData.content.parts} sourceField="json" />
 				}

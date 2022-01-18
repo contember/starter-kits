@@ -1,3 +1,5 @@
+import getHeaderMenu from "../partials/getHeaderMenu"
+
 const getArticle = `#graphql 
 	query getArticle($slug: String!) {
 		getArticle(by: {slug: $slug}) {
@@ -35,6 +37,7 @@ const getArticle = `#graphql
 				title
 			}
 		}
+		${getHeaderMenu}
 	}
 `
 
