@@ -35,10 +35,6 @@ export const Pages = (
 					header="Title"
 					format={(scalar) => <Link to="page(id: $entity.id)">{scalar}</Link>}
 				/>
-				<DateCell
-					field="publishAt"
-					header="Publish date"
-				/>
 				<EnumCell
 					field="role"
 					header="Role"
@@ -46,6 +42,11 @@ export const Pages = (
 						homePage: 'Home page',
 						error404Page: 'Error 404',
 					}}
+				/>
+				<TextCell
+					field="slug"
+					header="URL"
+					format={(slug) => <span>/{slug}</span>}
 				/>
 			</DataGrid>
 		</DataBindingProvider>
