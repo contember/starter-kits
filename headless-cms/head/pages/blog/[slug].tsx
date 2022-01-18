@@ -11,6 +11,7 @@ import Header from '../../components/header'
 export default function Article(props: any) {
 	const articleData = props.data?.getArticle
 	const headerMenu = props.data?.getHeaderMenu
+	const setting = props.data?.getSetting
 
 	if (props.errors) {
 		return <Errors errors={props.errors} />
@@ -25,7 +26,7 @@ export default function Article(props: any) {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Header menu={headerMenu} />
+			<Header menu={headerMenu} logo={setting.logo} />
 
 			<main>
 				<h1>

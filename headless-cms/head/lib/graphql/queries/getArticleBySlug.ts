@@ -1,4 +1,6 @@
+import getFooterMenu from "../partials/getFooterMenu"
 import getHeaderMenu from "../partials/getHeaderMenu"
+import getSetting from "../partials/getSettings"
 
 const getArticle = `#graphql 
 	query getArticle($slug: String!) {
@@ -38,6 +40,8 @@ const getArticle = `#graphql
 			}
 		}
 		${getHeaderMenu}
+		${getFooterMenu}
+		${getSetting}
 	}
 `
 

@@ -1,3 +1,7 @@
+import getFooterMenu from "../partials/getFooterMenu"
+import getHeaderMenu from "../partials/getHeaderMenu"
+import getSettting from "../partials/getSettings"
+
 const getPage = `#graphql
   query($slug: String) {
     getPage(by: {slug: $slug}) {
@@ -119,6 +123,9 @@ const getPage = `#graphql
 		}
 		slug
     }
+	${getHeaderMenu}
+    ${getFooterMenu}
+    ${getSettting}
   }
 `
 

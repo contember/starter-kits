@@ -1,4 +1,6 @@
+import getFooterMenu from "../partials/getFooterMenu"
 import getHeaderMenu from "../partials/getHeaderMenu"
+import getSettting from "../partials/getSettings"
 import listArticle from "../partials/listArticle"
 
 const getBlogPage = `#graphql
@@ -123,6 +125,8 @@ const getBlogPage = `#graphql
       slug
     }
     ${getHeaderMenu}
+    ${getFooterMenu}
+    ${getSettting}
     ${listArticle}
   }
 `

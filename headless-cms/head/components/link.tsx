@@ -9,7 +9,7 @@ export default function CustomLink(props: any) {
 	}
 	const urlTypes: any = {
 		url: url.url,
-		page: url.page.role ? pageUrlRole[url.page.role] : url.page?.slug,
+		page: url.page?.role ? pageUrlRole[url.page.role] : url.page?.slug,
 		article: url.article?.slug
 	}
 	const href = url.type && urlTypes[url.type]

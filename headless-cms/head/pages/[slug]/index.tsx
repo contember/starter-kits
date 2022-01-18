@@ -6,9 +6,12 @@ import Head from 'next/head'
 import listPage from '../../lib/graphql/queries/listPage'
 import Seo from '../../components/seo'
 import { serverSideFetch } from '../../lib/graphql/gqlfetch'
+import Header from '../../components/header'
 
 export default function Page(props: any) {
   const homePageData = props.data?.getPage
+  const headerMenu = props.data?.getHeaderMenu
+  const setting = props.data?.getSetting
 
   if (props.errors) {
     return <Errors errors={props.errors} />
@@ -23,6 +26,7 @@ export default function Page(props: any) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Header menu={headerMenu} logo={setting.logo} />
       <main>
         <Blocks blocks={homePageData.blocks} />
       </main>

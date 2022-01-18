@@ -10,6 +10,7 @@ export default function Blog(props: any) {
 	const blogPage = props.data?.getPage
 	const articles = props.data?.listArticle
 	const headerMenu = props.data?.getHeaderMenu
+	const setting = props.data?.getSetting
 
 	if (props.errors) {
 		return <Errors errors={props.errors} />
@@ -25,7 +26,7 @@ export default function Blog(props: any) {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Header menu={headerMenu} />
+			<Header menu={headerMenu} logo={setting.logo} />
 
 			<main>
 				<ul>

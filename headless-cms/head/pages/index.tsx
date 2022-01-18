@@ -12,6 +12,7 @@ import Header from '../components/header'
 const Home: NextPage = (props: any) => {
   const homePageData = props.data?.getPage
   const headerMenu = props.data?.getHeaderMenu
+  const setting = props.data?.getSetting
 
   if (props.errors) {
     return (
@@ -37,7 +38,7 @@ const Home: NextPage = (props: any) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header menu={headerMenu} />
+      <Header menu={headerMenu} logo={setting.logo} />
 
       <main>
         <Blocks blocks={homePageData.blocks} />

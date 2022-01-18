@@ -1,4 +1,6 @@
-const getHeaderMenu = `#graphql
+import getSettting from "./getSettings"
+
+const getHeader = `#graphql
 	getHeaderMenu: getMenu(by: {position: header}) {
 		id
 		position
@@ -21,4 +23,4 @@ const getHeaderMenu = `#graphql
 	}
 `
 
-export default getHeaderMenu
+export default getHeader
