@@ -20,4 +20,4 @@ This public api key has to be used in the `.env` file as `NEXT_PUBLIC_TOKEN`.
 ```bash
 docker-compose up
 ```
-Now, administration UI should be running on address http://localhost:1480.
+Now, administration UI should be running on address http://localhost:1480 and head is running on address http://localhost:3000.
