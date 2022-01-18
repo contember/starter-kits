@@ -2,12 +2,10 @@ import * as React from 'react'
 import {
 	Component,
 	DateTimeField,
-	Section,
-	SlugField,
 	TextAreaField,
 	TextField,
 } from '@contember/admin'
-import { ContentField, PreviewLink, Seo } from '../components'
+import { ContentField, ImageField, PreviewLink, Seo } from '../components'
 
 type ArticleSideFormProps = {
 	isEditPage?: boolean
@@ -30,13 +28,18 @@ export const ArticleSideForm = Component<ArticleSideFormProps>(
 export const ArticleForm = Component(
 	() => (
 		<>
-			<TextField field="title" label="Title" />
-			<SlugField field="slug" label="Slug" derivedFrom="title" unpersistedHardPrefix="/blog/" />
-			<Section heading="Content">
-				<TextAreaField field="perex" label="Perex" />
-				<ContentField label="Text" size="large" />
-			</Section>
-			<Seo titleDerivedFrom="title" descriptionDerivedFrom="perex" />
+			<TextField field="headline" label="Headline" />
+			<ImageField field="coverPhoto" label="Cover photo" />
+			<TextAreaField field="perex" label="Perex" />
+			<ContentField label="Text" size="large" />
+			<Seo
+				titleDerivedFrom="headline"
+				descriptionDerivedFrom="perex"
+				seoPage="seoArticles"
+				seoFieldsProps={{
+					unpersistedHardPrefix: '/blog/',
+				}}
+			/>
 		</>
 	),
 	'ArticleForm'

@@ -14,5 +14,5 @@ export const LabelWithIcon = Component<LabelWithIconProps>(
 			<span>{label}</span>
 		</span>
 	),
-	'Icon'
+	'Icon',
 )

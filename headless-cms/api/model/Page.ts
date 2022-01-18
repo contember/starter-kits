@@ -1,16 +1,13 @@
 import { ContentBlock, Link, Seo } from '.'
-import { InputValidation as validation, SchemaDefinition as def } from '@contember/schema-definition'
+import { SchemaDefinition as def } from '@contember/schema-definition'
 
-export const PageTypeEnum = def.createEnum('homePage', 'error404Page')
+export const PageTypeEnum = def.createEnum('homePage', 'blogPage', 'error404Page')
 
 export class Page {
-	title = def.stringColumn()
 	publishAt = def.dateTimeColumn().default('now')
 	slug = def.stringColumn().unique()
-	@validation.when(validation.rules.on('slug', validation.rules.null())).assertNotEmpty("Type or Slug must not be empty.")
-	@validation.when(validation.rules.on('slug', validation.rules.notNull())).assert(validation.rules.empty(), "Type or Slug must be empty.")
-	type = def.enumColumn(PageTypeEnum).nullable()
+	role = def.enumColumn(PageTypeEnum).unique().nullable()
 	linkedFrom = def.oneHasMany(Link, 'page')
 	blocks = def.oneHasMany(ContentBlock, 'page')
-	seo = def.oneHasOne(Seo)
+	seo = def.oneHasOne(Seo, 'page').cascadeOnDelete()
 }

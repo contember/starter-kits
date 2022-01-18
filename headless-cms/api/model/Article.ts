@@ -7,12 +7,12 @@ import {
 import { SchemaDefinition as def } from '@contember/schema-definition'
 
 export class Article {
-	title = def.stringColumn()
+	headline = def.stringColumn()
 	coverPhoto = def.manyHasOne(Image)
 	publishAt = def.dateTimeColumn()
 	slug = def.stringColumn().notNull().unique()
 	linkedFrom = def.oneHasMany(Link, 'article')
 	perex = def.stringColumn()
-	content = def.oneHasOne(Content)
-	seo = def.oneHasOne(Seo)
+	content = def.oneHasOne(Content).cascadeOnDelete()
+	seo = def.oneHasOne(Seo, 'article').cascadeOnDelete()
 }

@@ -1,0 +1,64 @@
+{
+	"formatVersion": 3,
+	"modifications": [
+		{
+			"modification": "patchValidationSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/Page",
+					"value": {
+						"slug": [
+							{
+								"validator": {
+									"operation": "conditional",
+									"args": [
+										{
+											"type": "validator",
+											"validator": {
+												"operation": "inContext",
+												"args": [
+													{
+														"type": "path",
+														"path": [
+															"role"
+														]
+													},
+													{
+														"type": "validator",
+														"validator": {
+															"operation": "not",
+															"args": [
+																{
+																	"type": "validator",
+																	"validator": {
+																		"operation": "empty",
+																		"args": []
+																	}
+																}
+															]
+														}
+													}
+												]
+											}
+										},
+										{
+											"type": "validator",
+											"validator": {
+												"operation": "empty",
+												"args": []
+											}
+										}
+									]
+								},
+								"message": {
+									"text": "Slug must be empty."
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	]
+}

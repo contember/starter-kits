@@ -14,7 +14,7 @@ runReactApp(
 		sessionToken={import.meta.env.VITE_CONTEMBER_ADMIN_SESSION_TOKEN}
 		project={import.meta.env.VITE_CONTEMBER_ADMIN_PROJECT_NAME}
 		stage="live"
-		routes={{ articles: { path: '/' } }}
+		routes={{ pages: { path: '/' } }}
 		envVariables={{ WEB_URL: import.meta.env.VITE_CONTEMBER_ADMIN_WEB_URL as string }}
 		children={<Pages layout={Layout} children={pages} />}
 	/>

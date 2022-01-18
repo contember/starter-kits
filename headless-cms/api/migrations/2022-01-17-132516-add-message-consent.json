@@ -1,0 +1,364 @@
+{
+	"formatVersion": 3,
+	"modifications": [
+		{
+			"modification": "removeField",
+			"entityName": "ContentBlock",
+			"fieldName": "jsonContent"
+		},
+		{
+			"modification": "createEnum",
+			"enumName": "ContactMessageConsent",
+			"values": [
+				"yes"
+			]
+		},
+		{
+			"modification": "createEnum",
+			"enumName": "SettingUnique",
+			"values": [
+				"One"
+			]
+		},
+		{
+			"modification": "updateColumnDefinition",
+			"entityName": "ContactMessage",
+			"fieldName": "consent",
+			"definition": {
+				"nullable": false,
+				"type": "Enum",
+				"columnType": "ContactMessageConsent"
+			}
+		},
+		{
+			"modification": "updateColumnDefinition",
+			"entityName": "Setting",
+			"fieldName": "unique",
+			"definition": {
+				"nullable": false,
+				"type": "Enum",
+				"columnType": "SettingUnique"
+			}
+		},
+		{
+			"modification": "updateEnum",
+			"enumName": "PageTypeEnum",
+			"values": [
+				"homePage",
+				"blogPage",
+				"error404Page"
+			]
+		},
+		{
+			"modification": "removeEnum",
+			"enumName": "One"
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/public",
+					"value": {
+						"variables": {},
+						"stages": "*",
+						"s3": {
+							"**": {
+								"upload": false,
+								"read": true
+							}
+						},
+						"entities": {
+							"Article": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"headline": true,
+										"coverPhoto": true,
+										"publishAt": true,
+										"slug": true,
+										"linkedFrom": true,
+										"perex": true,
+										"content": true,
+										"seo": true
+									}
+								}
+							},
+							"Button": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"label": true,
+										"url": true,
+										"type": true
+									}
+								}
+							},
+							"ContactMessage": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"createdAt": true,
+										"viewed": true,
+										"firstName": true,
+										"lastName": true,
+										"email": true,
+										"phone": true,
+										"message": true,
+										"consent": true
+									},
+									"create": {
+										"id": true,
+										"createdAt": true,
+										"viewed": true,
+										"firstName": true,
+										"lastName": true,
+										"email": true,
+										"phone": true,
+										"message": true,
+										"consent": true
+									},
+									"update": {
+										"id": false,
+										"createdAt": false,
+										"viewed": false,
+										"firstName": false,
+										"lastName": false,
+										"email": false,
+										"phone": false,
+										"message": false,
+										"consent": false
+									},
+									"delete": false
+								}
+							},
+							"Content": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"parts": true
+									}
+								}
+							},
+							"ContentPart": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"content": true,
+										"order": true,
+										"json": true,
+										"references": true
+									}
+								}
+							},
+							"ContentReference": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"contentPart": true,
+										"type": true,
+										"primaryText": true,
+										"text": true
+									}
+								}
+							},
+							"ContentBlock": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"page": true,
+										"order": true,
+										"type": true,
+										"primaryText": true,
+										"secondaryText": true,
+										"image": true,
+										"images": true,
+										"buttons": true,
+										"content": true,
+										"featureList": true,
+										"testimonials": true,
+										"blogPosts": true,
+										"contactForm": true
+									}
+								}
+							},
+							"ContentImage": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"image": true,
+										"order": true,
+										"contentBlock": true
+									}
+								}
+							},
+							"ContentButton": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"order": true,
+										"button": true,
+										"contentBlock": true
+									}
+								}
+							},
+							"ContentFeatureItem": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"order": true,
+										"primaryText": true,
+										"content": true,
+										"icon": true,
+										"contentBlock": true
+									}
+								}
+							},
+							"ContentTestimonial": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"order": true,
+										"content": true,
+										"author": true,
+										"contentBlock": true
+									}
+								}
+							},
+							"TestimonailAuthor": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"name": true,
+										"title": true,
+										"image": true
+									}
+								}
+							},
+							"ContentBlogPost": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"order": true,
+										"blogPost": true,
+										"contentBlock": true
+									}
+								}
+							},
+							"Image": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"url": true,
+										"width": true,
+										"height": true,
+										"size": true,
+										"type": true,
+										"alt": true
+									}
+								}
+							},
+							"Link": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"type": true,
+										"url": true,
+										"article": true,
+										"page": true
+									}
+								}
+							},
+							"Menu": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"items": true,
+										"position": true
+									}
+								}
+							},
+							"MenuItem": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"order": true,
+										"label": true,
+										"url": true,
+										"menu": true
+									}
+								}
+							},
+							"Page": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"publishAt": true,
+										"slug": true,
+										"role": true,
+										"linkedFrom": true,
+										"blocks": true,
+										"seo": true
+									}
+								}
+							},
+							"Seo": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"title": true,
+										"description": true,
+										"ogTitle": true,
+										"ogDescription": true,
+										"ogImage": true,
+										"article": true,
+										"page": true
+									}
+								}
+							},
+							"Setting": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"unique": true,
+										"logo": true,
+										"footerCopyright": true
+									}
+								}
+							}
+						}
+					}
+				}
+			]
+		},
+		{
+			"modification": "patchValidationSchema",
+			"patch": [
+				{
+					"op": "remove",
+					"path": "/Page"
+				}
+			]
+		}
+	]
+}

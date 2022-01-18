@@ -9,7 +9,7 @@ import {
 import { SchemaDefinition as def } from '@contember/schema-definition'
 
 export const ContentBlockType = def.createEnum(
-	'heroSection', // primaryText, jsonContent, images, buttons
+	'heroSection', // primaryText, content, images, buttons
 	'logosSection', // jsonContent, images
 	'contentSection', // primaryText, content
 	'featureSection', // primaryText, secondaryText, content, featureList
@@ -19,13 +19,13 @@ export const ContentBlockType = def.createEnum(
 )
 
 export class ContentBlock {
-	page = def.manyHasOne(Page, 'blocks').cascadeOnDelete()
+	page = def.manyHasOne(Page, 'blocks').setNullOnDelete()
 	order = def.intColumn().notNull()
 	type = def.enumColumn(ContentBlockType).notNull()
-
+	
 	primaryText = def.stringColumn()
 	secondaryText = def.stringColumn()
-	jsonContent = def.stringColumn()
+	image = def.manyHasOne(Image)
 	images = def.oneHasMany(ContentImage, 'contentBlock')
 	buttons = def.oneHasMany(ContentButton, 'contentBlock')
 	content = def.oneHasOne(Content)

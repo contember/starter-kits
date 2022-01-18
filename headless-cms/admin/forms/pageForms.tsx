@@ -10,8 +10,6 @@ import {
 	DateTimeField,
 	Section,
 	SelectField,
-	SlugField,
-	TextField,
 } from '@contember/admin'
 
 type PageSideFormProps = {
@@ -21,15 +19,19 @@ type PageSideFormProps = {
 export const PageSideForm = Component<PageSideFormProps>(
 	({ isEditPage }) => (
 		<>
+
 			{isEditPage &&
 				<>
-					<Conditional showIf={(accessor) => accessor.getField('type').value === null}>
+					<Conditional showIf={(accessor) => accessor.getField('role').value === null}>
 						<PreviewLink slugField="slug" />
 					</Conditional>
-					<Conditional showIf={(accessor) => accessor.getField('type').value === 'homePage'}>
+					<Conditional showIf={(accessor) => accessor.getField('role').value === 'homePage'}>
 						<PreviewLink slugField="slug" path={'/'} />
 					</Conditional>
-					<Conditional showIf={(accessor) => accessor.getField('type').value === 'error404Page'}>
+					<Conditional showIf={(accessor) => accessor.getField('role').value === 'blogPage'}>
+						<PreviewLink slugField="slug" path={'/blog'} />
+					</Conditional>
+					<Conditional showIf={(accessor) => accessor.getField('role').value === 'error404Page'}>
 						<PreviewLink slugField="slug" path={'/404'} />
 					</Conditional>
 				</>
@@ -40,11 +42,14 @@ export const PageSideForm = Component<PageSideFormProps>(
 				defaultValue={new Date().toISOString()}
 			/>
 			<SelectField
-				field="type"
-				label="Page type"
+				field="role"
+				label="Page role"
+				defaultValue={null}
 				allowNull
 				options={[
+					{ value: null, label: 'Default' },
 					{ value: 'homePage', label: 'HomePage' },
+					{ value: 'blogPage', label: "Blog" },
 					{ value: 'error404Page', label: "Error 404" }
 				]}
 			/>
@@ -56,14 +61,16 @@ export const PageSideForm = Component<PageSideFormProps>(
 export const PageForm = Component(
 	() => (
 		<>
-			<TextField field="title" label="Title" />
-			<Conditional showIf={(accessor) => accessor.getField('type').value === null}>
-				<SlugField field="slug" label="Slug" derivedFrom="title" unpersistedHardPrefix="/" />
-			</Conditional>
 			<Section heading="Content">
 				<ContentBlocks />
 			</Section>
-			<Seo titleDerivedFrom="title" />
+			<Seo
+				seoPage="seoPages"
+				seoFieldsProps={{
+					unpersistedHardPrefix: '/',
+					hasRoleField: true
+				}}
+			/>
 		</>
 	),
 	'PageForm'

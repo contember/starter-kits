@@ -1,13 +1,20 @@
 import * as React from 'react'
-import { EditPage, HasOne, ImageUploadField, Repeater, RichTextField, Section, TextField } from '@contember/admin'
+import { ContentField } from '../components'
+import {
+	EditPage,
+	HasOne,
+	ImageUploadField,
+	Section,
+	TextField
+} from '@contember/admin'
 
 export const Header = (
 	<EditPage
-		pageName="header"
-		entity="Header(unique = One)"
+		pageName="settings"
+		entity="Setting(unique = One)"
 		setOnCreate="(unique = One)"
 		rendererProps={{
-			title: 'Header',
+			title: 'Settings',
 		}}
 	>
 		<Section heading="Logo">
@@ -22,10 +29,8 @@ export const Header = (
 				</ImageUploadField>
 			</HasOne>
 		</Section>
-		<Section heading="Menu">
-			<Repeater field="menu.items" label="Item" sortableBy="order">
-				<RichTextField field="label" label="Label" />
-			</Repeater>
+		<Section heading="Footer">
+			<ContentField field="footerCopyright.parts" label="Footer copyright" size="default" />
 		</Section>
 	</EditPage>
 )

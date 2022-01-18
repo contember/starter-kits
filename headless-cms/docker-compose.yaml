@@ -1,8 +1,29 @@
 version: '2.4'
 
 services:
+  nextjs:
+    image: node:16-alpine
+    command: npm run dev-head
+
+    environment:
+      NODE_ENV: "development"
+      PORT: 3000
+
+    ports:
+      - 3000:3000
+
+    working_dir: /src
+    volumes:
+      - ./:/src
+
+    depends_on:
+      contember:
+        condition: service_started
+      contember-migrations:
+        condition: service_completed_successfully
+
   admin:
-    image: node:14-alpine
+    image: node:16-alpine
     command: npm run start-admin
     user: '1000:1000'
 
@@ -107,7 +128,7 @@ services:
       - '1482:5432'
 
     volumes:
-      - pgsql-data:/var/lib/postgres/data
+      - pgsql-data:/var/lib/postgresql/data
 
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -U contember']
@@ -138,7 +159,7 @@ services:
       - '1484:8025'
 
   adminer:
-    image: michalhosna/adminer:4.8.0-en_v1
+    image: adminer:4.8.0
 
     environment:
       ADMINER_DRIVER: pgsql

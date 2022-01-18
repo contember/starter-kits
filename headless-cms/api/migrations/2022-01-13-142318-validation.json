@@ -1,0 +1,24 @@
+{
+	"formatVersion": 3,
+	"modifications": [
+		{
+			"modification": "updateColumnDefinition",
+			"entityName": "Seo",
+			"fieldName": "title",
+			"definition": {
+				"nullable": false,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "patchValidationSchema",
+			"patch": [
+				{
+					"op": "remove",
+					"path": "/Page"
+				}
+			]
+		}
+	]
+}

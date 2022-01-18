@@ -1,4 +1,5 @@
-import { SchemaDefinition as def } from "@contember/schema-definition";
+import { SchemaDefinition as def } from "@contember/schema-definition"
+
 
 export class ContactMessage {
 	createdAt = def.dateTimeColumn().notNull().default('now')
@@ -8,5 +9,5 @@ export class ContactMessage {
 	email = def.stringColumn()
 	phone = def.stringColumn()
 	message = def.stringColumn()
-	consent = def.boolColumn().notNull()
+	consent = def.enumColumn(def.createEnum('yes')).notNull()
 }
