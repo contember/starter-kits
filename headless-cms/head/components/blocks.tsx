@@ -1,5 +1,7 @@
 import { RichTextRenderer } from "@contember/react-client"
-import { useCallback } from "react"
+import { useCallback, useState } from "react"
+import { clientSideFetch } from "../lib/graphql/gqlfetch"
+import createMessage from "../lib/graphql/mutations/createMessage"
 import Link from "./link"
 
 function HeroSection({ primaryText, content, image, buttons }: any) {
@@ -112,9 +114,22 @@ function TestimonialSection({ primaryText, content, testimonials }: any) {
 }
 
 function ContactSection({ primaryText, content }: any) {
-	const onSubmit = useCallback((event) => {
+	const [submitState, setSubmitState] = useState<any>(null)
+
+	const onSubmit = useCallback(async (event) => {
 		event.preventDefault()
-		alert("Submitted")
+		const formData = new FormData(event.target)
+		const data = Object.fromEntries(formData)
+
+		const { errors, data: submitData } = await clientSideFetch(createMessage, { data })
+		setSubmitState(errors)
+		if (errors) {
+			setSubmitState(submitData)
+		} else if (!submitData.createContactMessage.validation.valid) {
+			setSubmitState(submitData.createContactMessage.validation.errors)
+		} else {
+			setSubmitState([{ message: 'Message sent.' }])
+		}
 	}, [])
 
 	return (
@@ -124,22 +139,25 @@ function ContactSection({ primaryText, content }: any) {
 				<RichTextRenderer blocks={content.parts} sourceField="json" />
 			}
 			<div>
+				{submitState &&
+					submitState.map((status: any) => status.message.text ? status.message.text : status.message)
+				}
 				<form onSubmit={onSubmit}>
 					<label htmlFor="fname">
 						<span>Firt Name</span>
-						<input type="text" name="fname" id="fname" />
+						<input type="text" name="firstName" id="fname" />
 					</label>
 					<label htmlFor="lname">
 						<span>Last Name</span>
-						<input type="text" name="lname" />
+						<input type="text" name="lastName" id="lname" />
 					</label>
 					<label htmlFor="email">
 						<span>E-mail</span>
-						<input type="email" name="email" />
+						<input type="email" name="email" id="email" />
 					</label>
 					<label htmlFor="phone">
 						<span>Phone</span>
-						<input type="tel" name="phone" />
+						<input type="tel" name="phone" id="phone" />
 					</label>
 					<textarea name="message" />
 					<label htmlFor="consent">
