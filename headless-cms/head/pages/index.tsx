@@ -30,10 +30,10 @@ const Home: NextPage = (props: any) => {
 
   return (
     <div>
+      <Seo
+        seo={homePageData.seo}
+      />
       <Head>
-        <Seo
-          seo={homePageData.seo}
-        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -42,10 +42,6 @@ const Home: NextPage = (props: any) => {
       <main>
         <Blocks blocks={homePageData.blocks} />
       </main>
-
-      <footer>
-
-      </footer>
     </div>
   )
 }

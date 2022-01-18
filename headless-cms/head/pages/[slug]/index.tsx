@@ -11,15 +11,15 @@ export default function Page(props: any) {
   const homePageData = props.data?.getPage
 
   if (props.errors) {
-		return <Errors errors={props.errors} />
-	}
+    return <Errors errors={props.errors} />
+  }
 
   return (
     <div>
+      <Seo
+        seo={homePageData.seo}
+      />
       <Head>
-        <Seo
-          seo={homePageData.seo}
-        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
