@@ -18,9 +18,11 @@ function HeroSection({ primaryText, content, image, buttons }: any) {
 					))}
 				</div>
 			</div>
-			<div>
-				<img src={image.url} width={image.width} height={image.height} alt={image.alt} />
-			</div>
+			{image &&
+				<div>
+					<img src={image.url} width={image.width} height={image.height} alt={image.alt} />
+				</div>
+			}
 		</section>
 	)
 }
@@ -43,7 +45,9 @@ function LogoSection({ content, images }: any) {
 function ContentSection({ content }: any) {
 	return (
 		<section>
-			<RichTextRenderer blocks={content.parts} sourceField="json" />
+			{content &&
+				<RichTextRenderer blocks={content.parts} sourceField="json" />
+			}
 		</section>
 	)
 }
@@ -55,7 +59,7 @@ function FeatureSection({ primaryText, secondaryText, featureList }: any) {
 			<h3>{secondaryText}</h3>
 			<ul>
 				{featureList.map((feature: any) => (
-					<li>
+					<li key={feature.id}>
 						<img src={feature.icon.url} width={feature.icon.width} height={feature.icon.height} alt={feature.icon.alt} />
 						<h3>{feature.primaryText}</h3>
 						{feature.content &&
@@ -74,7 +78,7 @@ function CtaSection({ primaryText, secondaryText, buttons }: any) {
 			<h2>{primaryText}</h2>
 			<h3>{secondaryText}</h3>
 			{buttons.map((button: any) => (
-				<Button {...button.button} />
+				<Button {...button.button} key={button.key} />
 			))}
 		</section>
 	)
@@ -84,11 +88,17 @@ function TestimonialSection({ primaryText, content, testimonials }: any) {
 	return (
 		<section>
 			<h2>{primaryText}</h2>
-			<RichTextRenderer blocks={content.parts} sourceField="json" />
+			{content &&
+				<RichTextRenderer blocks={content.parts} sourceField="json" />
+			}
 			<div>
 				{testimonials.map((testimonial: any) => (
-					<div>
-						<div><RichTextRenderer blocks={testimonial.content.parts} sourceField="json" /></div>
+					<div key={testimonial.key}>
+						{testimonial.content &&
+							<div>
+								<RichTextRenderer blocks={testimonial.content.parts} sourceField="json" />
+							</div>
+						}
 						<p>{testimonial.author.name}</p>
 						<p>
 							<RichTextRenderer source={testimonial.author.title} />
@@ -110,7 +120,9 @@ function ContactSection({ primaryText, content }: any) {
 	return (
 		<section>
 			<h2>{primaryText}</h2>
-			<RichTextRenderer blocks={content.parts} sourceField="json" />
+			{content &&
+				<RichTextRenderer blocks={content.parts} sourceField="json" />
+			}
 			<div>
 				<form onSubmit={onSubmit}>
 					<label htmlFor="fname">
