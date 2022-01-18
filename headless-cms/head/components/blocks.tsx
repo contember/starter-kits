@@ -1,6 +1,6 @@
 import { RichTextRenderer } from "@contember/react-client"
 import { useCallback } from "react"
-import Button from "./button"
+import Link from "./link"
 
 function HeroSection({ primaryText, content, image, buttons }: any) {
 	return (
@@ -14,7 +14,7 @@ function HeroSection({ primaryText, content, image, buttons }: any) {
 				}
 				<div>
 					{buttons.map((button: any) => (
-						<Button {...button.button} key={button.id} />
+						<Link {...button.button} key={button.id} />
 					))}
 				</div>
 			</div>
@@ -78,7 +78,7 @@ function CtaSection({ primaryText, secondaryText, buttons }: any) {
 			<h2>{primaryText}</h2>
 			<h3>{secondaryText}</h3>
 			{buttons.map((button: any) => (
-				<Button {...button.button} key={button.key} />
+				<Link {...button.button} key={button.key} />
 			))}
 		</section>
 	)

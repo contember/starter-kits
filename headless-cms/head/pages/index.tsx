@@ -2,14 +2,16 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 
 import { serverSideFetch } from '../lib/graphql/gqlfetch'
-import homePage from '../lib/graphql/queries/homePage'
+import getHomePage from '../lib/graphql/queries/getHomePage'
 
 import Seo from '../components/seo'
 import Blocks from '../components/blocks'
+import Header from '../components/header'
 
 
 const Home: NextPage = (props: any) => {
   const homePageData = props.data?.getPage
+  const headerMenu = props.data?.getHeaderMenu
 
   if (props.errors) {
     return (
@@ -35,6 +37,8 @@ const Home: NextPage = (props: any) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Header menu={headerMenu} />
+
       <main>
         <Blocks blocks={homePageData.blocks} />
       </main>
@@ -50,7 +54,7 @@ export default Home
 
 
 export async function getStaticProps() {
-  const { data, errors } = await serverSideFetch(homePage)
+  const { data, errors } = await serverSideFetch(getHomePage)
 
   return {
     props: {

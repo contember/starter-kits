@@ -1,6 +1,9 @@
-const homePage = `#graphql
+import getHeaderMenu from "../partials/getHeaderMenu"
+import listArticle from "../partials/listArticle"
+
+const getBlogPage = `#graphql
   query {
-    getPage(by: {role: homePage}) {
+    getPage(by: {role: blogPage}) {
       id
       publishAt
       role
@@ -118,9 +121,10 @@ const homePage = `#graphql
         }
       }
       slug
-      
     }
+    ${getHeaderMenu}
+    ${listArticle}
   }
 `
 
-export default homePage
+export default getBlogPage
