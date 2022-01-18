@@ -30,13 +30,21 @@ npm install
 docker-compose run admin npm install
 ```
 
-4) Setup database and run migrations:
+4) Start Docker containers:
 
 ```bash
-docker-compose run contember-migrations
+docker-compose up
 ```
 
-5) Generate new public api key for frontend website (you can do this later, but frontend website won't work without it):
+*Congratulations, you're done!*
+
+Administration UI is now running at http://localhost:1480 and frontend website is running at http://localhost:3000.
+
+### Secure setup
+
+By default frontend has full access to all contember (including updating and deleting anything). To make it secure we need to use token with only limited privileges.
+
+Generate new public api key for frontend website (you can do this later, but frontend website won't work without it):
 ```bash
 npm run contember tenant:create-api-key
 ```
@@ -48,17 +56,4 @@ Then select:
 - API key description: anything (e.g. `frontend`)
 - Are you sure you want to create this API key?: `y` (yes)
 
-6) Add this public API token to newly created `.env` file as `NEXT_PUBLIC_TOKEN`.
-
-```
-NEXT_PUBLIC_TOKEN=YOUR_TOKEN_HERE
-```
-
-7) Start Docker containers
-```bash
-docker-compose up
-```
-
-*Congratulations, you're done!*
-
-Administration UI is now running at http://localhost:1480 and frontend website is running at http://localhost:3000.
+Set `NEXT_PUBLIC_TOKEN` in `head/.env` to newly generated API token (replace the default superadmin token) and restart Docker containers (`docker-compose restart`).
