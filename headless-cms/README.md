@@ -17,7 +17,7 @@ Thanks to Contember platform you can change anything. If you have any questions,
 You'll need:
 - NPM version 7+ (you can check using `npm --version`)
 - [Docker](https://docs.docker.com/get-docker/)
-### Run Headless CMS starter locally
+### 🚀 Run Headless CMS starter locally
 1) Clone this template (`git clone git@github.com:contember/templates.git`)
 2) Go to templates > headless-cms (`cd templates/headless-cms`)
 3) Install dependencies:
@@ -40,7 +40,7 @@ docker-compose up
 
 Administration UI is now running at http://localhost:1480 and frontend website is running at http://localhost:3000.
 
-### Secure setup
+### 🔒 Secure setup
 
 By default frontend has full access to all contember (including updating and deleting anything). To make it secure we need to use token with only limited privileges.
 
