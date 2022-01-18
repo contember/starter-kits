@@ -1,26 +1,56 @@
 import * as React from 'react'
-import { useRouter } from 'next/router'
+import Blocks from '../../components/blocks'
+import Errors from '../../components/errors'
+import getPageBySlug from '../../lib/graphql/queries/getPageBySlug'
+import Head from 'next/head'
+import listPage from '../../lib/graphql/queries/listPage'
+import Seo from '../../components/seo'
+import { serverSideFetch } from '../../lib/graphql/gqlfetch'
 
-export default function Page() {
-  const router = useRouter()
-  const { slug } = router.query
+export default function Page(props: any) {
+  const homePageData = props.data?.getPage
 
-  return (<p>Page: {slug} </p>)
+  if (props.errors) {
+		return <Errors errors={props.errors} />
+	}
+
+  return (
+    <div>
+      <Head>
+        <Seo
+          seo={homePageData.seo}
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <main>
+        <Blocks blocks={homePageData.blocks} />
+      </main>
+
+      <footer>
+
+      </footer>
+    </div>
+  )
 }
 
-export async function getStaticProps(context: any) {
-  console.log('getStaticProps', context)
+export async function getStaticProps({ params }: any) {
+  const { data, errors } = await serverSideFetch(getPageBySlug, { slug: params.slug })
 
   return {
-    props: {}, // will be passed to the page component as props
+    props: {
+      data: data ?? null,
+      errors: errors ?? null
+    },
   }
 }
 
 export async function getStaticPaths() {
-  return {
-    paths: [
-      { params: { slug: 'testdajwod' } },
-    ],
-    fallback: false,
-  }
+  const { data } = await serverSideFetch(listPage)
+  const pages = data.listPage
+  const paths = pages.map((page: any) => (
+    { params: { slug: page.slug ?? '' } }
+  ))
+
+  return { paths, fallback: false }
 }

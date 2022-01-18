@@ -1,5 +1,4 @@
 export async function serverSideFetch(query: any, variables?: any) {
-	console.log('process.env.NEXT_PUBLIC_TOKEN - server side fetch', process.env.NEXT_PUBLIC_TOKEN)
 	const response = await fetch('http://contember:4000/content/headless-cms/live', {
 		method: 'POST',
 		mode: 'cors',
