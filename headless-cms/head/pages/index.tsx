@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
 
 import { serverSideFetch } from '../lib/graphql/gqlfetch'
 import homePage from '../lib/graphql/queries/homePage'
@@ -28,7 +27,7 @@ const Home: NextPage = (props: any) => {
   }
 
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <Seo
           seo={homePageData.seo}
@@ -40,7 +39,7 @@ const Home: NextPage = (props: any) => {
         <Blocks blocks={homePageData.blocks} />
       </main>
 
-      <footer className={styles.footer}>
+      <footer>
 
       </footer>
     </div>
