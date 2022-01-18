@@ -18,7 +18,7 @@ const viewedDotStyle = {
 	height: '0.5em',
 	display: 'block',
 	borderRadius: '50%',
-	backgroundColor: 'rgb(var(--cui-theme-danger-500))'
+	backgroundColor: 'rgb(var(--cui-theme-success-500))'
 }
 
 export const Messages = (
