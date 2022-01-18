@@ -5,7 +5,7 @@ import {
 	TextAreaField,
 	TextField,
 } from '@contember/admin'
-import { ContentField, PreviewLink, Seo } from '../components'
+import { ContentField, ImageField, PreviewLink, Seo } from '../components'
 
 type ArticleSideFormProps = {
 	isEditPage?: boolean
@@ -29,6 +29,7 @@ export const ArticleForm = Component(
 	() => (
 		<>
 			<TextField field="headline" label="Headline" />
+			<ImageField field="coverPhoto" label="Cover photo" />
 			<TextAreaField field="perex" label="Perex" />
 			<ContentField label="Text" size="large" />
 			<Seo
