@@ -1,7 +1,7 @@
 import { ContentBlock, Link, Seo } from '.'
-import { InputValidation as validation, SchemaDefinition as def } from '@contember/schema-definition'
+import { SchemaDefinition as def } from '@contember/schema-definition'
 
-export const PageTypeEnum = def.createEnum('homePage', 'error404Page')
+export const PageTypeEnum = def.createEnum('homePage', 'blogPage', 'error404Page')
 
 export class Page {
 	publishAt = def.dateTimeColumn().default('now')

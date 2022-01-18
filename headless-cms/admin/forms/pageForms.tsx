@@ -2,6 +2,7 @@ import * as React from 'react'
 import {
 	Conditional,
 	ContentBlocks,
+	PreventLeavingWithUnsavedChanges,
 	PreviewLink,
 	Seo
 } from '../components'
@@ -22,11 +23,14 @@ export const PageSideForm = Component<PageSideFormProps>(
 
 			{isEditPage &&
 				<>
-					<Conditional showIf={(accessor) => accessor.getField('role').value === 'default'}>
+					<Conditional showIf={(accessor) => accessor.getField('role').value === null}>
 						<PreviewLink slugField="slug" />
 					</Conditional>
 					<Conditional showIf={(accessor) => accessor.getField('role').value === 'homePage'}>
 						<PreviewLink slugField="slug" path={'/'} />
+					</Conditional>
+					<Conditional showIf={(accessor) => accessor.getField('role').value === 'blogPage'}>
+						<PreviewLink slugField="slug" path={'/blog'} />
 					</Conditional>
 					<Conditional showIf={(accessor) => accessor.getField('role').value === 'error404Page'}>
 						<PreviewLink slugField="slug" path={'/404'} />
@@ -46,6 +50,7 @@ export const PageSideForm = Component<PageSideFormProps>(
 				options={[
 					{ value: null, label: 'Default' },
 					{ value: 'homePage', label: 'HomePage' },
+					{ value: 'blogPage', label: "Blog" },
 					{ value: 'error404Page', label: "Error 404" }
 				]}
 			/>
@@ -57,6 +62,7 @@ export const PageSideForm = Component<PageSideFormProps>(
 export const PageForm = Component(
 	() => (
 		<>
+			<PreventLeavingWithUnsavedChanges />
 			<Section heading="Content">
 				<ContentBlocks />
 			</Section>

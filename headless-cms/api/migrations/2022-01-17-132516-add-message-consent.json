@@ -41,6 +41,15 @@
 			}
 		},
 		{
+			"modification": "updateEnum",
+			"enumName": "PageTypeEnum",
+			"values": [
+				"homePage",
+				"blogPage",
+				"error404Page"
+			]
+		},
+		{
 			"modification": "removeEnum",
 			"enumName": "One"
 		},
