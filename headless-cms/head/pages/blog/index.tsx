@@ -5,11 +5,13 @@ import Head from 'next/head'
 import Seo from '../../components/seo'
 import Header from '../../components/header'
 import Link from 'next/link'
+import Footer from '../../components/footer'
 
 export default function Blog(props: any) {
 	const blogPage = props.data?.getPage
 	const articles = props.data?.listArticle
 	const headerMenu = props.data?.getHeaderMenu
+	const footerMenu = props.data?.getFooterMenu
 	const setting = props.data?.getSetting
 
 	if (props.errors) {
@@ -44,9 +46,7 @@ export default function Blog(props: any) {
 				</ul>
 			</main>
 
-			<footer>
-
-			</footer>
+			<Footer menu={footerMenu} content={setting.footerCopyright} />
 		</div>
 	)
 }

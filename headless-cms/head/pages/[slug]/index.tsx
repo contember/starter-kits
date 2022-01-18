@@ -6,11 +6,13 @@ import Head from 'next/head'
 import listPage from '../../lib/graphql/queries/listPage'
 import Seo from '../../components/seo'
 import { serverSideFetch } from '../../lib/graphql/gqlfetch'
+import Footer from '../../components/footer'
 import Header from '../../components/header'
 
 export default function Page(props: any) {
   const homePageData = props.data?.getPage
   const headerMenu = props.data?.getHeaderMenu
+  const footerMenu = props.data?.getFooterMenu
   const setting = props.data?.getSetting
 
   if (props.errors) {
@@ -27,13 +29,12 @@ export default function Page(props: any) {
       </Head>
 
       <Header menu={headerMenu} logo={setting.logo} />
+
       <main>
         <Blocks blocks={homePageData.blocks} />
       </main>
 
-      <footer>
-
-      </footer>
+      <Footer menu={footerMenu} content={setting.footerCopyright} />
     </div>
   )
 }

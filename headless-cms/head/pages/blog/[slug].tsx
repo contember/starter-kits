@@ -7,10 +7,12 @@ import Seo from '../../components/seo'
 import { RichTextRenderer } from '@contember/react-client'
 import { serverSideFetch } from '../../lib/graphql/gqlfetch'
 import Header from '../../components/header'
+import Footer from '../../components/footer'
 
 export default function Article(props: any) {
 	const articleData = props.data?.getArticle
 	const headerMenu = props.data?.getHeaderMenu
+	const footerMenu = props.data?.getFooterMenu
 	const setting = props.data?.getSetting
 
 	if (props.errors) {
@@ -41,9 +43,7 @@ export default function Article(props: any) {
 				}
 			</main>
 
-			<footer>
-
-			</footer>
+			<Footer menu={footerMenu} content={setting.footerCopyright} />
 		</div>
 	)
 }

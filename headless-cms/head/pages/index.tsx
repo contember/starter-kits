@@ -7,11 +7,13 @@ import getHomePage from '../lib/graphql/queries/getHomePage'
 import Seo from '../components/seo'
 import Blocks from '../components/blocks'
 import Header from '../components/header'
+import Footer from '../components/footer'
 
 
 const Home: NextPage = (props: any) => {
   const homePageData = props.data?.getPage
   const headerMenu = props.data?.getHeaderMenu
+  const footerMenu = props.data?.getFooterMenu
   const setting = props.data?.getSetting
 
   if (props.errors) {
@@ -43,6 +45,8 @@ const Home: NextPage = (props: any) => {
       <main>
         <Blocks blocks={homePageData.blocks} />
       </main>
+
+      <Footer menu={footerMenu} content={setting.footerCopyright} />
     </div>
   )
 }
