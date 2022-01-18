@@ -2,7 +2,6 @@ import * as React from 'react'
 import {
 	Conditional,
 	ContentBlocks,
-	PreventLeavingWithUnsavedChanges,
 	PreviewLink,
 	Seo
 } from '../components'
@@ -62,7 +61,6 @@ export const PageSideForm = Component<PageSideFormProps>(
 export const PageForm = Component(
 	() => (
 		<>
-			<PreventLeavingWithUnsavedChanges />
 			<Section heading="Content">
 				<ContentBlocks />
 			</Section>
