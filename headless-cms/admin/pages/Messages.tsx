@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { ViewedMarker } from '../components'
 import {
+	BooleanCell,
 	DataBindingProvider,
 	DataGrid,
 	DateCell,
@@ -12,6 +13,14 @@ import {
 	TextCell,
 } from '@contember/admin'
 
+const viewedDotStyle = {
+	width: '0.5em',
+	height: '0.5em',
+	display: 'block',
+	borderRadius: '50%',
+	backgroundColor: 'rgb(var(--cui-theme-danger-500))'
+}
+
 export const Messages = (
 	<GenericPage
 		pageName="messages"
@@ -19,18 +28,26 @@ export const Messages = (
 	>
 		<DataBindingProvider stateComponent={FeedbackRenderer}>
 			<DataGrid entities="ContactMessage" itemsPerPage={50}>
+				<BooleanCell
+					field="viewed"
+					header="Viewed"
+					format={(date) => (!date && <span style={viewedDotStyle} />)}
+				/>
+				<DateCell
+					field="createdAt"
+					header="Create date"
+					initialOrder="desc"
+					format={(scalar) => <Link to="message(id: $entity.id)">{scalar.toLocaleString()}</Link>}
+				/>
 				<TextCell
 					field="firstName"
 					header="First name"
-					format={(scalar) => <Link to="message(id: $entity.id)">{scalar}</Link>}
 				/>
 				<TextCell
 					field="lastName"
 					header="Last name"
-					format={(scalar) => <Link to="message(id: $entity.id)">{scalar}</Link>}
 				/>
 				<TextCell field="email" header="E-mail" />
-				<DateCell field="createdAt" header="Create date" />
 			</DataGrid>
 		</DataBindingProvider>
 	</GenericPage>
@@ -46,11 +63,11 @@ export const Message = (
 		}}
 	>
 		<ViewedMarker />
-		<Field field="craeteAt" />
-		<Field field="firstName" />
-		<Field field="lastName" />
-		<Field field="email" />
-		<Field field="phone" />
+		<Field field="createdAt" /><br />
+		<Field field="firstName" /><br />
+		<Field field="lastName" /><br />
+		<Field field="email" /><br />
+		<Field field="phone" /><br />
 		<Field field="message" />
 	</EditPage>
 )
