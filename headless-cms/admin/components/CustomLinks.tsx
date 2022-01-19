@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { LinkField } from '.'
-import './editorButton.sass'
+import './editorButton.css'
 import {
 	Box,
 	Button,
