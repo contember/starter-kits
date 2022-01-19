@@ -13,13 +13,14 @@ export type SeoProps = {
 }
 
 export default function Seo({ seo }: SeoProps) {
+	const { title, description, ogTitle, ogDescription, ogImage } = seo ?? {}
 	return (
 		<Head>
-			<title>{seo.title}</title>
-			<meta name="description" content={seo.description} />
-			<meta property="og:title" content={seo.ogTitle} />
-			<meta property="og:description" content={seo.ogDescription} />
-			<meta property="og:image" content={seo.ogImage?.url} />
+			<title>{title}</title>
+			<meta name="description" content={description} />
+			<meta property="og:title" content={ogTitle} />
+			<meta property="og:description" content={ogDescription} />
+			<meta property="og:image" content={ogImage?.url} />
 		</Head>
-	)        
+	)
 }

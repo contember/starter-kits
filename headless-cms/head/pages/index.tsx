@@ -34,19 +34,19 @@ const Home: NextPage = (props: any) => {
   return (
     <div>
       <Seo
-        seo={homePageData.seo}
+        seo={homePageData?.seo}
       />
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header menu={headerMenu} logo={setting.logo} />
+      <Header menu={headerMenu} logo={setting?.logo} />
 
       <main>
-        <Blocks blocks={homePageData.blocks} />
+        <Blocks blocks={homePageData?.blocks} />
       </main>
 
-      <Footer menu={footerMenu} content={setting.footerCopyright} />
+      <Footer menu={footerMenu} content={setting?.footerCopyright} />
     </div>
   )
 }

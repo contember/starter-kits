@@ -172,7 +172,7 @@ function ContactSection({ primaryText, content }: any) {
 }
 
 export default function Blocks({ blocks }: any) {
-	return blocks.map((block: any) => {
+	return blocks ? blocks.map((block: any) => {
 		const blocksElements: any = {
 			heroSection: <HeroSection {...block} key={block.id} />,
 			logosSection: <LogoSection {...block} key={block.id} />,
@@ -184,5 +184,5 @@ export default function Blocks({ blocks }: any) {
 		}
 
 		return blocksElements[block.type]
-	})
+	}) : null
 }
