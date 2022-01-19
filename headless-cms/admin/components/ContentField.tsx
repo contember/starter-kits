@@ -24,11 +24,11 @@ const inlineButtons: BlockEditorProps["inlineButtons"] = [
 		RB.headingOne,
 		RB.headingTwo,
 		RB.headingThree,
-		RB.headingFour
+		RB.headingFour,
 	],
 	[
 		RB.unorderedList,
-		RB.orderedList
+		RB.orderedList,
 	],
 	[
 		RB.code,
@@ -38,7 +38,7 @@ const inlineButtons: BlockEditorProps["inlineButtons"] = [
 			label: 'Insert link',
 			title: 'Insert link',
 			blueprintIcon: 'link',
-		}
+		},
 	]
 ]
 
