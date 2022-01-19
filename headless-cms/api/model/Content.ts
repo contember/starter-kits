@@ -1,3 +1,4 @@
+import { Link } from '.'
 import { SchemaDefinition as def } from '@contember/schema-definition'
 
 export class Content {
@@ -12,15 +13,13 @@ export class ContentPart {
 }
 
 export const ContentReferenceType = def.createEnum(
-	'link' // link
+	'link'
 )
 
 export class ContentReference {
 	contentPart = def.manyHasOne(ContentPart, 'references').cascadeOnDelete().notNull();
 	type = def.enumColumn(ContentReferenceType).notNull()
-
 	primaryText = def.stringColumn()
 	text = def.stringColumn()
-
-	// link = def.oneHasOne(Link).removeOrphan()
+	link = def.manyHasOne(Link)
 }
