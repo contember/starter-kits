@@ -1,4 +1,5 @@
 import * as React from 'react'
+import locale from '../locales'
 import { Component, HasOne, RadioField, TextField } from '@contember/admin'
 import { LinkField } from './LinkField'
 
@@ -9,14 +10,14 @@ type ButtonProps = {
 export const Button = Component<ButtonProps>(
 	({ field }) => (
 		<HasOne field={field}>
-			<LinkField field="url" label="Link" />
-			<TextField field="label" label="Label" />
+			<LinkField field="url" label={locale["Link"]} />
+			<TextField field="label" label={locale["Label"]} />
 			<RadioField
 				field="type"
-				label="Type"
+				label={locale["Type"]}
 				options={[
-					{ value: 'primary', label: 'Primary' },
-					{ value: 'secondary', label: 'Secondary' }
+					{ value: 'primary', label: locale["Primary"] },
+					{ value: 'secondary', label: locale["Secondary"] }
 				]}
 				defaultValue="primary"
 			/>

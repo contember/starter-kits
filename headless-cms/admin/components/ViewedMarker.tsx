@@ -12,5 +12,5 @@ export const ViewedMarker = Component(
 		return null
 	},
 	() => null,
-	'ViewedMarked',
+	'ViewedMarker',
 )

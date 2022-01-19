@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Component, HasOne, ImageUploadField, TextField } from '@contember/admin'
+import locale from '../locales'
 
 type ImageFieldProps = {
 	field: string
@@ -10,12 +11,12 @@ export const ImageField = Component<ImageFieldProps>(
 	({ field, label }) => (
 		<HasOne field={field}>
 			<ImageUploadField
-				label={label ?? 'Image'}
+				label={label ?? locale["Image"]}
 				urlField="url"
 				widthField="width"
 				heightField="height"
 			>
-				<TextField field="alt" label="Alternative text" />
+				<TextField field="alt" label={locale["Alternative text"]} />
 			</ImageUploadField>
 		</HasOne>
 	),

@@ -5,6 +5,7 @@ import { ContentBlocks } from '../components/ContentBlocks'
 import { Conditional } from '../components/Conditional'
 import { PreviewLink } from '../components/PreviewLink'
 import { Seo } from '../components/Seo'
+import locale from '../locales'
 
 type PageSideFormProps = {
 	isEditPage?: boolean
@@ -31,19 +32,19 @@ export const PageSideForm = Component<PageSideFormProps>(
 			}
 			<DateTimeField
 				field="publishAt"
-				label="Publish date"
+				label={locale["Publish date"]}
 				defaultValue={new Date().toISOString()}
 			/>
 			<SelectField
 				field="role"
-				label="Page role"
+				label={locale["Page role"]}
 				defaultValue={null}
 				allowNull
 				options={[
-					{ value: null, label: 'Default' },
-					{ value: 'homePage', label: 'HomePage' },
-					{ value: 'blogPage', label: 'Blog' },
-					{ value: 'error404Page', label: 'Error 404' },
+					{ value: null, label: locale["Default"] },
+					{ value: 'homePage', label: locale["Home page"] },
+					{ value: 'blogPage', label: locale["Blog"] },
+					{ value: 'error404Page', label: locale["Error 404"] }
 				]}
 			/>
 		</>
@@ -54,7 +55,7 @@ export const PageSideForm = Component<PageSideFormProps>(
 export const PageForm = Component(
 	() => (
 		<>
-			<Section heading="Content">
+			<Section heading={locale["Content"]}>
 				<ContentBlocks />
 			</Section>
 			<Seo
