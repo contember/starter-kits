@@ -1,11 +1,9 @@
 import * as React from 'react'
-import {
-	Component,
-	DateTimeField,
-	TextAreaField,
-	TextField,
-} from '@contember/admin'
-import { ContentField, ImageField, PreviewLink, Seo } from '../components'
+import { Component, DateTimeField, TextAreaField, TextField } from '@contember/admin'
+import { PreviewLink } from '../components/PreviewLink'
+import { ImageField } from '../components/ImageField'
+import { Seo } from '../components/Seo'
+import { ContentField } from '../components/ContentField'
 
 type ArticleSideFormProps = {
 	isEditPage?: boolean
@@ -22,7 +20,7 @@ export const ArticleSideForm = Component<ArticleSideFormProps>(
 			/>
 		</>
 	),
-	'ArticleSideForm'
+	'ArticleSideForm',
 )
 
 export const ArticleForm = Component(
@@ -42,5 +40,5 @@ export const ArticleForm = Component(
 			/>
 		</>
 	),
-	'ArticleForm'
+	'ArticleForm',
 )

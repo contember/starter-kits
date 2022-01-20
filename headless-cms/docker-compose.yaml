@@ -1,57 +1,18 @@
 version: '2.4'
 
 services:
-  nextjs:
-    image: node:16-alpine
-    command: npm run dev-head
-
-    environment:
-      NODE_ENV: "development"
-      PORT: 3000
-
-    ports:
-      - 3000:3000
-
-    working_dir: /src
-    volumes:
-      - ./:/src
-
-    depends_on:
-      contember:
-        condition: service_started
-      contember-migrations:
-        condition: service_completed_successfully
-
-  admin:
-    image: node:16-alpine
-    command: npm run start-admin
-    user: '1000:1000'
-
-    environment:
-      VITE_PORT: '1480'
-      VITE_CONTEMBER_ADMIN_API_BASE_URL: 'http://localhost:1481'
-      VITE_CONTEMBER_ADMIN_SESSION_TOKEN: '0000000000000000000000000000000000000000'
-      VITE_CONTEMBER_ADMIN_PROJECT_NAME: 'headless-cms'
-      VITE_CONTEMBER_ADMIN_WEB_URL: 'http://localhost:3000'
-
-    ports:
-      - '1480:1480' # ports must match
-
-    working_dir: /src
-    volumes:
-      - ./:/src:cached
-
-  contember:
-    image: contember/engine:1.0.0-alpha.1
-    restart: on-failure
+  contember-engine:
+    image: contember/engine:1.0.0-rc.2
 
     environment:
       NODE_ENV: 'development'
 
+      CONTEMBER_PORT: '4000'
       CONTEMBER_ROOT_EMAIL: 'contember@localhost'
       CONTEMBER_ROOT_PASSWORD: 'contember'
-      CONTEMBER_ROOT_TOKEN: '0000000000000000000000000000000000000000'
-      CONTEMBER_LOGIN_TOKEN: '1111111111111111111111111111111111111111'
+      CONTEMBER_ROOT_TOKEN: '0000000000000000000000000000000000000000' # generate token for production by running `openssl rand -hex 20` in console
+      CONTEMBER_LOGIN_TOKEN: '1111111111111111111111111111111111111111' # generate token for production by running `openssl rand -hex 20` in console
+
       CONTEMBER_CONFIG_YAML: |
         projectDefaults:
           s3:
@@ -77,16 +38,23 @@ services:
     ports:
       - '1481:4000'
 
+    healthcheck:
+      test: ['CMD-SHELL', 'curl --fail http://localhost:4000']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
     depends_on:
       postgres:
         condition: service_healthy
 
   contember-cli:
-    image: contember/cli:0.12.0-beta.2
+    image: contember/cli:1.0.0-rc.2
     user: '1000:1000'
+    scale: 0
 
     environment:
-      CONTEMBER_API_URL: 'http://contember:4000/'
+      CONTEMBER_API_URL: 'http://contember-engine:4000/'
       CONTEMBER_API_TOKEN: '0000000000000000000000000000000000000000'
       CONTEMBER_PROJECT_NAME: 'headless-cms'
 
@@ -95,34 +63,16 @@ services:
       - ./:/src:cached
 
     depends_on:
-      contember:
-        condition: service_started
-
-  contember-migrations:
-    image: contember/cli:0.12.0-beta.2
-    command: 'migrations:execute . --yes'
-    user: '1000:1000'
-
-    environment:
-      CONTEMBER_API_URL: 'http://contember:4000/'
-      CONTEMBER_API_TOKEN: '0000000000000000000000000000000000000000'
-      CONTEMBER_PROJECT_NAME: 'headless-cms'
-
-    working_dir: /src
-    volumes:
-      - ./:/src:cached
-
-    depends_on:
-      contember:
-        condition: service_started
+      contember-engine:
+        condition: service_healthy
 
   postgres:
-    image: postgres:13-alpine
+    image: postgres:14-alpine
 
     environment:
-      POSTGRES_PASSWORD: contember
-      POSTGRES_USER: contember
-      POSTGRES_DB: contember
+      POSTGRES_PASSWORD: 'contember'
+      POSTGRES_USER: 'contember'
+      POSTGRES_DB: 'contember'
 
     ports:
       - '1482:5432'
@@ -138,20 +88,19 @@ services:
 
   s3:
     image: minio/minio
-    entrypoint: /minio-entrypoint.sh
+    entrypoint: /minio/s3-entrypoint.sh
     command: 'server --address :1483 /data'
 
     environment:
-      MINIO_ROOT_USER: contember
-      MINIO_ROOT_PASSWORD: contember
+      MINIO_ROOT_USER: 'contember'
+      MINIO_ROOT_PASSWORD: 'contember'
 
     ports:
       - '1483:1483' # ports must match
 
     volumes:
       - s3-data:/data
-      - ./scripts/minio/s3-policy.json:/bucket-policy.json
-      - ./scripts/minio/s3-entrypoint.sh:/minio-entrypoint.sh
+      - ./docker/minio/:/minio
 
   mailhog:
     image: mailhog/mailhog
@@ -159,22 +108,23 @@ services:
       - '1484:8025'
 
   adminer:
-    image: adminer:4.8.0
+    image: michalhosna/adminer:4.8.0-en_v1
 
     environment:
-      ADMINER_DRIVER: pgsql
-      ADMINER_SERVER: postgres
-      ADMINER_DB: contember
-      ADMINER_USERNAME: contember
-      ADMINER_PASSWORD: contember
-      ADMINER_AUTOLOGIN: 1
-      ADMINER_NAME: Contember
+      ADMINER_DRIVER: 'pgsql'
+      ADMINER_SERVER: 'postgres'
+      ADMINER_DB: 'contember'
+      ADMINER_USERNAME: 'contember'
+      ADMINER_PASSWORD: 'contember'
+      ADMINER_AUTOLOGIN: '1'
+      ADMINER_NAME: 'Contember'
 
     ports:
       - '1485:8080'
 
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
 
 volumes:
   pgsql-data: ~

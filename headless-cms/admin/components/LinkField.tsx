@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Block, Component, DiscriminatedBlocks, EntityAccessor, Field, HasOne, SelectField, TextField } from "@contember/admin"
+import { Block, Component, DiscriminatedBlocks, EntityAccessor, Field, HasOne, SelectField, TextField } from '@contember/admin'
 
 export interface LinkFieldProps {
 	field: string
@@ -7,8 +7,8 @@ export interface LinkFieldProps {
 }
 
 function customRenderOptions(accessor: EntityAccessor) {
-	const slug = accessor.getField("slug").value
-	const role = accessor.getField("role").value
+	const slug = accessor.getField('slug').value
+	const role = accessor.getField('role').value
 
 	return slug ?? role
 }
@@ -19,7 +19,7 @@ export const LinkField = Component<LinkFieldProps>(
 			<HasOne field={field}>
 				<DiscriminatedBlocks label={label ?? 'Link'} field="type" description="Select what you want to link.">
 					<Block discriminateBy="article" label="Articles">
-						<SelectField 
+						<SelectField
 							label={undefined}
 							options="Article.slug"
 							field="article"

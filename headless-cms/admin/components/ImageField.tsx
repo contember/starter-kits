@@ -18,7 +18,6 @@ export const ImageField = Component<ImageFieldProps>(
 				<TextField field="alt" label="Alternative text" />
 			</ImageUploadField>
 		</HasOne>
-
 	),
 	'ImageField',
 )

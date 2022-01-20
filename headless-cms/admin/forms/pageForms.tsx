@@ -1,16 +1,10 @@
 import * as React from 'react'
-import {
-	Conditional,
-	ContentBlocks,
-	PreviewLink,
-	Seo
-} from '../components'
-import {
-	Component,
-	DateTimeField,
-	Section,
-	SelectField,
-} from '@contember/admin'
+
+import { Component, DateTimeField, Section, SelectField } from '@contember/admin'
+import { ContentBlocks } from '../components/ContentBlocks'
+import { Conditional } from '../components/Conditional'
+import { PreviewLink } from '../components/PreviewLink'
+import { Seo } from '../components/Seo'
 
 type PageSideFormProps = {
 	isEditPage?: boolean
@@ -19,7 +13,6 @@ type PageSideFormProps = {
 export const PageSideForm = Component<PageSideFormProps>(
 	({ isEditPage }) => (
 		<>
-
 			{isEditPage &&
 				<>
 					<Conditional showIf={(accessor) => accessor.getField('role').value === null}>
@@ -49,13 +42,13 @@ export const PageSideForm = Component<PageSideFormProps>(
 				options={[
 					{ value: null, label: 'Default' },
 					{ value: 'homePage', label: 'HomePage' },
-					{ value: 'blogPage', label: "Blog" },
-					{ value: 'error404Page', label: "Error 404" }
+					{ value: 'blogPage', label: 'Blog' },
+					{ value: 'error404Page', label: 'Error 404' },
 				]}
 			/>
 		</>
 	),
-	'PageSideForm'
+	'PageSideForm',
 )
 
 export const PageForm = Component(
@@ -68,10 +61,10 @@ export const PageForm = Component(
 				seoPage="seoPages"
 				seoFieldsProps={{
 					unpersistedHardPrefix: '/',
-					hasRoleField: true
+					hasRoleField: true,
 				}}
 			/>
 		</>
 	),
-	'PageForm'
+	'PageForm',
 )

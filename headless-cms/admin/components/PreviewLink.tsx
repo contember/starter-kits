@@ -21,8 +21,6 @@ export const PreviewLink = Component<PreviewLinkProps>(
 				Preview
 			</a>
 		)
-
-
 	},
 	({ slugField }) => (
 		<Field field={slugField} />

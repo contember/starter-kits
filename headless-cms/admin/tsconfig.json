@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"isolatedModules": true,
+		"jsx": "react",
+		"lib": ["esnext", "dom"],
+		"module": "esnext",
+		"moduleResolution": "node",
+		"noEmit": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"target": "esnext"
+	}
+}

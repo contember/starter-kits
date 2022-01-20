@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Component, Repeater, SelectField, TextField } from "@contember/admin"
-import { LinkField } from "../components"
+import { LinkField } from '../components/LinkField'
 
 export const NavigationForm = Component(
 	() => (
