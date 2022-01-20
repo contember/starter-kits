@@ -56,7 +56,7 @@ Set `NEXT_PUBLIC_TOKEN` in `head/.env` to newly generated API token (replace the
 
 ### 🌍 Localization
 
-The default language of administration is English. Other supported language is Czech (more languages coming soon). To change the language you just need to do a few steps.
+The default language of administration is English. Other supported language is Czech, but you can add any other language. To change the language you just need to do a few steps.
 
 #### Setting the language for UI elements
 
@@ -74,7 +74,7 @@ import { csCZ } from "@contember/i18n"
 />
 ```
 
-#### Setting the language for custom components
+#### Setting the language for custom components and labels
 
 In the `headless-cms/admin/locales/index.ts` file change default export from `enUS` to `csCZ` and import `csCZ` from `./csCZ`.
 
