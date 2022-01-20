@@ -38,7 +38,7 @@ export type SeoFormProps = {
 
 function getSlugPrefix(environment: Environment, unpersistedHardPrefix?: string) {
 	const webUrl = environment.getValue('WEB_URL')
-	const prefix = unpersistedHardPrefix || ''
+	const prefix = unpersistedHardPrefix || "/"
 
 	return (webUrl ? webUrl + prefix : prefix)
 }
