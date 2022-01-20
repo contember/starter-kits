@@ -1,31 +1,16 @@
 import * as React from 'react'
-import {
-	Block,
-	BlockRepeater,
-	Box,
-	Component,
-	HasOne,
-	ImageFileRepeater,
-	ImageUploadField,
-	Repeater,
-	RichTextField,
-	TextField
-	} from '@contember/admin'
-import {
-	Button,
-	ContentField,
-	ImageField,
-	LabelWithIcon
-	} from '.'
-import {
-	IconContactSection,
-	IconContentSection,
-	IconCTASection,
-	IconFeaturesSection,
-	IconHeroSection,
-	IconLogosSection
-	} from './icons'
+import { Block, BlockRepeater, Box, Component, HasOne, ImageFileRepeater, ImageUploadField, Repeater, RichTextField, TextField } from '@contember/admin'
+import { Button } from './Button'
+import { ContentField } from './ContentField'
+import { IconContactSection } from './icons/IconContactSection'
+import { IconContentSection } from './icons/IconContentSection'
+import { IconCTASection } from './icons/IconCTASection'
+import { IconFeaturesSection } from './icons/IconFeaturesSection'
+import { IconHeroSection } from './icons/IconHeroSection'
+import { IconLogosSection } from './icons/IconLogosSection'
 import { IconTestimonialSection } from './icons/IconTestimonialSection'
+import { ImageField } from './ImageField'
+import { LabelWithIcon } from './LabelWithIcon'
 
 export const ContentBlocks = Component(
 	() => (
@@ -38,9 +23,7 @@ export const ContentBlocks = Component(
 		>
 			<Block
 				discriminateBy="heroSection"
-				label={
-					<LabelWithIcon icon={<IconHeroSection />} label="Hero section" />
-				}
+				label={<LabelWithIcon icon={<IconHeroSection />} label="Hero section" />}
 			>
 				<TextField field="primaryText" label="Headline" />
 				<ContentField />

@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { LinkField } from '.'
 import './editorButton.css'
 import {
 	Box,
@@ -12,6 +11,7 @@ import {
 	InitializeReferenceContentProps,
 	useEditor,
 } from '@contember/admin'
+import { LinkField } from './LinkField'
 
 export const InsertLink = Component<InitializeReferenceContentProps>(
 	({ onSuccess, onCancel }) => (

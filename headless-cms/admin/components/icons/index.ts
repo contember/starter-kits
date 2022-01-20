@@ -1,6 +1,0 @@
-export * from './IconContactSection'
-export * from './IconContentSection'
-export * from './IconCTASection'
-export * from './IconFeaturesSection'
-export * from './IconHeroSection'
-export * from './IconLogosSection'

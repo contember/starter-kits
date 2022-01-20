@@ -1,5 +1,5 @@
 export async function serverSideFetch(query: any, variables?: any) {
-	const response = await fetch('http://contember:4000/content/headless-cms/live', {
+	const response = await fetch('http://localhost:1481/content/headless-cms/live', {
 		method: 'POST',
 		mode: 'cors',
 		headers: {

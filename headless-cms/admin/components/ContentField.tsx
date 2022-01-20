@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { BlockEditor, BlockEditorProps, RichEditor } from '@contember/admin'
 import { Component } from '@contember/admin'
-import { InsertLink, LinkElement } from './customLinks'
+import { InsertLink, LinkElement } from './CustomLinks'
 import { withAnchorsAsReference } from './AnchorInsertHandler'
 
 type ContentFieldProps = {

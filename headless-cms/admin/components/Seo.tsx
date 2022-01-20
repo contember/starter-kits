@@ -12,7 +12,7 @@ import {
 	TextAreaField,
 	TextField,
 } from '@contember/admin'
-import { Conditional } from '.'
+import { Conditional } from './Conditional'
 
 export type SeoSlugFieldProps = {
 	unpersistedHardPrefix?: string
