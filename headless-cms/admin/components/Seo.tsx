@@ -58,7 +58,7 @@ const SeoSlugField = Component<SeoFieldsProps>(
 					<SlugField
 						field={fieldSlug}
 						derivedFrom={fieldTitle}
-						label={locale["Slug"]}
+						label={locale["Url"]}
 						unpersistedHardPrefix={(environment) => {
 							return getSlugPrefix(environment, unpersistedHardPrefix)
 						}}
@@ -70,7 +70,7 @@ const SeoSlugField = Component<SeoFieldsProps>(
 				<SlugField
 					field={fieldSlug}
 					derivedFrom={fieldTitle}
-					label={locale["Slug"]}
+					label={locale["Url"]}
 					unpersistedHardPrefix={(environment) => {
 						return getSlugPrefix(environment, unpersistedHardPrefix)
 					}}

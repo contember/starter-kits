@@ -31,7 +31,7 @@ export const Articles = (
 				/>
 				<TextCell
 					field="slug"
-					header={locale["Slug"]}
+					header={locale["Url"]}
 				/>
 				<DateCell
 					field="publishAt"
