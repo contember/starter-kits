@@ -60,7 +60,7 @@ The default language of administration is English. Other supported language is C
 
 #### Setting the language for UI elements
 
-In the [`headless-cms/admin/index.tsx`](headless-cms/admin/index.tsx) file, add the `defaultLocale` and `dictionaries` props to `<ApplicationEntrypoint />` and import the Czech dictionary from `@contember/i18n`.
+In the `headless-cms/admin/index.tsx` file, add the `defaultLocale` and `dictionaries` props to `<ApplicationEntrypoint />` and import the Czech dictionary from `@contember/i18n`.
 
 ```tsx title="headless-cms/admin/index.tsx"
 import { csCZ } from "@contember/i18n"
@@ -76,7 +76,7 @@ import { csCZ } from "@contember/i18n"
 
 #### Setting the language for custom components
 
-In the [`headless-cms/admin/locales/index.ts`](headless-cms/admin/locales/index.ts) file change default export from `enUS` to `csCZ` and import `csCZ` from `./csCZ`.
+In the `headless-cms/admin/locales/index.ts` file change default export from `enUS` to `csCZ` and import `csCZ` from `./csCZ`.
 
 ```ts title="headless-cms/admin/locales/index.ts"
 import csCZ from './csCZ'
