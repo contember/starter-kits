@@ -1,4 +1,3 @@
-// import cs from './cs'
-import en from './en'
+import enUS from './enUS'
 
-export default en
+export default enUS

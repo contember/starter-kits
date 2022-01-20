@@ -73,7 +73,6 @@ export default {
 	"Settings": "Settings",
 	"Short summary of the page. Keep it between 120 and 158 characters.": "Short summary of the page. Keep it between 120 and 158 characters.",
 	"Show contact message": "Show contact message",
-	"Slug": "Slug",
 	"Subtitle": "Subtitle",
 	"Testimonial section": "Testimonial section",
 	"Testimonials": "Testimonials",

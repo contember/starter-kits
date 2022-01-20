@@ -73,7 +73,6 @@ export default {
 	"Settings": "Nastavení",
 	"Short summary of the page. Keep it between 120 and 158 characters.": "Krátký popis stráky. Ideální rozsah je mezi 120 a 158 znaky.",
 	"Show contact message": "Zobrazit zprávu",
-	"Slug": "Slug",
 	"Subtitle": "Podtitul",
 	"Testimonial section": "Sekce se zkušentmi",
 	"Testimonials": "Zkušenosti",

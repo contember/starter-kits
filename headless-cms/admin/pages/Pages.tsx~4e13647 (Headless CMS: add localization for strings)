@@ -25,7 +25,7 @@ function clearSlugWhenPageHasType(entityAccessor: EntityAccessor.GetEntityAccess
 export const Pages = (
 	<GenericPage
 		pageName="pages"
-		title="Pages"
+		title={locale["Pages"]}
 		actions={<LinkButton to="pageCreate">{locale["Add page"]}</LinkButton>}
 	>
 		<DataBindingProvider stateComponent={FeedbackRenderer}>

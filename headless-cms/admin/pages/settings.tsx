@@ -16,8 +16,7 @@ export const settings = (
 				</ImageUploadField>
 			</HasOne>
 		</Section>
-
-		<Section heading="Footer">
+		<Section heading={locale["Footer"]}>
 			<ContentField field="footerCopyright.parts" label={locale["Footer copyright"]} size="default" />
 		</Section>
 	</EditPage>
