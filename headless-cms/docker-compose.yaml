@@ -10,8 +10,8 @@ services:
       CONTEMBER_PORT: '4000'
       CONTEMBER_ROOT_EMAIL: 'contember@localhost'
       CONTEMBER_ROOT_PASSWORD: 'contember'
-      CONTEMBER_ROOT_TOKEN: '0000000000000000000000000000000000000000' # openssl rand -hex 20
-      CONTEMBER_LOGIN_TOKEN: '1111111111111111111111111111111111111111' # openssl rand -hex 20
+      CONTEMBER_ROOT_TOKEN: '0000000000000000000000000000000000000000' # generate token for production by running `openssl rand -hex 20` in console
+      CONTEMBER_LOGIN_TOKEN: '1111111111111111111111111111111111111111' # generate token for production by running `openssl rand -hex 20` in console
 
       CONTEMBER_CONFIG_YAML: |
         projectDefaults:
