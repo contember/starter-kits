@@ -32,6 +32,8 @@ npm install
 npm start
 ```
 
+This command will start Admin application and all docker containers (Contember Engine, Postgres, S3, Mailhog and Adminer). When you are done developing, you can stop docker containers by `docker-compose down`.
+
 *Congratulations, you're done!*
 
 Administration UI is now running at http://localhost:1480 and frontend website is running at http://localhost:3000.
