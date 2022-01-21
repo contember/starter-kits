@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { ViewedMarker } from '../components'
 import {
 	BooleanCell,
 	DataBindingProvider,
@@ -12,6 +11,7 @@ import {
 	Link,
 	TextCell,
 } from '@contember/admin'
+import { ViewedMarker } from '../components/ViewedMarker'
 import locale from '../locales'
 
 const viewedDotStyle = {

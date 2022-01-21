@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { MultiEditPage } from "@contember/admin"
-import { SeoFields } from '../components'
+import { SeoFields } from '../components/Seo'
 import locale from '../locales'
 
 export const SeoArticles = (

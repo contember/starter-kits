@@ -1,62 +1,36 @@
 import * as React from 'react'
-import { ArticleForm, ArticleSideForm } from '../forms'
-import {
-	CreatePage,
-	DataBindingProvider,
-	DataGrid,
-	DateCell,
-	EditPage,
-	FeedbackRenderer,
-	GenericPage,
-	Link,
-	LinkButton,
-	TextCell,
-} from '@contember/admin'
+import { CreatePage, DataGridPage, DateCell, EditPage, Link, LinkButton, TextCell } from '@contember/admin'
+import { ArticleForm, ArticleSideForm } from '../forms/articleForms'
 import locale from '../locales'
 
 export const Articles = (
-	<GenericPage
-		pageName="articles"
-		title={locale["Articles"]}
-		actions={
-			<LinkButton to="articleCreate">{locale["Add article"]}</LinkButton>
-		}
+	<DataGridPage
+		entities="Article"
+		itemsPerPage={50}
+		rendererProps={{ title: locale["Articles"], actions: <LinkButton to="articleCreate">{locale["Add article"]}</LinkButton> }}
 	>
-		<DataBindingProvider stateComponent={FeedbackRenderer}>
-			<DataGrid entities="Article" itemsPerPage={50}>
-				<TextCell
-					field="headline"
-					header={locale["Headline"]}
-					format={(scalar) => <Link to="article(id: $entity.id)">{scalar}</Link>}
-				/>
-				<TextCell
-					field="slug"
-					header={locale["Url"]}
-				/>
-				<DateCell
-					field="publishAt"
-					header={locale["Publish date"]}
-				/>
-			</DataGrid>
-		</DataBindingProvider>
-	</GenericPage>
+		<TextCell
+			field="headline"
+			header={locale["Headline"]}
+			format={(scalar) => <Link to="article(id: $entity.id)">{scalar}</Link>}
+		/>
+		<TextCell
+			field="slug"
+			header={locale["Url"]}
+		/>
+		<DateCell
+			field="publishAt"
+			header={locale["Publish date"]}
+		/>
+	</DataGridPage>
 )
 
 export const ArticleCreate = (
 	<CreatePage
 		entity="Article"
 		pageName="articleCreate"
-		rendererProps={{
-			title: locale["Add article"],
-			side: <ArticleSideForm />,
-		}}
-		redirectOnSuccess={(request, id) => ({
-			...request,
-			pageName: 'article',
-			parameters: {
-				id,
-			},
-		})}
+		rendererProps={{ title: locale["Add article"], side: <ArticleSideForm /> }}
+		redirectOnSuccess="article(id: $entity.id)"
 	>
 		<ArticleForm />
 	</CreatePage>

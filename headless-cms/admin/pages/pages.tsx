@@ -12,11 +12,11 @@ import {
 	LinkButton,
 	TextCell,
 } from '@contember/admin'
-import { PageForm, PageSideForm } from '../forms'
+import { PageForm, PageSideForm } from '../forms/pageForms'
 import locale from '../locales'
 
-function clearSlugWhenPageHasType(entityAccessor: EntityAccessor.GetEntityAccessor) {
-	const entity = entityAccessor()
+function clearSlugWhenPageHasType(getAccessor: EntityAccessor.GetEntityAccessor) {
+	const entity = getAccessor()
 	if (entity.getField('role').value !== null) {
 		entity.getField('slug').updateValue(null)
 	}
