@@ -23,17 +23,13 @@ You'll need:
 3) Install dependencies:
 
 ```bash
-# For Linux or WSL
 npm install
-
-# For Mac or Windows
-docker-compose run admin npm install
 ```
 
-4) Start Docker containers:
+4) Start project:
 
 ```bash
-docker-compose up
+npm start
 ```
 
 *Congratulations, you're done!*
