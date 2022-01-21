@@ -6,6 +6,7 @@ export default {
 	"Alternative text": "Alternativní text",
 	"Article": "Článek",
 	"Articles": "Články",
+	"Blog page": "Stránka blogu",
 	"Blog": "Blog",
 	"Button": "Tlačítko",
 	"Buttons": "Tlačítka",

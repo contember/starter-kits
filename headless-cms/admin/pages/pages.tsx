@@ -41,6 +41,7 @@ export const Pages = (
 					options={{
 						homePage: locale["Home page"],
 						error404Page: locale["Error 404"],
+						blogPage: locale["Blog page"],
 					}}
 				/>
 				<TextCell

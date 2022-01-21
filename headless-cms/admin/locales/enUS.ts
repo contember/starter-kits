@@ -6,6 +6,7 @@ export default {
 	"Alternative text": "Alternative text",
 	"Article": "Article",
 	"Articles": "Articles",
+	"Blog page": "Blog page",
 	"Blog": "Blog",
 	"Button": "Button",
 	"Buttons": "Buttons",
