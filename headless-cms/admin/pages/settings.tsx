@@ -7,7 +7,7 @@ export const settings = (
 	<EditPage
 		entity="Setting(unique = One)"
 		setOnCreate="(unique = One)"
-		rendererProps={{title: locale["Settings"]}}
+		rendererProps={{ title: locale["Settings"] }}
 	>
 		<Section heading={locale["Logo"]}>
 			<HasOne field="logo">

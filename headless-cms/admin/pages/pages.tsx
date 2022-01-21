@@ -15,8 +15,8 @@ import {
 import { PageForm, PageSideForm } from '../forms/pageForms'
 import locale from '../locales'
 
-function clearSlugWhenPageHasType(getAccessor: EntityAccessor.GetEntityAccessor) {
-	const entity = getAccessor()
+function clearSlugWhenPageHasRole(getEntityAccessor: EntityAccessor.GetEntityAccessor) {
+	const entity = getEntityAccessor()
 	if (entity.getField('role').value !== null) {
 		entity.getField('slug').updateValue(null)
 	}
@@ -44,11 +44,7 @@ export const Pages = (
 						blogPage: locale["Blog page"],
 					}}
 				/>
-				<TextCell
-					field="slug"
-					header={locale["Url"]}
-					format={(slug) => <span>/{slug}</span>}
-				/>
+				<TextCell field="slug" header={locale["Url"]} format={(slug) => <>{'/' + slug}</>} />
 			</DataGrid>
 		</DataBindingProvider>
 	</GenericPage>
@@ -57,19 +53,9 @@ export const Pages = (
 export const PageCreate = (
 	<CreatePage
 		entity="Page"
-		pageName="pageCreate"
-		rendererProps={{
-			title: locale["Add page"],
-			side: <PageSideForm />,
-		}}
-		redirectOnSuccess={(request, id) => ({
-			...request,
-			pageName: 'page',
-			parameters: {
-				id,
-			},
-		})}
-		onBeforePersist={(entityAccessor) => clearSlugWhenPageHasType(entityAccessor)}
+		rendererProps={{ title: locale["Add page"], side: <PageSideForm /> }}
+		redirectOnSuccess="page(id: $entity.id)"
+		onBeforePersist={(entityAccessor) => clearSlugWhenPageHasRole(entityAccessor)}
 	>
 		<PageForm />
 	</CreatePage>
@@ -79,11 +65,8 @@ export const Page = (
 	<EditPage
 		entity="Page(id=$id)"
 		pageName="page"
-		rendererProps={{
-			title: locale["Edit page"],
-			side: <PageSideForm isEditPage />,
-		}}
-		onBeforePersist={(entityAccessor) => clearSlugWhenPageHasType(entityAccessor)}
+		rendererProps={{ title: locale["Edit page"], side: <PageSideForm isEditPage /> }}
+		onBeforePersist={(entityAccessor) => clearSlugWhenPageHasRole(entityAccessor)}
 	>
 		<PageForm />
 	</EditPage>

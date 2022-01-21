@@ -1,13 +1,10 @@
 import * as React from 'react'
 import {
 	BooleanCell,
-	DataBindingProvider,
-	DataGrid,
+	DataGridPage,
 	DateCell,
 	EditPage,
-	FeedbackRenderer,
 	Field,
-	GenericPage,
 	Link,
 	TextCell,
 } from '@contember/admin'
@@ -23,38 +20,26 @@ const viewedDotStyle = {
 }
 
 export const Messages = (
-	<GenericPage
-		pageName="messages"
-		title={locale["Messages"]}
+	<DataGridPage
+		entities="ContactMessage"
+		itemsPerPage={50}
+		rendererProps={{ title: locale["Messages"] }}
 	>
-		<DataBindingProvider stateComponent={FeedbackRenderer}>
-			<DataGrid entities="ContactMessage" itemsPerPage={50}>
-				<BooleanCell
-					field="viewed"
-					header={locale["Viewed"]}
-					format={(date) => (!date && <span style={viewedDotStyle} />)}
-				/>
-				<DateCell
-					field="createdAt"
-					header={locale["Create date"]}
-					initialOrder="desc"
-					format={(scalar) => <Link to="message(id: $entity.id)">{scalar.toLocaleString()}</Link>}
-				/>
-				<TextCell
-					field="firstName"
-					header={locale["First name"]}
-				/>
-				<TextCell
-					field="lastName"
-					header={locale["Last name"]}
-				/>
-				<TextCell
-					field="email"
-					header={locale["E-mail"]}
-				/>
-			</DataGrid>
-		</DataBindingProvider>
-	</GenericPage>
+		<BooleanCell
+			field="viewed"
+			header={locale["Viewed"]}
+			format={(date) => (!date && <span style={viewedDotStyle} />)}
+		/>
+		<DateCell
+			field="createdAt"
+			header={locale["Create date"]}
+			initialOrder="desc"
+			format={(scalar) => <Link to="message(id: $entity.id)">{scalar.toLocaleString()}</Link>}
+		/>
+		<TextCell field="firstName" header={locale["First name"]} />
+		<TextCell field="lastName" header={locale["Last name"]} />
+		<TextCell field="email" header={locale["E-mail"]} />
+	</DataGridPage>
 )
 
 
@@ -62,9 +47,7 @@ export const Message = (
 	<EditPage
 		entity="ContactMessage(id = $id)"
 		pageName="message"
-		rendererProps={{
-			title: locale["Show contact message"],
-		}}
+		rendererProps={{ title: locale["Show contact message"] }}
 	>
 		<ViewedMarker />
 		{locale["Created at"]}: <Field field="createdAt" /><br />

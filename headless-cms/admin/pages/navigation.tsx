@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { NavigationForm } from '../forms'
+import { NavigationForm } from '../forms/navigationForms'
 import {
 	CreatePage,
 	DataBindingProvider,
@@ -10,13 +10,12 @@ import {
 	GenericPage,
 	Link,
 	LinkButton,
-	TextCell,
+	TextCell
 } from '@contember/admin'
 import locale from '../locales'
 
 export const Navigations = (
 	<GenericPage
-		pageName="navigations"
 		title={locale["Menus"]}
 		actions={
 			<LinkButton to="navigationCreate">{locale["Add menu"]}</LinkButton>
@@ -32,10 +31,7 @@ export const Navigations = (
 				<EnumCell
 					field="position"
 					header={locale["Position"]}
-					options={{
-						header: locale["Header"],
-						footer: locale["Footer"],
-					}}
+					options={{ header: locale["Header"], footer: locale["Footer"] }}
 				/>
 			</DataGrid>
 		</DataBindingProvider>
@@ -45,17 +41,8 @@ export const Navigations = (
 export const NavigationCreate = (
 	<CreatePage
 		entity="Menu"
-		pageName="navigationCreate"
-		rendererProps={{
-			title: locale["Add menu"],
-		}}
-		redirectOnSuccess={(request, id) => ({
-			...request,
-			pageName: 'navigation',
-			parameters: {
-				id,
-			},
-		})}
+		rendererProps={{ title: locale["Add menu"] }}
+		redirectOnSuccess="navigation(id: $entity.id)"
 	>
 		<NavigationForm />
 	</CreatePage>
@@ -64,10 +51,7 @@ export const NavigationCreate = (
 export const Navigation = (
 	<EditPage
 		entity="Menu(id=$id)"
-		pageName="navigation"
-		rendererProps={{
-			title: locale["Edit menu"],
-		}}
+		rendererProps={{ title: locale["Edit menu"] }}
 	>
 		<NavigationForm />
 	</EditPage>
