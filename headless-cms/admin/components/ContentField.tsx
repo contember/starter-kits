@@ -3,6 +3,7 @@ import { BlockEditor, BlockEditorProps, RichEditor } from '@contember/admin'
 import { Component } from '@contember/admin'
 import { InsertLink, LinkElement } from './CustomLinks'
 import { withAnchorsAsReference } from './AnchorInsertHandler'
+import locale from '../locales'
 
 type ContentFieldProps = {
 	contentField?: string
@@ -35,8 +36,8 @@ const inlineButtons: BlockEditorProps["inlineButtons"] = [
 		{
 			discriminateBy: 'link',
 			referenceContent: InsertLink,
-			label: 'Insert link',
-			title: 'Insert link',
+			label: locale["Insert link"],
+			title: locale["Insert link"],
 			blueprintIcon: 'link',
 		},
 	]
@@ -50,7 +51,7 @@ export const ContentField = Component<ContentFieldProps>(
 			referencesField={referencesField ?? "references"}
 			referenceDiscriminationField="type"
 			field={field ?? 'content.parts'}
-			label={label ?? 'Content'}
+			label={label ?? locale["Content"]}
 			size={size ?? 'default'}
 			sortableBy="order"
 			inlineButtons={inlineButtons}

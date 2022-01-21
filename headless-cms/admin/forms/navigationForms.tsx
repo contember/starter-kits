@@ -1,21 +1,22 @@
 import * as React from 'react'
 import { Component, Repeater, SelectField, TextField } from "@contember/admin"
 import { LinkField } from '../components/LinkField'
+import locale from '../locales'
 
 export const NavigationForm = Component(
 	() => (
 		<>
 			<SelectField
 				field="position"
-				label="Position"
+				label={locale["Position"]}
 				options={[
-					{ label: 'Header', value: 'header' },
-					{ label: 'Footer', value: 'footer' }
+					{ label: locale["Header"], value: 'header' },
+					{ label: locale["Footer"], value: 'footer' }
 				]}
 			/>
-			<Repeater field="items" label="Items" sortableBy="order">
-				<TextField field="label" label="Label" />
-				<LinkField field="url" label="Url" />
+			<Repeater field="items" label={locale["Items"]} sortableBy="order">
+				<TextField field="label" label={locale["Label"]} />
+				<LinkField field="url" label={locale["Url"]} />
 			</Repeater>
 		</>
 	), 'NavigationForm'

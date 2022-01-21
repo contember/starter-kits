@@ -12,14 +12,15 @@ import {
 	useEditor,
 } from '@contember/admin'
 import { LinkField } from './LinkField'
+import locale from '../locales'
 
 export const InsertLink = Component<InitializeReferenceContentProps>(
 	({ onSuccess, onCancel }) => (
 		<>
 			<LinkField field="link" />
 			<div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1em', minWidth: '350px' }}>
-				<Button onClick={onCancel}>Cancel</Button>
-				<Button intent="primary" onClick={() => onSuccess({ createElement: { type: 'link' } })}>Insert</Button>
+				<Button onClick={onCancel}>{locale["Cancel"]}</Button>
+				<Button intent="primary" onClick={() => onSuccess({ createElement: { type: 'link' } })}>{locale["Insert"]}</Button>
 			</div>
 		</>
 	),
@@ -43,7 +44,7 @@ export const LinkElement = (props: EditorRenderElementProps) => {
 					<Box>
 						<LinkField field="link" />
 						<Button size="small" onClick={() => EditorTransforms.unwrapNodes(editor, { at: [], match: node => node === props.element })}>
-							Remove link
+							{locale["Remove link"]}
 						</Button>
 					</Box>
 				</Dropdown>

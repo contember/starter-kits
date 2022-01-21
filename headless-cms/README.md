@@ -53,3 +53,35 @@ Then select:
 - Are you sure you want to create this API key?: `y` (yes)
 
 Set `NEXT_PUBLIC_TOKEN` in `head/.env` to newly generated API token (replace the default superadmin token) and restart Docker containers (`docker-compose restart`).
+
+### 🌍 Localization
+
+The default language of administration is English. Other supported language is Czech, but you can add any other language. To change the language you just need to do a few steps.
+
+#### Setting the language for UI elements
+
+In the `headless-cms/admin/index.tsx` file, add the `defaultLocale` and `dictionaries` props to `<ApplicationEntrypoint />` and import the Czech dictionary from `@contember/i18n`.
+
+```tsx title="headless-cms/admin/index.tsx"
+import { csCZ } from "@contember/i18n"
+
+<ApplicationEntrypoint
+	...
+	defaultLocale="cs-CZ"
+	dictionaries={{
+		"cs-CZ": csCZ,
+	}}
+/>
+```
+
+#### Setting the language for custom components and labels
+
+In the `headless-cms/admin/locales/index.ts` file change default export from `enUS` to `csCZ` and import `csCZ` from `./csCZ`.
+
+```ts title="headless-cms/admin/locales/index.ts"
+import csCZ from './csCZ'
+
+export default csCZ
+```
+
+You are ready to go!

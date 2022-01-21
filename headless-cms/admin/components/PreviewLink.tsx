@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Component, Field, useEnvironment, useField } from '@contember/admin'
+import locale from '../locales'
 
 type PreviewLinkProps = {
 	slugField: string,
@@ -18,7 +19,7 @@ export const PreviewLink = Component<PreviewLinkProps>(
 
 		return (
 			<a href={`${webUrl}${path}`} target="_blank">
-				Preview
+				{locale["Preview"]}
 			</a>
 		)
 	},

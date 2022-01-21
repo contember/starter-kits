@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { Block, Component, DiscriminatedBlocks, EntityAccessor, Field, HasOne, SelectField, TextField } from '@contember/admin'
+import { Block, Component, DiscriminatedBlocks, EntityAccessor, Field, HasOne, SelectField, TextField } from "@contember/admin"
+import locale from '../locales'
 
 export interface LinkFieldProps {
 	field: string
@@ -17,15 +18,15 @@ export const LinkField = Component<LinkFieldProps>(
 	({ field, label }) => {
 		return (
 			<HasOne field={field}>
-				<DiscriminatedBlocks label={label ?? 'Link'} field="type" description="Select what you want to link.">
-					<Block discriminateBy="article" label="Articles">
-						<SelectField
+				<DiscriminatedBlocks label={label ?? 'Link'} field="type" description={locale["Select what you want to link."]}>
+					<Block discriminateBy="article" label={locale["Articles"]}>
+						<SelectField 
 							label={undefined}
 							options="Article.slug"
 							field="article"
 						/>
 					</Block>
-					<Block discriminateBy="page" label="Pages">
+					<Block discriminateBy="page" label={locale["Pages"]}>
 						<SelectField
 							label={undefined}
 							options="Page"
@@ -39,8 +40,8 @@ export const LinkField = Component<LinkFieldProps>(
 							}
 						/>
 					</Block>
-					<Block discriminateBy="url" label="External link">
-						<TextField label="Url" field="url" />
+					<Block discriminateBy="url" label={locale["External link"]}>
+						<TextField label={locale["Url"]} field="url" />
 					</Block>
 				</DiscriminatedBlocks>
 			</HasOne>
