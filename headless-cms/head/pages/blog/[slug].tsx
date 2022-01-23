@@ -28,7 +28,7 @@ export default function Article(props: any) {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Header menu={headerMenu} logo={setting.logo} />
+			<Header menu={headerMenu} logo={setting?.logo} />
 
 			<main>
 				<h1>
@@ -43,7 +43,7 @@ export default function Article(props: any) {
 				}
 			</main>
 
-			<Footer menu={footerMenu} content={setting.footerCopyright} />
+			<Footer menu={footerMenu} content={setting?.footerCopyright} />
 		</div>
 	)
 }

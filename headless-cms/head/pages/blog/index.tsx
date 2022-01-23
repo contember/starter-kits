@@ -21,14 +21,14 @@ export default function Blog(props: any) {
 	return (
 		<div>
 			<Seo
-				seo={blogPage.seo}
+				seo={blogPage?.seo}
 			/>
 			<Head>
 				<title>{blogPage.seo.title}</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Header menu={headerMenu} logo={setting.logo} />
+			<Header menu={headerMenu} logo={setting?.logo} />
 
 			<main>
 				<ul>
@@ -46,7 +46,7 @@ export default function Blog(props: any) {
 				</ul>
 			</main>
 
-			<Footer menu={footerMenu} content={setting.footerCopyright} />
+			<Footer menu={footerMenu} content={setting?.footerCopyright} />
 		</div>
 	)
 }
