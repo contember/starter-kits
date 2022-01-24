@@ -1,0 +1,35 @@
+{
+	"formatVersion": 3,
+	"modifications": [
+		{
+			"modification": "updateRelationOnDelete",
+			"entityName": "ContentImage",
+			"fieldName": "contentBlock",
+			"onDelete": "cascade"
+		},
+		{
+			"modification": "updateRelationOnDelete",
+			"entityName": "ContentButton",
+			"fieldName": "contentBlock",
+			"onDelete": "cascade"
+		},
+		{
+			"modification": "updateRelationOnDelete",
+			"entityName": "ContentFeatureItem",
+			"fieldName": "contentBlock",
+			"onDelete": "cascade"
+		},
+		{
+			"modification": "updateRelationOnDelete",
+			"entityName": "ContentTestimonial",
+			"fieldName": "contentBlock",
+			"onDelete": "cascade"
+		},
+		{
+			"modification": "updateRelationOnDelete",
+			"entityName": "ContentBlogPost",
+			"fieldName": "contentBlock",
+			"onDelete": "cascade"
+		}
+	]
+}
