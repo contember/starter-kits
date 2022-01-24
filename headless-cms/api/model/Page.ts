@@ -8,6 +8,6 @@ export class Page {
 	slug = def.stringColumn().unique()
 	role = def.enumColumn(PageTypeEnum).unique().nullable()
 	linkedFrom = def.oneHasMany(Link, 'page')
-	blocks = def.oneHasMany(ContentBlock, 'page')
+	blocks = def.oneHasMany(ContentBlock, 'page').orderBy('order')
 	seo = def.oneHasOne(Seo, 'page').cascadeOnDelete()
 }

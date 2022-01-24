@@ -3,7 +3,7 @@ import { Link } from "."
 
 export const MenuPositions = def.createEnum('header', 'footer')
 export class Menu {
-	items = def.oneHasMany(MenuItem, 'menu')
+	items = def.oneHasMany(MenuItem, 'menu').orderBy('order')
 	position = def.enumColumn(MenuPositions).unique().notNull()
 }
 
