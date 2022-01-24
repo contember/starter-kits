@@ -38,13 +38,13 @@ export class ContentBlock {
 export class ContentImage {
 	image = def.manyHasOne(Image)
 	order = def.intColumn().notNull()
-	contentBlock = def.manyHasOne(ContentBlock, 'images')
+	contentBlock = def.manyHasOne(ContentBlock, 'images').cascadeOnDelete()
 }
 
 export class ContentButton {
 	order = def.intColumn().notNull()
 	button = def.oneHasOne(Button)
-	contentBlock = def.manyHasOne(ContentBlock, 'buttons')
+	contentBlock = def.manyHasOne(ContentBlock, 'buttons').cascadeOnDelete()
 }
 
 export class ContentFeatureItem {
@@ -52,14 +52,14 @@ export class ContentFeatureItem {
 	primaryText = def.stringColumn()
 	content = def.oneHasOne(Content)
 	icon = def.manyHasOne(Image)
-	contentBlock = def.manyHasOne(ContentBlock, 'featureList')
+	contentBlock = def.manyHasOne(ContentBlock, 'featureList').cascadeOnDelete()
 }
 
 export class ContentTestimonial {
 	order = def.intColumn().notNull()
 	content = def.oneHasOne(Content)
 	author = def.oneHasOne(TestimonailAuthor)
-	contentBlock = def.manyHasOne(ContentBlock, 'testimonials')
+	contentBlock = def.manyHasOne(ContentBlock, 'testimonials').cascadeOnDelete()
 }
 
 export class TestimonailAuthor {
@@ -71,5 +71,5 @@ export class TestimonailAuthor {
 export class ContentBlogPost {
 	order = def.intColumn().notNull()
 	blogPost = def.manyHasOne(Article)
-	contentBlock = def.manyHasOne(ContentBlock, 'blogPosts')
+	contentBlock = def.manyHasOne(ContentBlock, 'blogPosts').cascadeOnDelete()
 }
