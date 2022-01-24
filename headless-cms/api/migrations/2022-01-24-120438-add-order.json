@@ -1,0 +1,96 @@
+{
+	"formatVersion": 3,
+	"modifications": [
+		{
+			"modification": "updateRelationOrderBy",
+			"entityName": "ContentBlock",
+			"fieldName": "images",
+			"orderBy": [
+				{
+					"path": [
+						"order"
+					],
+					"direction": "asc"
+				}
+			]
+		},
+		{
+			"modification": "updateRelationOrderBy",
+			"entityName": "ContentBlock",
+			"fieldName": "buttons",
+			"orderBy": [
+				{
+					"path": [
+						"order"
+					],
+					"direction": "asc"
+				}
+			]
+		},
+		{
+			"modification": "updateRelationOrderBy",
+			"entityName": "ContentBlock",
+			"fieldName": "featureList",
+			"orderBy": [
+				{
+					"path": [
+						"order"
+					],
+					"direction": "asc"
+				}
+			]
+		},
+		{
+			"modification": "updateRelationOrderBy",
+			"entityName": "ContentBlock",
+			"fieldName": "testimonials",
+			"orderBy": [
+				{
+					"path": [
+						"order"
+					],
+					"direction": "asc"
+				}
+			]
+		},
+		{
+			"modification": "updateRelationOrderBy",
+			"entityName": "ContentBlock",
+			"fieldName": "blogPosts",
+			"orderBy": [
+				{
+					"path": [
+						"order"
+					],
+					"direction": "asc"
+				}
+			]
+		},
+		{
+			"modification": "updateRelationOrderBy",
+			"entityName": "Menu",
+			"fieldName": "items",
+			"orderBy": [
+				{
+					"path": [
+						"order"
+					],
+					"direction": "asc"
+				}
+			]
+		},
+		{
+			"modification": "updateRelationOrderBy",
+			"entityName": "Page",
+			"fieldName": "blocks",
+			"orderBy": [
+				{
+					"path": [
+						"order"
+					],
+					"direction": "asc"
+				}
+			]
+		}
+	]
+}

@@ -26,12 +26,12 @@ export class ContentBlock {
 	primaryText = def.stringColumn()
 	secondaryText = def.stringColumn()
 	image = def.manyHasOne(Image)
-	images = def.oneHasMany(ContentImage, 'contentBlock')
-	buttons = def.oneHasMany(ContentButton, 'contentBlock')
+	images = def.oneHasMany(ContentImage, 'contentBlock').orderBy('order')
+	buttons = def.oneHasMany(ContentButton, 'contentBlock').orderBy('order')
 	content = def.oneHasOne(Content)
-	featureList = def.oneHasMany(ContentFeatureItem, 'contentBlock')
-	testimonials = def.oneHasMany(ContentTestimonial, 'contentBlock')
-	blogPosts = def.oneHasMany(ContentBlogPost, 'contentBlock')
+	featureList = def.oneHasMany(ContentFeatureItem, 'contentBlock').orderBy('order')
+	testimonials = def.oneHasMany(ContentTestimonial, 'contentBlock').orderBy('order')
+	blogPosts = def.oneHasMany(ContentBlogPost, 'contentBlock').orderBy('order')
 	contactForm = def.oneHasOne(ContactMessage)
 }
 

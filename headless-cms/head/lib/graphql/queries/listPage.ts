@@ -18,7 +18,7 @@ const homePage = `#graphql
           alt
         }
       }
-      blocks(orderBy: {order: asc}) {
+      blocks {
         id
         order
         type
@@ -35,7 +35,7 @@ const homePage = `#graphql
               }
           }
         }
-        buttons(orderBy: {order: asc}) {
+        buttons {
           id
           order
           button {
@@ -61,7 +61,7 @@ const homePage = `#graphql
           height
           alt
         }
-        images(orderBy: {order: asc}) {
+        images {
           id
           order
           image {
@@ -71,7 +71,7 @@ const homePage = `#graphql
             alt
           }
         }
-        featureList(orderBy: {order: asc}) {
+        featureList {
           id
           order
           primaryText
@@ -92,7 +92,7 @@ const homePage = `#graphql
             alt
           }
         }
-        testimonials(orderBy: {order: asc}) {
+        testimonials {
           id
           order
           content {

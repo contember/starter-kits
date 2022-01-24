@@ -23,7 +23,7 @@ const getBlogPage = `#graphql
           alt
         }
       }
-      blocks(orderBy: {order: asc}) {
+      blocks {
         id
         order
         type
@@ -40,7 +40,7 @@ const getBlogPage = `#graphql
               }
           }
         }
-        buttons(orderBy: {order: asc}) {
+        buttons {
           id
           order
           button {
@@ -66,7 +66,7 @@ const getBlogPage = `#graphql
           height
           alt
         }
-        images(orderBy: {order: asc}) {
+        images {
           id
           order
           image {
@@ -76,7 +76,7 @@ const getBlogPage = `#graphql
             alt
           }
         }
-        featureList(orderBy: {order: asc}) {
+        featureList {
           id
           order
           primaryText
@@ -97,7 +97,7 @@ const getBlogPage = `#graphql
             alt
           }
         }
-        testimonials(orderBy: {order: asc}) {
+        testimonials {
           id
           order
           content {
