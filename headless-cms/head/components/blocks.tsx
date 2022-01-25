@@ -1,14 +1,10 @@
-import type { ContentBlock } from "../lib/graphql/model/content"
-import type { Page } from "../lib/graphql/model/page"
-import type { SubmitState } from "../lib/graphql/model/submitState"
-
 import { RichTextRenderer } from "@contember/react-client"
 import { useCallback, useState } from "react"
 import { clientSideFetch } from "../lib/graphql/gqlfetch"
 import createMessage from "../lib/graphql/mutations/createMessage"
 import Link from "./link"
 
-function HeroSection({ primaryText, content, image, buttons }: ContentBlock) {
+function HeroSection({ primaryText, content, image, buttons }) {
 	return (
 		<section className="section-hero">
 			<div>
@@ -19,7 +15,7 @@ function HeroSection({ primaryText, content, image, buttons }: ContentBlock) {
 					<RichTextRenderer blocks={content.parts} sourceField="json" />
 				}
 				<div>
-					{buttons && buttons.map((button: any) => (
+					{buttons && buttons.map((button) => (
 						<Link {...button.button} key={button.id} />
 					))}
 				</div>
@@ -33,7 +29,7 @@ function HeroSection({ primaryText, content, image, buttons }: ContentBlock) {
 	)
 }
 
-function LogoSection({ content, images }: ContentBlock) {
+function LogoSection({ content, images }) {
 	return (
 		<section>
 			{content && content.parts &&
@@ -50,7 +46,7 @@ function LogoSection({ content, images }: ContentBlock) {
 	)
 }
 
-function ContentSection({ content }: ContentBlock) {
+function ContentSection({ content }) {
 	return (
 		<section>
 			{content && content.parts &&
@@ -60,7 +56,7 @@ function ContentSection({ content }: ContentBlock) {
 	)
 }
 
-function FeatureSection({ primaryText, secondaryText, featureList }: ContentBlock) {
+function FeatureSection({ primaryText, secondaryText, featureList }) {
 	return (
 		<section>
 			<h2>{primaryText}</h2>
@@ -82,7 +78,7 @@ function FeatureSection({ primaryText, secondaryText, featureList }: ContentBloc
 	)
 }
 
-function CtaSection({ primaryText, secondaryText, buttons }: ContentBlock) {
+function CtaSection({ primaryText, secondaryText, buttons }) {
 	return (
 		<section>
 			<h2>{primaryText}</h2>
@@ -96,7 +92,7 @@ function CtaSection({ primaryText, secondaryText, buttons }: ContentBlock) {
 	)
 }
 
-function TestimonialSection({ primaryText, content, testimonials }: ContentBlock) {
+function TestimonialSection({ primaryText, content, testimonials }) {
 	return (
 		<section>
 			<h2>{primaryText}</h2>
@@ -132,7 +128,7 @@ function TestimonialSection({ primaryText, content, testimonials }: ContentBlock
 	)
 }
 
-function ContactSection({ primaryText, content }: ContentBlock) {
+function ContactSection({ primaryText, content }) {
 	const [submitState, setSubmitState] = useState<any>(null)
 
 	const onSubmit = useCallback(async (event) => {
@@ -160,7 +156,7 @@ function ContactSection({ primaryText, content }: ContentBlock) {
 			}
 			<div>
 				{submitState &&
-					submitState.map((status: SubmitState) => status.message.text ? status.message.text : status.message)
+					submitState.map((status) => status.message.text ? status.message.text : status.message)
 				}
 				<form onSubmit={onSubmit}>
 					<label htmlFor="fname">
@@ -191,7 +187,7 @@ function ContactSection({ primaryText, content }: ContentBlock) {
 	)
 }
 
-function ImageWithText({ content, image }: ContentBlock) {
+function ImageWithText({ content, image }) {
 	return (
 		<section>
 			{content && content.parts &&
@@ -208,7 +204,7 @@ function ImageWithText({ content, image }: ContentBlock) {
 	)
 }
 
-export default function Blocks({ blocks }: Page) {
+export default function Blocks({ blocks }) {
 	return blocks ? blocks.map((block) => {
 		const blocksElements = {
 			heroSection: <HeroSection {...block} key={block.id} />,
