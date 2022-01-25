@@ -1,21 +1,25 @@
+import type { ContentBlock } from "../lib/graphql/model/content"
+import type { Page } from "../lib/graphql/model/page"
+import type { SubmitState } from "../lib/graphql/model/submitState"
+
 import { RichTextRenderer } from "@contember/react-client"
 import { useCallback, useState } from "react"
 import { clientSideFetch } from "../lib/graphql/gqlfetch"
 import createMessage from "../lib/graphql/mutations/createMessage"
 import Link from "./link"
 
-function HeroSection({ primaryText, content, image, buttons }: any) {
+function HeroSection({ primaryText, content, image, buttons }: ContentBlock) {
 	return (
 		<section className="section-hero">
 			<div>
 				<h1>
 					{primaryText}
 				</h1>
-				{content &&
+				{content && content.parts &&
 					<RichTextRenderer blocks={content.parts} sourceField="json" />
 				}
 				<div>
-					{buttons.map((button: any) => (
+					{buttons && buttons.map((button: any) => (
 						<Link {...button.button} key={button.id} />
 					))}
 				</div>
@@ -29,91 +33,106 @@ function HeroSection({ primaryText, content, image, buttons }: any) {
 	)
 }
 
-function LogoSection({ content, images }: any) {
+function LogoSection({ content, images }: ContentBlock) {
 	return (
 		<section>
-			{content &&
+			{content && content.parts &&
 				<RichTextRenderer blocks={content.parts} sourceField="json" />
 			}
 			<div>
-				{images.map(({ image }: any) => (
-					<img src={image.url} alt={image.alt} width={image.width} height={image.height} />
-				))}
+				{images &&
+					images.map(({ image }: any) => (
+						<img src={image.url} alt={image.alt} width={image.width} height={image.height} />
+					))
+				}
 			</div>
 		</section>
 	)
 }
 
-function ContentSection({ content }: any) {
+function ContentSection({ content }: ContentBlock) {
 	return (
 		<section>
-			{content &&
+			{content && content.parts &&
 				<RichTextRenderer blocks={content.parts} sourceField="json" />
 			}
 		</section>
 	)
 }
 
-function FeatureSection({ primaryText, secondaryText, featureList }: any) {
+function FeatureSection({ primaryText, secondaryText, featureList }: ContentBlock) {
 	return (
 		<section>
 			<h2>{primaryText}</h2>
 			<h3>{secondaryText}</h3>
 			<ul>
-				{featureList.map((feature: any) => (
-					<li key={feature.id}>
-						<img src={feature.icon.url} width={feature.icon.width} height={feature.icon.height} alt={feature.icon.alt} />
-						<h3>{feature.primaryText}</h3>
-						{feature.content &&
-							<RichTextRenderer blocks={feature.content.parts} sourceField="json" />
-						}
-					</li>
-				))}
+				{featureList &&
+					featureList.map((feature: any) => (
+						<li key={feature.id}>
+							<img src={feature.icon.url} width={feature.icon.width} height={feature.icon.height} alt={feature.icon.alt} />
+							<h3>{feature.primaryText}</h3>
+							{feature.content &&
+								<RichTextRenderer blocks={feature.content.parts} sourceField="json" />
+							}
+						</li>
+					))
+				}
 			</ul>
 		</section>
 	)
 }
 
-function CtaSection({ primaryText, secondaryText, buttons }: any) {
+function CtaSection({ primaryText, secondaryText, buttons }: ContentBlock) {
 	return (
 		<section>
 			<h2>{primaryText}</h2>
 			<h3>{secondaryText}</h3>
-			{buttons.map((button: any) => (
-				<Link {...button.button} key={button.key} />
-			))}
+			{buttons &&
+				buttons.map((button: any) => (
+					<Link {...button.button} key={button.key} />
+				))
+			}
 		</section>
 	)
 }
 
-function TestimonialSection({ primaryText, content, testimonials }: any) {
+function TestimonialSection({ primaryText, content, testimonials }: ContentBlock) {
 	return (
 		<section>
 			<h2>{primaryText}</h2>
-			{content &&
+			{content && content.parts &&
 				<RichTextRenderer blocks={content.parts} sourceField="json" />
 			}
 			<div>
-				{testimonials.map((testimonial: any) => (
-					<div key={testimonial.key}>
-						{testimonial.content &&
-							<div>
-								<RichTextRenderer blocks={testimonial.content.parts} sourceField="json" />
-							</div>
-						}
-						<p>{testimonial.author.name}</p>
-						<p>
-							<RichTextRenderer source={testimonial.author.title} />
-						</p>
-						<img src={testimonial.author.image.url} width={testimonial.author.image.width} height={testimonial.author.image.height} alt={testimonial.author.image.alt} />
-					</div>
-				))}
+				{testimonials &&
+					testimonials.map((testimonial) => (
+						<div key={testimonial.id}>
+							{testimonial.content && testimonial.content.parts &&
+								<div>
+									<RichTextRenderer blocks={testimonial.content.parts} sourceField="json" />
+								</div>
+							}
+							<p>{testimonial.author?.name}</p>
+							{testimonial.author?.title &&
+								<p>
+									<RichTextRenderer source={testimonial.author.title} />
+								</p>
+							}
+							<img
+								src={testimonial.author?.image?.url}
+								width={testimonial.author?.image?.width}
+								height={testimonial.author?.image?.height}
+								alt={testimonial.author?.image?.alt}
+							/>
+						</div>
+					))
+				}
 			</div>
 		</section>
 	)
 }
 
-function ContactSection({ primaryText, content }: any) {
+function ContactSection({ primaryText, content }: ContentBlock) {
 	const [submitState, setSubmitState] = useState<any>(null)
 
 	const onSubmit = useCallback(async (event) => {
@@ -123,6 +142,7 @@ function ContactSection({ primaryText, content }: any) {
 
 		const { errors, data: submitData } = await clientSideFetch(createMessage, { data })
 		setSubmitState(errors)
+
 		if (errors) {
 			setSubmitState(submitData)
 		} else if (!submitData.createContactMessage.validation.valid) {
@@ -135,12 +155,12 @@ function ContactSection({ primaryText, content }: any) {
 	return (
 		<section>
 			<h2>{primaryText}</h2>
-			{content &&
+			{content && content.parts &&
 				<RichTextRenderer blocks={content.parts} sourceField="json" />
 			}
 			<div>
 				{submitState &&
-					submitState.map((status: any) => status.message.text ? status.message.text : status.message)
+					submitState.map((status: SubmitState) => status.message.text ? status.message.text : status.message)
 				}
 				<form onSubmit={onSubmit}>
 					<label htmlFor="fname">
@@ -171,9 +191,26 @@ function ContactSection({ primaryText, content }: any) {
 	)
 }
 
-export default function Blocks({ blocks }: any) {
-	return blocks ? blocks.map((block: any) => {
-		const blocksElements: any = {
+function ImageWithText({ content, image }: ContentBlock) {
+	return (
+		<section>
+			{content && content.parts &&
+				<RichTextRenderer blocks={content.parts} sourceField="json" />
+			}
+			<div>
+				{image &&
+					<div>
+						<img src={image.url} width={image.width} height={image.height} alt={image.alt} />
+					</div>
+				}
+			</div>
+		</section>
+	)
+}
+
+export default function Blocks({ blocks }: Page) {
+	return blocks ? blocks.map((block) => {
+		const blocksElements = {
 			heroSection: <HeroSection {...block} key={block.id} />,
 			logosSection: <LogoSection {...block} key={block.id} />,
 			contentSection: <ContentSection {...block} key={block.id} />,
@@ -181,6 +218,7 @@ export default function Blocks({ blocks }: any) {
 			ctaSection: <CtaSection {...block} key={block.id} />,
 			testimonialSection: <TestimonialSection {...block} key={block.id} />,
 			contactSection: <ContactSection {...block} key={block.id} />,
+			imageWithText: <ImageWithText {...block} key={block.id} />,
 		}
 
 		return blocksElements[block.type]
