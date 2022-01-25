@@ -37,8 +37,8 @@ function LogoSection({ content, images }) {
 			}
 			<div>
 				{images &&
-					images.map(({ image }: any) => (
-						<img src={image.url} alt={image.alt} width={image.width} height={image.height} />
+					images.map(({ image }) => (
+						<img src={image.url} alt={image.alt} width={image.width} height={image.height} key={image.id} />
 					))
 				}
 			</div>
@@ -63,7 +63,7 @@ function FeatureSection({ primaryText, secondaryText, featureList }) {
 			<h3>{secondaryText}</h3>
 			<ul>
 				{featureList &&
-					featureList.map((feature: any) => (
+					featureList.map((feature) => (
 						<li key={feature.id}>
 							<img src={feature.icon.url} width={feature.icon.width} height={feature.icon.height} alt={feature.icon.alt} />
 							<h3>{feature.primaryText}</h3>
@@ -84,7 +84,7 @@ function CtaSection({ primaryText, secondaryText, buttons }) {
 			<h2>{primaryText}</h2>
 			<h3>{secondaryText}</h3>
 			{buttons &&
-				buttons.map((button: any) => (
+				buttons.map((button) => (
 					<Link {...button.button} key={button.key} />
 				))
 			}
@@ -156,7 +156,7 @@ function ContactSection({ primaryText, content }) {
 			}
 			<div>
 				{submitState &&
-					submitState.map((status) => status.message.text ? status.message.text : status.message)
+					submitState.map((status, index) => <div key={index}>{status.message.text ? status.message.text : status.message}</div>)
 				}
 				<form onSubmit={onSubmit}>
 					<label htmlFor="fname">
