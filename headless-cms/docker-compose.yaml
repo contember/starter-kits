@@ -92,7 +92,7 @@ services:
     environment:
       MINIO_ROOT_USER: 'contember'
       MINIO_ROOT_PASSWORD: 'contember'
-      MINIO_DEFAULT_BUCKETS: 'contember:public'
+      MINIO_DEFAULT_BUCKETS: 'contember:download'
 
     ports:
       - '1483:9000'
