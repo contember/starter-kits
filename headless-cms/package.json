@@ -16,11 +16,11 @@
     "react-dom": "^17"
   },
   "devDependencies": {
-    "@contember/admin": "^1.0.0-rc.1",
-    "@contember/admin-i18n": "^1.0.0-rc.1",
-    "@contember/react-client": "^1.0.0-rc.1",
-    "@contember/schema": "^1.0.0-rc.2",
-    "@contember/schema-definition": "^1.0.0-rc.2",
+    "@contember/admin": "^1.0.0-rc.2",
+    "@contember/admin-i18n": "^1.0.0-rc.2",
+    "@contember/react-client": "^1.0.0-rc.2",
+    "@contember/schema": "^1.0.0-rc.6",
+    "@contember/schema-definition": "^1.0.0-rc.6",
     "@types/node": "^16",
     "@types/react": "^17",
     "concurrently": "^7.0.0",
