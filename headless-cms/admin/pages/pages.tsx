@@ -1,8 +1,7 @@
 import * as React from 'react'
 import {
 	CreatePage,
-	DataBindingProvider,
-	DataGrid,
+	DataGridPage,
 	EditPage,
 	EntityAccessor,
 	EnumCell,
@@ -23,29 +22,27 @@ function clearSlugWhenPageHasRole(getEntityAccessor: EntityAccessor.GetEntityAcc
 	}
 }
 
-export const Pages = (
-	<GenericPage
-		pageName="pages"
-		title={locale["Pages"]}
-		actions={<LinkButton to="pageCreate">{locale["Add page"]}</LinkButton>}
+	<DataGridPage
+		entities="Page"
+		itemsPerPage={50}
+		rendererProps={{ title: locale['Pages'], actions: <LinkButton to="pageCreate">{locale['Add page']}</LinkButton> }}
 	>
-		<DataBindingProvider stateComponent={FeedbackRenderer}>
-			<DataGrid entities="Page" itemsPerPage={50}>
-				<TextCell
-					field="seo.title"
-					header={locale["Title"]}
-					format={(scalar) => <Link to="page(id: $entity.id)">{scalar}</Link>}
-				/>
-				<EnumCell
-					field="role"
-					header={locale["Role"]}
-					options={{
-						homePage: locale["Home page"],
-						error404Page: locale["Error 404"],
-						blogPage: locale["Blog page"],
-					}}
-				/>
+		<TextCell
+			field="seo.title"
+			header={locale["Title"]}
+			format={(scalar) => <Link to="pageEdit(id: $entity.id)">{scalar}</Link>}
+		/>
+		<EnumCell
+			field="role"
+			header={locale["Role"]}
+			options={{
+				homePage: locale["Home page"],
+				error404Page: locale["Error 404"],
+				blogPage: locale["Blog page"],
+			}}
+		/>
 		<UrlCell field="slug" header={locale["Url"]} />
+	</DataGridPage>
 )
 
 export const PageCreate = (
