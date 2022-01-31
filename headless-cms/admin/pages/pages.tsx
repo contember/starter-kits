@@ -14,6 +14,7 @@ import {
 } from '@contember/admin'
 import { PageForm, PageSideForm } from '../forms/pageForms'
 import locale from '../locales'
+import { UrlCell } from '../components/UrlCell'
 
 function clearSlugWhenPageHasRole(getEntityAccessor: EntityAccessor.GetEntityAccessor) {
 	const entity = getEntityAccessor()
@@ -44,10 +45,7 @@ export const Pages = (
 						blogPage: locale["Blog page"],
 					}}
 				/>
-				<TextCell field="slug" header={locale["Url"]} format={(slug) => <>{'/' + slug}</>} />
-			</DataGrid>
-		</DataBindingProvider>
-	</GenericPage>
+		<UrlCell field="slug" header={locale["Url"]} />
 )
 
 export const PageCreate = (

@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { CreatePage, DataGridPage, DateCell, EditPage, Link, LinkButton, TextCell } from '@contember/admin'
 import { ArticleForm, ArticleSideForm } from '../forms/articleForms'
+import { UrlCell } from '../components/UrlCell'
 import locale from '../locales'
 
 export const Articles = (
@@ -17,7 +18,7 @@ export const Articles = (
 			header={locale["Headline"]}
 			format={(scalar) => <Link to="article(id: $entity.id)">{scalar}</Link>}
 		/>
-		<TextCell field="slug" header={locale["Url"]} />
+		<UrlCell field="slug" header={locale['Url']} prefix="blog" />
 		<DateCell field="publishAt" header={locale["Publish date"]} />
 	</DataGridPage>
 )
