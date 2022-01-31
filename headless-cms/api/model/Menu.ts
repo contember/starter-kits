@@ -11,5 +11,5 @@ export class MenuItem {
 	order = def.intColumn().notNull()
 	label = def.stringColumn()
 	url = def.oneHasOne(Link)
-	menu = def.manyHasOne(Menu, 'items')
+	menu = def.manyHasOne(Menu, 'items').cascadeOnDelete().notNull()
 }

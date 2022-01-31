@@ -1,28 +1,21 @@
 import * as React from 'react'
-import { CreatePage, DataGridPage, EditPage, EnumCell, Link, LinkButton, TextCell } from '@contember/admin'
+import { CreatePage, EditPage, Field, LinkButton, TableCell, TablePage } from '@contember/admin'
 import { NavigationForm } from '../forms/navigationForms'
 import locale from '../locales'
 
 export const NavigationList = (
-	<DataGridPage
+	<TablePage
 		entities="Menu"
-		itemsPerPage={50}
 		rendererProps={{
 			title: locale["Menus"],
 			actions: <LinkButton to="navigationCreate">{locale["Add menu"]}</LinkButton>
 		}}
 	>
-		<TextCell
-			field="id"
-			header={locale["Id"]}
-			format={(scalar) => <Link to="navigationEdit(id: $entity.id)">{scalar}</Link>}
-		/>
-		<EnumCell
-			field="position"
-			header={locale["Position"]}
-			options={{ header: locale["Header"], footer: locale["Footer"] }}
-		/>
-	</DataGridPage>
+		<TableCell><Field field="position" /></TableCell>
+		<TableCell justification="justifyEnd">
+			<LinkButton to="navigationEdit(id: $entity.id)">{locale['Edit menu']}</LinkButton>
+		</TableCell>
+	</TablePage>
 )
 
 export const NavigationCreate = (
