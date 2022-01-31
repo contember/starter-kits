@@ -3,6 +3,6 @@ import { useEffect } from 'react'
 
 export const index = () => {
 	const redirect = useRedirect()
-	useEffect(() => redirect('pages'), [redirect])
+	useEffect(() => redirect('pageList'), [redirect])
 	return null
 }

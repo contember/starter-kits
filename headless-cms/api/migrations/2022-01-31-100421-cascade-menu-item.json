@@ -1,0 +1,16 @@
+{
+	"formatVersion": 3,
+	"modifications": [
+		{
+			"modification": "updateRelationOnDelete",
+			"entityName": "MenuItem",
+			"fieldName": "menu",
+			"onDelete": "cascade"
+		},
+		{
+			"modification": "makeRelationNotNull",
+			"entityName": "MenuItem",
+			"fieldName": "menu"
+		}
+	]
+}
