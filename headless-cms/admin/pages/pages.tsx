@@ -5,8 +5,6 @@ import {
 	EditPage,
 	EntityAccessor,
 	EnumCell,
-	FeedbackRenderer,
-	GenericPage,
 	Link,
 	LinkButton,
 	TextCell,
@@ -22,6 +20,7 @@ function clearSlugWhenPageHasRole(getEntityAccessor: EntityAccessor.GetEntityAcc
 	}
 }
 
+export const PageList = (
 	<DataGridPage
 		entities="Page"
 		itemsPerPage={50}
@@ -49,17 +48,16 @@ export const PageCreate = (
 	<CreatePage
 		entity="Page"
 		rendererProps={{ title: locale["Add page"], side: <PageSideForm /> }}
-		redirectOnSuccess="page(id: $entity.id)"
+		redirectOnSuccess="pageEdit(id: $entity.id)"
 		onBeforePersist={(entityAccessor) => clearSlugWhenPageHasRole(entityAccessor)}
 	>
 		<PageForm />
 	</CreatePage>
 )
 
-export const Page = (
+export const PageEdit = (
 	<EditPage
 		entity="Page(id=$id)"
-		pageName="page"
 		rendererProps={{ title: locale["Edit page"], side: <PageSideForm isEditPage /> }}
 		onBeforePersist={(entityAccessor) => clearSlugWhenPageHasRole(entityAccessor)}
 	>

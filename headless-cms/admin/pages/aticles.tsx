@@ -1,10 +1,10 @@
 import * as React from 'react'
-import { CreatePage, DataGridPage, DateCell, EditPage, Link, LinkButton, TextCell } from '@contember/admin'
+import { CreatePage, DataGridPage, DateCell, EditPage, useEnvironment, Link, LinkButton, TextCell } from '@contember/admin'
 import { ArticleForm, ArticleSideForm } from '../forms/articleForms'
 import { UrlCell } from '../components/UrlCell'
 import locale from '../locales'
 
-export const Articles = (
+export const ArticleList = (
 	<DataGridPage
 		entities="Article"
 		itemsPerPage={50}
@@ -16,7 +16,7 @@ export const Articles = (
 		<TextCell
 			field="headline"
 			header={locale["Headline"]}
-			format={(scalar) => <Link to="article(id: $entity.id)">{scalar}</Link>}
+			format={(scalar) => <Link to="articleEdit(id: $entity.id)">{scalar}</Link>}
 		/>
 		<UrlCell field="slug" header={locale['Url']} prefix="blog" />
 		<DateCell field="publishAt" header={locale["Publish date"]} />
@@ -26,18 +26,16 @@ export const Articles = (
 export const ArticleCreate = (
 	<CreatePage
 		entity="Article"
-		pageName="articleCreate"
 		rendererProps={{ title: locale["Add article"], side: <ArticleSideForm /> }}
-		redirectOnSuccess="article(id: $entity.id)"
+		redirectOnSuccess="articleEdit(id: $entity.id)"
 	>
 		<ArticleForm />
 	</CreatePage>
 )
 
-export const Article = (
+export const ArticleEdit = (
 	<EditPage
 		entity="Article(id=$id)"
-		pageName="article"
 		rendererProps={{ title: locale["Edit article"], side: <ArticleSideForm isEditPage /> }}
 	>
 		<ArticleForm />
