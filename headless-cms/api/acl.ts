@@ -92,9 +92,9 @@ const aclFactory = (model: Model.Schema): Acl.Schema => ({
 					predicates: {},
 					operations: readOnly(model, 'ContentTestimonial', true),
 				},
-				TestimonailAuthor: {
+				TestimonialAuthor: {
 					predicates: {},
-					operations: readOnly(model, 'TestimonailAuthor', true),
+					operations: readOnly(model, 'TestimonialAuthor', true),
 				},
 				ContentBlogPost: {
 					predicates: {},

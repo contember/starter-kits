@@ -273,7 +273,7 @@
 		{
 			"modification": "createEntity",
 			"entity": {
-				"name": "TestimonailAuthor",
+				"name": "TestimonialAuthor",
 				"primary": "id",
 				"primaryColumn": "id",
 				"unique": {},
@@ -767,7 +767,7 @@
 		},
 		{
 			"modification": "createColumn",
-			"entityName": "TestimonailAuthor",
+			"entityName": "TestimonialAuthor",
 			"field": {
 				"name": "name",
 				"columnName": "name",
@@ -778,7 +778,7 @@
 		},
 		{
 			"modification": "createColumn",
-			"entityName": "TestimonailAuthor",
+			"entityName": "TestimonialAuthor",
 			"field": {
 				"name": "title",
 				"columnName": "title",
@@ -1326,7 +1326,7 @@
 				"name": "author",
 				"nullable": true,
 				"type": "OneHasOne",
-				"target": "TestimonailAuthor",
+				"target": "TestimonialAuthor",
 				"joiningColumn": {
 					"columnName": "author_id",
 					"onDelete": "restrict"
@@ -1356,7 +1356,7 @@
 		},
 		{
 			"modification": "createRelation",
-			"entityName": "TestimonailAuthor",
+			"entityName": "TestimonialAuthor",
 			"owningSide": {
 				"name": "image",
 				"nullable": true,
@@ -1951,7 +1951,7 @@
 									"customPrimary": true
 								}
 							},
-							"TestimonailAuthor": {
+							"TestimonialAuthor": {
 								"predicates": {},
 								"operations": {
 									"create": {

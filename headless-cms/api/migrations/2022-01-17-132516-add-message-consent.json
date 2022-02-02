@@ -236,7 +236,7 @@
 									}
 								}
 							},
-							"TestimonailAuthor": {
+							"TestimonialAuthor": {
 								"predicates": {},
 								"operations": {
 									"read": {

@@ -58,11 +58,11 @@ export class ContentFeatureItem {
 export class ContentTestimonial {
 	order = def.intColumn().notNull()
 	content = def.oneHasOne(Content)
-	author = def.oneHasOne(TestimonailAuthor)
+	author = def.oneHasOne(TestimonialAuthor)
 	contentBlock = def.manyHasOne(ContentBlock, 'testimonials').cascadeOnDelete()
 }
 
-export class TestimonailAuthor {
+export class TestimonialAuthor {
 	name = def.stringColumn()
 	title = def.stringColumn()
 	image = def.manyHasOne(Image)
