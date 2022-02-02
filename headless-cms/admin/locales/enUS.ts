@@ -76,6 +76,7 @@ export default {
 	"Show contact message": "Show contact message",
 	"Subtitle": "Subtitle",
 	"Testimonial section": "Testimonial section",
+	"Testimonial": "Testimonial",
 	"Testimonials": "Testimonials",
 	"Text": "Text",
 	"Title": "Title",

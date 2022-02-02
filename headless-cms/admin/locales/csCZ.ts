@@ -76,6 +76,7 @@ export default {
 	"Show contact message": "Zobrazit zprávu",
 	"Subtitle": "Podtitul",
 	"Testimonial section": "Sekce s doporučeními",
+	"Testimonial": "Doporučení",
 	"Testimonials": "Doporučení",
 	"Text": "Text",
 	"Title": "Titul",
