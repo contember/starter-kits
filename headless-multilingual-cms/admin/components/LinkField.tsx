@@ -9,7 +9,7 @@ export interface LinkFieldProps {
 
 function customRenderOptions(accessor: EntityAccessor) {
 	const slug = accessor.getField('slug').value
-	const role = accessor.getField('role').value
+	const role = accessor.getField('root.role').value
 
 	return slug ?? role
 }
@@ -20,22 +20,22 @@ export const LinkField = Component<LinkFieldProps>(
 			<HasOne field={field}>
 				<DiscriminatedBlocks label={label ?? 'Link'} field="type" description={locale["Select what you want to link."]}>
 					<Block discriminateBy="article" label={locale["Articles"]}>
-						<SelectField 
+						<SelectField
 							label={undefined}
-							options="Article.slug"
+							options="ArticleLocale.slug"
 							field="article"
 						/>
 					</Block>
 					<Block discriminateBy="page" label={locale["Pages"]}>
 						<SelectField
 							label={undefined}
-							options="Page"
+							options="PageLocale"
 							field="page"
 							renderOption={customRenderOptions}
 							optionsStaticRender={
 								<>
 									<Field field="slug" />
-									<Field field="role" />
+									<Field field="root.role" />
 								</>
 							}
 						/>

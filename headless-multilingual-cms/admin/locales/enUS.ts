@@ -44,6 +44,7 @@ export default {
 	"Label": "Label",
 	"Last name": "Last name",
 	"Link": "Link",
+	"Locales": "Locales",
 	"Logo": "Logo",
 	"Logos section": "Logos section",
 	"Logos": "Logos",

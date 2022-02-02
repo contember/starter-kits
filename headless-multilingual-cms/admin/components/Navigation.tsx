@@ -14,6 +14,7 @@ export const Navigation = () => (
 				<Menu.Item title={locale["Articles"]} to="seoArticles" />
 				<Menu.Item title={locale["Pages"]} to="seoPages" />
 			</Menu.Item>
+			<Menu.Item title={locale["Locales"]} to="localeList" />
 		</Menu.Item>
 	</Menu>
 )

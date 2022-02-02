@@ -5,15 +5,15 @@ import locale from '../locales'
 
 export const NavigationList = (
 	<TablePage
-		entities="Menu"
+		entities="MenuLocale[locale.code = $locale]"
 		rendererProps={{
 			title: locale["Menus"],
 			actions: <LinkButton to="navigationCreate">{locale["Add menu"]}</LinkButton>
 		}}
 	>
-		<TableCell><Field field="position" /></TableCell>
+		<TableCell><Field field="root.position" /></TableCell>
 		<TableCell justification="justifyEnd">
-			<LinkButton to="navigationEdit(id: $entity.id)">{locale['Edit menu']}</LinkButton>
+			<LinkButton to="navigationEdit(id: $entity.root.id)">{locale['Edit menu']}</LinkButton>
 		</TableCell>
 	</TablePage>
 )

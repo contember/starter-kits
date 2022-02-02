@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Component, Repeater, SelectField, TextField } from "@contember/admin"
 import { LinkField } from '../components/LinkField'
 import locale from '../locales'
+import { LocaleSideDimension } from '../components/LocaleSideDimension'
 
 export const NavigationForm = Component(
 	() => (
@@ -14,10 +15,12 @@ export const NavigationForm = Component(
 					{ label: locale["Footer"], value: 'footer' }
 				]}
 			/>
-			<Repeater field="items" label={locale["Items"]} sortableBy="order">
-				<TextField field="label" label={locale["Label"]} />
-				<LinkField field="url" label={locale["Url"]} />
-			</Repeater>
+			<LocaleSideDimension>
+				<Repeater field="items" label={locale["Items"]} sortableBy="order">
+					<TextField field="label" label={locale["Label"]} />
+					<LinkField field="url" label={locale["Url"]} />
+				</Repeater>
+			</LocaleSideDimension>
 		</>
 	), 'NavigationForm'
 )

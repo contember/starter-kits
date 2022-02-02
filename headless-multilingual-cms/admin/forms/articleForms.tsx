@@ -5,6 +5,7 @@ import { ImageField } from '../components/ImageField'
 import { Seo } from '../components/Seo'
 import { ContentField } from '../components/ContentField'
 import locale from '../locales'
+import { LocaleSideDimension } from '../components/LocaleSideDimension'
 
 type ArticleSideFormProps = {
 	isEditPage?: boolean
@@ -13,12 +14,18 @@ type ArticleSideFormProps = {
 export const ArticleSideForm = Component<ArticleSideFormProps>(
 	({ isEditPage }) => (
 		<>
-			{isEditPage && <PreviewLink slugField="slug" prefix="/blog/" />}
-			<DateTimeField
-				field="publishAt"
-				label={locale["Publish date"]}
-				defaultValue={new Date().toISOString()}
-			/>
+			{isEditPage &&
+				<LocaleSideDimension>
+					<PreviewLink slugField="slug" prefix="/blog/" />
+				</LocaleSideDimension>
+			}
+			<LocaleSideDimension>
+				<DateTimeField
+					field="publishAt"
+					label={locale["Publish date"]}
+					defaultValue={new Date().toISOString()}
+				/>
+			</LocaleSideDimension>
 		</>
 	),
 	'ArticleSideForm',
@@ -27,10 +34,12 @@ export const ArticleSideForm = Component<ArticleSideFormProps>(
 export const ArticleForm = Component(
 	() => (
 		<>
-			<TextField field="headline" label={locale["Headline"]} />
-			<ImageField field="coverPhoto" label={locale["Cover photo"]} />
-			<TextAreaField field="perex" label={locale["Perex"]} />
-			<ContentField label={locale["Text"]} size="large" />
+			<LocaleSideDimension>
+				<TextField field="headline" label={locale["Headline"]} />
+				<ImageField field="coverPhoto" label={locale["Cover photo"]} />
+				<TextAreaField field="perex" label={locale["Perex"]} />
+				<ContentField label={locale["Text"]} size="large" />
+			</LocaleSideDimension>
 			<Seo
 				titleDerivedFrom="headline"
 				descriptionDerivedFrom="perex"

@@ -22,7 +22,7 @@ export const ContentBlocks = Component(
 			sortableBy="order"
 			addButtonText="Add content block"
 		>
-			<Block
+			 <Block
 				discriminateBy="heroSection"
 				label={<LabelWithIcon icon={<IconHeroSection />} label={locale["Hero section"]} />}
 			>

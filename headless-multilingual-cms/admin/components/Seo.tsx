@@ -14,6 +14,7 @@ import {
 } from '@contember/admin'
 import { Conditional } from './Conditional'
 import locale from '../locales'
+import { LocaleSideDimension } from './LocaleSideDimension'
 
 export type SeoSlugFieldProps = {
 	unpersistedHardPrefix?: string
@@ -45,7 +46,7 @@ function getSlugPrefix(environment: Environment, unpersistedHardPrefix?: string)
 
 const SeoSlugField = Component<SeoFieldsProps>(
 	({ hasRoleField, referenceEntity, unpersistedHardPrefix }) => {
-		const fieldRole = referenceEntity ? referenceEntity + '.role' : 'role'
+		const fieldRole = referenceEntity ? referenceEntity + '.root.role' : 'root.role'
 		const fieldSlug = referenceEntity ? referenceEntity + '.slug' : 'slug'
 		const fieldTitle = referenceEntity ? (!hasRoleField ? referenceEntity + '.headline' : referenceEntity + '.seo.title') : 'seo.title'
 
@@ -120,28 +121,35 @@ export const SeoFields = Component<SeoFieldsProps>(
 
 
 export const Seo = Component<SeoFormProps>(
-	({ titleDerivedFrom, descriptionDerivedFrom, imageUrlDerivedFrom, titleTransform, seoPage, seoFieldsProps }) => (
-		<Section heading="SEO">
-			{titleDerivedFrom &&
-				<>
-					<DerivedFieldLink sourceField={titleDerivedFrom} derivedField="seo.title" transform={titleTransform} />
-					<DerivedFieldLink sourceField={titleDerivedFrom} derivedField="seo.ogTitle" transform={titleTransform} />
-				</>
-			}
-			{descriptionDerivedFrom &&
-				<>
-					<DerivedFieldLink sourceField={descriptionDerivedFrom} derivedField="seo.description" />
-					<DerivedFieldLink sourceField={descriptionDerivedFrom} derivedField="seo.ogDescription" />
-				</>
-			}
-			{imageUrlDerivedFrom &&
-				<>
-					<DerivedFieldLink sourceField={imageUrlDerivedFrom} derivedField="seo.ogImage.url" />
-				</>
-			}
-			<SeoFields field="seo" {...seoFieldsProps} />
-			<LinkButton to={seoPage}>{locale["Advanced website SEO"]}</LinkButton>
-		</Section>
-	),
+	({ titleDerivedFrom, descriptionDerivedFrom, imageUrlDerivedFrom, titleTransform, seoPage, seoFieldsProps }) => {
+		return (
+			<Section heading="SEO">
+				<LocaleSideDimension>
+					<>
+						{titleDerivedFrom &&
+							<>
+								<DerivedFieldLink sourceField={titleDerivedFrom} derivedField="seo.title" transform={titleTransform} />
+								<DerivedFieldLink sourceField={titleDerivedFrom} derivedField="seo.ogTitle" transform={titleTransform} />
+							</>
+						}
+						{descriptionDerivedFrom &&
+							<>
+								<DerivedFieldLink sourceField={descriptionDerivedFrom} derivedField="seo.description" />
+								<DerivedFieldLink sourceField={descriptionDerivedFrom} derivedField="seo.ogDescription" />
+							</>
+						}
+						{imageUrlDerivedFrom &&
+							<>
+								<DerivedFieldLink sourceField={imageUrlDerivedFrom} derivedField="seo.ogImage.url" />
+							</>
+						}
+						<SeoFields field="seo" {...seoFieldsProps} />
+						<LinkButton to={seoPage}>{locale["Advanced website SEO"]}
+						</LinkButton>
+					</>
+				</LocaleSideDimension>
+			</Section>
+		)
+	},
 	'Seo',
 )

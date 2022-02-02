@@ -4,7 +4,7 @@ import { Button } from './Button'
 import { ContactMessage } from './ContactMessage'
 import { Content } from './Content'
 import { Image } from './Image'
-import { Page } from './Page'
+import { PageLocale } from './Page'
 
 export const ContentBlockType = def.createEnum(
 	'heroSection', // primaryText, content, images, buttons
@@ -17,10 +17,10 @@ export const ContentBlockType = def.createEnum(
 )
 
 export class ContentBlock {
-	page = def.manyHasOne(Page, 'blocks').setNullOnDelete()
+	page = def.manyHasOne(PageLocale, 'blocks').setNullOnDelete()
 	order = def.intColumn().notNull()
 	type = def.enumColumn(ContentBlockType).notNull()
-	
+
 	primaryText = def.stringColumn()
 	secondaryText = def.stringColumn()
 	image = def.manyHasOne(Image)

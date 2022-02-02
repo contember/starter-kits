@@ -44,6 +44,7 @@ export default {
 	"Label": "Štítek",
 	"Last name": "Příjmení",
 	"Link": "Odkaz",
+	"Locales": "Jazyky",
 	"Logo": "Logo",
 	"Logos section": "Sekce s logy",
 	"Logos": "Logy",

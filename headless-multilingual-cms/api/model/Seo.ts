@@ -1,7 +1,7 @@
 import { SchemaDefinition as def } from '@contember/schema-definition'
-import { Article } from './Article'
+import { ArticleLocale } from './Article'
 import { Image } from './Image'
-import { Page } from './Page'
+import { PageLocale } from './Page'
 
 export class Seo {
 	title = def.stringColumn().notNull()
@@ -10,6 +10,6 @@ export class Seo {
 	ogDescription = def.stringColumn()
 	ogImage = def.oneHasOne(Image).cascadeOnDelete()
 
-	article = def.oneHasOneInverse(Article, 'seo')
-	page = def.oneHasOneInverse(Page, 'seo')
+	article = def.oneHasOneInverse(ArticleLocale, 'seo')
+	page = def.oneHasOneInverse(PageLocale, 'seo')
 }
