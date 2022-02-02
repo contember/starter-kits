@@ -1,5 +1,7 @@
 import { SchemaDefinition as def } from '@contember/schema-definition'
-import { Article, Image, Page } from '.'
+import { Article } from './Article'
+import { Image } from './Image'
+import { Page } from './Page'
 
 export class Seo {
 	title = def.stringColumn().notNull()

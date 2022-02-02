@@ -1,8 +1,6 @@
 import { SchemaDefinition as def } from '@contember/schema-definition'
-import {
-	Article,
-	Page
-} from '.'
+import { Article } from './Article'
+import { Page } from './Page'
 
 export const LinkEnum = def.createEnum('url', 'article', 'page')
 

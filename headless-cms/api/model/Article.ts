@@ -1,10 +1,8 @@
-import {
-	Content,
-	Image,
-	Link,
-	Seo
-} from '.'
 import { SchemaDefinition as def } from '@contember/schema-definition'
+import { Content } from './Content'
+import { Image } from './Image'
+import { Link } from './Link'
+import { Seo } from './Seo'
 
 export class Article {
 	headline = def.stringColumn()

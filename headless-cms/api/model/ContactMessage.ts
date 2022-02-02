@@ -1,5 +1,4 @@
-import { SchemaDefinition as def } from "@contember/schema-definition"
-
+import { SchemaDefinition as def } from '@contember/schema-definition'
 
 export class ContactMessage {
 	createdAt = def.dateTimeColumn().notNull().default('now')

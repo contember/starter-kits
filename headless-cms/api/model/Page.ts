@@ -1,5 +1,7 @@
-import { ContentBlock, Link, Seo } from '.'
 import { SchemaDefinition as def } from '@contember/schema-definition'
+import { ContentBlock } from './ContentBlock'
+import { Link } from './Link'
+import { Seo } from './Seo'
 
 export const PageTypeEnum = def.createEnum('homePage', 'blogPage', 'error404Page')
 

@@ -1,5 +1,5 @@
-import { Link } from '.'
 import { SchemaDefinition as def } from '@contember/schema-definition'
+import { Link } from './Link'
 
 export class Content {
 	parts: def.OneHasManyDefinition = def.oneHasMany(ContentPart, 'content').orderBy('order')

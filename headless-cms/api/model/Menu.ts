@@ -1,5 +1,5 @@
-import { SchemaDefinition as def } from "@contember/schema-definition"
-import { Link } from "."
+import { SchemaDefinition as def } from '@contember/schema-definition'
+import { Link } from './Link'
 
 export const MenuPositions = def.createEnum('header', 'footer')
 export class Menu {

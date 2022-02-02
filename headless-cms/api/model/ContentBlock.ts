@@ -7,6 +7,12 @@ import {
 	Page
 } from '.'
 import { SchemaDefinition as def } from '@contember/schema-definition'
+import { Article } from './Article'
+import { Button } from './Button'
+import { ContactMessage } from './ContactMessage'
+import { Content } from './Content'
+import { Image } from './Image'
+import { Page } from './Page'
 
 export const ContentBlockType = def.createEnum(
 	'heroSection', // primaryText, content, images, buttons
