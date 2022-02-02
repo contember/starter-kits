@@ -1,11 +1,3 @@
-import {
-	Article,
-	Button,
-	ContactMessage,
-	Content,
-	Image,
-	Page
-} from '.'
 import { SchemaDefinition as def } from '@contember/schema-definition'
 import { Article } from './Article'
 import { Button } from './Button'
