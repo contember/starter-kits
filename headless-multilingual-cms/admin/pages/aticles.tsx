@@ -24,7 +24,11 @@ export const ArticleList = () => {
 				/>
 			))}
 			{request?.dimensions.locale.map(localeCode => (
-				<UrlCell field={`locales(locale.code = '${localeCode}').slug`} header={`${locale['Url']} (${localeCode})`} prefix="blog" />
+				<UrlCell
+					field={`locales(locale.code = '${localeCode}').slug`}
+					header={`${locale['Url']} (${localeCode})`}
+					prefix={`${localeCode}/blog`}
+				/>
 			))}
 			{request?.dimensions.locale.map(localeCode => (
 				<DateCell field={`locales(locale.code = '${localeCode}').publishAt`} header={`${locale["Publish date"]} (${localeCode})`} />

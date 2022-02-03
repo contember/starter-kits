@@ -1,27 +1,27 @@
 import * as React from 'react'
 import {
 	CreatePage,
-	DataBindingProvider,
-	DataGrid,
 	DataGridPage,
 	EditPage,
 	EntityAccessor,
 	EnumCell,
-	LayoutRenderer,
 	Link,
 	LinkButton,
 	TextCell,
-	FeedbackRenderer,
-	useCurrentRequest
+	useCurrentRequest,
 } from '@contember/admin'
 import { PageForm, PageSideForm } from '../forms/pageForms'
-import locale from '../locales'
 import { UrlCell } from '../components/UrlCell'
+import locale from '../locales'
 
 function clearSlugWhenPageHasRole(getEntityAccessor: EntityAccessor.GetEntityAccessor) {
 	const entity = getEntityAccessor()
+	const locales = entity.environment.getDimension('locale')
+
 	if (entity.getField('role').value !== null) {
-		entity.getField('locales(locale.code = $locale).slug').updateValue(null)
+		locales.map(localeCode => (
+			entity.getField(`locales(locale.code = '${localeCode}').slug`).updateValue(null)
+		))
 	}
 }
 
@@ -51,13 +51,17 @@ export const PageList = () => {
 				}}
 			/>
 			{request?.dimensions.locale.map(localeCode => (
-				<UrlCell field={`locales(locale.code = '${localeCode}').slug`} header={`${locale["Url"]} (${localeCode})`} />
+				<UrlCell
+					field={`locales(locale.code = '${localeCode}').slug`}
+					header={`${locale["Url"]} (${localeCode})`}
+					prefix={`${localeCode}`}
+				/>
 			))}
 		</DataGridPage>
 	)
 }
 
-export const PageCreate = (
+export const PageCreate = () => (
 	<CreatePage
 		entity="Page"
 		rendererProps={{ title: locale["Add page"], side: <PageSideForm /> }}
@@ -68,7 +72,7 @@ export const PageCreate = (
 	</CreatePage>
 )
 
-export const PageEdit = (
+export const PageEdit = () => (
 	<EditPage
 		entity="Page(id=$id)"
 		rendererProps={{ title: locale["Edit page"], side: <PageSideForm isEditPage /> }}

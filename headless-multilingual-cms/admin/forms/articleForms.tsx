@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Component, DateTimeField, TextAreaField, TextField } from '@contember/admin'
+import { Component, DateTimeField, Section, TextAreaField, TextField } from '@contember/admin'
 import { PreviewLink } from '../components/PreviewLink'
 import { ImageField } from '../components/ImageField'
 import { Seo } from '../components/Seo'
@@ -13,20 +13,18 @@ type ArticleSideFormProps = {
 
 export const ArticleSideForm = Component<ArticleSideFormProps>(
 	({ isEditPage }) => (
-		<>
-			{isEditPage &&
-				<LocaleSideDimension>
-					<PreviewLink slugField="slug" prefix="/blog/" />
-				</LocaleSideDimension>
-			}
-			<LocaleSideDimension>
+		<LocaleSideDimension>
+			<>
+				{isEditPage &&
+					<PreviewLink slugField="slug" prefix={(environment) => `/${environment.getValue('currentLocaleCode')}/blog/`} />
+				}
 				<DateTimeField
 					field="publishAt"
 					label={locale["Publish date"]}
 					defaultValue={new Date().toISOString()}
 				/>
-			</LocaleSideDimension>
-		</>
+			</>
+		</LocaleSideDimension>
 	),
 	'ArticleSideForm',
 )
@@ -34,21 +32,25 @@ export const ArticleSideForm = Component<ArticleSideFormProps>(
 export const ArticleForm = Component(
 	() => (
 		<>
-			<LocaleSideDimension>
-				<TextField field="headline" label={locale["Headline"]} />
-				<ImageField field="coverPhoto" label={locale["Cover photo"]} />
-				<TextAreaField field="perex" label={locale["Perex"]} />
-				<ContentField label={locale["Text"]} size="large" />
-			</LocaleSideDimension>
-			<Seo
-				titleDerivedFrom="headline"
-				descriptionDerivedFrom="perex"
-				imageUrlDerivedFrom="coverPhoto.url"
-				seoPage="seoArticles"
-				seoFieldsProps={{
-					unpersistedHardPrefix: '/blog/',
-				}}
-			/>
+			<Section heading={locale["Content"]}>
+				<LocaleSideDimension>
+					<TextField field="headline" label={locale["Headline"]} />
+					<ImageField field="coverPhoto" label={locale["Cover photo"]} />
+					<TextAreaField field="perex" label={locale["Perex"]} />
+					<ContentField label={locale["Text"]} size="large" />
+				</LocaleSideDimension>
+			</Section>
+			<Section heading="Seo">
+				<Seo
+					titleDerivedFrom="headline"
+					descriptionDerivedFrom="perex"
+					imageUrlDerivedFrom="coverPhoto.url"
+					seoPage="seoArticles"
+					seoFieldsProps={{
+						unpersistedHardPrefix: '/blog/',
+					}}
+				/>
+			</Section>
 		</>
 	),
 	'ArticleForm',

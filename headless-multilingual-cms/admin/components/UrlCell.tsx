@@ -1,16 +1,15 @@
-import { Component, Scalar, StaticRender, TextCell, useEnvironment } from '@contember/admin'
+import { Component, Environment, Scalar, TextCell, useEnvironment } from '@contember/admin'
 import * as React from 'react'
-import locale from '../locales'
 
 export type UrlCellProps = {
 	field: string,
-	prefix?: string,
+	prefix?: string | ((environment: Environment) => string),
 	header?: string,
 }
 
 type UrlCellFromatProps = {
-	scalar: Scalar,
-	prefix?: string,
+	value: Scalar,
+	prefix?: string | ((environment: Environment) => string),
 }
 
 export const UrlCell = Component<UrlCellProps>(
@@ -19,7 +18,7 @@ export const UrlCell = Component<UrlCellProps>(
 			<TextCell
 				field={field}
 				header={header}
-				format={(scalar) => <UrlCellFormat scalar={scalar} prefix={prefix} />}
+				format={(value) => <UrlCellFormat value={value} prefix={prefix} />}
 			/>
 		)
 	},
@@ -27,13 +26,15 @@ export const UrlCell = Component<UrlCellProps>(
 )
 
 
-const UrlCellFormat = ({ scalar, prefix }: UrlCellFromatProps) => {
-	const webUrl = useEnvironment().getValue('WEB_URL')
-	const url = prefix ? `${webUrl}/${prefix}` : `${webUrl}`
+const UrlCellFormat = ({ value, prefix }: UrlCellFromatProps) => {
+	const environment = useEnvironment()
+	const webUrl = environment.getValue('WEB_URL')
+	const prefixValue = typeof prefix === 'function' ? prefix(environment) : prefix
+	const url = prefixValue ? `${webUrl}/${prefixValue}` : `${webUrl}`
 
 	return (
-		<a href={`${url}/${scalar}`} target="_blank">
-			{`${url}/${scalar}`}
+		<a href={`${url}/${value}`} target="_blank">
+			{`${url}/${value}`}
 		</a>
 	)
 }

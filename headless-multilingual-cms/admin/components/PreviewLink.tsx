@@ -1,20 +1,22 @@
 import * as React from 'react'
-import { Component, Field, useEnvironment, useField } from '@contember/admin'
+import { Component, Environment, Field, useEnvironment, useField } from '@contember/admin'
 import locale from '../locales'
 
 type PreviewLinkProps = {
 	slugField: string,
-	prefix?: string,
+	prefix?: string | ((environment: Environment) => string),
 	path?: string
 }
 
 export const PreviewLink = Component<PreviewLinkProps>(
 	({ slugField, path, prefix }) => {
-		const webUrl = useEnvironment().getValue('WEB_URL')
+		const environment = useEnvironment()
+		const webUrl = environment.getValue('WEB_URL')
 		const { value: slug } = useField<string>(slugField)
+		const prefixValue = typeof prefix === 'function' ? prefix(environment) : prefix
 
 		if (!path) {
-			path = prefix ? `${prefix}${slug}` : `/${slug}`
+			path = prefixValue ? `${prefixValue}${slug}` : `/${slug}`
 		}
 
 		return (
