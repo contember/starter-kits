@@ -35,7 +35,7 @@ export const ArticleForm = Component(
 			<Section heading={locale["Content"]}>
 				<LocaleSideDimension>
 					<TextField field="headline" label={locale["Headline"]} />
-					<ImageField field="coverPhoto" label={locale["Cover photo"]} />
+					<ImageField field="root.coverPhoto" label={locale["Cover photo"]} />
 					<TextAreaField field="perex" label={locale["Perex"]} />
 					<ContentField label={locale["Text"]} size="large" />
 				</LocaleSideDimension>
@@ -44,7 +44,7 @@ export const ArticleForm = Component(
 				<Seo
 					titleDerivedFrom="headline"
 					descriptionDerivedFrom="perex"
-					imageUrlDerivedFrom="coverPhoto.url"
+					imageUrlDerivedFrom="root.coverPhoto.url"
 					seoPage="seoArticles"
 					seoFieldsProps={{
 						unpersistedHardPrefix: '/blog/',

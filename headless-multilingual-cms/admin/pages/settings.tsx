@@ -1,6 +1,8 @@
 import * as React from 'react'
-import { EditPage, HasOne, ImageUploadField, Section, TextField } from '@contember/admin'
+import { EditPage, Section } from '@contember/admin'
 import { ContentField } from '../components/ContentField'
+import { LocaleSideDimension } from '../components/LocaleSideDimension'
+import { ImageField } from '../components/ImageField'
 import locale from '../locales'
 
 export const settings = (
@@ -10,11 +12,7 @@ export const settings = (
 		rendererProps={{ title: locale["Settings"] }}
 	>
 		<Section heading={locale["Logo"]}>
-			<HasOne field="logo">
-				<ImageUploadField label={locale["Logo"]} urlField="url" widthField="width" heightField="height">
-					<TextField field="alt" label={locale["Alternative text"]} />
-				</ImageUploadField>
-			</HasOne>
+			<ImageField label={locale["Logo"]} field="logo" />
 		</Section>
 		<Section heading={locale["Footer"]}>
 			<ContentField field="footerCopyright.parts" label={locale["Footer copyright"]} size="default" />

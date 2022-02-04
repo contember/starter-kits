@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Component, HasOne, ImageUploadField, TextField } from '@contember/admin'
 import locale from '../locales'
+import { LocaleSideDimension } from './LocaleSideDimension'
 
 type ImageFieldProps = {
 	field: string
@@ -16,7 +17,9 @@ export const ImageField = Component<ImageFieldProps>(
 				widthField="width"
 				heightField="height"
 			>
-				<TextField field="alt" label={locale["Alternative text"]} />
+				<LocaleSideDimension>
+					<TextField field="alt" label={locale["Alternative text"]} />
+				</LocaleSideDimension>
 			</ImageUploadField>
 		</HasOne>
 	),

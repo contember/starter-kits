@@ -12,6 +12,7 @@ import { IconTestimonialSection } from './icons/IconTestimonialSection'
 import { ImageField } from './ImageField'
 import { LabelWithIcon } from './LabelWithIcon'
 import locale from '../locales'
+import { LocaleSideDimension } from './LocaleSideDimension'
 
 export const ContentBlocks = Component(
 	() => (
@@ -22,7 +23,7 @@ export const ContentBlocks = Component(
 			sortableBy="order"
 			addButtonText="Add content block"
 		>
-			 <Block
+			<Block
 				discriminateBy="heroSection"
 				label={<LabelWithIcon icon={<IconHeroSection />} label={locale["Hero section"]} />}
 			>
@@ -37,14 +38,7 @@ export const ContentBlocks = Component(
 				>
 					<Button field="button" />
 				</Repeater>
-				<ImageUploadField
-					label={locale["Image"]}
-					urlField="image.url"
-					widthField="image.width"
-					heightField="image.height"
-				>
-					<TextField field="image.alt" label={locale["Alternative text"]} />
-				</ImageUploadField>
+				<ImageField field="image" label={locale["Image"]} />
 			</Block>
 
 			<Block
@@ -61,7 +55,11 @@ export const ContentBlocks = Component(
 					heightField="image.height"
 					description="You can upload any number of logos."
 				>
-					<TextField field="image.alt" label={locale["Alternative text"]} />
+					<HasOne field="image">
+						<LocaleSideDimension>
+							<TextField field="alt" label={locale["Alternative text"]} />
+						</LocaleSideDimension>
+					</HasOne>
 				</ImageFileRepeater>
 			</Block>
 
