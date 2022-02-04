@@ -7,6 +7,7 @@ import { Seo } from './Seo'
 
 export class Article {
 	locales = def.oneHasMany(ArticleLocale, 'root')
+	coverPhoto = def.manyHasOne(Image)
 }
 
 @def.Unique('root', 'locale')
@@ -16,7 +17,6 @@ export class ArticleLocale {
 	locale = def.manyHasOne(Locale, 'articles').cascadeOnDelete().notNull()
 
 	publishAt = def.dateTimeColumn()
-	coverPhoto = def.manyHasOne(Image)
 	headline = def.stringColumn().notNull()
 	perex = def.stringColumn()
 	slug = def.stringColumn().notNull()
