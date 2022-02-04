@@ -22,14 +22,14 @@ export const LinkField = Component<LinkFieldProps>(
 					<Block discriminateBy="article" label={locale["Articles"]}>
 						<SelectField
 							label={undefined}
-							options="ArticleLocale.slug"
+							options="ArticleLocale[locale.code=$currentLocaleCode].slug"
 							field="article"
 						/>
 					</Block>
 					<Block discriminateBy="page" label={locale["Pages"]}>
 						<SelectField
 							label={undefined}
-							options="PageLocale"
+							options="PageLocale[locale.code=$currentLocaleCode]"
 							field="page"
 							renderOption={customRenderOptions}
 							optionsStaticRender={
