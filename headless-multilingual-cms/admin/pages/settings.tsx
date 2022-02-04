@@ -15,7 +15,9 @@ export const settings = (
 			<ImageField label={locale["Logo"]} field="logo" />
 		</Section>
 		<Section heading={locale["Footer"]}>
-			<ContentField field="footerCopyright.parts" label={locale["Footer copyright"]} size="default" />
+			<LocaleSideDimension>
+				<ContentField field="footerCopyright.parts" label={locale["Footer copyright"]} size="default" />
+			</LocaleSideDimension>
 		</Section>
 	</EditPage>
 )
