@@ -1,5 +1,5 @@
 export async function serverSideFetch(query: any, variables?: any) {
-	const response = await fetch('http://localhost:1481/content/headless-cms/live', {
+	const response = await fetch('http://localhost:1481/content/headless-multilingual-cms/live', {
 		method: 'POST',
 		mode: 'cors',
 		headers: {
@@ -13,7 +13,7 @@ export async function serverSideFetch(query: any, variables?: any) {
 }
 
 export async function clientSideFetch(query: any, variables?: any) {
-	const response = await fetch('http://localhost:1481/content/headless-cms/live', {
+	const response = await fetch('http://localhost:1481/content/headless-multilingual-cms/live', {
 		method: 'POST',
 		mode: 'cors',
 		headers: {

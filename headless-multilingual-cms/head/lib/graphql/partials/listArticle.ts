@@ -10,7 +10,9 @@ const listArticle = `#graphql
 			url
 			width
 			height
-			alt
+			localesByLocale(by: { locale: $locale }) {
+				alt
+			}
 		}
 		content {
 			id

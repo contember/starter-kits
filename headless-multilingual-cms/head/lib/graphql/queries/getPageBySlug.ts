@@ -3,82 +3,114 @@ import getHeaderMenu from "../partials/getHeaderMenu"
 import getSettting from "../partials/getSettings"
 
 const getPage = `#graphql
-  query($slug: String) {
-    getPage(by: {slug: $slug}) {
-      id
-		publishAt
+  query($slug: String, $locale: LocaleUniqueWhere) {
+    getPage(by: { locales: { locale: $locale, slug: $slug } }) {
+		id
 		role
-		seo {
-			id
-			title
-			description
-			ogTitle
-			ogDescription
-			ogImage {
-				id
-				url
-				width
-				height
-				alt
+		localesByLocale(by: { locale: $locale }) {
+			publishAt
+			locale {
+				code
 			}
-		}
-		blocks {
-			id
-			order
-			type
-			primaryText
-			secondaryText
-			content {
+			seo {
 				id
-				parts {
-					json
-					references {
-						type
-						primaryText
-						text
-					}
-				}
-			}
-			buttons {
-				id
-				order
-				button {
+				title
+				description
+				ogTitle
+				ogDescription
+				ogImage {
 					id
-					label
-					type
-					url {
-						id
-						type
-						url
-						article {
-							slug
-						}
-						page {
-							slug
+					url
+					width
+					height
+					localesByLocale(by: { locale: $locale }) {
+						alt
+					}
+				}
+			}		
+			blocks {
+				id
+				order
+				type
+				primaryText
+				secondaryText
+				content {
+					id
+					parts {
+						json
+						references {
+							type
+							primaryText
+							text
 						}
 					}
 				}
-			}
-			image {
-				url
-				width
-				height
-				alt
-			}
-			images {
-				id
-				order
+				buttons {
+					id
+					order
+					button {
+						id
+						label
+						type
+						url {
+							id
+							type
+							url
+							article {
+								slug
+							}
+							page {
+								slug
+							}
+						}
+					}
+				}
 				image {
 					url
 					width
 					height
-					alt
+					localesByLocale(by: { locale: $locale }) {
+						alt
+					}
 				}
-			}
-			featureList {
+				images {
+					id
+					order
+					image {
+						url
+						width
+						height
+						localesByLocale(by: { locale: $locale }) {
+							alt
+						}
+					}
+				}
+				featureList {
+					id
+					order
+					primaryText
+					content {
+						parts {
+							json
+							references {
+								type
+								primaryText
+								text
+							}
+						}
+					}
+					icon {
+						url
+						width
+						height
+						localesByLocale(by: { locale: $locale }) {
+							alt
+						}
+					}
+				}
+				testimonials {
 				id
 				order
-				primaryText
 				content {
 					parts {
 						json
@@ -89,39 +121,29 @@ const getPage = `#graphql
 						}
 					}
 				}
-				icon {
-					url
-					width
-					height
-					alt
-				}
-			}
-			testimonials {
-			id
-			order
-			content {
-				parts {
-					json
-					references {
-						type
-						primaryText
-						text
+				author {
+					name
+					title
+					image {
+						url
+						width
+						height
+						localesByLocale(by: { locale: $locale }) {
+							alt
+						}
 					}
 				}
-			}
-			author {
-				name
-				title
-				image {
-					url
-					width
-					height
-					alt
 				}
 			}
+			slug
+		}
+		locales {
+			id
+			slug
+			locale {
+				code
 			}
 		}
-		slug
     }
 	${getHeaderMenu}
     ${getFooterMenu}

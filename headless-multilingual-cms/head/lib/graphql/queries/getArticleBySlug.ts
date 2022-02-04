@@ -15,7 +15,9 @@ const getArticle = `#graphql
 				url
 				width
 				height
-				alt
+				localesByLocale(by: { locale: $locale }) {
+					alt
+				}
 			}
 			content {
 				id
@@ -34,7 +36,9 @@ const getArticle = `#graphql
 					url
 					width
 					height
-					alt
+					localesByLocale(by: { locale: $locale }) {
+						alt
+					}
 				}
 				title
 			}

@@ -1,17 +1,18 @@
-import type { NextPage } from 'next'
+import type { GetStaticPropsContext, NextPage, NextPageContext } from 'next'
 import Head from 'next/head'
 
 import { serverSideFetch } from '../lib/graphql/gqlfetch'
 import getHomePage from '../lib/graphql/queries/getHomePage'
 
-import Seo from '../components/seo'
 import Blocks from '../components/blocks'
-import Header from '../components/header'
 import Footer from '../components/footer'
+import Header from '../components/header'
+import Seo from '../components/seo'
 
 
 const Home: NextPage = (props: any) => {
   const homePageData = props.data?.getPage
+  const homePageLocalizedData = homePageData?.localesByLocale
   const headerMenu = props.data?.getHeaderMenu
   const footerMenu = props.data?.getFooterMenu
   const setting = props.data?.getSetting
@@ -34,16 +35,17 @@ const Home: NextPage = (props: any) => {
   return (
     <div>
       <Seo
-        seo={homePageData?.seo}
+        seo={homePageLocalizedData?.seo}
+        locales={homePageData.locales}
       />
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header menu={headerMenu} logo={setting?.logo} />
+      <Header menu={headerMenu} logo={setting?.logo} locale={props.locale} localeSwitcherOptions={{ locales: homePageData.locales }} />
 
       <main>
-        <Blocks blocks={homePageData?.blocks} />
+        <Blocks blocks={homePageLocalizedData?.blocks} />
       </main>
 
       <Footer menu={footerMenu} content={setting?.footerCopyright} />
@@ -54,13 +56,14 @@ const Home: NextPage = (props: any) => {
 export default Home
 
 
-export async function getStaticProps() {
-  const { data, errors } = await serverSideFetch(getHomePage)
-
+export async function getStaticProps(context: GetStaticPropsContext) {
+  const { data, errors } = await serverSideFetch(getHomePage, { locale: { code: context.locale } })
   return {
     props: {
       data: data ?? null,
-      errors: errors ?? null
+      errors: errors ?? null,
+      locale: context.locale,
+      locales: context.locales
     },
   }
 }
