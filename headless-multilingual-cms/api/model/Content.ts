@@ -19,7 +19,5 @@ export const ContentReferenceType = def.createEnum(
 export class ContentReference {
 	contentPart = def.manyHasOne(ContentPart, 'references').cascadeOnDelete().notNull();
 	type = def.enumColumn(ContentReferenceType).notNull()
-	primaryText = def.stringColumn()
-	text = def.stringColumn()
 	link = def.manyHasOne(Link)
 }
