@@ -1,4 +1,4 @@
-const homePage = `#graphql
+const listPage = `#graphql
   query {
     listPage {
       id
@@ -122,4 +122,4 @@ const homePage = `#graphql
   }
 `
 
-export default homePage
+export default listPage
