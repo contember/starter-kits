@@ -1,11 +1,14 @@
+import type { GetStaticPropsContext } from 'next'
+import Head from 'next/head'
+import Link from 'next/link'
+
+import Errors from '../../components/errors'
+import Footer from '../../components/footer'
+import Header from '../../components/header'
+import Seo from '../../components/seo'
+
 import { serverSideFetch } from '../../lib/graphql/gqlfetch'
 import getBlogPage from '../../lib/graphql/queries/getBlogPage'
-import Errors from '../../components/errors'
-import Head from 'next/head'
-import Seo from '../../components/seo'
-import Header from '../../components/header'
-import Link from 'next/link'
-import Footer from '../../components/footer'
 
 export default function Blog(props: any) {
 	const blogPage = props.data?.getPage
@@ -20,24 +23,25 @@ export default function Blog(props: any) {
 
 	return (
 		<div>
-			<Seo
-				seo={blogPage?.seo}
-			/>
+			<Seo seo={blogPage?.seo} />
 			<Head>
 				<title>{blogPage?.seo?.title}</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-
-			<Header menu={headerMenu} logo={setting?.logo} />
-
+			<Header menu={headerMenu} logo={setting?.logo} locale={props.locale} />
 			<main>
 				<ul>
-					{articles.map((article) => (
+					{articles?.map((article) => (
 						<li key={article.id}>
 							<Link href={`/blog/${article.slug}`}>
 								<a>
-									{article.coverPhoto &&
-										<img src={article.coverPhoto.url} width={article.coverPhoto.width} height={article.coverPhoto.height} alt={article.coverPhoto.alt} />
+									{article?.coverPhoto &&
+										<img
+											src={article.coverPhoto.url}
+											width={article.coverPhoto.width}
+											height={article.coverPhoto.height}
+											alt={article.coverPhoto.alt}
+										/>
 									}
 									<h3>{article.headline}</h3>
 									<p>{article.perex}</p>
@@ -53,13 +57,14 @@ export default function Blog(props: any) {
 	)
 }
 
-export async function getStaticProps() {
-	const { data, errors } = await serverSideFetch(getBlogPage)
+export async function getStaticProps(context: GetStaticPropsContext) {
+	const { data, errors } = await serverSideFetch(getBlogPage, { locale: { code: context.locale } })
 
 	return {
 		props: {
 			data: data ?? null,
-			errors: errors ?? null
+			errors: errors ?? null,
+			locales: context.locales
 		},
 	}
 }

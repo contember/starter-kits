@@ -1,16 +1,20 @@
 import * as React from 'react'
-import Errors from '../../components/errors'
-import getArticleBySlug from '../../lib/graphql/queries/getArticleBySlug'
+import type { GetStaticPropsContext, NextPageContext } from 'next'
 import Head from 'next/head'
-import listArticle from '../../lib/graphql/queries/listArticle'
-import Seo from '../../components/seo'
 import { RichTextRenderer } from '@contember/react-client'
-import { serverSideFetch } from '../../lib/graphql/gqlfetch'
-import Header from '../../components/header'
+
+import Errors from '../../components/errors'
 import Footer from '../../components/footer'
+import Header from '../../components/header'
+import Seo from '../../components/seo'
+
+import { serverSideFetch } from '../../lib/graphql/gqlfetch'
+import getArticleBySlug from '../../lib/graphql/queries/getArticleBySlug'
+import listArticle from '../../lib/graphql/queries/listArticle'
 
 export default function Article(props: any) {
 	const articleData = props.data?.getArticle
+	const articleLocalizedData = articleData.localesByLocale
 	const headerMenu = props.data?.getHeaderMenu
 	const footerMenu = props.data?.getFooterMenu
 	const setting = props.data?.getSetting
@@ -22,24 +26,24 @@ export default function Article(props: any) {
 	return (
 		<div>
 			<Seo
-				seo={articleData.seo}
+				seo={articleLocalizedData.seo}
 			/>
 			<Head>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Header menu={headerMenu} logo={setting?.logo} />
+			<Header menu={headerMenu} logo={setting?.logo} locale={props.locale} />
 
 			<main>
 				<h1>
-					{articleData.headline}
+					{articleLocalizedData.headline}
 				</h1>
 				{articleData.coverPhoto &&
 					<img src={articleData.coverPhoto.url} width={articleData.coverPhoto.width} height={articleData.coverPhoto.height} alt={articleData.coverPhoto.alt} />
 				}
-				<p>{articleData.perex}</p>
-				{articleData.content &&
-					<RichTextRenderer blocks={articleData.content.parts} sourceField="json" />
+				<p>{articleLocalizedData.perex}</p>
+				{articleLocalizedData.content &&
+					<RichTextRenderer blocks={articleLocalizedData.content.parts} sourceField="json" />
 				}
 			</main>
 
@@ -48,13 +52,14 @@ export default function Article(props: any) {
 	)
 }
 
-export async function getStaticProps({ params }: any) {
-	const { data, errors } = await serverSideFetch(getArticleBySlug, { slug: params.slug })
+export async function getStaticProps({ locales, params }: GetStaticPropsContext) {
+	const { data, errors } = await serverSideFetch(getArticleBySlug, { slug: params?.slug })
 
 	return {
 		props: {
 			data: data ?? null,
-			errors: errors ?? null
+			errors: errors ?? null,
+			locales,
 		},
 	}
 }
