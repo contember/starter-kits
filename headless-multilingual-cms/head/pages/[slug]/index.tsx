@@ -14,7 +14,7 @@ import Seo from '../../components/seo'
 
 export default function Page(props: any) {
 	const pageData = props.data?.getPage
-	const pageLocalizedData = pageData.localesByLocale
+	const pageLocalizedData = pageData?.localesByLocale
 	const headerMenu = props.data?.getHeaderMenu
 	const footerMenu = props.data?.getFooterMenu
 	const setting = props.data?.getSetting
@@ -25,11 +25,11 @@ export default function Page(props: any) {
 
 	return (
 		<div>
-			<Seo seo={pageLocalizedData?.seo} locales={pageData.locales} />
+			<Seo seo={pageLocalizedData?.seo} locales={pageData?.locales} />
 			<Head>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<Header menu={headerMenu} logo={setting?.logo} locale={props.locale} localeSwitcherOptions={{ locales: pageData.locales }} />
+			<Header menu={headerMenu} logo={setting?.logo} locale={props.locale} localeSwitcherOptions={{ locales: pageData?.locales }} />
 			<main>
 				<Blocks blocks={pageLocalizedData?.blocks} />
 			</main>
@@ -38,23 +38,21 @@ export default function Page(props: any) {
 	)
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
-	const { data, errors } = await serverSideFetch(getPageBySlug, { slug: context.params?.slug, locale: { code: context.locale } })
+export async function getStaticProps({ params, locale, locales }: GetStaticPropsContext) {
+	const { data, errors } = await serverSideFetch(getPageBySlug, { slug: params?.slug, localeUnique: { code: locale } })
 
 	return {
 		props: {
 			data: data ?? null,
 			errors: errors ?? null,
-			locale: context.locale,
-			locales: context.locales
+			locale: locale,
+			locales: locales
 		},
 	}
 }
 
 export async function getStaticPaths() {
-	const { data, errors } = await serverSideFetch(listPage)
-	console.log('errors', errors)
-
+	const { data } = await serverSideFetch(listPage)
 	const pages = data?.listPage
 	const paths = pages?.map((page: any) => {
 		const loacles = page.locales.map((locale: any) => (

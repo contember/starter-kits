@@ -1,5 +1,5 @@
 import * as React from 'react'
-import type { GetStaticPropsContext, NextPageContext } from 'next'
+import type { GetStaticPropsContext } from 'next'
 import Head from 'next/head'
 import { RichTextRenderer } from '@contember/react-client'
 
@@ -10,11 +10,11 @@ import Seo from '../../components/seo'
 
 import { serverSideFetch } from '../../lib/graphql/gqlfetch'
 import getArticleBySlug from '../../lib/graphql/queries/getArticleBySlug'
-import listArticle from '../../lib/graphql/queries/listArticle'
+import listArticleSlug from '../../lib/graphql/queries/listArticleSlug'
 
 export default function Article(props: any) {
 	const articleData = props.data?.getArticle
-	const articleLocalizedData = articleData.localesByLocale
+	const articleLocalizedData = articleData?.localesByLocale
 	const headerMenu = props.data?.getHeaderMenu
 	const footerMenu = props.data?.getFooterMenu
 	const setting = props.data?.getSetting
@@ -32,7 +32,12 @@ export default function Article(props: any) {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Header menu={headerMenu} logo={setting?.logo} locale={props.locale} />
+			<Header
+				menu={headerMenu}
+				logo={setting?.logo}
+				locale={props.locale}
+				localeSwitcherOptions={{ locales: articleData?.locales, prefix: '/blog' }}
+			/>
 
 			<main>
 				<h1>
@@ -52,8 +57,8 @@ export default function Article(props: any) {
 	)
 }
 
-export async function getStaticProps({ locales, params }: GetStaticPropsContext) {
-	const { data, errors } = await serverSideFetch(getArticleBySlug, { slug: params?.slug })
+export async function getStaticProps({ locales, locale, params }: GetStaticPropsContext) {
+	const { data, errors } = await serverSideFetch(getArticleBySlug, { slug: params?.slug, localeUnique: { code: locale } })
 
 	return {
 		props: {
@@ -65,11 +70,15 @@ export async function getStaticProps({ locales, params }: GetStaticPropsContext)
 }
 
 export async function getStaticPaths() {
-	const { data } = await serverSideFetch(listArticle)
+	const { data } = await serverSideFetch(listArticleSlug)
+
 	const articles = data.listArticle
-	const paths = articles.map((article: any) => (
-		{ params: { slug: article.slug ?? '' } }
-	))
+	const paths = articles?.map((article: any) => {
+		const loacles = article.locales.map((locale: any) => (
+			{ params: { slug: locale.slug ?? '' }, locale: locale.locale.code }
+		))
+		return loacles
+	}).flat()
 
 	return { paths, fallback: false }
 }

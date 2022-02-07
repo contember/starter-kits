@@ -6,11 +6,11 @@ const getSettting = `#graphql
 			url
 			width
 			height
-			localesByLocale(by: { locale: $locale }) {
+			localesByLocale(by: { locale: $localeUnique }) {
 				alt
 			}
 		}
-		localesByLocale(by: { locale: $locale }) {
+		localesByLocale(by: { locale: $localeUnique }) {
 			footerCopyright {
 				id
 				parts {

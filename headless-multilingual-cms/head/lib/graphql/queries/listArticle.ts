@@ -1,8 +1,8 @@
-import listArticle from "../partials/listArticle"
+import listArticleLocalized from "../partials/listArticleLocalized"
 
 const listArticleQuery = `#graphql
-	query {
-		${listArticle}
+	query ($locale: String, $localeUnique: LocaleUniqueWhere) {
+		${listArticleLocalized}
 	}
 `
 

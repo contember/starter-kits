@@ -3,44 +3,53 @@ import getHeaderMenu from "../partials/getHeaderMenu"
 import getSetting from "../partials/getSettings"
 
 const getArticle = `#graphql 
-	query getArticle($slug: String!) {
-		getArticle(by: {slug: $slug}) {
+	query getArticle($slug: String!, $localeUnique: LocaleUniqueWhere) {
+		getArticle(by: { locales: { locale: $localeUnique, slug: $slug } }) {
 			id
-			headline
-			publishAt
-			slug
-			perex
+			localesByLocale(by: { locale: $localeUnique }) {
+				headline
+				publishAt
+				slug
+				perex
+				content {
+					id
+					parts {
+						id
+						json
+					}
+				}
+				seo {
+					id
+					description
+					ogTitle
+					ogDescription
+					ogImage {
+						id
+						url
+						width
+						height
+						localesByLocale(by: { locale: $localeUnique }) {
+							alt
+						}
+					}
+					title
+				}
+			}
 			coverPhoto {
 				id
 				url
 				width
 				height
-				localesByLocale(by: { locale: $locale }) {
+				localesByLocale(by: { locale: $localeUnique }) {
 					alt
 				}
 			}
-			content {
+			locales {
 				id
-				parts {
-					id
-					json
+				slug
+				locale {
+					code
 				}
-			}
-			seo {
-				id
-				description
-				ogTitle
-				ogDescription
-				ogImage {
-					id
-					url
-					width
-					height
-					localesByLocale(by: { locale: $locale }) {
-						alt
-					}
-				}
-				title
 			}
 		}
 		${getHeaderMenu}

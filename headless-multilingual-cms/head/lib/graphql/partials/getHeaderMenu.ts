@@ -2,7 +2,7 @@ const getHeader = `#graphql
 	getHeaderMenu: getMenu(by: {position: header}) {
 		id
 		position
-		localesByLocale(by: { locale: $locale }) {
+		localesByLocale(by: { locale: $localeUnique }) {
 			items {
 				id
 				label

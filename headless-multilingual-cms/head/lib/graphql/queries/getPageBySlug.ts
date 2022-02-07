@@ -3,11 +3,11 @@ import getHeaderMenu from "../partials/getHeaderMenu"
 import getSettting from "../partials/getSettings"
 
 const getPage = `#graphql
-	query($slug: String, $locale: LocaleUniqueWhere) {
-		getPage(by: { locales: { locale: $locale, slug: $slug } }) {
+	query($slug: String, $localeUnique: LocaleUniqueWhere) {
+		getPage(by: { locales: { locale: $localeUnique, slug: $slug } }) {
 			id
 			role
-			localesByLocale(by: { locale: $locale }) {
+			localesByLocale(by: { locale: $localeUnique }) {
 				publishAt
 				locale {
 					code
@@ -23,7 +23,7 @@ const getPage = `#graphql
 						url
 						width
 						height
-						localesByLocale(by: { locale: $locale }) {
+						localesByLocale(by: { locale: $localeUnique }) {
 							alt
 						}
 					}
@@ -80,7 +80,7 @@ const getPage = `#graphql
 						url
 						width
 						height
-						localesByLocale(by: { locale: $locale }) {
+						localesByLocale(by: { locale: $localeUnique }) {
 							alt
 						}
 					}
@@ -91,7 +91,7 @@ const getPage = `#graphql
 							url
 							width
 							height
-							localesByLocale(by: { locale: $locale }) {
+							localesByLocale(by: { locale: $localeUnique }) {
 								alt
 							}
 						}
@@ -125,7 +125,7 @@ const getPage = `#graphql
 							url
 							width
 							height
-							localesByLocale(by: { locale: $locale }) {
+							localesByLocale(by: { locale: $localeUnique }) {
 								alt
 							}
 						}
@@ -161,7 +161,7 @@ const getPage = `#graphql
 							url
 							width
 							height
-							localesByLocale(by: { locale: $locale }) {
+							localesByLocale(by: { locale: $localeUnique }) {
 								alt
 							}
 						}

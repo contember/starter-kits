@@ -12,10 +12,12 @@ import getBlogPage from '../../lib/graphql/queries/getBlogPage'
 
 export default function Blog(props: any) {
 	const blogPage = props.data?.getPage
+	const blogPageLocalized = blogPage?.localesByLocale
 	const articles = props.data?.listArticle
 	const headerMenu = props.data?.getHeaderMenu
 	const footerMenu = props.data?.getFooterMenu
 	const setting = props.data?.getSetting
+	const settingLocalized = setting?.localesByLocale
 
 	if (props.errors) {
 		return <Errors errors={props.errors} />
@@ -23,24 +25,29 @@ export default function Blog(props: any) {
 
 	return (
 		<div>
-			<Seo seo={blogPage?.seo} />
+			<Seo seo={blogPageLocalized?.seo} />
 			<Head>
-				<title>{blogPage?.seo?.title}</title>
+				<title>{blogPageLocalized?.seo?.title}</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<Header menu={headerMenu} logo={setting?.logo} locale={props.locale} />
+			<Header
+				menu={headerMenu}
+				logo={setting?.logo}
+				locale={props.locale}
+				localeSwitcherOptions={{ locales: blogPage?.locales }}
+			/>
 			<main>
 				<ul>
-					{articles?.map((article) => (
-						<li key={article.id}>
+					{articles.length && articles?.map(({ id, localesByLocale: article, coverPhoto }) => (
+						<li key={id}>
 							<Link href={`/blog/${article.slug}`}>
 								<a>
-									{article?.coverPhoto &&
+									{coverPhoto &&
 										<img
-											src={article.coverPhoto.url}
-											width={article.coverPhoto.width}
-											height={article.coverPhoto.height}
-											alt={article.coverPhoto.alt}
+											src={coverPhoto.url}
+											width={coverPhoto.width}
+											height={coverPhoto.height}
+											alt={coverPhoto.alt}
 										/>
 									}
 									<h3>{article.headline}</h3>
@@ -52,19 +59,19 @@ export default function Blog(props: any) {
 				</ul>
 			</main>
 
-			<Footer menu={footerMenu} content={setting?.footerCopyright} />
+			<Footer menu={footerMenu} content={settingLocalized?.footerCopyright} />
 		</div>
 	)
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
-	const { data, errors } = await serverSideFetch(getBlogPage, { locale: { code: context.locale } })
+export async function getStaticProps({ locales, locale }: GetStaticPropsContext) {
+	const { data, errors } = await serverSideFetch(getBlogPage, { localeUnique: { code: locale }, locale: locale })
 
 	return {
 		props: {
 			data: data ?? null,
 			errors: errors ?? null,
-			locales: context.locales
+			locales: locales
 		},
 	}
 }

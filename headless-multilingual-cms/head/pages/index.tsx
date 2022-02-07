@@ -1,4 +1,4 @@
-import type { GetStaticPropsContext, NextPage } from 'next'
+import type { GetStaticPropsContext } from 'next'
 import Head from 'next/head'
 
 import { serverSideFetch } from '../lib/graphql/gqlfetch'
@@ -10,13 +10,13 @@ import Footer from '../components/footer'
 import Header from '../components/header'
 import Seo from '../components/seo'
 
-
-const Home: NextPage = (props: any) => {
+export default function Home(props: any) {
 	const homePageData = props.data?.getPage
 	const homePageLocalizedData = homePageData?.localesByLocale
 	const headerMenu = props.data?.getHeaderMenu
 	const footerMenu = props.data?.getFooterMenu
 	const setting = props.data?.getSetting
+	const settingLocalized = setting?.localesByLocale
 
 	if (props.errors) {
 		return <Errors errors={props.errors} />
@@ -37,22 +37,19 @@ const Home: NextPage = (props: any) => {
 			<main>
 				<Blocks blocks={homePageLocalizedData?.blocks} />
 			</main>
-			<Footer menu={footerMenu} content={setting?.footerCopyright} />
+			<Footer menu={footerMenu} content={settingLocalized?.footerCopyright} />
 		</div>
 	)
 }
 
-export default Home
-
-
-export async function getStaticProps(context: GetStaticPropsContext) {
-	const { data, errors } = await serverSideFetch(getHomePage, { locale: { code: context.locale } })
+export async function getStaticProps({ locale, locales }: GetStaticPropsContext) {
+	const { data, errors } = await serverSideFetch(getHomePage, { localeUnique: { code: locale } })
 	return {
 		props: {
 			data: data ?? null,
 			errors: errors ?? null,
-			locale: context.locale,
-			locales: context.locales
+			locale: locale,
+			locales: locales
 		},
 	}
 }

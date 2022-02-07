@@ -4,7 +4,7 @@ const getFooterMenu = `#graphql
 	getFooterMenu: getMenu(by: {position: footer}) {
 		id
 		position
-		localesByLocale(by: { locale: $locale }) {
+		localesByLocale(by: { locale: $localeUnique }) {
 			items {
 				id
 				label

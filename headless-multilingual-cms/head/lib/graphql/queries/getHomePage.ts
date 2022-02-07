@@ -3,11 +3,11 @@ import getHeaderMenu from "../partials/getHeaderMenu"
 import getSettting from "../partials/getSettings"
 
 const getHomePage = `#graphql
-	query ($locale: LocaleUniqueWhere) {
+	query ($localeUnique: LocaleUniqueWhere) {
 		getPage(by: { role: homePage }) {
 			id
 			role
-			localesByLocale(by: { locale: $locale }) {
+			localesByLocale(by: { locale: $localeUnique }) {
 			id
 			publishAt
 			seo {
@@ -21,7 +21,7 @@ const getHomePage = `#graphql
 					url
 					width
 					height
-					localesByLocale(by: { locale: $locale }) {
+					localesByLocale(by: { locale: $localeUnique }) {
 						alt
 					}
 				}
@@ -63,7 +63,7 @@ const getHomePage = `#graphql
 					url
 					width
 					height
-					localesByLocale(by: { locale: $locale }) {
+					localesByLocale(by: { locale: $localeUnique }) {
 						alt
 					}
 				}
@@ -74,7 +74,7 @@ const getHomePage = `#graphql
 						url
 						width
 						height
-						localesByLocale(by: { locale: $locale }) {
+						localesByLocale(by: { locale: $localeUnique }) {
 							alt
 						}
 					}
@@ -92,7 +92,7 @@ const getHomePage = `#graphql
 						url
 						width
 						height
-						localesByLocale(by: { locale: $locale }) {
+						localesByLocale(by: { locale: $localeUnique }) {
 							alt
 						}
 					}
@@ -128,7 +128,7 @@ const getHomePage = `#graphql
 						url
 						width
 						height
-						localesByLocale(by: { locale: $locale }) {
+						localesByLocale(by: { locale: $localeUnique }) {
 							alt
 						}
 					}
