@@ -1,4 +1,4 @@
-# Headless CMS starter
+# Headless Multilingual CMS starter
 
 With this template we'll use Contember platform as headless CMS and [Next.js](https://nextjs.org/) for frontend site. You'll get:
 
@@ -19,7 +19,7 @@ You'll need:
 - [Docker](https://docs.docker.com/get-docker/)
 ### 🚀 Run Headless CMS starter locally
 1) Clone this template (`git clone git@github.com:contember/templates.git`)
-2) Go to templates > headless-cms (`cd templates/headless-cms`)
+2) Go to templates > headless-multilingual-cms (`cd templates/headless-multilingual-cms`)
 3) Install dependencies:
 
 ```bash
@@ -48,7 +48,7 @@ npm run contember tenant:create-api-key
 ```
 
 Then select:
-- Project: `headless-cms` (the only option)
+- Project: `headless-multilingual-cms` (the only option)
 - Role: `public`
 - Do you want to add another role?: `n` (no)
 - API key description: anything (e.g. `frontend`)
@@ -62,7 +62,7 @@ The default language of administration is English. Other supported language is C
 
 #### Setting the language for UI elements
 
-In the `headless-cms/admin/index.tsx` file, add the `defaultLocale` and `dictionaries` props to `<ApplicationEntrypoint />` and import the Czech dictionary from `@contember/i18n`.
+In the `headless-multilingual-cms/admin/index.tsx` file, add the `defaultLocale` and `dictionaries` props to `<ApplicationEntrypoint />` and import the Czech dictionary from `@contember/i18n`.
 
 ```tsx title="headless-cms/admin/index.tsx"
 import { csCZ } from "@contember/admin-i18n"
@@ -78,9 +78,9 @@ import { csCZ } from "@contember/admin-i18n"
 
 #### Setting the language for custom components and labels
 
-In the `headless-cms/admin/locales/index.ts` file change default export from `enUS` to `csCZ` and import `csCZ` from `./csCZ`.
+In the `headless-multilingual-cms/admin/locales/index.ts` file change default export from `enUS` to `csCZ` and import `csCZ` from `./csCZ`.
 
-```ts title="headless-cms/admin/locales/index.ts"
+```ts title="headless-multilingual-cms/admin/locales/index.ts"
 import csCZ from './csCZ'
 
 export default csCZ

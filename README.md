@@ -8,3 +8,4 @@ If you're struggling with something and didn't find it in our [documentation](ht
 We'll be adding new one every month. Let us know what you'd like to see here!
 
 1. [Headless CMS starter](/headless-cms)
+1. [Headless Multilingual CMS starter](/headless-multilingual-cms)
