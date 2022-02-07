@@ -95,6 +95,9 @@ const SeoFields = Component<SeoFieldsProps>(
 		const fieldOgDescription = field ? field + '.ogDescription' : 'ogDescription'
 		const fieldOgImageUrl = field ? field + '.ogImage.url' : 'ogImage.url'
 
+		console.log('advancedOptions',advancedOptions);
+		
+
 		return (
 			<>
 				<TextField field={fieldTitle} label={locale["Title"]} required />
@@ -145,7 +148,7 @@ export const Seo = Component<SeoFormProps>(
 							<DerivedFieldLink sourceField={imageUrlDerivedFrom} derivedField="seo.ogImage.url" />
 						</>
 					}
-					<SeoFields field="seo" {...seoFieldsProps} />
+					<SeoFields field="seo" {...seoFieldsProps} advancedOptions={advancedOptions} />
 					{(seoPage && !advancedOptions) &&
 						<LinkButton to={seoPage}>{locale["Advanced website SEO"]}</LinkButton>
 					}
