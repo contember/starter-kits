@@ -47,6 +47,10 @@ const aclFactory = (model: Model.Schema): Acl.Schema => ({
 					predicates: {},
 					operations: readOnly(model, 'Article', true),
 				},
+				ArticleLocale: {
+					predicates: {},
+					operations: readOnly(model, 'ArticleLocale', true),
+				},
 				Button: {
 					predicates: {},
 					operations: readOnly(model, 'Button', true),
@@ -104,13 +108,25 @@ const aclFactory = (model: Model.Schema): Acl.Schema => ({
 					predicates: {},
 					operations: readOnly(model, 'Image', true),
 				},
+				ImageLocale: {
+					predicates: {},
+					operations: readOnly(model, 'ImageLocale', true),
+				},
 				Link: {
 					predicates: {},
 					operations: readOnly(model, 'Link', true),
 				},
+				Locale: {
+					predicates: {},
+					operations: readOnly(model, 'Locale', true),
+				},
 				Menu: {
 					predicates: {},
 					operations: readOnly(model, 'Menu', true),
+				},
+				MenuLocale: {
+					predicates: {},
+					operations: readOnly(model, 'MenuLocale', true),
 				},
 				MenuItem: {
 					predicates: {},
@@ -120,6 +136,10 @@ const aclFactory = (model: Model.Schema): Acl.Schema => ({
 					predicates: {},
 					operations: readOnly(model, 'Page', true),
 				},
+				PageLocale: {
+					predicates: {},
+					operations: readOnly(model, 'PageLocale', true),
+				},
 				Seo: {
 					predicates: {},
 					operations: readOnly(model, 'Seo', true),
@@ -127,6 +147,10 @@ const aclFactory = (model: Model.Schema): Acl.Schema => ({
 				Setting: {
 					predicates: {},
 					operations: readOnly(model, 'Setting', true),
+				},
+				SettingLocale: {
+					predicates: {},
+					operations: readOnly(model, 'SettingLocale', true),
 				}
 			},
 		},

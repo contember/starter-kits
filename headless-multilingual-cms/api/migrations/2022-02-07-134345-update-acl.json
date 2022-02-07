@@ -1,0 +1,114 @@
+{
+	"formatVersion": 3,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/public/entities/ArticleLocale",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"id": true,
+								"root": true,
+								"locale": true,
+								"publishAt": true,
+								"headline": true,
+								"perex": true,
+								"slug": true,
+								"linkedFrom": true,
+								"content": true,
+								"seo": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/ImageLocale",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"id": true,
+								"root": true,
+								"locale": true,
+								"alt": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/Locale",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"id": true,
+								"code": true,
+								"label": true,
+								"articles": true,
+								"pages": true,
+								"menus": true,
+								"setting": true,
+								"images": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/MenuLocale",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"id": true,
+								"root": true,
+								"locale": true,
+								"items": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/PageLocale",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"id": true,
+								"root": true,
+								"locale": true,
+								"publishAt": true,
+								"slug": true,
+								"linkedFrom": true,
+								"blocks": true,
+								"seo": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/SettingLocale",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"id": true,
+								"root": true,
+								"locale": true,
+								"footerCopyright": true
+							}
+						}
+					}
+				}
+			]
+		}
+	]
+}
