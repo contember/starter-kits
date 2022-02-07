@@ -35,7 +35,9 @@ export const ArticleForm = Component(
 			<Section heading={locale["Content"]}>
 				<LocaleSideDimension>
 					<TextField field="headline" label={locale["Headline"]} />
-					<ImageField field="root.coverPhoto" label={locale["Cover photo"]} />
+				</LocaleSideDimension>
+				<ImageField field="coverPhoto" label={locale["Cover photo"]} />
+				<LocaleSideDimension>
 					<TextAreaField field="perex" label={locale["Perex"]} />
 					<ContentField label={locale["Text"]} size="large" />
 				</LocaleSideDimension>
