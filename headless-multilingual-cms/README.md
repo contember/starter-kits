@@ -64,7 +64,7 @@ The default language of administration is English. Other supported language is C
 
 In the `headless-multilingual-cms/admin/index.tsx` file, add the `defaultLocale` and `dictionaries` props to `<ApplicationEntrypoint />` and import the Czech dictionary from `@contember/i18n`.
 
-```tsx title="headless-cms/admin/index.tsx"
+```tsx title="headless-multilingual-cms/admin/index.tsx"
 import { csCZ } from "@contember/admin-i18n"
 
 <ApplicationEntrypoint
