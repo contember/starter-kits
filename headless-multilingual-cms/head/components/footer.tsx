@@ -8,8 +8,7 @@ export default function Footer(props: any) {
 			{content &&
 				<RichTextRenderer blocks={content.parts} sourceField="json" />
 			}
-			{menu &&
-				menu.items.map((item: any) => (
+			{menu?.localesByLocale?.items.map((item: any) => (
 					<li key={item.id}>
 						<Link {...item} />
 					</li>

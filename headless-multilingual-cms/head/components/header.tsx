@@ -18,7 +18,7 @@ export default function Header(props: HeaderProps) {
 			}
 			{menu &&
 				<ul>
-					{menu.localesByLocale.items.map((item: any) => (
+					{menu?.localesByLocale?.items.map((item: any) => (
 						<li key={item.id}>
 							<Link {...item} locale={locale} />
 						</li>

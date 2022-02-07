@@ -21,10 +21,10 @@ export default function Seo({ seo, locales }: SeoProps) {
 	return (
 		<Head>
 			<title>{title}</title>
-			<meta name="description" content={description} />
-			<meta property="og:title" content={ogTitle} />
-			<meta property="og:description" content={ogDescription} />
-			<meta property="og:image" content={ogImage?.url} />
+			{description && <meta name="description" content={description} />}
+			{ogTitle && <meta property="og:title" content={ogTitle} />}
+			{ogDescription && <meta property="og:description" content={ogDescription} />}
+			{ogImage?.url && <meta property="og:image" content={ogImage.url} />}
 			{locales && locales.map((locale: any) => {
 				const { domainLocales } = router
 				const localeDomain = domainLocales?.filter((domain) => domain.defaultLocale === locale.locale.code)[0]
@@ -34,7 +34,6 @@ export default function Seo({ seo, locales }: SeoProps) {
 					<link rel="alternate" hrefLang={locale.locale.code} href={href} key={locale.id} />
 				)
 			})}
-
 		</Head>
 	)
 }
