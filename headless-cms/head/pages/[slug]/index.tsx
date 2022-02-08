@@ -47,6 +47,7 @@ export async function getStaticProps({ params }: any) {
       data: data ?? null,
       errors: errors ?? null
     },
+	 revalidate: 10,
   }
 }
 
@@ -57,5 +58,5 @@ export async function getStaticPaths() {
     { params: { slug: page.slug ?? '' } }
   ))
 
-  return { paths, fallback: false }
+  return { paths, fallback: 'blocking' }
 }
