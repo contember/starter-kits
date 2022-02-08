@@ -48,6 +48,7 @@ export async function getStaticProps({ params, locale, locales }: GetStaticProps
 			locale: locale,
 			locales: locales
 		},
+		revalidate: 10,
 	}
 }
 
@@ -61,5 +62,5 @@ export async function getStaticPaths() {
 		return loacles
 	}).flat()
 
-	return { paths: paths, fallback: true }
+	return { paths: paths, fallback: 'blocking' }
 }
