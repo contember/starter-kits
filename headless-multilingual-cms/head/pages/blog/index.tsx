@@ -73,5 +73,6 @@ export async function getStaticProps({ locales, locale }: GetStaticPropsContext)
 			errors: errors ?? null,
 			locales: locales
 		},
+		revalidate: 10,
 	}
 }
