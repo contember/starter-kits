@@ -61,5 +61,6 @@ export async function getStaticProps() {
 			data: data ?? null,
 			errors: errors ?? null
 		},
+		revalidate: 10,
 	}
 }
