@@ -79,7 +79,7 @@
 										"publishAt": true,
 										"slug": true,
 										"linkedFrom": true,
-										"perex": true,
+										"lead": true,
 										"content": true,
 										"seo": true
 									}

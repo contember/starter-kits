@@ -478,8 +478,8 @@
 			"modification": "createColumn",
 			"entityName": "Article",
 			"field": {
-				"name": "perex",
-				"columnName": "perex",
+				"name": "lead",
+				"columnName": "lead",
 				"nullable": true,
 				"type": "String",
 				"columnType": "text"
@@ -1614,7 +1614,7 @@
 										"publishAt": true,
 										"slug": true,
 										"linkedFrom": true,
-										"perex": true,
+										"lead": true,
 										"content": true,
 										"seo": true
 									},
@@ -1625,7 +1625,7 @@
 										"publishAt": true,
 										"slug": true,
 										"linkedFrom": true,
-										"perex": true,
+										"lead": true,
 										"content": true,
 										"seo": true
 									},
@@ -1636,7 +1636,7 @@
 										"publishAt": true,
 										"slug": true,
 										"linkedFrom": true,
-										"perex": true,
+										"lead": true,
 										"content": true,
 										"seo": true
 									},

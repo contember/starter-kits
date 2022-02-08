@@ -29,11 +29,11 @@ export const ArticleForm = Component(
 		<>
 			<TextField field="headline" label={locale["Headline"]} />
 			<ImageField field="coverPhoto" label={locale["Cover photo"]} />
-			<TextAreaField field="perex" label={locale["Perex"]} />
+			<TextAreaField field="lead" label={locale["Lead"]} />
 			<ContentField label={locale["Text"]} size="large" />
 			<Seo
 				titleDerivedFrom="headline"
-				descriptionDerivedFrom="perex"
+				descriptionDerivedFrom="lead"
 				imageUrlDerivedFrom="coverPhoto.url"
 				seoPage="seoArticles"
 				seoFieldsProps={{

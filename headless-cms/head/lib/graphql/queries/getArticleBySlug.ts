@@ -9,7 +9,7 @@ const getArticle = `#graphql
 			headline
 			publishAt
 			slug
-			perex
+			lead
 			coverPhoto {
 				id
 				url

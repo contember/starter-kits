@@ -40,7 +40,7 @@ export default function Blog(props: any) {
 										<img src={article.coverPhoto.url} width={article.coverPhoto.width} height={article.coverPhoto.height} alt={article.coverPhoto.alt} />
 									}
 									<h3>{article.headline}</h3>
-									<p>{article.perex}</p>
+									<p>{article.lead}</p>
 								</a>
 							</Link>
 						</li>

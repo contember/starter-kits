@@ -4,7 +4,7 @@ const listArticle = `#graphql
 		headline
 		publishAt
 		slug
-		perex
+		lead
 		coverPhoto {
 			id
 			url
