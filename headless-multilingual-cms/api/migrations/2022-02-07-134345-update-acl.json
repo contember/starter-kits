@@ -16,7 +16,7 @@
 								"locale": true,
 								"publishAt": true,
 								"headline": true,
-								"perex": true,
+								"lead": true,
 								"slug": true,
 								"linkedFrom": true,
 								"content": true,

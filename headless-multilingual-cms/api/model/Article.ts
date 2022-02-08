@@ -18,7 +18,7 @@ export class ArticleLocale {
 
 	publishAt = def.dateTimeColumn()
 	headline = def.stringColumn().notNull()
-	perex = def.stringColumn()
+	lead = def.stringColumn()
 	slug = def.stringColumn().notNull()
 	linkedFrom = def.oneHasMany(Link, 'article')
 	content = def.oneHasOne(Content).cascadeOnDelete()

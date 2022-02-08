@@ -10,7 +10,7 @@ const getArticle = `#graphql
 				headline
 				publishAt
 				slug
-				perex
+				lead
 				content {
 					id
 					parts {

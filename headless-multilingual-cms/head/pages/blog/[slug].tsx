@@ -46,7 +46,7 @@ export default function Article(props: any) {
 				{articleData.coverPhoto &&
 					<img src={articleData.coverPhoto.url} width={articleData.coverPhoto.width} height={articleData.coverPhoto.height} alt={articleData.coverPhoto.alt} />
 				}
-				<p>{articleLocalizedData.perex}</p>
+				<p>{articleLocalizedData.lead}</p>
 				{articleLocalizedData.content &&
 					<RichTextRenderer blocks={articleLocalizedData.content.parts} sourceField="json" />
 				}

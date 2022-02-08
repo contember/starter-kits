@@ -58,7 +58,7 @@ export default {
 	"OG title": "OG titulek",
 	"Page role": "Role stránky",
 	"Pages": "Stránky",
-	"Perex": "Perex",
+	"Lead": "Perex",
 	"Phone number": "Telefonní číslo",
 	"Position": "Pozice",
 	"Preview": "Náhled",

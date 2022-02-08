@@ -58,7 +58,7 @@ export default {
 	"OG title": "OG title",
 	"Page role": "Page role",
 	"Pages": "Pages",
-	"Perex": "Perex",
+	"Lead": "Lead",
 	"Phone number": "Phone number",
 	"Position": "Position",
 	"Preview": "Preview",

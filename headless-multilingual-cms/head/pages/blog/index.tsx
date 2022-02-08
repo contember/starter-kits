@@ -51,7 +51,7 @@ export default function Blog(props: any) {
 										/>
 									}
 									<h3>{article.headline}</h3>
-									<p>{article.perex}</p>
+									<p>{article.lead}</p>
 								</a>
 							</Link>
 						</li>
