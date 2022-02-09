@@ -9,7 +9,7 @@ export interface LinkFieldProps {
 
 function customRenderOptions(accessor: EntityAccessor) {
 	const slug = accessor.getField('slug').value
-	const role = accessor.getField('root.role').value
+	const role = accessor.getField('base.role').value
 
 	return slug ?? role
 }
@@ -35,7 +35,7 @@ export const LinkField = Component<LinkFieldProps>(
 							optionsStaticRender={
 								<>
 									<Field field="slug" />
-									<Field field="root.role" />
+									<Field field="base.role" />
 								</>
 							}
 						/>

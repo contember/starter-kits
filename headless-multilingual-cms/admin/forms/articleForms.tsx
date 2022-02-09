@@ -46,7 +46,7 @@ export const ArticleForm = Component(
 				<Seo
 					titleDerivedFrom="headline"
 					descriptionDerivedFrom="lead"
-					imageUrlDerivedFrom="root.coverPhoto.url"
+					imageUrlDerivedFrom="base.coverPhoto.url"
 					seoPage="seoArticles"
 					seoFieldsProps={{
 						unpersistedHardPrefix: '/blog/',

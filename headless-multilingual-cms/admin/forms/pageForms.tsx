@@ -19,16 +19,16 @@ export const PageSideForm = Component<PageSideFormProps>(
 				<>
 					{isEditPage &&
 						<>
-							<Conditional showIf={(accessor) => accessor.getField('root.role').value === null}>
+							<Conditional showIf={(accessor) => accessor.getField('base.role').value === null}>
 								<PreviewLink slugField="slug" />
 							</Conditional>
-							<Conditional showIf={(accessor) => accessor.getField('root.role').value === 'homePage'}>
+							<Conditional showIf={(accessor) => accessor.getField('base.role').value === 'homePage'}>
 								<PreviewLink slugField="slug" path={'/'} />
 							</Conditional>
-							<Conditional showIf={(accessor) => accessor.getField('root.role').value === 'blogPage'}>
+							<Conditional showIf={(accessor) => accessor.getField('base.role').value === 'blogPage'}>
 								<PreviewLink slugField="slug" path={'/blog'} />
 							</Conditional>
-							<Conditional showIf={(accessor) => accessor.getField('root.role').value === 'error404Page'}>
+							<Conditional showIf={(accessor) => accessor.getField('base.role').value === 'error404Page'}>
 								<PreviewLink slugField="slug" path={'/404'} />
 							</Conditional>
 						</>

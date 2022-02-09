@@ -49,7 +49,7 @@ function getSlugPrefix(environment: Environment, unpersistedHardPrefix?: string)
 
 const SeoSlugField = Component<SeoFieldsProps>(
 	({ hasRoleField, referenceEntity, unpersistedHardPrefix }) => {
-		const fieldRole = referenceEntity ? referenceEntity + '.root.role' : 'root.role'
+		const fieldRole = referenceEntity ? referenceEntity + '.base.role' : 'base.role'
 		const fieldSlug = referenceEntity ? referenceEntity + '.slug' : 'slug'
 		const fieldTitle = referenceEntity ? (!hasRoleField ? referenceEntity + '.headline' : referenceEntity + '.seo.title') : 'seo.title'
 

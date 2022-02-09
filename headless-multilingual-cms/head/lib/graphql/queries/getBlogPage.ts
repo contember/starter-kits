@@ -65,7 +65,7 @@ const getBlogPage = `#graphql
 							id
 							label
 							type
-							url {
+							target {
 								id
 								type
 								url

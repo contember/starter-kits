@@ -7,15 +7,13 @@ import { Seo } from './Seo'
 export const PageTypeEnum = def.createEnum('homePage', 'blogPage', 'error404Page')
 
 export class Page {
-	locales = def.oneHasMany(PageLocale, 'root')
+	locales = def.oneHasMany(PageLocale, 'base')
 	role = def.enumColumn(PageTypeEnum).unique().nullable()
 }
 
-@def.Unique('root', 'locale')
-@def.Unique('slug', 'locale')
+@def.Unique('base', 'locale')
 export class PageLocale {
-	root: def.ManyHasOneDefinition = def.manyHasOne(Page, 'locales').notNull().cascadeOnDelete()
-	locale = def.manyHasOne(Locale, 'pages').cascadeOnDelete().notNull()
+	base = def.manyHasOne(Page, 'locales').notNull().cascadeOnDelete()
 
 	publishAt = def.dateTimeColumn().default('now')
 	slug = def.stringColumn()

@@ -4,14 +4,14 @@ import { Locale } from './Locale'
 
 export const MenuPositions = def.createEnum('header', 'footer')
 export class Menu {
-	locales = def.oneHasMany(MenuLocale, 'root')
+	locales = def.oneHasMany(MenuLocale, 'base')
 	position = def.enumColumn(MenuPositions).unique().notNull()
 }
 
-@def.Unique('root', 'locale')
+@def.Unique('base', 'locale')
 export class MenuLocale {
-	root: def.ManyHasOneDefinition = def.manyHasOne(Menu, 'locales').notNull().cascadeOnDelete()
-	locale = def.manyHasOne(Locale, 'menus').cascadeOnDelete().notNull()
+	base = def.manyHasOne(Menu, 'locales').notNull().cascadeOnDelete()
+	locale = def.manyHasOne(Locale, 'menus').notNull().cascadeOnDelete()
 
 	items = def.oneHasMany(MenuItem, 'menu').orderBy('order')
 }

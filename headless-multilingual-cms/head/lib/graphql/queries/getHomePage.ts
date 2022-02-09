@@ -46,7 +46,7 @@ const getHomePage = `#graphql
 					id
 					label
 					type
-					url {
+					target {
 						id
 						type
 						url

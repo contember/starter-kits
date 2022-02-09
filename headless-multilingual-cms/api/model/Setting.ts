@@ -5,14 +5,12 @@ import { Locale } from './Locale'
 
 export class Setting {
 	unique = def.enumColumn(def.createEnum('One')).notNull().unique()
-	locales = def.oneHasMany(SettingLocale, 'root')
-	logo = def.manyHasOne(Image)
+	locales = def.oneHasMany(SettingLocale, 'base')
 }
 
-@def.Unique('root', 'locale')
+@def.Unique('base', 'locale')
 export class SettingLocale {
-	root: def.ManyHasOneDefinition = def.manyHasOne(Setting, 'locales').notNull().cascadeOnDelete()
-	locale = def.manyHasOne(Locale, 'setting').cascadeOnDelete().notNull()
+	base = def.manyHasOne(Setting, 'locales').notNull().cascadeOnDelete()
 
 	footerCopyright = def.oneHasOne(Content).cascadeOnDelete()
 }

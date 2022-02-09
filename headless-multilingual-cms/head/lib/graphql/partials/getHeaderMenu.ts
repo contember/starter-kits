@@ -15,7 +15,7 @@ const getHeader = `#graphql
 					}
 					page {
 						slug
-						root {
+						base {
 							role
 						}
 					}

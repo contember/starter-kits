@@ -6,15 +6,13 @@ import { Locale } from './Locale'
 import { Seo } from './Seo'
 
 export class Article {
-	locales = def.oneHasMany(ArticleLocale, 'root')
-	coverPhoto = def.manyHasOne(Image)
+	locales = def.oneHasMany(ArticleLocale, 'base')
 }
 
-@def.Unique('root', 'locale')
-@def.Unique('slug', 'locale')
+@def.Unique('base', 'locale')
+@def.Unique('locale', 'slug')
 export class ArticleLocale {
-	root: def.ManyHasOneDefinition = def.manyHasOne(Article, 'locales').notNull().cascadeOnDelete()
-	locale = def.manyHasOne(Locale, 'articles').cascadeOnDelete().notNull()
+	base = def.manyHasOne(Article, 'locales').notNull().cascadeOnDelete()
 
 	publishAt = def.dateTimeColumn()
 	headline = def.stringColumn().notNull()
