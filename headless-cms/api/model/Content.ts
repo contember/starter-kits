@@ -2,14 +2,14 @@ import { SchemaDefinition as def } from '@contember/schema-definition'
 import { Link } from './Link'
 
 export class Content {
-	parts: def.OneHasManyDefinition = def.oneHasMany(ContentPart, 'content').orderBy('order')
+	parts = def.oneHasMany(ContentPart, 'content').orderBy('order')
 }
 
 export class ContentPart {
-	content = def.manyHasOne(Content, 'parts').cascadeOnDelete().notNull()
 	order = def.intColumn().notNull()
+	content = def.manyHasOne(Content, 'parts').notNull().cascadeOnDelete()
 	json = def.stringColumn().notNull()
-	references: def.OneHasManyDefinition = def.oneHasMany(ContentReference, 'contentPart')
+	references = def.oneHasMany(ContentReference, 'contentPart')
 }
 
 export const ContentReferenceType = def.createEnum(
@@ -17,9 +17,7 @@ export const ContentReferenceType = def.createEnum(
 )
 
 export class ContentReference {
-	contentPart = def.manyHasOne(ContentPart, 'references').cascadeOnDelete().notNull();
+	contentPart = def.manyHasOne(ContentPart, 'references').notNull().cascadeOnDelete()
 	type = def.enumColumn(ContentReferenceType).notNull()
-	primaryText = def.stringColumn()
-	text = def.stringColumn()
-	link = def.manyHasOne(Link)
+	link = def.oneHasOne(Link).removeOrphan().setNullOnDelete()
 }

@@ -5,12 +5,12 @@ import { Link } from './Link'
 import { Seo } from './Seo'
 
 export class Article {
-	headline = def.stringColumn()
-	coverPhoto = def.manyHasOne(Image)
 	publishAt = def.dateTimeColumn()
+	headline = def.stringColumn().notNull()
+	coverPhoto = def.manyHasOne(Image).setNullOnDelete()
+	lead = def.stringColumn()
 	slug = def.stringColumn().notNull().unique()
 	linkedFrom = def.oneHasMany(Link, 'article')
-	lead = def.stringColumn()
-	content = def.oneHasOne(Content).cascadeOnDelete()
-	seo = def.oneHasOne(Seo, 'article').cascadeOnDelete()
+	content = def.oneHasOne(Content).removeOrphan().setNullOnDelete()
+	seo = def.oneHasOne(Seo, 'article').notNull().removeOrphan()
 }

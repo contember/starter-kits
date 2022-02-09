@@ -11,5 +11,5 @@ export class Page {
 	role = def.enumColumn(PageTypeEnum).unique().nullable()
 	linkedFrom = def.oneHasMany(Link, 'page')
 	blocks = def.oneHasMany(ContentBlock, 'page').orderBy('order')
-	seo = def.oneHasOne(Seo, 'page').cascadeOnDelete()
+	seo = def.oneHasOne(Seo, 'page').notNull().removeOrphan()
 }

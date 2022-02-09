@@ -4,6 +4,7 @@ import { Image } from './Image'
 
 export class Setting {
 	unique = def.enumColumn(def.createEnum('One')).notNull().unique()
-	logo = def.manyHasOne(Image)
-	footerCopyright = def.oneHasOne(Content).cascadeOnDelete()
+	logo = def.manyHasOne(Image).setNullOnDelete()
+
+	footerCopyright = def.oneHasOne(Content).removeOrphan().setNullOnDelete()
 }
