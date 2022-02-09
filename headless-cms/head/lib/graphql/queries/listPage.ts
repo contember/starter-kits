@@ -42,7 +42,7 @@ const listPage = `#graphql
             id
             label
             type
-            url {
+            target {
               id
               type
               url
