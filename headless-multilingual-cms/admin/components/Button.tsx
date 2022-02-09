@@ -10,7 +10,7 @@ type ButtonProps = {
 export const Button = Component<ButtonProps>(
 	({ field }) => (
 		<HasOne field={field}>
-			<LinkField field="url" label={locale["Link"]} />
+			<LinkField field="target" label={locale["Link"]} />
 			<TextField field="label" label={locale["Label"]} />
 			<RadioField
 				field="type"
