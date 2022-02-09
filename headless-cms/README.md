@@ -14,19 +14,23 @@ Thanks to Contember platform you can change anything. If you have any questions,
 ![Screenshot 2022-01-18 at 14 08 17](https://user-images.githubusercontent.com/176694/149993498-f3ce5901-2f6d-4b2d-bc2d-08bd12de6efa.png)
 
 ## How to use this template
+
 You'll need:
+
 - NPM version 7+ (you can check using `npm --version`)
 - [Docker](https://docs.docker.com/get-docker/)
+
 ### 🚀 Run Headless CMS starter locally
-1) Clone this template (`git clone git@github.com:contember/templates.git`)
-2) Go to templates > headless-cms (`cd templates/headless-cms`)
-3) Install dependencies:
+
+1. Clone this template (`git clone git@github.com:contember/templates.git`)
+2. Go to templates > headless-cms (`cd templates/headless-cms`)
+3. Install dependencies:
 
 ```bash
 npm install
 ```
 
-4) Start project:
+4. Start project:
 
 ```bash
 npm start
@@ -34,7 +38,7 @@ npm start
 
 This command will start Admin application and all docker containers (Contember Engine, Postgres, S3, Mailhog and Adminer). When you are done developing, you can stop docker containers by `docker-compose down`.
 
-*Congratulations, you're done!*
+_Congratulations, you're done!_
 
 Administration UI is now running at http://localhost:1480 and frontend website is running at http://localhost:3000.
 
@@ -43,11 +47,13 @@ Administration UI is now running at http://localhost:1480 and frontend website i
 By default frontend has full access to all contember (including updating and deleting anything). To make it secure we need to use token with only limited privileges.
 
 Generate new public api key for frontend website (you can do this later, but frontend website won't work without it):
+
 ```bash
 npm run contember tenant:create-api-key
 ```
 
 Then select:
+
 - Project: `headless-cms` (the only option)
 - Role: `public`
 - Do you want to add another role?: `n` (no)
@@ -81,7 +87,7 @@ import { csCZ } from "@contember/admin-i18n"
 In the `headless-cms/admin/locales/index.ts` file change default export from `enUS` to `csCZ` and import `csCZ` from `./csCZ`.
 
 ```ts title="headless-cms/admin/locales/index.ts"
-import csCZ from './csCZ'
+import csCZ from "./csCZ"
 
 export default csCZ
 ```
