@@ -12,12 +12,14 @@ export class Page {
 }
 
 @def.Unique('base', 'locale')
+@def.Unique('locale', 'slug')
 export class PageLocale {
 	base = def.manyHasOne(Page, 'locales').notNull().cascadeOnDelete()
+	locale = def.manyHasOne(Locale, 'pages').notNull().cascadeOnDelete()
 
 	publishAt = def.dateTimeColumn().default('now')
 	slug = def.stringColumn()
 	linkedFrom = def.oneHasMany(Link, 'page')
 	blocks = def.oneHasMany(ContentBlock, 'page').orderBy('order')
-	seo = def.oneHasOne(Seo, 'page').cascadeOnDelete()
+	seo = def.oneHasOne(Seo, 'page').notNull().removeOrphan()
 }

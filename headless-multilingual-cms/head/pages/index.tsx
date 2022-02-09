@@ -24,7 +24,7 @@ export default function Home(props: any) {
 
 	return (
 		<div>
-			<Seo seo={homePageLocalizedData?.seo} locales={homePageData.locales} />
+			<Seo seo={homePageLocalizedData?.seo} locales={homePageData?.locales} />
 			<Head>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
@@ -32,7 +32,7 @@ export default function Home(props: any) {
 				menu={headerMenu}
 				logo={setting?.logo}
 				locale={props.locale}
-				localeSwitcherOptions={{ locales: homePageData.locales }}
+				localeSwitcherOptions={{ locales: homePageData?.locales }}
 			/>
 			<main>
 				<Blocks blocks={homePageLocalizedData?.blocks} />

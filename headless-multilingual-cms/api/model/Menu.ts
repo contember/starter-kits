@@ -19,6 +19,6 @@ export class MenuLocale {
 export class MenuItem {
 	order = def.intColumn().notNull()
 	label = def.stringColumn()
-	url = def.oneHasOne(Link)
-	menu = def.manyHasOne(MenuLocale, 'items').cascadeOnDelete().notNull()
+	url = def.oneHasOne(Link).removeOrphan().setNullOnDelete()
+	menu = def.manyHasOne(MenuLocale, 'items').notNull().cascadeOnDelete()
 }

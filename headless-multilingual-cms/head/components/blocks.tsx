@@ -15,8 +15,8 @@ function HeroSection({ primaryText, content, image, buttons }) {
 					<RichTextRenderer blocks={content.parts} sourceField="json" />
 				}
 				<div>
-					{buttons && buttons.map((button) => (
-						<Link {...button.button} key={button.id} />
+					{buttons && buttons.map(({ id, button }) => (
+						<Link key={id} url={button.target} {...button} />
 					))}
 				</div>
 			</div>
@@ -83,11 +83,9 @@ function CtaSection({ primaryText, secondaryText, buttons }) {
 		<section>
 			<h2>{primaryText}</h2>
 			<h3>{secondaryText}</h3>
-			{buttons &&
-				buttons.map((button) => (
-					<Link {...button.button} key={button.key} />
-				))
-			}
+			{buttons && buttons.map(({ id, button }) => (
+				<Link key={id} url={button.target} {...button} />
+			))}
 		</section>
 	)
 }
