@@ -5,6 +5,8 @@ With Contember's open source development platform, you can create many things. T
 If you're struggling with something and didn't find it in our [documentation](https://docs.contember.com), don't hesitate to [join our Discord](https://discord.com/invite/EkhsuAK2Fg). We'll be happy to help!
 
 ## List of templates:
+
 We'll be adding new one every month. Let us know what you'd like to see here!
 
 1. [Headless CMS starter](/headless-cms)
+1. [Headless Multilingual CMS starter](/headless-multilingual-cms)

@@ -10,7 +10,7 @@ import Footer from '../../components/footer'
 import Header from '../../components/header'
 
 export default function Page(props: any) {
-  const homePageData = props.data?.getPage
+  const pageData = props.data?.getPage
   const headerMenu = props.data?.getHeaderMenu
   const footerMenu = props.data?.getFooterMenu
   const setting = props.data?.getSetting
@@ -22,7 +22,7 @@ export default function Page(props: any) {
   return (
     <div>
       <Seo
-        seo={homePageData?.seo}
+        seo={pageData?.seo}
       />
       <Head>
         <link rel="icon" href="/favicon.ico" />
@@ -31,7 +31,7 @@ export default function Page(props: any) {
       <Header menu={headerMenu} logo={setting?.logo} />
 
       <main>
-        <Blocks blocks={homePageData?.blocks} />
+        <Blocks blocks={pageData?.blocks} />
       </main>
 
       <Footer menu={footerMenu} content={setting?.footerCopyright} />
@@ -47,6 +47,7 @@ export async function getStaticProps({ params }: any) {
       data: data ?? null,
       errors: errors ?? null
     },
+	 revalidate: 10,
   }
 }
 
@@ -57,5 +58,5 @@ export async function getStaticPaths() {
     { params: { slug: page.slug ?? '' } }
   ))
 
-  return { paths, fallback: false }
+  return { paths, fallback: 'blocking' }
 }

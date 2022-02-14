@@ -28,26 +28,26 @@ export const PageList = (
 	>
 		<TextCell
 			field="seo.title"
-			header={locale["Title"]}
+			header={locale['Title']}
 			format={(scalar) => <Link to="pageEdit(id: $entity.id)">{scalar}</Link>}
 		/>
 		<EnumCell
 			field="role"
-			header={locale["Role"]}
+			header={locale['Role']}
 			options={{
-				homePage: locale["Home page"],
-				error404Page: locale["Error 404"],
-				blogPage: locale["Blog page"],
+				homePage: locale['Home page'],
+				error404Page: locale['Error 404'],
+				blogPage: locale['Blog page'],
 			}}
 		/>
-		<UrlCell field="slug" header={locale["Url"]} />
+		<UrlCell field="slug" header={locale['Url']} />
 	</DataGridPage>
 )
 
 export const PageCreate = (
 	<CreatePage
 		entity="Page"
-		rendererProps={{ title: locale["Add page"], side: <PageSideForm /> }}
+		rendererProps={{ title: locale['Add page'], side: <PageSideForm /> }}
 		redirectOnSuccess="pageEdit(id: $entity.id)"
 		onBeforePersist={(entityAccessor) => clearSlugWhenPageHasRole(entityAccessor)}
 	>
@@ -58,7 +58,7 @@ export const PageCreate = (
 export const PageEdit = (
 	<EditPage
 		entity="Page(id=$id)"
-		rendererProps={{ title: locale["Edit page"], side: <PageSideForm isEditPage /> }}
+		rendererProps={{ title: locale['Edit page'], side: <PageSideForm isEditPage /> }}
 		onBeforePersist={(entityAccessor) => clearSlugWhenPageHasRole(entityAccessor)}
 	>
 		<PageForm />

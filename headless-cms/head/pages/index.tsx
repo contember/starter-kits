@@ -10,7 +10,7 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 
 
-const Home: NextPage = (props: any) => {
+export default function Home (props: any) {
   const homePageData = props.data?.getPage
   const headerMenu = props.data?.getHeaderMenu
   const footerMenu = props.data?.getFooterMenu
@@ -51,9 +51,6 @@ const Home: NextPage = (props: any) => {
   )
 }
 
-export default Home
-
-
 export async function getStaticProps() {
   const { data, errors } = await serverSideFetch(getHomePage)
 
@@ -62,5 +59,6 @@ export async function getStaticProps() {
       data: data ?? null,
       errors: errors ?? null
     },
+	 revalidate: 10,
   }
 }

@@ -46,7 +46,7 @@ const getPage = `#graphql
 					id
 					label
 					type
-					url {
+					target {
 						id
 						type
 						url

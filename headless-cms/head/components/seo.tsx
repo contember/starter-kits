@@ -17,10 +17,10 @@ export default function Seo({ seo }: SeoProps) {
 	return (
 		<Head>
 			<title>{title}</title>
-			<meta name="description" content={description} />
-			<meta property="og:title" content={ogTitle} />
-			<meta property="og:description" content={ogDescription} />
-			<meta property="og:image" content={ogImage?.url} />
+			{description && <meta name="description" content={description} />}
+			{ogTitle && <meta property="og:title" content={ogTitle} />}
+			{ogDescription && <meta property="og:description" content={ogDescription} />}
+			{ogImage?.url && <meta property="og:image" content={ogImage.url} />}
 		</Head>
 	)
 }

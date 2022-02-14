@@ -1,4 +1,4 @@
-const homePage = `#graphql
+const listPage = `#graphql
   query {
     listPage {
       id
@@ -42,7 +42,7 @@ const homePage = `#graphql
             id
             label
             type
-            url {
+            target {
               id
               type
               url
@@ -122,4 +122,4 @@ const homePage = `#graphql
   }
 `
 
-export default homePage
+export default listPage

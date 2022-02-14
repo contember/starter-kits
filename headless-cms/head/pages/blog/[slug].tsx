@@ -37,7 +37,7 @@ export default function Article(props: any) {
 				{articleData.coverPhoto &&
 					<img src={articleData.coverPhoto.url} width={articleData.coverPhoto.width} height={articleData.coverPhoto.height} alt={articleData.coverPhoto.alt} />
 				}
-				<p>{articleData.perex}</p>
+				<p>{articleData.lead}</p>
 				{articleData.content &&
 					<RichTextRenderer blocks={articleData.content.parts} sourceField="json" />
 				}
@@ -56,6 +56,7 @@ export async function getStaticProps({ params }: any) {
 			data: data ?? null,
 			errors: errors ?? null
 		},
+		revalidate: 10,
 	}
 }
 
@@ -66,5 +67,5 @@ export async function getStaticPaths() {
 		{ params: { slug: article.slug ?? '' } }
 	))
 
-	return { paths, fallback: false }
+	return { paths, fallback: 'blocking' }
 }

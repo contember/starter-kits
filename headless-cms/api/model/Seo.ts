@@ -8,7 +8,7 @@ export class Seo {
 	description = def.stringColumn()
 	ogTitle = def.stringColumn()
 	ogDescription = def.stringColumn()
-	ogImage = def.oneHasOne(Image).cascadeOnDelete()
+	ogImage = def.manyHasOne(Image).setNullOnDelete()
 
 	article = def.oneHasOneInverse(Article, 'seo')
 	page = def.oneHasOneInverse(Page, 'seo')

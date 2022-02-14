@@ -16,7 +16,7 @@ export const ArticleSideForm = Component<ArticleSideFormProps>(
 			{isEditPage && <PreviewLink slugField="slug" prefix="/blog/" />}
 			<DateTimeField
 				field="publishAt"
-				label={locale["Publish date"]}
+				label={locale['Publish date']}
 				defaultValue={new Date().toISOString()}
 			/>
 		</>
@@ -27,13 +27,13 @@ export const ArticleSideForm = Component<ArticleSideFormProps>(
 export const ArticleForm = Component(
 	() => (
 		<>
-			<TextField field="headline" label={locale["Headline"]} />
-			<ImageField field="coverPhoto" label={locale["Cover photo"]} />
-			<TextAreaField field="perex" label={locale["Perex"]} />
-			<ContentField label={locale["Text"]} size="large" />
+			<TextField field="headline" label={locale['Headline']} />
+			<ImageField field="coverPhoto" label={locale['Cover photo']} />
+			<TextAreaField field="lead" label={locale['Lead']} />
+			<ContentField label={locale['Text']} size="large" />
 			<Seo
 				titleDerivedFrom="headline"
-				descriptionDerivedFrom="perex"
+				descriptionDerivedFrom="lead"
 				imageUrlDerivedFrom="coverPhoto.url"
 				seoPage="seoArticles"
 				seoFieldsProps={{

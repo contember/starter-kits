@@ -9,7 +9,7 @@ export type UrlCellProps = {
 }
 
 type UrlCellFromatProps = {
-	scalar: Scalar,
+	value: Scalar,
 	prefix?: string,
 }
 
@@ -19,7 +19,7 @@ export const UrlCell = Component<UrlCellProps>(
 			<TextCell
 				field={field}
 				header={header}
-				format={(scalar) => <UrlCellFormat scalar={scalar} prefix={prefix} />}
+				format={(value) => <UrlCellFormat value={value} prefix={prefix} />}
 			/>
 		)
 	},
@@ -27,13 +27,13 @@ export const UrlCell = Component<UrlCellProps>(
 )
 
 
-const UrlCellFormat = ({ scalar, prefix }: UrlCellFromatProps) => {
+const UrlCellFormat = ({ value, prefix }: UrlCellFromatProps) => {
 	const webUrl = useEnvironment().getValue('WEB_URL')
 	const url = prefix ? `${webUrl}/${prefix}` : `${webUrl}`
 
 	return (
-		<a href={`${url}/${scalar}`} target="_blank">
-			{`${url}/${scalar}`}
+		<a href={`${url}/${value}`} target="_blank">
+			{`${url}/${value}`}
 		</a>
 	)
 }
