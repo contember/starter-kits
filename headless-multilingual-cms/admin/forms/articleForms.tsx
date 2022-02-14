@@ -20,7 +20,7 @@ export const ArticleSideForm = Component<ArticleSideFormProps>(
 				}
 				<DateTimeField
 					field="publishAt"
-					label={locale["Publish date"]}
+					label={locale['Publish date']}
 					defaultValue={new Date().toISOString()}
 				/>
 			</>
@@ -32,14 +32,14 @@ export const ArticleSideForm = Component<ArticleSideFormProps>(
 export const ArticleForm = Component(
 	() => (
 		<>
-			<Section heading={locale["Content"]}>
+			<Section heading={locale['Content']}>
 				<LocaleSideDimension>
-					<TextField field="headline" label={locale["Headline"]} />
+					<TextField field="headline" label={locale['Headline']} />
 				</LocaleSideDimension>
-				<ImageField field="coverPhoto" label={locale["Cover photo"]} />
+				<ImageField field="coverPhoto" label={locale['Cover photo']} />
 				<LocaleSideDimension>
-					<TextAreaField field="lead" label={locale["Lead"]} />
-					<ContentField label={locale["Text"]} size="large" />
+					<TextAreaField field="lead" label={locale['Lead']} />
+					<ContentField label={locale['Text']} size="large" />
 				</LocaleSideDimension>
 			</Section>
 			<Section heading="Seo">

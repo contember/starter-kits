@@ -18,15 +18,15 @@ export const LinkField = Component<LinkFieldProps>(
 	({ field, label }) => {
 		return (
 			<HasOne field={field}>
-				<DiscriminatedBlocks label={label ?? 'Link'} field="type" description={locale["Select what you want to link."]}>
-					<Block discriminateBy="article" label={locale["Articles"]}>
+				<DiscriminatedBlocks label={label ?? 'Link'} field="type" description={locale['Select what you want to link.']}>
+					<Block discriminateBy="article" label={locale['Articles']}>
 						<SelectField
 							label={undefined}
 							options="ArticleLocale[locale.code=$currentLocaleCode].slug"
 							field="article"
 						/>
 					</Block>
-					<Block discriminateBy="page" label={locale["Pages"]}>
+					<Block discriminateBy="page" label={locale['Pages']}>
 						<SelectField
 							label={undefined}
 							options="PageLocale[locale.code=$currentLocaleCode]"
@@ -40,8 +40,8 @@ export const LinkField = Component<LinkFieldProps>(
 							}
 						/>
 					</Block>
-					<Block discriminateBy="url" label={locale["External link"]}>
-						<TextField label={locale["Url"]} field="url" />
+					<Block discriminateBy="url" label={locale['External link']}>
+						<TextField label={locale['Url']} field="url" />
 					</Block>
 				</DiscriminatedBlocks>
 			</HasOne>

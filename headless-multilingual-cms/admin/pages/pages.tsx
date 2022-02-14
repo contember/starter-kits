@@ -1,15 +1,5 @@
 import * as React from 'react'
-import {
-	CreatePage,
-	DataGridPage,
-	EditPage,
-	EntityAccessor,
-	EnumCell,
-	Link,
-	LinkButton,
-	TextCell,
-	useCurrentRequest,
-} from '@contember/admin'
+import { CreatePage, DataGridPage, EditPage, EntityAccessor, EnumCell, Link, LinkButton, TextCell, useCurrentRequest } from '@contember/admin'
 import { PageForm, PageSideForm } from '../forms/pageForms'
 import { UrlCell } from '../components/UrlCell'
 import locale from '../locales'
@@ -37,23 +27,23 @@ export const PageList = () => {
 			{request?.dimensions.locale.map(localeCode => (
 				<TextCell
 					field={`locales(locale.code = '${localeCode}').seo.title`}
-					header={`${locale["Title"]} (${localeCode})`}
+					header={`${locale['Title']} (${localeCode})`}
 					format={(scalar) => <Link to="pageEdit(id: $entity.id)">{scalar}</Link>}
 				/>
 			))}
 			<EnumCell
 				field="role"
-				header={locale["Role"]}
+				header={locale['Role']}
 				options={{
-					homePage: locale["Home page"],
-					error404Page: locale["Error 404"],
-					blogPage: locale["Blog page"],
+					homePage: locale['Home page'],
+					error404Page: locale['Error 404'],
+					blogPage: locale['Blog page'],
 				}}
 			/>
 			{request?.dimensions.locale.map(localeCode => (
 				<UrlCell
 					field={`locales(locale.code = '${localeCode}').slug`}
-					header={`${locale["Url"]} (${localeCode})`}
+					header={`${locale['Url']} (${localeCode})`}
 					prefix={`${localeCode}`}
 				/>
 			))}
@@ -64,7 +54,7 @@ export const PageList = () => {
 export const PageCreate = () => (
 	<CreatePage
 		entity="Page"
-		rendererProps={{ title: locale["Add page"], side: <PageSideForm /> }}
+		rendererProps={{ title: locale['Add page'], side: <PageSideForm /> }}
 		redirectOnSuccess="pageEdit(id: $entity.id)"
 		onBeforePersist={(entityAccessor) => clearSlugWhenPageHasRole(entityAccessor)}
 	>
@@ -75,7 +65,7 @@ export const PageCreate = () => (
 export const PageEdit = () => (
 	<EditPage
 		entity="Page(id=$id)"
-		rendererProps={{ title: locale["Edit page"], side: <PageSideForm isEditPage /> }}
+		rendererProps={{ title: locale['Edit page'], side: <PageSideForm isEditPage /> }}
 		onBeforePersist={(entityAccessor) => clearSlugWhenPageHasRole(entityAccessor)}
 	>
 		<PageForm />

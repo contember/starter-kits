@@ -35,21 +35,21 @@ export const PageSideForm = Component<PageSideFormProps>(
 					}
 					<DateTimeField
 						field="publishAt"
-						label={locale["Publish date"]}
+						label={locale['Publish date']}
 						defaultValue={new Date().toISOString()}
 					/>
 				</>
 			</LocaleSideDimension>
 			<SelectField
 				field="role"
-				label={locale["Page role"]}
+				label={locale['Page role']}
 				defaultValue={null}
 				allowNull
 				options={[
-					{ value: null, label: locale["Default"] },
-					{ value: 'homePage', label: locale["Home page"] },
-					{ value: 'blogPage', label: locale["Blog"] },
-					{ value: 'error404Page', label: locale["Error 404"] }
+					{ value: null, label: locale['Default'] },
+					{ value: 'homePage', label: locale['Home page'] },
+					{ value: 'blogPage', label: locale['Blog'] },
+					{ value: 'error404Page', label: locale['Error 404'] }
 				]}
 			/>
 		</>
@@ -60,7 +60,7 @@ export const PageSideForm = Component<PageSideFormProps>(
 export const PageForm = Component(
 	() => (
 		<>
-			<Section heading={locale["Content"]}>
+			<Section heading={locale['Content']}>
 				<LocaleSideDimension>
 					<ContentBlocks />
 				</LocaleSideDimension>

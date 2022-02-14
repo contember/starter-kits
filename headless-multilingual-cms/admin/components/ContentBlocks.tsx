@@ -25,30 +25,30 @@ export const ContentBlocks = Component(
 		>
 			<Block
 				discriminateBy="heroSection"
-				label={<LabelWithIcon icon={<IconHeroSection />} label={locale["Hero section"]} />}
+				label={<LabelWithIcon icon={<IconHeroSection />} label={locale['Hero section']} />}
 			>
-				<TextField field="primaryText" label={locale["Headline"]} />
+				<TextField field="primaryText" label={locale['Headline']} />
 				<ContentField />
 				<Repeater
 					field="buttons"
-					label={locale["Buttons"]}
+					label={locale['Buttons']}
 					sortableBy="order"
 					initialEntityCount={0}
 					addButtonText="Add button"
 				>
 					<Button field="button" />
 				</Repeater>
-				<ImageField field="image" label={locale["Image"]} />
+				<ImageField field="image" label={locale['Image']} />
 			</Block>
 
 			<Block
 				discriminateBy="logosSection"
-				label={<LabelWithIcon icon={<IconLogosSection />} label={locale["Logos section"]} />}
+				label={<LabelWithIcon icon={<IconLogosSection />} label={locale['Logos section']} />}
 			>
 				<ContentField />
 				<ImageFileRepeater
 					field="images"
-					label={locale["Logos"]}
+					label={locale['Logos']}
 					sortableBy="order"
 					urlField="image.url"
 					widthField="image.width"
@@ -57,7 +57,7 @@ export const ContentBlocks = Component(
 				>
 					<HasOne field="image">
 						<LocaleSideDimension>
-							<TextField field="alt" label={locale["Alternative text"]} />
+							<TextField field="alt" label={locale['Alternative text']} />
 						</LocaleSideDimension>
 					</HasOne>
 				</ImageFileRepeater>
@@ -65,35 +65,35 @@ export const ContentBlocks = Component(
 
 			<Block
 				discriminateBy="contentSection"
-				label={<LabelWithIcon icon={<IconContentSection />} label={locale["Content section"]} />}
+				label={<LabelWithIcon icon={<IconContentSection />} label={locale['Content section']} />}
 			>
 				<ContentField size="large" />
 			</Block>
 
 			<Block
 				discriminateBy="featureSection"
-				label={<LabelWithIcon icon={<IconFeaturesSection />} label={locale["Features section"]} />}
+				label={<LabelWithIcon icon={<IconFeaturesSection />} label={locale['Features section']} />}
 			>
-				<TextField field="primaryText" label={locale["Headline"]} />
-				<TextField field="secondaryText" label={locale["Subtitle"]} />
+				<TextField field="primaryText" label={locale['Headline']} />
+				<TextField field="secondaryText" label={locale['Subtitle']} />
 				<ContentField />
-				<Repeater field="featureList" label={locale["Features"]} sortableBy="order" addButtonText="Add feature">
-					<ImageField field="icon" label={locale["Icon"]} />
-					<TextField field="primaryText" label={locale["Headline"]} />
+				<Repeater field="featureList" label={locale['Features']} sortableBy="order" addButtonText="Add feature">
+					<ImageField field="icon" label={locale['Icon']} />
+					<TextField field="primaryText" label={locale['Headline']} />
 					<ContentField />
 				</Repeater>
 			</Block>
 
 			<Block
 				discriminateBy="ctaSection"
-				label={<LabelWithIcon icon={<IconCTASection />} label={locale["CTA section"]} />}
+				label={<LabelWithIcon icon={<IconCTASection />} label={locale['CTA section']} />}
 			>
-				<TextField field="primaryText" label={locale["Headline"]} />
-				<TextField field="secondaryText" label={locale["Subtitle"]} />
+				<TextField field="primaryText" label={locale['Headline']} />
+				<TextField field="secondaryText" label={locale['Subtitle']} />
 				<ContentField />
 				<Repeater
 					field="buttons"
-					label={locale["Buttons"]}
+					label={locale['Buttons']}
 					sortableBy="order"
 					initialEntityCount={0}
 					addButtonText="Add button"
@@ -104,22 +104,22 @@ export const ContentBlocks = Component(
 
 			<Block
 				discriminateBy="testimonialSection"
-				label={<LabelWithIcon icon={<IconTestimonialSection />} label={locale["Testimonial section"]} />}
+				label={<LabelWithIcon icon={<IconTestimonialSection />} label={locale['Testimonial section']} />}
 			>
-				<TextField field="primaryText" label={locale["Headline"]} />
+				<TextField field="primaryText" label={locale['Headline']} />
 				<ContentField />
 				<Repeater
 					field="testimonials"
-					label={locale["Testimonials"]}
+					label={locale['Testimonials']}
 					sortableBy="order"
 					addButtonText="Add testimonial"
 				>
 					<ContentField />
 					<Box heading="Author">
 						<HasOne field="author">
-							<ImageField field="image" label={locale["Image"]} />
-							<TextField field="name" label={locale["Name"]} />
-							<RichTextField field="title" label={locale["Title"]} />
+							<ImageField field="image" label={locale['Image']} />
+							<TextField field="name" label={locale['Name']} />
+							<RichTextField field="title" label={locale['Title']} />
 						</HasOne>
 					</Box>
 				</Repeater>
@@ -127,9 +127,9 @@ export const ContentBlocks = Component(
 
 			<Block
 				discriminateBy="contactSection"
-				label={<LabelWithIcon icon={<IconContactSection />} label={locale["Contact section"]} />}
+				label={<LabelWithIcon icon={<IconContactSection />} label={locale['Contact section']} />}
 			>
-				<TextField field="primaryText" label={locale["Headline"]} />
+				<TextField field="primaryText" label={locale['Headline']} />
 				<ContentField />
 			</Block>
 		</BlockRepeater>

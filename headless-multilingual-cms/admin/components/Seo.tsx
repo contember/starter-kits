@@ -7,7 +7,6 @@ import {
 	Field,
 	ImageUploadField,
 	LinkButton,
-	Section,
 	SlugField,
 	TextAreaField,
 	TextField,
@@ -62,7 +61,7 @@ const SeoSlugField = Component<SeoFieldsProps>(
 					<SlugField
 						field={fieldSlug}
 						derivedFrom={fieldTitle}
-						label={locale["Url"]}
+						label={locale['Url']}
 						unpersistedHardPrefix={(environment) => {
 							return getSlugPrefix(environment, unpersistedHardPrefix)
 						}}
@@ -74,7 +73,7 @@ const SeoSlugField = Component<SeoFieldsProps>(
 				<SlugField
 					field={fieldSlug}
 					derivedFrom={fieldTitle}
-					label={locale["Url"]}
+					label={locale['Url']}
 					unpersistedHardPrefix={(environment) => {
 						return getSlugPrefix(environment, unpersistedHardPrefix)
 					}}
@@ -95,28 +94,25 @@ const SeoFields = Component<SeoFieldsProps>(
 		const fieldOgDescription = field ? field + '.ogDescription' : 'ogDescription'
 		const fieldOgImageUrl = field ? field + '.ogImage.url' : 'ogImage.url'
 
-		console.log('advancedOptions',advancedOptions);
-		
-
 		return (
 			<>
-				<TextField field={fieldTitle} label={locale["Title"]} required />
+				<TextField field={fieldTitle} label={locale['Title']} required />
 				<SeoSlugField {...props} />
 				<TextAreaField
 					field={fieldDescription}
-					label={locale["Description"]}
-					description={locale["Short summary of the page. Keep it between 120 and 158 characters."]}
+					label={locale['Description']}
+					description={locale['Short summary of the page. Keep it between 120 and 158 characters.']}
 				/>
 				{advancedOptions &&
 					<>
-						<TextField field={fieldOgTitle} label={locale["OG title"]} />
-						<TextAreaField field={fieldOgDescription} label={locale["OG description"]} />
+						<TextField field={fieldOgTitle} label={locale['OG title']} />
+						<TextAreaField field={fieldOgDescription} label={locale['OG description']} />
 					</>
 				}
 				<ImageUploadField
 					urlField={fieldOgImageUrl}
-					label={locale["OG image"]}
-					description={locale["Recommended aspect ratio 19:10 (e.g.: 2400×1260 px)."]}
+					label={locale['OG image']}
+					description={locale['Recommended aspect ratio 19:10 (e.g.: 2400×1260 px).']}
 				/>
 			</>
 		)
@@ -150,7 +146,7 @@ export const Seo = Component<SeoFormProps>(
 					}
 					<SeoFields field="seo" {...seoFieldsProps} advancedOptions={advancedOptions} />
 					{(seoPage && !advancedOptions) &&
-						<LinkButton to={seoPage}>{locale["Advanced website SEO"]}</LinkButton>
+						<LinkButton to={seoPage}>{locale['Advanced website SEO']}</LinkButton>
 					}
 				</>
 			</LocaleSideDimension>

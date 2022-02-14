@@ -10,14 +10,14 @@ type ButtonProps = {
 export const Button = Component<ButtonProps>(
 	({ field }) => (
 		<HasOne field={field}>
-			<LinkField field="target" label={locale["Link"]} />
-			<TextField field="label" label={locale["Label"]} />
+			<LinkField field="target" label={locale['Link']} />
+			<TextField field="label" label={locale['Label']} />
 			<RadioField
 				field="type"
-				label={locale["Type"]}
+				label={locale['Type']}
 				options={[
-					{ value: 'primary', label: locale["Primary"] },
-					{ value: 'secondary', label: locale["Secondary"] }
+					{ value: 'primary', label: locale['Primary'] },
+					{ value: 'secondary', label: locale['Secondary'] }
 				]}
 				defaultValue="primary"
 			/>
