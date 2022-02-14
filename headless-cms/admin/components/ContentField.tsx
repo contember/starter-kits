@@ -36,8 +36,8 @@ const inlineButtons: BlockEditorProps["inlineButtons"] = [
 		{
 			discriminateBy: 'link',
 			referenceContent: InsertLink,
-			label: locale["Insert link"],
-			title: locale["Insert link"],
+			label: locale['Insert link'],
+			title: locale['Insert link'],
 			blueprintIcon: 'link',
 		},
 	]
@@ -51,7 +51,7 @@ export const ContentField = Component<ContentFieldProps>(
 			referencesField={referencesField ?? "references"}
 			referenceDiscriminationField="type"
 			field={field ?? 'content.parts'}
-			label={label ?? locale["Content"]}
+			label={label ?? locale['Content']}
 			size={size ?? 'default'}
 			sortableBy="order"
 			inlineButtons={inlineButtons}

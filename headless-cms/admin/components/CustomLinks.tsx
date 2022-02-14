@@ -19,8 +19,8 @@ export const InsertLink = Component<InitializeReferenceContentProps>(
 		<>
 			<LinkField field="link" />
 			<div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1em', minWidth: '350px' }}>
-				<Button onClick={onCancel}>{locale["Cancel"]}</Button>
-				<Button intent="primary" onClick={() => onSuccess({ createElement: { type: 'link' } })}>{locale["Insert"]}</Button>
+				<Button onClick={onCancel}>{locale['Cancel']}</Button>
+				<Button intent="primary" onClick={() => onSuccess({ createElement: { type: 'link' } })}>{locale['Insert']}</Button>
 			</div>
 		</>
 	),
@@ -44,7 +44,7 @@ export const LinkElement = (props: EditorRenderElementProps) => {
 					<Box>
 						<LinkField field="link" />
 						<Button size="small" onClick={() => EditorTransforms.unwrapNodes(editor, { at: [], match: node => node === props.element })}>
-							{locale["Remove link"]}
+							{locale['Remove link']}
 						</Button>
 					</Box>
 				</Dropdown>

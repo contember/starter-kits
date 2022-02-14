@@ -19,7 +19,7 @@ export const PreviewLink = Component<PreviewLinkProps>(
 
 		return (
 			<a href={`${webUrl}${path}`} target="_blank">
-				{locale["Preview"]}
+				{locale['Preview']}
 			</a>
 		)
 	},

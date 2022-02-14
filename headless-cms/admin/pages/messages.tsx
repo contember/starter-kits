@@ -15,22 +15,22 @@ export const MessageList = (
 	<DataGridPage
 		entities="ContactMessage"
 		itemsPerPage={50}
-		rendererProps={{ title: locale["Messages"] }}
+		rendererProps={{ title: locale['Messages'] }}
 	>
 		<BooleanCell
 			field="viewed"
-			header={locale["Viewed"]}
+			header={locale['Viewed']}
 			format={(date) => (!date && <span style={viewedDotStyle} />)}
 		/>
 		<DateCell
 			field="createdAt"
-			header={locale["Create date"]}
+			header={locale['Create date']}
 			initialOrder="desc"
 			format={(scalar) => <Link to="messageEdit(id: $entity.id)">{scalar.toLocaleString()}</Link>}
 		/>
-		<TextCell field="firstName" header={locale["First name"]} />
-		<TextCell field="lastName" header={locale["Last name"]} />
-		<TextCell field="email" header={locale["E-mail"]} />
+		<TextCell field="firstName" header={locale['First name']} />
+		<TextCell field="lastName" header={locale['Last name']} />
+		<TextCell field="email" header={locale['E-mail']} />
 	</DataGridPage>
 )
 
@@ -38,14 +38,14 @@ export const MessageList = (
 export const MessageEdit = (
 	<EditPage
 		entity="ContactMessage(id = $id)"
-		rendererProps={{ title: locale["Show contact message"] }}
+		rendererProps={{ title: locale['Show contact message'] }}
 	>
 		<ViewedMarker />
-		{locale["Created at"]}: <Field field="createdAt" /><br />
-		{locale["First name"]}: <Field field="firstName" /><br />
-		{locale["Last name"]}: <Field field="lastName" /><br />
-		{locale["E-mail"]}: <Field field="email" /><br />
-		{locale["Phone number"]}: <Field field="phone" /><br />
-		{locale["Message"]}: <Field field="message" />
+		{locale['Created at']}: <Field field="createdAt" /><br />
+		{locale['First name']}: <Field field="firstName" /><br />
+		{locale['Last name']}: <Field field="lastName" /><br />
+		{locale['E-mail']}: <Field field="email" /><br />
+		{locale['Phone number']}: <Field field="phone" /><br />
+		{locale['Message']}: <Field field="message" />
 	</EditPage>
 )

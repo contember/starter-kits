@@ -7,8 +7,8 @@ export const NavigationList = (
 	<TablePage
 		entities="Menu"
 		rendererProps={{
-			title: locale["Menus"],
-			actions: <LinkButton to="navigationCreate">{locale["Add menu"]}</LinkButton>
+			title: locale['Menus'],
+			actions: <LinkButton to="navigationCreate">{locale['Add menu']}</LinkButton>
 		}}
 	>
 		<TableCell><Field field="position" /></TableCell>
@@ -21,7 +21,7 @@ export const NavigationList = (
 export const NavigationCreate = (
 	<CreatePage
 		entity="Menu"
-		rendererProps={{ title: locale["Add menu"] }}
+		rendererProps={{ title: locale['Add menu'] }}
 		redirectOnSuccess="navigationEdit(id: $entity.id)"
 	>
 		<NavigationForm />
@@ -31,7 +31,7 @@ export const NavigationCreate = (
 export const NavigationEdit = (
 	<EditPage
 		entity="Menu(id=$id)"
-		rendererProps={{ title: locale["Edit menu"] }}
+		rendererProps={{ title: locale['Edit menu'] }}
 	>
 		<NavigationForm />
 	</EditPage>
