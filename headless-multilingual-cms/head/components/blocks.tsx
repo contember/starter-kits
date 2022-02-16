@@ -21,8 +21,6 @@ function HeroSection({ primaryText, content, image, buttons }) {
 					<RichTextRenderer<any>
 						blocks={content.parts}
 						renderElement={(props) => {
-							console.log(props)
-
 							if (props.element.type === 'link' && props.reference) {
 								const reference = props.reference as ReferenceProps
 
