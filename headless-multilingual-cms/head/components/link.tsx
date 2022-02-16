@@ -23,10 +23,11 @@ export default function CustomLink(props: CustomLinkProps) {
 	const href = url ? url.type && urlTypes[url.type] : null
 
 	if (href) {
+		if (url.type === 'url') {
+			return (<a href={href} target="_blank">{label}</a>)
+		}
 		return (
-			<Link href={href}>
-				<a>{label}</a>
-			</Link>
+			<Link href={href}><a>{label}</a></Link>
 		)
 	} else {
 		return <span>{label}</span>
