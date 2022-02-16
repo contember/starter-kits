@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { SchemaDefinition as def } from '@contember/schema-definition'
 import { FormBlock } from './FormBlock'
 import { Form } from './Form'

@@ -314,11 +314,11 @@
 			"modification": "createColumn",
 			"entityName": "Form",
 			"field": {
-				"name": "slug",
-				"columnName": "slug",
-				"nullable": true,
+				"nullable": false,
 				"type": "String",
-				"columnType": "text"
+				"columnType": "text",
+				"name": "slug",
+				"columnName": "slug"
 			}
 		},
 		{
