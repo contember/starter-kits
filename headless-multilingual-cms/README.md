@@ -2,16 +2,22 @@
 
 With this template we'll use Contember platform as headless CMS and [Next.js](https://nextjs.org/) for frontend site. You'll get:
 
+- Multilingual support (add as many languages as you want)
 - Pages with 7 blocks (Hero section, Logos section, Content section, Features section, CTA section, Testimonial section, Contact section)
 - Blog and articles with powerful WYSIWYG editor
 - Messages for saving forms from the frontend website
 - Website settings (upload logotype, set up navigation)
 - [ACL rules](https://docs.contember.com/schema/acl) for administrators and public access for frontend website
 - Basic Next.js website intentionally without any styling. See how you can easily query GraphQL API Contember provides
+- Pages and Articles with SEO support
 
 Thanks to Contember platform you can change anything. If you have any questions, we're happy to help in [Discord](https://discord.com/invite/EkhsuAK2Fg).
 
-![Screenshot 2022-01-18 at 14 08 17](https://user-images.githubusercontent.com/176694/149993498-f3ce5901-2f6d-4b2d-bc2d-08bd12de6efa.png)
+![Screenshot 2022-02-16 at 9 18 33](https://user-images.githubusercontent.com/47249487/154224017-fadc28af-d8fe-460b-8283-70fad176b53b.png)
+
+## Multilingual support
+
+All your data will be clearly stored in the database, thanks to the support of multiple languages directly in the model. No more unexpected problems when adding a new language or the inability to translate any piece of the application.
 
 ## How to use this template
 
@@ -71,13 +77,13 @@ The default language of administration is English. Other supported language is C
 In the `headless-multilingual-cms/admin/index.tsx` file, add the `defaultLocale` and `dictionaries` props to `<ApplicationEntrypoint />` and import the Czech dictionary from `@contember/i18n`.
 
 ```tsx title="headless-multilingual-cms/admin/index.tsx"
-import { csCZ } from "@contember/admin-i18n"
+import { csCZ } from '@contember/admin-i18n'
 
 <ApplicationEntrypoint
 	...
 	defaultLocale="cs-CZ"
 	dictionaries={{
-		"cs-CZ": csCZ,
+		'cs-CZ': csCZ,
 	}}
 />
 ```
@@ -87,7 +93,7 @@ import { csCZ } from "@contember/admin-i18n"
 In the `headless-multilingual-cms/admin/locales/index.ts` file change default export from `enUS` to `csCZ` and import `csCZ` from `./csCZ`.
 
 ```ts title="headless-multilingual-cms/admin/locales/index.ts"
-import csCZ from "./csCZ"
+import csCZ from './csCZ'
 
 export default csCZ
 ```

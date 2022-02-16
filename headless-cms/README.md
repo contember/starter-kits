@@ -8,6 +8,7 @@ With this template we'll use Contember platform as headless CMS and [Next.js](ht
 - Website settings (upload logotype, set up navigation)
 - [ACL rules](https://docs.contember.com/schema/acl) for administrators and public access for frontend website
 - Basic Next.js website intentionally without any styling. See how you can easily query GraphQL API Contember provides
+- Pages and Articles with SEO support
 
 Thanks to Contember platform you can change anything. If you have any questions, we're happy to help in [Discord](https://discord.com/invite/EkhsuAK2Fg).
 
