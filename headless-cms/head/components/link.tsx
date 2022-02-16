@@ -1,8 +1,7 @@
-import type { ReactElement } from "react"
 import Link from "next/link"
 
 type CustomLinkProps = {
-	label: string | ReactElement<any, any>
+	label: string
 	url?: any
 }
 
