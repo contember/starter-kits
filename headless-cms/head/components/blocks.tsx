@@ -1,8 +1,14 @@
-import { RichTextRenderer } from "@contember/react-client"
 import { useCallback, useState } from "react"
+import { RichTextRenderer } from "@contember/react-client"
 import { clientSideFetch } from "../lib/graphql/gqlfetch"
 import createMessage from "../lib/graphql/mutations/createMessage"
 import Link from "./link"
+
+type ReferenceProps = {
+	id: string,
+	type: string
+	target: any
+}
 
 function HeroSection({ primaryText, content, image, buttons }) {
 	return (
@@ -11,11 +17,29 @@ function HeroSection({ primaryText, content, image, buttons }) {
 				<h1>
 					{primaryText}
 				</h1>
-				{content && content.parts &&
-					<RichTextRenderer blocks={content.parts} sourceField="json" />
+				{content?.parts &&
+					<RichTextRenderer<any>
+						blocks={content.parts}
+						referenceDiscriminationField="type"
+						renderElement={(props) => {
+							if (props.element.type === 'link' && props.reference) {
+								const reference = props.reference as ReferenceProps
+
+								return (
+									<Link
+										label={props.element.children[0].text}
+										url={reference.target}
+									/>
+								)
+							}
+
+							return props.fallback
+						}}
+						sourceField="json"
+					/>
 				}
 				<div>
-					{buttons && buttons.map(({id, button}) => (
+					{buttons && buttons.map(({ id, button }) => (
 						<Link key={id} url={button.target} {...button} />
 					))}
 				</div>
