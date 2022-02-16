@@ -33,9 +33,21 @@ const getPage = `#graphql
 				parts {
 					json
 					references {
+						id
 						type
-						primaryText
-						text
+						target {
+							id
+							type
+							url
+							article {
+								id
+								slug
+							}
+							page {
+								id
+								slug
+							}
+						}
 					}
 				}
 			}
@@ -83,9 +95,21 @@ const getPage = `#graphql
 					parts {
 						json
 						references {
+							id
 							type
-							primaryText
-							text
+							target {
+								id
+								type
+								url
+								article {
+									id
+									slug
+								}
+								page {
+									id
+									slug
+								}
+							}
 						}
 					}
 				}
@@ -103,9 +127,21 @@ const getPage = `#graphql
 				parts {
 					json
 					references {
+						id
 						type
-						primaryText
-						text
+						target {
+							id
+							type
+							url
+							article {
+								id
+								slug
+							}
+							page {
+								id
+								slug
+							}
+						}
 					}
 				}
 			}

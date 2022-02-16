@@ -1105,12 +1105,12 @@
 			"modification": "createRelation",
 			"entityName": "ContentReference",
 			"owningSide": {
-				"name": "link",
+				"name": "target",
 				"nullable": true,
 				"type": "OneHasOne",
 				"target": "Link",
 				"joiningColumn": {
-					"columnName": "link_id",
+					"columnName": "target_id",
 					"onDelete": "set null"
 				},
 				"orphanRemoval": true
@@ -1661,7 +1661,7 @@
 										"content": true,
 										"seo": true
 									},
-									"read": {
+									"update": {
 										"id": true,
 										"publishAt": true,
 										"headline": true,
@@ -1672,7 +1672,7 @@
 										"content": true,
 										"seo": true
 									},
-									"update": {
+									"read": {
 										"id": true,
 										"publishAt": true,
 										"headline": true,
@@ -1696,13 +1696,13 @@
 										"target": true,
 										"type": true
 									},
-									"read": {
+									"update": {
 										"id": true,
 										"label": true,
 										"target": true,
 										"type": true
 									},
-									"update": {
+									"read": {
 										"id": true,
 										"label": true,
 										"target": true,
@@ -1726,7 +1726,7 @@
 										"message": true,
 										"consent": true
 									},
-									"read": {
+									"update": {
 										"id": true,
 										"createdAt": true,
 										"viewed": true,
@@ -1737,7 +1737,7 @@
 										"message": true,
 										"consent": true
 									},
-									"update": {
+									"read": {
 										"id": true,
 										"createdAt": true,
 										"viewed": true,
@@ -1759,11 +1759,11 @@
 										"id": true,
 										"parts": true
 									},
-									"read": {
+									"update": {
 										"id": true,
 										"parts": true
 									},
-									"update": {
+									"read": {
 										"id": true,
 										"parts": true
 									},
@@ -1781,14 +1781,14 @@
 										"json": true,
 										"references": true
 									},
-									"read": {
+									"update": {
 										"id": true,
 										"order": true,
 										"content": true,
 										"json": true,
 										"references": true
 									},
-									"update": {
+									"read": {
 										"id": true,
 										"order": true,
 										"content": true,
@@ -1806,19 +1806,19 @@
 										"id": true,
 										"contentPart": true,
 										"type": true,
-										"link": true
-									},
-									"read": {
-										"id": true,
-										"contentPart": true,
-										"type": true,
-										"link": true
+										"target": true
 									},
 									"update": {
 										"id": true,
 										"contentPart": true,
 										"type": true,
-										"link": true
+										"target": true
+									},
+									"read": {
+										"id": true,
+										"contentPart": true,
+										"type": true,
+										"target": true
 									},
 									"delete": true,
 									"customPrimary": true
@@ -1842,7 +1842,7 @@
 										"testimonials": true,
 										"blogPosts": true
 									},
-									"read": {
+									"update": {
 										"id": true,
 										"order": true,
 										"type": true,
@@ -1857,7 +1857,7 @@
 										"testimonials": true,
 										"blogPosts": true
 									},
-									"update": {
+									"read": {
 										"id": true,
 										"order": true,
 										"type": true,
@@ -1885,13 +1885,13 @@
 										"image": true,
 										"contentBlock": true
 									},
-									"read": {
+									"update": {
 										"id": true,
 										"order": true,
 										"image": true,
 										"contentBlock": true
 									},
-									"update": {
+									"read": {
 										"id": true,
 										"order": true,
 										"image": true,
@@ -1910,13 +1910,13 @@
 										"button": true,
 										"contentBlock": true
 									},
-									"read": {
+									"update": {
 										"id": true,
 										"order": true,
 										"button": true,
 										"contentBlock": true
 									},
-									"update": {
+									"read": {
 										"id": true,
 										"order": true,
 										"button": true,
@@ -1937,7 +1937,7 @@
 										"icon": true,
 										"contentBlock": true
 									},
-									"read": {
+									"update": {
 										"id": true,
 										"order": true,
 										"primaryText": true,
@@ -1945,7 +1945,7 @@
 										"icon": true,
 										"contentBlock": true
 									},
-									"update": {
+									"read": {
 										"id": true,
 										"order": true,
 										"primaryText": true,
@@ -1967,14 +1967,14 @@
 										"author": true,
 										"contentBlock": true
 									},
-									"read": {
+									"update": {
 										"id": true,
 										"order": true,
 										"content": true,
 										"author": true,
 										"contentBlock": true
 									},
-									"update": {
+									"read": {
 										"id": true,
 										"order": true,
 										"content": true,
@@ -1994,13 +1994,13 @@
 										"title": true,
 										"image": true
 									},
-									"read": {
+									"update": {
 										"id": true,
 										"name": true,
 										"title": true,
 										"image": true
 									},
-									"update": {
+									"read": {
 										"id": true,
 										"name": true,
 										"title": true,
@@ -2019,13 +2019,13 @@
 										"blogPost": true,
 										"contentBlock": true
 									},
-									"read": {
+									"update": {
 										"id": true,
 										"order": true,
 										"blogPost": true,
 										"contentBlock": true
 									},
-									"update": {
+									"read": {
 										"id": true,
 										"order": true,
 										"blogPost": true,
@@ -2047,7 +2047,7 @@
 										"type": true,
 										"alt": true
 									},
-									"read": {
+									"update": {
 										"id": true,
 										"url": true,
 										"width": true,
@@ -2056,7 +2056,7 @@
 										"type": true,
 										"alt": true
 									},
-									"update": {
+									"read": {
 										"id": true,
 										"url": true,
 										"width": true,
@@ -2079,14 +2079,14 @@
 										"article": true,
 										"page": true
 									},
-									"read": {
+									"update": {
 										"id": true,
 										"type": true,
 										"url": true,
 										"article": true,
 										"page": true
 									},
-									"update": {
+									"read": {
 										"id": true,
 										"type": true,
 										"url": true,
@@ -2105,12 +2105,12 @@
 										"position": true,
 										"items": true
 									},
-									"read": {
+									"update": {
 										"id": true,
 										"position": true,
 										"items": true
 									},
-									"update": {
+									"read": {
 										"id": true,
 										"position": true,
 										"items": true
@@ -2129,14 +2129,14 @@
 										"url": true,
 										"menu": true
 									},
-									"read": {
+									"update": {
 										"id": true,
 										"order": true,
 										"label": true,
 										"url": true,
 										"menu": true
 									},
-									"update": {
+									"read": {
 										"id": true,
 										"order": true,
 										"label": true,
@@ -2159,7 +2159,7 @@
 										"blocks": true,
 										"seo": true
 									},
-									"read": {
+									"update": {
 										"id": true,
 										"publishAt": true,
 										"slug": true,
@@ -2168,7 +2168,7 @@
 										"blocks": true,
 										"seo": true
 									},
-									"update": {
+									"read": {
 										"id": true,
 										"publishAt": true,
 										"slug": true,
@@ -2194,7 +2194,7 @@
 										"article": true,
 										"page": true
 									},
-									"read": {
+									"update": {
 										"id": true,
 										"title": true,
 										"description": true,
@@ -2204,7 +2204,7 @@
 										"article": true,
 										"page": true
 									},
-									"update": {
+									"read": {
 										"id": true,
 										"title": true,
 										"description": true,
@@ -2227,13 +2227,13 @@
 										"logo": true,
 										"footerCopyright": true
 									},
-									"read": {
+									"update": {
 										"id": true,
 										"unique": true,
 										"logo": true,
 										"footerCopyright": true
 									},
-									"update": {
+									"read": {
 										"id": true,
 										"unique": true,
 										"logo": true,
@@ -2295,17 +2295,6 @@
 							"ContactMessage": {
 								"predicates": {},
 								"operations": {
-									"read": {
-										"id": true,
-										"createdAt": true,
-										"viewed": true,
-										"firstName": true,
-										"lastName": true,
-										"email": true,
-										"phone": true,
-										"message": true,
-										"consent": true
-									},
 									"create": {
 										"id": true,
 										"createdAt": true,
@@ -2327,6 +2316,17 @@
 										"phone": false,
 										"message": false,
 										"consent": false
+									},
+									"read": {
+										"id": true,
+										"createdAt": true,
+										"viewed": true,
+										"firstName": true,
+										"lastName": true,
+										"email": true,
+										"phone": true,
+										"message": true,
+										"consent": true
 									},
 									"delete": false
 								}
@@ -2359,7 +2359,7 @@
 										"id": true,
 										"contentPart": true,
 										"type": true,
-										"link": true
+										"target": true
 									}
 								}
 							},

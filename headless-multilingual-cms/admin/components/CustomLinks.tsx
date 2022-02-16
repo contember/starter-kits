@@ -17,14 +17,14 @@ import locale from '../locales'
 export const InsertLink = Component<InitializeReferenceContentProps>(
 	({ onSuccess, onCancel }) => (
 		<>
-			<LinkField field="link" />
+			<LinkField field="target" />
 			<div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1em', minWidth: '350px' }}>
 				<Button onClick={onCancel}>{locale['Cancel']}</Button>
 				<Button intent="primary" onClick={() => onSuccess({ createElement: { type: 'link' } })}>{locale['Insert']}</Button>
 			</div>
 		</>
 	),
-	() => <LinkField field="link" />,
+	() => <LinkField field="target" />,
 )
 
 
@@ -42,7 +42,7 @@ export const LinkElement = (props: EditorRenderElementProps) => {
 					)}
 				>
 					<Box>
-						<LinkField field="link" />
+						<LinkField field="target" />
 						<Button size="small" onClick={() => EditorTransforms.unwrapNodes(editor, { at: [], match: node => node === props.element })}>
 							{locale['Remove link']}
 						</Button>
