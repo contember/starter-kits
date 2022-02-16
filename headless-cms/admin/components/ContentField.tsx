@@ -61,8 +61,8 @@ export const ContentField = Component<ContentFieldProps>(
 					{
 						elementType: 'link',
 						updateReference: (url, getAccessor) => {
-							getAccessor().getField('link.type').updateValue('external')
-							getAccessor().getField('link.url').updateValue(url)
+							getAccessor().getField('target.type').updateValue('external')
+							getAccessor().getField('target.url').updateValue(url)
 						},
 					},
 				)

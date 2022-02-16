@@ -31,10 +31,12 @@ const getHomePage = `#graphql
 				content {
 					id
 					parts {
+						id
 						json
 						references {
+							id
 							type
-							link {
+							target {
 								id
 								type
 								url
@@ -94,8 +96,9 @@ const getHomePage = `#graphql
 						parts {
 							json
 							references {
+								id
 								type
-								link {
+								target {
 									id
 									type
 									url
@@ -125,8 +128,9 @@ const getHomePage = `#graphql
 						parts {
 							json
 							references {
+								id
 								type
-								link {
+								target {
 									id
 									type
 									url

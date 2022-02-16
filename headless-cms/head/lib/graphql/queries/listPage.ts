@@ -29,8 +29,9 @@ const listPage = `#graphql
 					parts {
 						json
 						references {
+							id
 							type
-							link {
+							target {
 								id
 								type
 								url
@@ -90,8 +91,9 @@ const listPage = `#graphql
 						parts {
 							json
 							references {
+								id
 								type
-								link {
+								target {
 									id
 									type
 									url
@@ -121,6 +123,7 @@ const listPage = `#graphql
 						parts {
 							json
 							references {
+								id
 								type
 								link {
 									id
