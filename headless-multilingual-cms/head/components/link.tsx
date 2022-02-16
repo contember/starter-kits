@@ -7,17 +7,18 @@ type CustomLinkProps = {
 
 export default function CustomLink(props: CustomLinkProps) {
 	const { label, url } = props
+	const articlePrefix = '/blog'
 
 	const pageUrlRole: any = {
 		homePage: `/`,
-		blogPage: `/blog`,
+		blogPage: articlePrefix,
 		error404Page: "/404"
 	}
 
 	const urlTypes: any = {
 		url: url?.url,
 		page: url?.page?.base?.role ? pageUrlRole[url?.page.base.role] : `/${url?.page?.slug}`,
-		article: `/${url?.article?.slug}`
+		article: `${articlePrefix}/${url?.article?.slug}`
 	}
 	const href = url ? url.type && urlTypes[url.type] : null
 
