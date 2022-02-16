@@ -19,5 +19,5 @@ export const ContentReferenceType = def.createEnum(
 export class ContentReference {
 	contentPart = def.manyHasOne(ContentPart, 'references').notNull().cascadeOnDelete()
 	type = def.enumColumn(ContentReferenceType).notNull()
-	link = def.oneHasOne(Link).removeOrphan().setNullOnDelete()
+	target = def.oneHasOne(Link).removeOrphan().setNullOnDelete()
 }

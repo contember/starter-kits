@@ -37,6 +37,23 @@ const getHomePage = `#graphql
 					parts {
 						id
 						json
+						references {
+							id
+							type
+							target {
+								id
+								type
+								url
+								article {
+									id
+									slug
+								}
+								page {
+									id
+									slug
+								}
+							}
+						}
 					}
 				}
 				buttons {
@@ -102,10 +119,12 @@ const getHomePage = `#graphql
 				order
 				content {
 					parts {
+						id
 						json
 						references {
+							id
 							type
-							link {
+							target {
 								id
 								type
 								url

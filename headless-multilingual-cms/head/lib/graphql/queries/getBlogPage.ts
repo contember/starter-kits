@@ -41,8 +41,9 @@ const getBlogPage = `#graphql
 						parts {
 							json
 							references {
+								id
 								type
-								link {
+								target {
 									id
 									type
 									url
@@ -106,8 +107,9 @@ const getBlogPage = `#graphql
 							parts {
 								json
 								references {
+									id
 									type
-									link {
+									target {
 										id
 										type
 										url
@@ -139,8 +141,9 @@ const getBlogPage = `#graphql
 							parts {
 								json
 								references {
+									id
 									type
-									link {
+									target {
 										id
 										type
 										url
