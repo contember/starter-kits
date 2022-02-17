@@ -16,15 +16,16 @@ export const ContentBlockType = def.createEnum(
 	'dateTime', // question, image, dateTime, required
 )
 
-export class FormBlock {
+export class FormInput {
 	order = def.intColumn().notNull()
 	type = def.enumColumn(ContentBlockType).notNull()
-	form = def.manyHasOne(Form, 'blocks').notNull().cascadeOnDelete()
-	responses = def.manyHasOne(ResponseAnswer, 'formQuestions')
+	form = def.manyHasOne(Form, 'inputs').notNull().cascadeOnDelete()
+	responses = def.oneHasMany(ResponseAnswer, 'formQuestion')
 
 	question = def.stringColumn()
 	image = def.manyHasOne(Image)
-	options = def.oneHasMany(FormOption, 'formBlock').orderBy('order')
+	placeholder = def.stringColumn()
+	options = def.oneHasMany(FormOption, 'formInput').orderBy('order')
 	file = def.oneHasOne(File).setNullOnDelete()
 	date = def.dateColumn()
 	dateTime = def.dateTimeColumn()
@@ -34,7 +35,6 @@ export class FormBlock {
 export class FormOption {
 	order = def.intColumn().notNull()
 	textAnswer = def.stringColumn().notNull()
-	selected = def.boolColumn().notNull()
-
-	formBlock = def.manyHasOne(FormBlock, 'options').notNull().cascadeOnDelete()
+	formInput = def.manyHasOne(FormInput, 'options').notNull().cascadeOnDelete()
+	responses = def.oneHasMany(ResponseAnswer, 'valueOption')
 }

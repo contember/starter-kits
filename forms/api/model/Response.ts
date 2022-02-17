@@ -1,12 +1,16 @@
 import { SchemaDefinition as def } from '@contember/schema-definition'
-import { FormBlock } from './FormBlock'
+import { FormInput, FormOption } from './FormInput'
 import { Form } from './Form'
 
 export class Response {
 	form = def.manyHasOne(Form, 'responses')
+	answers = def.oneHasMany(ResponseAnswer, 'response')
+	createdAt = def.dateTimeColumn().notNull().default('now')
 }
 
 export class ResponseAnswer {
-	textAnswer = def.stringColumn()
-	formQuestions = def.oneHasMany(FormBlock, 'responses').orderBy('order')
+	value = def.stringColumn()
+	valueOption = def.manyHasOne(FormOption, 'responses')
+	formQuestion = def.manyHasOne(FormInput, 'responses')
+	response = def.manyHasOne(Response, 'answers')
 }
