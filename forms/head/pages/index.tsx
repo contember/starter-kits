@@ -5,60 +5,60 @@ import { serverSideFetch } from '../lib/graphql/gqlfetch'
 import getHomePage from '../lib/graphql/queries/getHomePage'
 
 import Seo from '../components/seo'
-import Blocks from '../components/blocks'
 import Header from '../components/header'
 import Footer from '../components/footer'
 
 
-export default function Home (props: any) {
-  const homePageData = props.data?.getPage
-  const headerMenu = props.data?.getHeaderMenu
-  const footerMenu = props.data?.getFooterMenu
-  const setting = props.data?.getSetting
+export default function Home(props: any) {
+	const forms = props.data?.listForm
+	const setting = props.data?.getSetting
 
-  if (props.errors) {
-    return (
-      <>
-        {
-          props.errors.map((error: { message: string, code: string }) => (
-            <>
-              <p>{error.message}</p>
-              <p>{error.code}</p>
-            </>
-          ))
-        }
-      </>
-    )
-  }
+	if (props.errors) {
+		return (
+			<>
+				{
+					props.errors.map((error: { message: string, code: string }) => (
+						<>
+							<p>{error.message}</p>
+							<p>{error.code}</p>
+						</>
+					))
+				}
+			</>
+		)
+	}
 
-  return (
-    <div>
-      <Seo
-        seo={homePageData?.seo}
-      />
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+	return (
+		<div>
+			<Seo
+				seo={{ title: 'Forms' }}
+			/>
+			<Head>
+				<link rel="icon" href="/favicon.ico" />
+			</Head>
 
-      <Header menu={headerMenu} logo={setting?.logo} />
+			<Header logo={setting?.logo} />
 
-      <main>
-        <Blocks blocks={homePageData?.blocks} />
-      </main>
+			<ul>
+				{forms?.map((form: any) => (
+					<li key={form.id}>
+						<a href={`/form/${form.slug}`}>{form.slug}</a>
+					</li>
+				))}
+			</ul>
 
-      <Footer menu={footerMenu} content={setting?.footerCopyright} />
-    </div>
-  )
+		</div>
+	)
 }
 
 export async function getStaticProps() {
-  const { data, errors } = await serverSideFetch(getHomePage)
+	const { data, errors } = await serverSideFetch(getHomePage)
 
-  return {
-    props: {
-      data: data ?? null,
-      errors: errors ?? null
-    },
-	 revalidate: 10,
-  }
+	return {
+		props: {
+			data: data ?? null,
+			errors: errors ?? null
+		},
+		revalidate: 10,
+	}
 }
