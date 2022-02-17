@@ -14,3 +14,13 @@ a {
 * {
   box-sizing: border-box;
 }
+
+label {
+	display: block;
+	margin-bottom: 0.5rem;
+}
+
+.input-wrapper {
+	display: block;
+	margin-bottom: 2rem
+}
