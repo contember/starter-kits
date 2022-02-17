@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Component, DateTimeField, Section } from '@contember/admin'
-import { FormBlocks } from '../components/FormBlocks'
+import { Component, DateTimeField, Section, SlugField, TextField } from '@contember/admin'
+import { FormInputs } from '../components/FormInputs'
 import { PreviewLink } from '../components/PreviewLink'
 import locale from '../locales'
 import { ContentField } from '../components/ContentField'
@@ -29,10 +29,11 @@ export const FormForm = Component(
 	() => (
 		<>
 			<Section heading={locale['Content']}>
+				<TextField field="slug" label={locale['Url']} />
 				<ContentField />
 			</Section>
 			<Section heading={locale['Fields']}>
-				<FormBlocks />
+				<FormInputs />
 			</Section>
 		</>
 	),

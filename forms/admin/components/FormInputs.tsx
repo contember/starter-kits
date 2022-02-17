@@ -3,10 +3,10 @@ import { Block, BlockRepeater, CheckboxField, Component, Repeater, TextField } f
 import { ImageField } from './ImageField'
 import locale from '../locales'
 
-export const FormBlocks = Component(
+export const FormInputs = Component(
 	() => (
 		<BlockRepeater
-			field="blocks"
+			field="inputs"
 			label={undefined}
 			discriminationField="type"
 			sortableBy="order"
@@ -17,6 +17,7 @@ export const FormBlocks = Component(
 				label={locale['Short answer']}
 			>
 				<TextField field="question" label={locale['Question']} />
+				<TextField field="placeholder" label={locale['Placeholder']} />
 				<ImageField field="image" />
 				<CheckboxField field="required" label={locale['Required']} defaultValue={false} />
 			</Block>
@@ -26,6 +27,7 @@ export const FormBlocks = Component(
 				label={locale['Paragraph']}
 			>
 				<TextField field="question" label={locale['Question']} />
+				<TextField field="placeholder" label={locale['Placeholder']} />
 				<ImageField field="image" />
 				<CheckboxField field="required" label={locale['Required']} defaultValue={false} />
 			</Block>
