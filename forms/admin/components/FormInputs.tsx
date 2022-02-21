@@ -18,7 +18,6 @@ export const FormInputs = Component(
 			>
 				<TextField field="question" label={locale['Question']} />
 				<TextField field="placeholder" label={locale['Placeholder']} />
-				<ImageField field="image" />
 				<CheckboxField field="required" label={locale['Required']} defaultValue={false} />
 			</Block>
 
@@ -28,7 +27,6 @@ export const FormInputs = Component(
 			>
 				<TextField field="question" label={locale['Question']} />
 				<TextField field="placeholder" label={locale['Placeholder']} />
-				<ImageField field="image" />
 				<CheckboxField field="required" label={locale['Required']} defaultValue={false} />
 			</Block>
 
@@ -37,13 +35,12 @@ export const FormInputs = Component(
 				label={locale['Multipe choice']}
 			>
 				<TextField field="question" label={locale['Question']} />
-				<ImageField field="image" />
 				<Repeater
 					field="options"
 					label={locale['Options']}
 					sortableBy="order"
 				>
-					<TextField field="textAnswer" label={locale['Answer']} />
+					<TextField field="value" label={locale['Answer']} />
 				</Repeater>
 				<CheckboxField field="required" label={locale['Required']} defaultValue={false} />
 			</Block>
@@ -53,13 +50,12 @@ export const FormInputs = Component(
 				label={locale['Check Boxes']}
 			>
 				<TextField field="question" label={locale['Question']} />
-				<ImageField field="image" />
 				<Repeater
 					field="options"
 					label={locale['Options']}
 					sortableBy="order"
 				>
-					<TextField field="textAnswer" label={locale['Answer']} />
+					<TextField field="value" label={locale['Answer']} />
 				</Repeater>
 				<CheckboxField field="required" label={locale['Required']} defaultValue={false} />
 			</Block>
@@ -69,13 +65,12 @@ export const FormInputs = Component(
 				label={locale['Drop down']}
 			>
 				<TextField field="question" label={locale['Question']} />
-				<ImageField field="image" />
 				<Repeater
 					field="options"
 					label={locale['Options']}
 					sortableBy="order"
 				>
-					<TextField field="textAnswer" label={locale['Answer']} />
+					<TextField field="value" label={locale['Answer']} />
 				</Repeater>
 				<CheckboxField field="required" label={locale['Required']} defaultValue={false} />
 			</Block>
@@ -85,7 +80,6 @@ export const FormInputs = Component(
 				label={locale['File upload']}
 			>
 				<TextField field="question" label={locale['Question']} />
-				<ImageField field="image" />
 				<CheckboxField field="required" label={locale['Required']} defaultValue={false} />
 			</Block>
 
@@ -94,7 +88,6 @@ export const FormInputs = Component(
 				label={locale['Date']}
 			>
 				<TextField field="question" label={locale['Question']} />
-				<ImageField field="image" />
 				<CheckboxField field="required" label={locale['Required']} defaultValue={false} />
 			</Block>
 
@@ -103,7 +96,6 @@ export const FormInputs = Component(
 				label={locale['Date and time']}
 			>
 				<TextField field="question" label={locale['Question']} />
-				<ImageField field="image" />
 				<CheckboxField field="required" label={locale['Required']} defaultValue={false} />
 			</Block>
 
