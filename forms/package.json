@@ -21,11 +21,13 @@
     "@contember/react-client": "^1.0.0-rc",
     "@contember/schema": "^1.0.0-rc",
     "@contember/schema-definition": "^1.0.0-rc",
+    "@picocss/pico": "^1.4.4",
     "@types/node": "^16",
     "@types/react": "^17",
     "concurrently": "^7.0.0",
     "eslint": "^8.6",
     "eslint-config-next": "^12.0",
+    "sass": "^1.49.8",
     "typescript": "^4.5",
     "vite": "^2.7"
   }
