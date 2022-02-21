@@ -5,6 +5,7 @@ import { Response } from './Response'
 
 export class Form {
 	publishAt = def.dateTimeColumn().default('now')
+	title = def.stringColumn().notNull()
 	slug = def.stringColumn().unique().notNull()
 	content = def.oneHasOne(Content).removeOrphan().setNullOnDelete()
 	inputs = def.oneHasMany(FormInput, 'form').orderBy('order')

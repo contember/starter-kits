@@ -10,8 +10,7 @@ export const FormList = (
 		itemsPerPage={50}
 		rendererProps={{ title: locale['Forms'], actions: <LinkButton to="formCreate">{locale['Add form']}</LinkButton> }}
 	>
-		<UrlCell field="slug" header={locale['Url']} />
-		<GenericCell>
+		<TextCell field="title" header={locale['Title']} />
 			<LinkButton to="formEdit(id: $entity.id)">{locale['Edit']}</LinkButton>
 		</GenericCell>
 	</DataGridPage>

@@ -323,6 +323,17 @@
 		},
 		{
 			"modification": "createColumn",
+			"entityName": "Form",
+			"field": {
+				"name": "title",
+				"columnName": "title",
+				"nullable": false,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
 			"entityName": "FormOption",
 			"field": {
 				"name": "order",
@@ -336,8 +347,8 @@
 			"modification": "createColumn",
 			"entityName": "FormOption",
 			"field": {
-				"name": "textAnswer",
-				"columnName": "text_answer",
+				"name": "value",
+				"columnName": "value",
 				"nullable": false,
 				"type": "String",
 				"columnType": "text"
@@ -437,11 +448,11 @@
 			"modification": "createColumn",
 			"entityName": "ResponseAnswer",
 			"field": {
-				"name": "value",
-				"columnName": "value",
-				"nullable": true,
+				"nullable": false,
 				"type": "String",
-				"columnType": "text"
+				"columnType": "text",
+				"name": "value",
+				"columnName": "value"
 			}
 		},
 		{
@@ -503,22 +514,64 @@
 			"modification": "createColumn",
 			"entityName": "FormInput",
 			"field": {
-				"name": "required",
-				"columnName": "required",
+				"name": "placeholder",
+				"columnName": "placeholder",
 				"nullable": true,
-				"type": "Bool",
-				"columnType": "boolean"
+				"type": "String",
+				"columnType": "text"
 			}
 		},
 		{
 			"modification": "createColumn",
 			"entityName": "FormInput",
 			"field": {
-				"name": "placeholder",
-				"columnName": "placeholder",
-				"nullable": true,
-				"type": "String",
-				"columnType": "text"
+				"nullable": false,
+				"default": false,
+				"type": "Bool",
+				"columnType": "boolean",
+				"name": "required",
+				"columnName": "required"
+			},
+			"fillValue": false
+		},
+		{
+			"modification": "createView",
+			"entity": {
+				"name": "FormDetails",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					},
+					"responsesCount": {
+						"name": "responsesCount",
+						"columnName": "responses_count",
+						"nullable": false,
+						"type": "Integer",
+						"columnType": "integer"
+					},
+					"form": {
+						"name": "form",
+						"inversedBy": "details",
+						"nullable": false,
+						"type": "OneHasOne",
+						"target": "Form",
+						"joiningColumn": {
+							"columnName": "form_id",
+							"onDelete": "restrict"
+						}
+					}
+				},
+				"tableName": "form_details",
+				"view": {
+					"sql": "\n\tSELECT\n\t\tgen_random_uuid() AS id,\n\t\tform.id AS form_id,\n\t\t(SELECT COUNT(*) FROM response WHERE response.form_id = form.id) AS responses_count \n\tFROM form\n"
+				}
 			}
 		},
 		{
@@ -650,12 +703,12 @@
 			"owningSide": {
 				"name": "form",
 				"inversedBy": "responses",
-				"nullable": true,
+				"nullable": false,
 				"type": "ManyHasOne",
 				"target": "Form",
 				"joiningColumn": {
 					"columnName": "form_id",
-					"onDelete": "restrict"
+					"onDelete": "cascade"
 				}
 			},
 			"inverseSide": {
@@ -669,6 +722,20 @@
 			"modification": "createRelation",
 			"entityName": "ResponseAnswer",
 			"owningSide": {
+				"name": "input",
+				"nullable": false,
+				"type": "ManyHasOne",
+				"target": "FormInput",
+				"joiningColumn": {
+					"columnName": "input_id",
+					"onDelete": "restrict"
+				}
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ResponseAnswer",
+			"owningSide": {
 				"name": "response",
 				"inversedBy": "answers",
 				"nullable": true,
@@ -676,54 +743,12 @@
 				"target": "Response",
 				"joiningColumn": {
 					"columnName": "response_id",
-					"onDelete": "restrict"
+					"onDelete": "cascade"
 				}
 			},
 			"inverseSide": {
 				"name": "answers",
 				"ownedBy": "response",
-				"type": "OneHasMany",
-				"target": "ResponseAnswer"
-			}
-		},
-		{
-			"modification": "createRelation",
-			"entityName": "ResponseAnswer",
-			"owningSide": {
-				"name": "valueOption",
-				"inversedBy": "responses",
-				"nullable": true,
-				"type": "ManyHasOne",
-				"target": "FormOption",
-				"joiningColumn": {
-					"columnName": "value_option_id",
-					"onDelete": "restrict"
-				}
-			},
-			"inverseSide": {
-				"name": "responses",
-				"ownedBy": "valueOption",
-				"type": "OneHasMany",
-				"target": "ResponseAnswer"
-			}
-		},
-		{
-			"modification": "createRelation",
-			"entityName": "ResponseAnswer",
-			"owningSide": {
-				"name": "formQuestion",
-				"inversedBy": "responses",
-				"nullable": true,
-				"type": "ManyHasOne",
-				"target": "FormInput",
-				"joiningColumn": {
-					"columnName": "form_question_id",
-					"onDelete": "restrict"
-				}
-			},
-			"inverseSide": {
-				"name": "responses",
-				"ownedBy": "formQuestion",
 				"type": "OneHasMany",
 				"target": "ResponseAnswer"
 			}
@@ -783,6 +808,17 @@
 					"columnName": "file_id",
 					"onDelete": "set null"
 				}
+			}
+		},
+		{
+			"modification": "createRelationInverseSide",
+			"entityName": "Form",
+			"relation": {
+				"name": "details",
+				"ownedBy": "form",
+				"target": "FormDetails",
+				"type": "OneHasOne",
+				"nullable": false
 			}
 		},
 		{
@@ -918,7 +954,9 @@
 										"slug": true,
 										"content": true,
 										"responses": true,
-										"inputs": true
+										"inputs": true,
+										"title": true,
+										"details": true
 									},
 									"update": {
 										"id": true,
@@ -926,7 +964,9 @@
 										"slug": true,
 										"content": true,
 										"responses": true,
-										"inputs": true
+										"inputs": true,
+										"title": true,
+										"details": true
 									},
 									"read": {
 										"id": true,
@@ -934,7 +974,9 @@
 										"slug": true,
 										"content": true,
 										"responses": true,
-										"inputs": true
+										"inputs": true,
+										"title": true,
+										"details": true
 									},
 									"delete": true,
 									"customPrimary": true
@@ -946,23 +988,20 @@
 									"create": {
 										"id": true,
 										"order": true,
-										"textAnswer": true,
 										"formInput": true,
-										"responses": true
+										"value": true
 									},
 									"update": {
 										"id": true,
 										"order": true,
-										"textAnswer": true,
 										"formInput": true,
-										"responses": true
+										"value": true
 									},
 									"read": {
 										"id": true,
 										"order": true,
-										"textAnswer": true,
 										"formInput": true,
-										"responses": true
+										"value": true
 									},
 									"delete": true,
 									"customPrimary": true
@@ -1059,22 +1098,19 @@
 										"id": true,
 										"response": true,
 										"value": true,
-										"valueOption": true,
-										"formQuestion": true
+										"input": true
 									},
 									"update": {
 										"id": true,
 										"response": true,
 										"value": true,
-										"valueOption": true,
-										"formQuestion": true
+										"input": true
 									},
 									"read": {
 										"id": true,
 										"response": true,
 										"value": true,
-										"valueOption": true,
-										"formQuestion": true
+										"input": true
 									},
 									"delete": true,
 									"customPrimary": true
@@ -1095,8 +1131,7 @@
 										"date": true,
 										"dateTime": true,
 										"required": true,
-										"placeholder": true,
-										"responses": true
+										"placeholder": true
 									},
 									"update": {
 										"id": true,
@@ -1110,8 +1145,7 @@
 										"date": true,
 										"dateTime": true,
 										"required": true,
-										"placeholder": true,
-										"responses": true
+										"placeholder": true
 									},
 									"read": {
 										"id": true,
@@ -1125,8 +1159,29 @@
 										"date": true,
 										"dateTime": true,
 										"required": true,
-										"placeholder": true,
-										"responses": true
+										"placeholder": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"FormDetails": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"form": true,
+										"responsesCount": true
+									},
+									"read": {
+										"id": true,
+										"form": true,
+										"responsesCount": true
+									},
+									"update": {
+										"id": true,
+										"form": true,
+										"responsesCount": true
 									},
 									"delete": true,
 									"customPrimary": true
