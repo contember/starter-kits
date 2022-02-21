@@ -20,21 +20,18 @@ export class FormInput {
 	order = def.intColumn().notNull()
 	type = def.enumColumn(ContentBlockType).notNull()
 	form = def.manyHasOne(Form, 'inputs').notNull().cascadeOnDelete()
-	responses = def.oneHasMany(ResponseAnswer, 'formQuestion')
 
 	question = def.stringColumn()
-	image = def.manyHasOne(Image)
 	placeholder = def.stringColumn()
 	options = def.oneHasMany(FormOption, 'formInput').orderBy('order')
 	file = def.oneHasOne(File).setNullOnDelete()
 	date = def.dateColumn()
 	dateTime = def.dateTimeColumn()
-	required = def.boolColumn()
+	required = def.boolColumn().notNull().default(false)
 }
 
 export class FormOption {
 	order = def.intColumn().notNull()
-	textAnswer = def.stringColumn().notNull()
+	value = def.stringColumn().notNull()
 	formInput = def.manyHasOne(FormInput, 'options').notNull().cascadeOnDelete()
-	responses = def.oneHasMany(ResponseAnswer, 'valueOption')
 }

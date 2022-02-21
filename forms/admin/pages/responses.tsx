@@ -1,19 +1,23 @@
 import * as React from 'react'
-import { DataGridPage, DateCell, EditPage, Field, GenericCell, HasMany, HasOneSelectCell, LinkButton } from '@contember/admin'
+import { DataBindingProvider, DataGrid, DateCell, EditPage, EntitySubTree, FeedbackRenderer, Field, GenericCell, HasMany, HasOneSelectCell, LayoutPage, LinkButton, NavigateBackButton, StaticRender } from '@contember/admin'
 import locale from '../locales'
 
-export const responseList = (
-	<DataGridPage
-		entities="Response"
-		itemsPerPage={50}
-		rendererProps={{ title: locale['Responses'] }}
-	>
-		<HasOneSelectCell field="form" options="Form.slug" header="Form" />
-		<DateCell field="createdAt" header="Created at" initialOrder="desc" />
-		<GenericCell shrunk>
-			<LinkButton to="responseView(id: $entity.id)">View</LinkButton>
-		</GenericCell>
-	</DataGridPage>
+export const responseList = () => (
+	<DataBindingProvider stateComponent={FeedbackRenderer}>
+		<EntitySubTree entity="Form(id = $id)">
+			<LayoutPage title={<>{locale['Responses from']} <Field field="title" /></>} navigation={<NavigateBackButton to="formList">{locale['Forms']}</NavigateBackButton>}>
+				<DataGrid entities="Response[form.id = $id]" itemsPerPage={50}>
+					<DateCell field="createdAt" header={locale['Created at']} initialOrder="desc" />
+					<GenericCell shrunk>
+						<LinkButton to="responseView(id: $entity.id)">{locale['View']}</LinkButton>
+					</GenericCell>
+				</DataGrid>
+			</LayoutPage>
+			<StaticRender>
+				<Field field="title" />
+			</StaticRender>
+		</EntitySubTree>
+	</DataBindingProvider>
 )
 
 export const responseView = (
@@ -21,7 +25,7 @@ export const responseView = (
 		<Field field="createdAt" />
 		<br /><br />
 		<HasMany field="answers">
-			<Field field="formQuestion.question" />
+			<Field field="input.question" />
 			<br />
 			<Field field="value" />
 			<br /><br />
