@@ -21,7 +21,10 @@ export const responseList = () => (
 )
 
 export const responseView = (
-	<EditPage entity="Response(id = $id)">
+	<EditPage
+		entity="Response(id = $id)"
+		rendererProps={{ navigation: <NavigateBackButton to="responseList(id: $entity.form.id)">Responses</NavigateBackButton> }}
+	>
 		<Field field="createdAt" />
 		<br /><br />
 		<HasMany field="answers">
@@ -30,5 +33,9 @@ export const responseView = (
 			<Field field="value" />
 			<br /><br />
 		</HasMany>
+
+		<StaticRender>
+			<Field field="form.id" />
+		</StaticRender>
 	</EditPage>
 )
