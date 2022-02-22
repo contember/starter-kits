@@ -1,5 +1,3 @@
-import { TextInput } from '@contember/ui'
-
 function ShortAnswer({ id, question, placeholder, required }) {
 	return (
 		<>
