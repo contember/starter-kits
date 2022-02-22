@@ -1,90 +1,92 @@
+import { TextInput } from '@contember/ui'
+
 function ShortAnswer({ id, question, placeholder, required }) {
 	return (
-		<div className="input-wrapper">
+		<>
 			<label htmlFor={id}>{question}</label>
 			<input type="text" id={id} name={id} placeholder={placeholder} required={required} />
-		</div>
+		</>
 	)
 }
 
 function Paragraph({ id, question, placeholder, required }) {
 	return (
-		<div className="input-wrapper">
+		<>
 			<label htmlFor={id}>{question}</label>
 			<textarea id={id} name={id} placeholder={placeholder} required={required} />
-		</div>
+		</>
 	)
 }
 
 function MultipeChoice({ question, options, id: questionId }) {
 	return (
-		<div className="input-wrapper">
-			{question}
-			{options?.map(({ id, textAnswer }) => (
+		<fieldset>
+			<legend>{question}</legend>
+			{options?.map(({ id, value }) => (
 				<>
 					<label htmlFor={id}>
-						<input type="radio" id={id} key={id} name={questionId} value={textAnswer} />
-						{textAnswer}
+						<input type="radio" id={id} key={id} name={questionId} value={value} />
+						{value}
 					</label>
 				</>
 			))}
-		</div>
+		</fieldset>
 	)
 }
 
-function CheckBoxes({ question, options }) {
+function CheckBoxes({ question, options, id: questionId }) {
 	return (
-		<div className="input-wrapper">
-			{question}
-			{options?.map(({ id, textAnswer }) => (
+		<fieldset>
+			<legend>{question}</legend>
+			{options?.map(({ id, value }) => (
 				<>
 					<label htmlFor={id}>
-						<input type="checkbox" id={id} key={id} name={id} />
-						{textAnswer}
+						<input type="checkbox" id={id} key={id} name={questionId} value={value} />
+						{value}
 					</label>
 				</>
 			))}
-		</div>
+		</fieldset>
 	)
 }
 
 function DropDown({ question, options, id }) {
 	return (
-		<div className="input-wrapper">
+		<>
 			<label htmlFor={id}>{question}</label>
-			<select>
-				{options?.map(({ id, textAnswer }) => (
-					<option id={id} key={id} value={id} >{textAnswer}</option>
+			<select id={id} name={id}>
+				{options?.map(({ id, value }) => (
+					<option id={id} key={id} value={value}>{value}</option>
 				))}
 			</select>
-		</div>
+		</>
 	)
 }
 
 function FileUpload({ question, id }) {
 	return (
-		<div className="input-wrapper">
+		<>
 			<label htmlFor={id}>{question}</label>
-			<input type="file" id={id} name={id}/>
-		</div>
+			<input type="file" id={id} name={id} />
+		</>
 	)
 }
 
 function Date({ question, id }) {
 	return (
-		<div className="input-wrapper">
+		<>
 			<label htmlFor={id}>{question}</label>
-			<input type="date" id={id} name={id}/>
-		</div>
+			<input type="date" id={id} name={id} />
+		</>
 	)
 }
 
 function DateTime({ question, id }) {
 	return (
-		<div className="input-wrapper">
+		<>
 			<label htmlFor={id}>{question}</label>
-			<input type="datetime-local" id={id} name={id}/>
-		</div>
+			<input type="datetime-local" id={id} name={id} />
+		</>
 	)
 }
 

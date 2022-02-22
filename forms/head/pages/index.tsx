@@ -29,7 +29,7 @@ export default function Home(props: any) {
 	}
 
 	return (
-		<div>
+		<>
 			<Seo
 				seo={{ title: 'Forms' }}
 			/>
@@ -39,15 +39,16 @@ export default function Home(props: any) {
 
 			<Header logo={setting?.logo} />
 
-			<ul>
-				{forms?.map((form: any) => (
-					<li key={form.id}>
-						<a href={`/form/${form.slug}`}>{form.slug}</a>
-					</li>
-				))}
-			</ul>
-
-		</div>
+			<main className="container">
+				<ul>
+					{forms?.map((form: any) => (
+						<li key={form.id}>
+							<a href={`/form/${form.slug}`}>{form.slug}</a>
+						</li>
+					))}
+				</ul>
+			</main>
+		</>
 	)
 }
 
