@@ -786,20 +786,6 @@
 			"modification": "createRelation",
 			"entityName": "FormInput",
 			"owningSide": {
-				"name": "image",
-				"nullable": true,
-				"type": "ManyHasOne",
-				"target": "Image",
-				"joiningColumn": {
-					"columnName": "image_id",
-					"onDelete": "restrict"
-				}
-			}
-		},
-		{
-			"modification": "createRelation",
-			"entityName": "FormInput",
-			"owningSide": {
 				"name": "file",
 				"nullable": true,
 				"type": "OneHasOne",
@@ -1125,7 +1111,6 @@
 										"type": true,
 										"form": true,
 										"question": true,
-										"image": true,
 										"options": true,
 										"file": true,
 										"date": true,
@@ -1139,7 +1124,6 @@
 										"type": true,
 										"form": true,
 										"question": true,
-										"image": true,
 										"options": true,
 										"file": true,
 										"date": true,
@@ -1153,7 +1137,6 @@
 										"type": true,
 										"form": true,
 										"question": true,
-										"image": true,
 										"options": true,
 										"file": true,
 										"date": true,
@@ -1173,12 +1156,12 @@
 										"form": true,
 										"responsesCount": true
 									},
-									"read": {
+									"update": {
 										"id": true,
 										"form": true,
 										"responsesCount": true
 									},
-									"update": {
+									"read": {
 										"id": true,
 										"form": true,
 										"responsesCount": true
