@@ -20,7 +20,7 @@ function Paragraph({ id, question, placeholder, required }) {
 
 function MultipeChoice({ question, options, id: questionId }) {
 	return (
-		<fieldset>
+		<fieldset key={questionId}>
 			<legend>{question}</legend>
 			{options?.map(({ id, value }) => (
 				<>
@@ -36,7 +36,7 @@ function MultipeChoice({ question, options, id: questionId }) {
 
 function CheckBoxes({ question, options, id: questionId }) {
 	return (
-		<fieldset>
+		<fieldset key={questionId}>
 			<legend>{question}</legend>
 			{options?.map(({ id, value }) => (
 				<>
