@@ -1,12 +1,14 @@
 import * as React from 'react'
-import Errors from '../../components/errors'
 import Head from 'next/head'
 import { RichTextRenderer } from '@contember/react-client'
-import { clientSideFetch, serverSideFetch } from '../../lib/graphql/gqlfetch'
+import { answersParser } from '../../lib/utils/answersParser'
 
+import Errors from '../../components/errors'
+import Inputs from '../../components/inputs'
+
+import { clientSideFetch, serverSideFetch } from '../../lib/graphql/gqlfetch'
 import listForms from '../../lib/graphql/queries/listForms'
 import getFormBySlug from '../../lib/graphql/queries/getFormBySlug'
-import Inputs from '../../components/inputs'
 import createResponse from '../../lib/graphql/mutations/createResponse'
 
 export default function Form(props: any) {
@@ -16,59 +18,63 @@ export default function Form(props: any) {
 		return <Errors errors={props.errors} />
 	}
 
-	const [submitState, setSubmitState] = React.useState<any>(null)
+	const [submitState, setSubmitState] = React.useState<any[]>([])
+	const [sendingState, setSendingState] = React.useState<boolean>(false)
 
 	const onSubmit = React.useCallback(async (event) => {
 		event.preventDefault()
+		setSendingState(true)
 		const formData = new FormData(event.target)
 		const values = Array.from(formData)
 		const data = {
 			form: {
-				connect: { id: form.id }
+				connect: { id: form.id },
 			},
-			answers: values.filter(([id, value]) => value).map(([id, value]) => {
-				return {
-					create: {
-						value,
-						formQuestion: {
-							connect: { id }
-						},
-					},
-				}
-			})
+			answers: await answersParser(values),
 		}
 
 		const { errors, data: submitData } = await clientSideFetch(createResponse, { data })
-		setSubmitState(errors)
 
 		if (errors) {
 			setSubmitState(errors)
-		} else if (!submitData?.createResponse?.validation?.valid) {
-			setSubmitState(submitData?.createResponse?.validation?.errors)
+		} else if (submitData.createResponse.ok) {
+			setSubmitState([{ ok: true }])
 		} else {
-			setSubmitState([{ message: 'Message sent.' }])
+			setSubmitState([{ message: { text: submitData.createResponse.errorMessage } }])
 		}
+
+		setSendingState(false)
 	}, [])
 
 	return (
-		<div>
+		<>
 			<Head>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<main>
-				{form.content &&
-					<RichTextRenderer blocks={form.content.parts} sourceField="json" />
-				}
-				{submitState &&
-					submitState.map((status, index) => <div key={index}>{status.message.text ? status.message.text : status.message}</div>)
-				}
-				<form onSubmit={onSubmit}>
-					<Inputs inputs={form.inputs} />
-					<button type="submit">Submit</button>
-				</form>
+			<main className="container">
+				<section>
+					{form.content &&
+						<article>
+							<h1>{form.title}</h1>
+							<RichTextRenderer blocks={form.content.parts} sourceField="json" />
+						</article>
+					}
+					<article>
+						{submitState[0]?.ok ?
+							<p>Thank you for your submission.</p> :
+							<form onSubmit={onSubmit}>
+								<Inputs inputs={form.inputs} />
+								{submitState &&
+									submitState.map((status, index) => <p key={index}>{status.message.text ? status.message.text : status.message}</p>)
+								}
+								<button type="submit" aria-busy={sendingState} className={sendingState ? 'secondary' : ''}>Submit</button>
+							</form>
+						}
+					</article>
+				</section>
 			</main>
-		</div>
+		</>
 	)
 }
 

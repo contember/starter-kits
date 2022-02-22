@@ -2,6 +2,7 @@ const getFormBySlug = `#graphql
 	query($slug: String!) {
 		getForm(by: {slug: $slug}, filter: { publishAt: { lte: "now" } }) {
 			id
+			title
 			publishAt
 			slug
 			content {
@@ -23,7 +24,7 @@ const getFormBySlug = `#graphql
 				required
 				options(orderBy: { order: asc }) {
 					id
-					textAnswer
+					value
 				}
 			}
 		}
