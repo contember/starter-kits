@@ -22,6 +22,7 @@ export default {
 	'Options': 'Možnosti',
 	'Paragraph': 'Paragraf',
 	'Placeholder': 'Zástupný text',
+	'Preview': 'Náhled',
 	'Publish date': 'Datum zveřejnění',
 	'Question': 'Otázka',
 	'Required': 'Povinné',

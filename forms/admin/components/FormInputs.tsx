@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { Block, BlockRepeater, CheckboxField, Component, Repeater, TextField } from '@contember/admin'
-import { ImageField } from './ImageField'
 import locale from '../locales'
 
 export const FormInputs = Component(

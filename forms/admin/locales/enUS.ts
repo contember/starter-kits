@@ -22,6 +22,7 @@ export default {
 	'Options': 'Options',
 	'Paragraph': 'Paragraph',
 	'Placeholder': 'Placeholder',
+	'Preview': 'Preview',
 	'Publish date': 'Publish date',
 	'Question': 'Question',
 	'Required': 'Required',

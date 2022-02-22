@@ -39,14 +39,16 @@ export default function Home(props: any) {
 
 			<Header logo={setting?.logo} />
 
-			<main className="container">
-				<ul>
-					{forms?.map((form: any) => (
-						<li key={form.id}>
-							<a href={`/form/${form.slug}`}>{form.slug}</a>
-						</li>
-					))}
-				</ul>
+			<main>
+				<article>
+					<ul>
+						{forms?.map((form: any) => (
+							<li key={form.id}>
+								<a href={`/form/${form.slug}`}>{form.slug}</a>
+							</li>
+						))}
+					</ul>
+				</article>
 			</main>
 		</>
 	)

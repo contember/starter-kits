@@ -6,7 +6,6 @@ export const Navigation = () => (
 	<Menu>
 		<Menu.Item>
 			<Menu.Item title={locale['Forms']} to="formList" />
-			<Menu.Item title={locale['Settings']} to="settings" />
 		</Menu.Item>
 	</Menu>
 )

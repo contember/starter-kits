@@ -5,6 +5,7 @@ import { answersParser } from '../../lib/utils/answersParser'
 
 import Errors from '../../components/errors'
 import Inputs from '../../components/inputs'
+import Seo from '../../components/seo'
 
 import { clientSideFetch, serverSideFetch } from '../../lib/graphql/gqlfetch'
 import listForms from '../../lib/graphql/queries/listForms'
@@ -49,6 +50,9 @@ export default function Form(props: any) {
 	return (
 		<>
 			<Head>
+				<Seo
+					seo={{ title: 'Forms' }}
+				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
