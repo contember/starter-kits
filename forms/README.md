@@ -1,17 +1,15 @@
 # Forms starter
 
-With this template we'll use Contember platform as headless CMS and [Next.js](https://nextjs.org/) for frontend site. You'll get:
+With this template we'll use Contember platform as headless form builder and [Next.js](https://nextjs.org/) for frontend site. You'll get:
 
-- Pages with 7 blocks (Hero section, Logos section, Content section, Features section, CTA section, Testimonial section, Contact section)
-- Blog and articles with powerful WYSIWYG editor
-- Messages for saving forms from the frontend website
-- Website settings (upload logotype, set up navigation)
+- Forms with 8 input blocks (Short answer, Long answer, Multiple choise, Check boxes, Drop down, File upload, Date, Date and time)
+- Responses for saving forms from the frontend website
 - [ACL rules](https://docs.contember.com/schema/acl) for administrators and public access for frontend website
-- Basic Next.js website intentionally without any styling. See how you can easily query GraphQL API Contember provides
+- Basic Next.js website intentionally with just little bit of styling. See how you can easily query GraphQL API Contember provides
 
 Thanks to Contember platform you can change anything. If you have any questions, we're happy to help in [Discord](https://discord.com/invite/EkhsuAK2Fg).
 
-![Screenshot 2022-02-23 at 11 02 49](https://user-images.githubusercontent.com/47249487/155297814-c41c89b4-ffe0-46ab-b803-85755d187318.png)
+![Contember admin - edit forms](https://user-images.githubusercontent.com/47249487/155297814-c41c89b4-ffe0-46ab-b803-85755d187318.png)
 
 ## How to use this template
 
@@ -54,13 +52,13 @@ npm run contember tenant:create-api-key
 
 Then select:
 
-- Project: `headless-cms` (the only option)
+- Project: `forms` (the only option)
 - Role: `public`
 - Do you want to add another role?: `n` (no)
 - API key description: anything (e.g. `frontend`)
 - Are you sure you want to create this API key?: `y` (yes)
 
-Set `NEXT_PUBLIC_TOKEN` in `head/.env` to newly generated API token (replace the default superadmin token) and restart Docker containers (`docker-compose restart`).
+Set `NEXT_PUBLIC_TOKEN` in `forms/head/.env` to newly generated API token (replace the default superadmin token) and restart Docker containers (`docker-compose restart`).
 
 ### 🌍 Localization
 
@@ -68,25 +66,25 @@ The default language of administration is English. Other supported language is C
 
 #### Setting the language for UI elements
 
-In the `headless-cms/admin/index.tsx` file, add the `defaultLocale` and `dictionaries` props to `<ApplicationEntrypoint />` and import the Czech dictionary from `@contember/i18n`.
+In the `forms/admin/index.tsx` file, add the `defaultLocale` and `dictionaries` props to `<ApplicationEntrypoint />` and import the Czech dictionary from `@contember/i18n`.
 
-```tsx title="headless-cms/admin/index.tsx"
+```tsx title="forms/admin/index.tsx"
 import { csCZ } from "@contember/admin-i18n"
 
 <ApplicationEntrypoint
 	...
 	defaultLocale="cs-CZ"
 	dictionaries={{
-		"cs-CZ": csCZ,
+		'cs-CZ': csCZ,
 	}}
 />
 ```
 
 #### Setting the language for custom components and labels
 
-In the `headless-cms/admin/locales/index.ts` file change default export from `enUS` to `csCZ` and import `csCZ` from `./csCZ`.
+In the `forms/admin/locales/index.ts` file change default export from `enUS` to `csCZ` and import `csCZ` from `./csCZ`.
 
-```ts title="headless-cms/admin/locales/index.ts"
+```ts title="forms/admin/locales/index.ts"
 import csCZ from "./csCZ"
 
 export default csCZ
