@@ -1,5 +1,3 @@
-import getSettting from "../partials/getSettings"
-
 const getHomePage = `#graphql
   query {
 	listForm(filter: { publishAt: { lte: "now" } }) {
@@ -24,7 +22,6 @@ const getHomePage = `#graphql
 			required
 		}
 	}
-	${getSettting}
 }
 `
 
