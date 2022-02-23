@@ -9,7 +9,7 @@
     "build-admin": "tsc --project admin && vite build admin",
     "build-api": "tsc --project api",
     "build-head": "tsc --project head && next build head",
-	 "deploy": "docker-compose run -e CONTEMBER_TOKEN= contember-cli deploy"
+    "deploy": "docker-compose run -e CONTEMBER_TOKEN= contember-cli deploy"
   },
   "dependencies": {
     "next": "^12",
