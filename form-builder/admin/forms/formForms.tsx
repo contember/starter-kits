@@ -13,14 +13,14 @@ export const FormSideForm = Component<FormSideFormProps>(
 	({ isEditPage }) => (
 		<>
 			{isEditPage &&
-				<PreviewLink slugField="slug" />
+				<PreviewLink slugField="slug" prefix="/form/" />
 			}
 			<DateTimeField
 				field="publishAt"
 				label={locale['Publish date']}
 				defaultValue={new Date().toISOString()}
 			/>
-			<LinkButton to="responseList(id: $entity.id)" >{locale['See responses']}</LinkButton>
+			<LinkButton to="responseList(id: $entity.id)">{locale['See responses']}</LinkButton>
 		</>
 	),
 	'FormSideForm',

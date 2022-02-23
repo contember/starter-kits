@@ -83,7 +83,7 @@ const aclFactory = (model: Model.Schema): Acl.Schema => ({
 				Response: {
 					predicates: {},
 					operations: {
-						read: allField(model, 'Response', true),
+						read: allField(model, 'Response', false),
 						create: allField(model, 'Response', true),
 						update: allField(model, 'Response', true),
 						delete: false,
@@ -92,7 +92,7 @@ const aclFactory = (model: Model.Schema): Acl.Schema => ({
 				ResponseAnswer: {
 					predicates: {},
 					operations: {
-						read: allField(model, 'ResponseAnswer', true),
+						read: allField(model, 'ResponseAnswer', false),
 						create: allField(model, 'ResponseAnswer', true),
 						update: allField(model, 'ResponseAnswer', true),
 						delete: false,

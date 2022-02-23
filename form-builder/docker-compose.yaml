@@ -56,7 +56,7 @@ services:
     environment:
       CONTEMBER_API_URL: 'http://contember-engine:4000/'
       CONTEMBER_API_TOKEN: '0000000000000000000000000000000000000000'
-      CONTEMBER_PROJECT_NAME: 'forms'
+      CONTEMBER_PROJECT_NAME: 'form-builder'
 
     working_dir: /src
     volumes:

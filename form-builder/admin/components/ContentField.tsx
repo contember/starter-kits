@@ -31,7 +31,7 @@ const inlineButtons: BlockEditorProps["inlineButtons"] = [
 	],
 	[
 		RB.code,
-		RB.anchor
+		RB.anchor,
 	]
 ]
 

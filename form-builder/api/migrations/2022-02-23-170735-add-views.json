@@ -1,0 +1,111 @@
+{
+	"formatVersion": 3,
+	"modifications": [
+		{
+			"modification": "removeEntity",
+			"entityName": "FormDetails"
+		},
+		{
+			"modification": "createView",
+			"entity": {
+				"name": "FormDetails",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					},
+					"form": {
+						"name": "form",
+						"inversedBy": "details",
+						"nullable": false,
+						"type": "OneHasOne",
+						"target": "Form",
+						"joiningColumn": {
+							"columnName": "form_id",
+							"onDelete": "restrict"
+						}
+					},
+					"responsesCount": {
+						"name": "responsesCount",
+						"columnName": "responses_count",
+						"nullable": false,
+						"type": "Integer",
+						"columnType": "integer"
+					}
+				},
+				"tableName": "form_details",
+				"view": {
+					"sql": "\n\tSELECT\n\t\tgen_random_uuid() AS id,\n\t\tform.id AS form_id,\n\t\t(SELECT COUNT(*) FROM response WHERE response.form_id = form.id) AS responses_count \n\tFROM form\n"
+				}
+			}
+		},
+		{
+			"modification": "createRelationInverseSide",
+			"entityName": "Form",
+			"relation": {
+				"name": "details",
+				"ownedBy": "form",
+				"target": "FormDetails",
+				"type": "OneHasOne",
+				"nullable": false
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/admin/entities/FormDetails",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"create": {
+								"id": true,
+								"form": true,
+								"responsesCount": true
+							},
+							"read": {
+								"id": true,
+								"form": true,
+								"responsesCount": true
+							},
+							"update": {
+								"id": true,
+								"form": true,
+								"responsesCount": true
+							},
+							"delete": true,
+							"customPrimary": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/admin/entities/Form/operations/create/details",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/admin/entities/Form/operations/update/details",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/admin/entities/Form/operations/read/details",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/Form/operations/read/details",
+					"value": true
+				}
+			]
+		}
+	]
+}

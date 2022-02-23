@@ -11,7 +11,6 @@ export const ContentBlockType = def.createEnum(
 	'checkBoxes', // question, image, options, required
 	'dropDown', // question, image, options, required
 	'fileUpload', // question, image, file, required
-	// 'linearScale', // question, image, required
 	'date', // question, image, date, required
 	'dateTime', // question, image, dateTime, required
 )

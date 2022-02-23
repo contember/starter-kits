@@ -84,10 +84,16 @@ export default function Form(props: any) {
 
 export async function getStaticProps({ params }: any) {
 	const { data, errors } = await serverSideFetch(getFormBySlug, { slug: params.slug })
+	
+	if (!data?.getForm) {
+		return {
+			notFound: true,
+		}
+	}
 
 	return {
 		props: {
-			data: data ?? null,
+			data,
 			errors: errors ?? null
 		},
 		revalidate: 10,

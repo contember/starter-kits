@@ -113,6 +113,44 @@
 		{
 			"modification": "createEntity",
 			"entity": {
+				"name": "FormDetails",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "form_details"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "FormInput",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "form_input"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
 				"name": "FormOption",
 				"primary": "id",
 				"primaryColumn": "id",
@@ -184,25 +222,6 @@
 					}
 				},
 				"tableName": "response_answer"
-			}
-		},
-		{
-			"modification": "createEntity",
-			"entity": {
-				"name": "FormInput",
-				"primary": "id",
-				"primaryColumn": "id",
-				"unique": {},
-				"fields": {
-					"id": {
-						"name": "id",
-						"columnName": "id",
-						"nullable": false,
-						"type": "Uuid",
-						"columnType": "uuid"
-					}
-				},
-				"tableName": "form_input"
 			}
 		},
 		{
@@ -288,23 +307,113 @@
 			"modification": "createColumn",
 			"entityName": "Form",
 			"field": {
-				"nullable": false,
-				"type": "String",
-				"columnType": "text",
-				"name": "slug",
-				"columnName": "slug"
-			}
-		},
-		{
-			"modification": "createColumn",
-			"entityName": "Form",
-			"field": {
 				"name": "title",
 				"columnName": "title",
 				"nullable": false,
 				"type": "String",
 				"columnType": "text"
 			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Form",
+			"field": {
+				"name": "slug",
+				"columnName": "slug",
+				"nullable": false,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormDetails",
+			"field": {
+				"name": "responsesCount",
+				"columnName": "responses_count",
+				"nullable": false,
+				"type": "Integer",
+				"columnType": "integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormInput",
+			"field": {
+				"name": "order",
+				"columnName": "order",
+				"nullable": false,
+				"type": "Integer",
+				"columnType": "integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormInput",
+			"field": {
+				"name": "type",
+				"columnName": "type",
+				"nullable": false,
+				"type": "Enum",
+				"columnType": "ContentBlockType"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormInput",
+			"field": {
+				"name": "question",
+				"columnName": "question",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormInput",
+			"field": {
+				"name": "placeholder",
+				"columnName": "placeholder",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormInput",
+			"field": {
+				"name": "date",
+				"columnName": "date",
+				"nullable": true,
+				"type": "Date",
+				"columnType": "date"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormInput",
+			"field": {
+				"name": "dateTime",
+				"columnName": "date_time",
+				"nullable": true,
+				"type": "DateTime",
+				"columnType": "timestamptz"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormInput",
+			"field": {
+				"name": "required",
+				"columnName": "required",
+				"nullable": false,
+				"default": false,
+				"type": "Bool",
+				"columnType": "boolean"
+			},
+			"fillValue": false
 		},
 		{
 			"modification": "createColumn",
@@ -411,130 +520,11 @@
 			"modification": "createColumn",
 			"entityName": "ResponseAnswer",
 			"field": {
-				"nullable": false,
-				"type": "String",
-				"columnType": "text",
 				"name": "value",
-				"columnName": "value"
-			}
-		},
-		{
-			"modification": "createColumn",
-			"entityName": "FormInput",
-			"field": {
-				"name": "order",
-				"columnName": "order",
+				"columnName": "value",
 				"nullable": false,
-				"type": "Integer",
-				"columnType": "integer"
-			}
-		},
-		{
-			"modification": "createColumn",
-			"entityName": "FormInput",
-			"field": {
-				"name": "type",
-				"columnName": "type",
-				"nullable": false,
-				"type": "Enum",
-				"columnType": "ContentBlockType"
-			}
-		},
-		{
-			"modification": "createColumn",
-			"entityName": "FormInput",
-			"field": {
-				"name": "question",
-				"columnName": "question",
-				"nullable": true,
 				"type": "String",
 				"columnType": "text"
-			}
-		},
-		{
-			"modification": "createColumn",
-			"entityName": "FormInput",
-			"field": {
-				"name": "date",
-				"columnName": "date",
-				"nullable": true,
-				"type": "Date",
-				"columnType": "date"
-			}
-		},
-		{
-			"modification": "createColumn",
-			"entityName": "FormInput",
-			"field": {
-				"name": "dateTime",
-				"columnName": "date_time",
-				"nullable": true,
-				"type": "DateTime",
-				"columnType": "timestamptz"
-			}
-		},
-		{
-			"modification": "createColumn",
-			"entityName": "FormInput",
-			"field": {
-				"name": "placeholder",
-				"columnName": "placeholder",
-				"nullable": true,
-				"type": "String",
-				"columnType": "text"
-			}
-		},
-		{
-			"modification": "createColumn",
-			"entityName": "FormInput",
-			"field": {
-				"nullable": false,
-				"default": false,
-				"type": "Bool",
-				"columnType": "boolean",
-				"name": "required",
-				"columnName": "required"
-			},
-			"fillValue": false
-		},
-		{
-			"modification": "createView",
-			"entity": {
-				"name": "FormDetails",
-				"primary": "id",
-				"primaryColumn": "id",
-				"unique": {},
-				"fields": {
-					"id": {
-						"name": "id",
-						"columnName": "id",
-						"nullable": false,
-						"type": "Uuid",
-						"columnType": "uuid"
-					},
-					"responsesCount": {
-						"name": "responsesCount",
-						"columnName": "responses_count",
-						"nullable": false,
-						"type": "Integer",
-						"columnType": "integer"
-					},
-					"form": {
-						"name": "form",
-						"inversedBy": "details",
-						"nullable": false,
-						"type": "OneHasOne",
-						"target": "Form",
-						"joiningColumn": {
-							"columnName": "form_id",
-							"onDelete": "restrict"
-						}
-					}
-				},
-				"tableName": "form_details",
-				"view": {
-					"sql": "\n\tSELECT\n\t\tgen_random_uuid() AS id,\n\t\tform.id AS form_id,\n\t\t(SELECT COUNT(*) FROM response WHERE response.form_id = form.id) AS responses_count \n\tFROM form\n"
-				}
 			}
 		},
 		{
@@ -600,6 +590,71 @@
 					"onDelete": "set null"
 				},
 				"orphanRemoval": true
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "FormDetails",
+			"owningSide": {
+				"name": "form",
+				"inversedBy": "details",
+				"nullable": false,
+				"type": "OneHasOne",
+				"target": "Form",
+				"joiningColumn": {
+					"columnName": "form_id",
+					"onDelete": "restrict"
+				}
+			},
+			"inverseSide": {
+				"name": "details",
+				"ownedBy": "form",
+				"target": "FormDetails",
+				"type": "OneHasOne",
+				"nullable": false
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "FormInput",
+			"owningSide": {
+				"name": "form",
+				"inversedBy": "inputs",
+				"nullable": false,
+				"type": "ManyHasOne",
+				"target": "Form",
+				"joiningColumn": {
+					"columnName": "form_id",
+					"onDelete": "cascade"
+				}
+			},
+			"inverseSide": {
+				"name": "inputs",
+				"ownedBy": "form",
+				"type": "OneHasMany",
+				"target": "FormInput",
+				"orderBy": [
+					{
+						"path": [
+							"order"
+						],
+						"direction": "asc"
+					}
+				]
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "FormInput",
+			"owningSide": {
+				"name": "file",
+				"nullable": true,
+				"type": "OneHasOne",
+				"target": "File",
+				"joiningColumn": {
+					"columnName": "file_id",
+					"onDelete": "set null"
+				}
 			}
 		},
 		{
@@ -672,7 +727,7 @@
 			"owningSide": {
 				"name": "response",
 				"inversedBy": "answers",
-				"nullable": true,
+				"nullable": false,
 				"type": "ManyHasOne",
 				"target": "Response",
 				"joiningColumn": {
@@ -685,60 +740,6 @@
 				"ownedBy": "response",
 				"type": "OneHasMany",
 				"target": "ResponseAnswer"
-			}
-		},
-		{
-			"modification": "createRelation",
-			"entityName": "FormInput",
-			"owningSide": {
-				"name": "form",
-				"inversedBy": "inputs",
-				"nullable": false,
-				"type": "ManyHasOne",
-				"target": "Form",
-				"joiningColumn": {
-					"columnName": "form_id",
-					"onDelete": "cascade"
-				}
-			},
-			"inverseSide": {
-				"name": "inputs",
-				"ownedBy": "form",
-				"type": "OneHasMany",
-				"target": "FormInput",
-				"orderBy": [
-					{
-						"path": [
-							"order"
-						],
-						"direction": "asc"
-					}
-				]
-			}
-		},
-		{
-			"modification": "createRelation",
-			"entityName": "FormInput",
-			"owningSide": {
-				"name": "file",
-				"nullable": true,
-				"type": "OneHasOne",
-				"target": "File",
-				"joiningColumn": {
-					"columnName": "file_id",
-					"onDelete": "set null"
-				}
-			}
-		},
-		{
-			"modification": "createRelationInverseSide",
-			"entityName": "Form",
-			"relation": {
-				"name": "details",
-				"ownedBy": "form",
-				"target": "FormDetails",
-				"type": "OneHasOne",
-				"nullable": false
 			}
 		},
 		{
@@ -768,11 +769,11 @@
 										"id": true,
 										"parts": true
 									},
-									"update": {
+									"read": {
 										"id": true,
 										"parts": true
 									},
-									"read": {
+									"update": {
 										"id": true,
 										"parts": true
 									},
@@ -790,14 +791,14 @@
 										"json": true,
 										"references": true
 									},
-									"update": {
+									"read": {
 										"id": true,
 										"order": true,
 										"content": true,
 										"json": true,
 										"references": true
 									},
-									"read": {
+									"update": {
 										"id": true,
 										"order": true,
 										"content": true,
@@ -815,11 +816,11 @@
 										"id": true,
 										"contentPart": true
 									},
-									"update": {
+									"read": {
 										"id": true,
 										"contentPart": true
 									},
-									"read": {
+									"update": {
 										"id": true,
 										"contentPart": true
 									},
@@ -837,14 +838,14 @@
 										"type": true,
 										"alt": true
 									},
-									"update": {
+									"read": {
 										"id": true,
 										"url": true,
 										"size": true,
 										"type": true,
 										"alt": true
 									},
-									"read": {
+									"update": {
 										"id": true,
 										"url": true,
 										"size": true,
@@ -861,32 +862,100 @@
 									"create": {
 										"id": true,
 										"publishAt": true,
+										"title": true,
 										"slug": true,
 										"content": true,
-										"responses": true,
 										"inputs": true,
-										"title": true,
-										"details": true
-									},
-									"update": {
-										"id": true,
-										"publishAt": true,
-										"slug": true,
-										"content": true,
 										"responses": true,
-										"inputs": true,
-										"title": true,
 										"details": true
 									},
 									"read": {
 										"id": true,
 										"publishAt": true,
+										"title": true,
 										"slug": true,
 										"content": true,
-										"responses": true,
 										"inputs": true,
-										"title": true,
+										"responses": true,
 										"details": true
+									},
+									"update": {
+										"id": true,
+										"publishAt": true,
+										"title": true,
+										"slug": true,
+										"content": true,
+										"inputs": true,
+										"responses": true,
+										"details": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"FormDetails": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"form": true,
+										"responsesCount": true
+									},
+									"read": {
+										"id": true,
+										"form": true,
+										"responsesCount": true
+									},
+									"update": {
+										"id": true,
+										"form": true,
+										"responsesCount": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"FormInput": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"order": true,
+										"type": true,
+										"form": true,
+										"question": true,
+										"placeholder": true,
+										"options": true,
+										"file": true,
+										"date": true,
+										"dateTime": true,
+										"required": true
+									},
+									"read": {
+										"id": true,
+										"order": true,
+										"type": true,
+										"form": true,
+										"question": true,
+										"placeholder": true,
+										"options": true,
+										"file": true,
+										"date": true,
+										"dateTime": true,
+										"required": true
+									},
+									"update": {
+										"id": true,
+										"order": true,
+										"type": true,
+										"form": true,
+										"question": true,
+										"placeholder": true,
+										"options": true,
+										"file": true,
+										"date": true,
+										"dateTime": true,
+										"required": true
 									},
 									"delete": true,
 									"customPrimary": true
@@ -898,20 +967,20 @@
 									"create": {
 										"id": true,
 										"order": true,
-										"formInput": true,
-										"value": true
-									},
-									"update": {
-										"id": true,
-										"order": true,
-										"formInput": true,
-										"value": true
+										"value": true,
+										"formInput": true
 									},
 									"read": {
 										"id": true,
 										"order": true,
-										"formInput": true,
-										"value": true
+										"value": true,
+										"formInput": true
+									},
+									"update": {
+										"id": true,
+										"order": true,
+										"value": true,
+										"formInput": true
 									},
 									"delete": true,
 									"customPrimary": true
@@ -929,7 +998,7 @@
 										"type": true,
 										"alt": true
 									},
-									"update": {
+									"read": {
 										"id": true,
 										"url": true,
 										"width": true,
@@ -938,7 +1007,7 @@
 										"type": true,
 										"alt": true
 									},
-									"read": {
+									"update": {
 										"id": true,
 										"url": true,
 										"width": true,
@@ -960,13 +1029,13 @@
 										"answers": true,
 										"createdAt": true
 									},
-									"update": {
+									"read": {
 										"id": true,
 										"form": true,
 										"answers": true,
 										"createdAt": true
 									},
-									"read": {
+									"update": {
 										"id": true,
 										"form": true,
 										"answers": true,
@@ -981,89 +1050,21 @@
 								"operations": {
 									"create": {
 										"id": true,
-										"response": true,
 										"value": true,
-										"input": true
-									},
-									"update": {
-										"id": true,
-										"response": true,
-										"value": true,
-										"input": true
+										"input": true,
+										"response": true
 									},
 									"read": {
 										"id": true,
-										"response": true,
 										"value": true,
-										"input": true
-									},
-									"delete": true,
-									"customPrimary": true
-								}
-							},
-							"FormInput": {
-								"predicates": {},
-								"operations": {
-									"create": {
-										"id": true,
-										"order": true,
-										"type": true,
-										"form": true,
-										"question": true,
-										"options": true,
-										"file": true,
-										"date": true,
-										"dateTime": true,
-										"required": true,
-										"placeholder": true
+										"input": true,
+										"response": true
 									},
 									"update": {
 										"id": true,
-										"order": true,
-										"type": true,
-										"form": true,
-										"question": true,
-										"options": true,
-										"file": true,
-										"date": true,
-										"dateTime": true,
-										"required": true,
-										"placeholder": true
-									},
-									"read": {
-										"id": true,
-										"order": true,
-										"type": true,
-										"form": true,
-										"question": true,
-										"options": true,
-										"file": true,
-										"date": true,
-										"dateTime": true,
-										"required": true,
-										"placeholder": true
-									},
-									"delete": true,
-									"customPrimary": true
-								}
-							},
-							"FormDetails": {
-								"predicates": {},
-								"operations": {
-									"create": {
-										"id": true,
-										"form": true,
-										"responsesCount": true
-									},
-									"update": {
-										"id": true,
-										"form": true,
-										"responsesCount": true
-									},
-									"read": {
-										"id": true,
-										"form": true,
-										"responsesCount": true
+										"value": true,
+										"input": true,
+										"response": true
 									},
 									"delete": true,
 									"customPrimary": true
@@ -1148,6 +1149,17 @@
 									}
 								}
 							},
+							"FormOption": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"order": true,
+										"value": true,
+										"formInput": true
+									}
+								}
+							},
 							"FormInput": {
 								"predicates": {},
 								"operations": {
@@ -1211,10 +1223,10 @@
 								"predicates": {},
 								"operations": {
 									"read": {
-										"id": true,
-										"form": true,
-										"answers": true,
-										"createdAt": true
+										"id": false,
+										"form": false,
+										"answers": false,
+										"createdAt": false
 									},
 									"create": {
 										"id": true,
@@ -1235,10 +1247,10 @@
 								"predicates": {},
 								"operations": {
 									"read": {
-										"id": true,
-										"value": true,
-										"input": true,
-										"response": true
+										"id": false,
+										"value": false,
+										"input": false,
+										"response": false
 									},
 									"create": {
 										"id": true,
@@ -1253,17 +1265,6 @@
 										"response": true
 									},
 									"delete": false
-								}
-							},
-							"FormOption": {
-								"predicates": {},
-								"operations": {
-									"read": {
-										"id": true,
-										"order": true,
-										"value": true,
-										"formInput": true
-									}
 								}
 							}
 						}

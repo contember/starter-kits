@@ -23,16 +23,19 @@ export const responseList = () => (
 export const responseView = (
 	<EditPage
 		entity="Response(id = $id)"
-		rendererProps={{ navigation: <NavigateBackButton to="responseList(id: $entity.form.id)">Responses</NavigateBackButton> }}
+		rendererProps={{
+			actions: <></>,
+			navigation: <NavigateBackButton to="responseList(id: $entity.form.id)">Responses</NavigateBackButton>
+		}}
 	>
-		<Field field="createdAt" />
-		<br /><br />
-		<HasMany field="answers">
-			<Field field="input.question" />
-			<br />
-			<Field field="value" />
-			<br /><br />
-		</HasMany>
+		<dl>
+			<dt>Created at</dt>
+			<dd><Field field="createdAt" /></dd>
+			<HasMany field="answers">
+				<dt><Field field="input.question" /></dt>
+				<dd><Field field="value" /></dd>
+			</HasMany>
+		</dl>
 
 		<StaticRender>
 			<Field field="form.id" />

@@ -11,5 +11,5 @@ export class Response {
 export class ResponseAnswer {
 	value = def.stringColumn().notNull()
 	input = def.manyHasOne(FormInput).notNull()
-	response = def.manyHasOne(Response, 'answers').cascadeOnDelete()
+	response = def.manyHasOne(Response, 'answers').notNull().cascadeOnDelete()
 }

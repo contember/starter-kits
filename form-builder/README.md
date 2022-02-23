@@ -1,10 +1,10 @@
-# Forms starter
+# Form builder starter
 
 With this template we'll use Contember platform as headless form builder and [Next.js](https://nextjs.org/) for frontend site. You'll get:
 
 - Forms with 8 input blocks (Short answer, Long answer, Multiple choise, Check boxes, Drop down, File upload, Date, Date and time)
-- Responses for saving forms from the frontend website
-- [ACL rules](https://docs.contember.com/schema/acl) for administrators and public access for frontend website
+- Saving form responses from the frontend website
+- [Access control rules](https://docs.contember.com/schema/acl) for administrators and public access for frontend website
 - Basic Next.js website intentionally with just little bit of styling. See how you can easily query GraphQL API Contember provides
 
 Thanks to Contember platform you can change anything. If you have any questions, we're happy to help in [Discord](https://discord.com/invite/EkhsuAK2Fg).
@@ -18,10 +18,10 @@ You'll need:
 - NPM version 7+ (you can check using `npm --version`)
 - [Docker](https://docs.docker.com/get-docker/)
 
-### 🚀 Run Headless CMS starter locally
+### 🚀 Run Form builder starter locally
 
 1. Clone this template (`git clone git@github.com:contember/templates.git`)
-2. Go to templates > forms (`cd templates/forms`)
+2. Go to templates > form-builder (`cd templates/form-builder`)
 3. Install dependencies:
 
 ```bash
@@ -52,13 +52,13 @@ npm run contember tenant:create-api-key
 
 Then select:
 
-- Project: `forms` (the only option)
+- Project: `form-builder` (the only option)
 - Role: `public`
 - Do you want to add another role?: `n` (no)
 - API key description: anything (e.g. `frontend`)
 - Are you sure you want to create this API key?: `y` (yes)
 
-Set `NEXT_PUBLIC_TOKEN` in `forms/head/.env` to newly generated API token (replace the default superadmin token) and restart Docker containers (`docker-compose restart`).
+Set `NEXT_PUBLIC_TOKEN` in `form-builder/head/.env` to newly generated API token (replace the default superadmin token) and restart Docker containers (`docker-compose restart`).
 
 ### 🌍 Localization
 
@@ -66,9 +66,9 @@ The default language of administration is English. Other supported language is C
 
 #### Setting the language for UI elements
 
-In the `forms/admin/index.tsx` file, add the `defaultLocale` and `dictionaries` props to `<ApplicationEntrypoint />` and import the Czech dictionary from `@contember/i18n`.
+In the `form-builder/admin/index.tsx` file, add the `defaultLocale` and `dictionaries` props to `<ApplicationEntrypoint />` and import the Czech dictionary from `@contember/i18n`.
 
-```tsx title="forms/admin/index.tsx"
+```tsx title="form-builder/admin/index.tsx"
 import { csCZ } from "@contember/admin-i18n"
 
 <ApplicationEntrypoint
@@ -82,9 +82,9 @@ import { csCZ } from "@contember/admin-i18n"
 
 #### Setting the language for custom components and labels
 
-In the `forms/admin/locales/index.ts` file change default export from `enUS` to `csCZ` and import `csCZ` from `./csCZ`.
+In the `form-builder/admin/locales/index.ts` file change default export from `enUS` to `csCZ` and import `csCZ` from `./csCZ`.
 
-```ts title="forms/admin/locales/index.ts"
+```ts title="form-builder/admin/locales/index.ts"
 import csCZ from "./csCZ"
 
 export default csCZ

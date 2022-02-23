@@ -5,13 +5,9 @@ import { serverSideFetch } from '../lib/graphql/gqlfetch'
 import getHomePage from '../lib/graphql/queries/getHomePage'
 
 import Seo from '../components/seo'
-import Header from '../components/header'
-import Footer from '../components/footer'
-
 
 export default function Home(props: any) {
 	const forms = props.data?.listForm
-	const setting = props.data?.getSetting
 
 	if (props.errors) {
 		return (
@@ -36,8 +32,6 @@ export default function Home(props: any) {
 			<Head>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-
-			<Header logo={setting?.logo} />
 
 			<main>
 				<article>
