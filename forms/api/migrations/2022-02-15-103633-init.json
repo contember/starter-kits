@@ -16,13 +16,6 @@
 			]
 		},
 		{
-			"modification": "createEnum",
-			"enumName": "SettingUnique",
-			"values": [
-				"One"
-			]
-		},
-		{
 			"modification": "createEntity",
 			"entity": {
 				"name": "Content",
@@ -153,25 +146,6 @@
 					}
 				},
 				"tableName": "image"
-			}
-		},
-		{
-			"modification": "createEntity",
-			"entity": {
-				"name": "Setting",
-				"primary": "id",
-				"primaryColumn": "id",
-				"unique": {},
-				"fields": {
-					"id": {
-						"name": "id",
-						"columnName": "id",
-						"nullable": false,
-						"type": "Uuid",
-						"columnType": "uuid"
-					}
-				},
-				"tableName": "setting"
 			}
 		},
 		{
@@ -422,17 +396,6 @@
 		},
 		{
 			"modification": "createColumn",
-			"entityName": "Setting",
-			"field": {
-				"name": "unique",
-				"columnName": "unique",
-				"nullable": false,
-				"type": "Enum",
-				"columnType": "SettingUnique"
-			}
-		},
-		{
-			"modification": "createColumn",
 			"entityName": "Response",
 			"field": {
 				"name": "createdAt",
@@ -670,35 +633,6 @@
 		},
 		{
 			"modification": "createRelation",
-			"entityName": "Setting",
-			"owningSide": {
-				"name": "logo",
-				"nullable": true,
-				"type": "ManyHasOne",
-				"target": "Image",
-				"joiningColumn": {
-					"columnName": "logo_id",
-					"onDelete": "set null"
-				}
-			}
-		},
-		{
-			"modification": "createRelation",
-			"entityName": "Setting",
-			"owningSide": {
-				"name": "footerCopyright",
-				"nullable": true,
-				"type": "OneHasOne",
-				"target": "Content",
-				"joiningColumn": {
-					"columnName": "footer_copyright_id",
-					"onDelete": "set null"
-				},
-				"orphanRemoval": true
-			}
-		},
-		{
-			"modification": "createRelation",
 			"entityName": "Response",
 			"owningSide": {
 				"name": "form",
@@ -815,16 +749,6 @@
 					"slug"
 				],
 				"name": "unique_Form_slug_e3207a"
-			}
-		},
-		{
-			"modification": "createUniqueConstraint",
-			"entityName": "Setting",
-			"unique": {
-				"fields": [
-					"unique"
-				],
-				"name": "unique_Setting_unique_be242d"
 			}
 		},
 		{
@@ -1027,31 +951,6 @@
 									"customPrimary": true
 								}
 							},
-							"Setting": {
-								"predicates": {},
-								"operations": {
-									"create": {
-										"id": true,
-										"unique": true,
-										"logo": true,
-										"footerCopyright": true
-									},
-									"update": {
-										"id": true,
-										"unique": true,
-										"logo": true,
-										"footerCopyright": true
-									},
-									"read": {
-										"id": true,
-										"unique": true,
-										"logo": true,
-										"footerCopyright": true
-									},
-									"delete": true,
-									"customPrimary": true
-								}
-							},
 							"Response": {
 								"predicates": {},
 								"operations": {
@@ -1175,6 +1074,197 @@
 							"**": {
 								"upload": true,
 								"read": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/public",
+					"value": {
+						"variables": {},
+						"stages": "*",
+						"s3": {
+							"**": {
+								"upload": true,
+								"read": true
+							}
+						},
+						"entities": {
+							"Content": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"parts": true
+									}
+								}
+							},
+							"ContentPart": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"order": true,
+										"content": true,
+										"json": true,
+										"references": true
+									}
+								}
+							},
+							"ContentReference": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"contentPart": true
+									}
+								}
+							},
+							"File": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"url": true,
+										"size": true,
+										"type": true,
+										"alt": true
+									}
+								}
+							},
+							"Form": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"publishAt": true,
+										"title": true,
+										"slug": true,
+										"content": true,
+										"inputs": true,
+										"responses": true,
+										"details": true
+									}
+								}
+							},
+							"FormInput": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"order": true,
+										"type": true,
+										"form": true,
+										"question": true,
+										"placeholder": true,
+										"options": true,
+										"file": true,
+										"date": true,
+										"dateTime": true,
+										"required": true
+									},
+									"create": {
+										"id": false,
+										"order": false,
+										"type": false,
+										"form": false,
+										"question": false,
+										"placeholder": false,
+										"options": false,
+										"file": false,
+										"date": false,
+										"dateTime": false,
+										"required": false
+									},
+									"update": {
+										"id": true,
+										"order": true,
+										"type": true,
+										"form": true,
+										"question": true,
+										"placeholder": true,
+										"options": true,
+										"file": true,
+										"date": true,
+										"dateTime": true,
+										"required": true
+									},
+									"delete": false
+								}
+							},
+							"Image": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"url": true,
+										"width": true,
+										"height": true,
+										"size": true,
+										"type": true,
+										"alt": true
+									}
+								}
+							},
+							"Response": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"form": true,
+										"answers": true,
+										"createdAt": true
+									},
+									"create": {
+										"id": true,
+										"form": true,
+										"answers": true,
+										"createdAt": true
+									},
+									"update": {
+										"id": true,
+										"form": true,
+										"answers": true,
+										"createdAt": true
+									},
+									"delete": false
+								}
+							},
+							"ResponseAnswer": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"value": true,
+										"input": true,
+										"response": true
+									},
+									"create": {
+										"id": true,
+										"value": true,
+										"input": true,
+										"response": true
+									},
+									"update": {
+										"id": true,
+										"value": true,
+										"input": true,
+										"response": true
+									},
+									"delete": false
+								}
+							},
+							"FormOption": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"order": true,
+										"value": true,
+										"formInput": true
+									}
+								}
 							}
 						}
 					}
