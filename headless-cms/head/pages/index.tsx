@@ -33,9 +33,7 @@ export default function Home (props: any) {
 
   return (
     <div>
-      <Seo
-        seo={homePageData?.seo}
-      />
+      <Seo seo={homePageData?.seo} />
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>

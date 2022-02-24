@@ -21,9 +21,7 @@ export default function Page(props: any) {
 
 	return (
 		<div>
-			<Seo
-				seo={pageData?.seo}
-			/>
+			<Seo seo={pageData?.seo} />
 			<Head>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
