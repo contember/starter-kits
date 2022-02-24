@@ -5,11 +5,15 @@ With this template we'll use Contember platform as headless form builder and [Ne
 - Forms with 8 input blocks (Short answer, Long answer, Multiple choise, Check boxes, Drop down, File upload, Date, Date and time)
 - Saving form responses from the frontend website
 - [Access control rules](https://docs.contember.com/schema/acl) for administrators and public access for frontend website
-- Basic Next.js website intentionally with just little bit of styling. See how you can easily query GraphQL API Contember provides
+- Basic Next.js website. See how you can easily query GraphQL API Contember provides
 
 Thanks to Contember platform you can change anything. If you have any questions, we're happy to help in [Discord](https://discord.com/invite/EkhsuAK2Fg).
 
-![Contember admin - edit forms](https://user-images.githubusercontent.com/47249487/155297814-c41c89b4-ffe0-46ab-b803-85755d187318.png)
+### Administration preview
+![Contember admin - edit forms](https://user-images.githubusercontent.com/47249487/155489327-f87384a3-a4ad-41a9-8989-1d19c07e8867.png)
+
+### Frontend preview
+![Form builder frontend](https://user-images.githubusercontent.com/47249487/155488988-f0310383-3db4-40cb-9154-9394f2aaa1f3.png)
 
 ## How to use this template
 
