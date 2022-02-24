@@ -25,9 +25,7 @@ export default function Article(props: any) {
 
 	return (
 		<div>
-			<Seo
-				seo={articleLocalizedData.seo}
-			/>
+			<Seo seo={articleLocalizedData?.seo} />
 			<Head>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>

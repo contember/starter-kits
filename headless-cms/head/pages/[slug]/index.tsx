@@ -10,53 +10,57 @@ import Footer from '../../components/footer'
 import Header from '../../components/header'
 
 export default function Page(props: any) {
-  const pageData = props.data?.getPage
-  const headerMenu = props.data?.getHeaderMenu
-  const footerMenu = props.data?.getFooterMenu
-  const setting = props.data?.getSetting
+	const pageData = props.data?.getPage
+	const headerMenu = props.data?.getHeaderMenu
+	const footerMenu = props.data?.getFooterMenu
+	const setting = props.data?.getSetting
 
-  if (props.errors) {
-    return <Errors errors={props.errors} />
-  }
+	if (props.errors) {
+		return <Errors errors={props.errors} />
+	}
 
-  return (
-    <div>
-      <Seo
-        seo={pageData?.seo}
-      />
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+	return (
+		<div>
+			<Seo seo={pageData?.seo} />
+			<Head>
+				<link rel="icon" href="/favicon.ico" />
+			</Head>
 
-      <Header menu={headerMenu} logo={setting?.logo} />
+			<Header menu={headerMenu} logo={setting?.logo} />
 
-      <main>
-        <Blocks blocks={pageData?.blocks} />
-      </main>
+			<main>
+				<Blocks blocks={pageData?.blocks} />
+			</main>
 
-      <Footer menu={footerMenu} content={setting?.footerCopyright} />
-    </div>
-  )
+			<Footer menu={footerMenu} content={setting?.footerCopyright} />
+		</div>
+	)
 }
 
 export async function getStaticProps({ params }: any) {
-  const { data, errors } = await serverSideFetch(getPageBySlug, { slug: params.slug })
+	const { data, errors } = await serverSideFetch(getPageBySlug, { slug: params.slug })
 
-  return {
-    props: {
-      data: data ?? null,
-      errors: errors ?? null
-    },
-	 revalidate: 10,
-  }
+	if (!data?.getPage) {
+		return {
+			notFound: true,
+		}
+	}
+
+	return {
+		props: {
+			data: data,
+			errors: errors ?? null
+		},
+		revalidate: 10,
+	}
 }
 
 export async function getStaticPaths() {
-  const { data } = await serverSideFetch(listPage)
-  const pages = data.listPage
-  const paths = pages.map((page: any) => (
-    { params: { slug: page.slug ?? '' } }
-  ))
+	const { data } = await serverSideFetch(listPage)
+	const pages = data.listPage
+	const paths = pages.map((page: any) => (
+		{ params: { slug: page.slug ?? '' } }
+	))
 
-  return { paths, fallback: 'blocking' }
+	return { paths, fallback: 'blocking' }
 }

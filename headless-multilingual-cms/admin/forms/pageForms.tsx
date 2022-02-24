@@ -8,37 +8,29 @@ import { Seo } from '../components/Seo'
 import locale from '../locales'
 import { LocaleSideDimension } from '../components/LocaleSideDimension'
 
-type PageSideFormProps = {
-	isEditPage?: boolean
-}
-
-export const PageSideForm = Component<PageSideFormProps>(
-	({ isEditPage }) => (
+export const PageSideForm = Component(
+	() => (
 		<>
 			<LocaleSideDimension>
 				<>
-					{isEditPage &&
-						<>
-							<Conditional showIf={(accessor) => accessor.getField('base.role').value === null}>
-								<PreviewLink slugField="slug" />
-							</Conditional>
-							<Conditional showIf={(accessor) => accessor.getField('base.role').value === 'homePage'}>
-								<PreviewLink slugField="slug" path={'/'} />
-							</Conditional>
-							<Conditional showIf={(accessor) => accessor.getField('base.role').value === 'blogPage'}>
-								<PreviewLink slugField="slug" path={'/blog'} />
-							</Conditional>
-							<Conditional showIf={(accessor) => accessor.getField('base.role').value === 'error404Page'}>
-								<PreviewLink slugField="slug" path={'/404'} />
-							</Conditional>
-						</>
-					}
-					<DateTimeField
-						field="publishAt"
-						label={locale['Publish date']}
-						defaultValue={new Date().toISOString()}
-					/>
+					<Conditional showIf={(accessor) => accessor.getField('base.role').value === null}>
+						<PreviewLink slugField="slug" />
+					</Conditional>
+					<Conditional showIf={(accessor) => accessor.getField('base.role').value === 'homePage'}>
+						<PreviewLink slugField="slug" path={'/'} />
+					</Conditional>
+					<Conditional showIf={(accessor) => accessor.getField('base.role').value === 'blogPage'}>
+						<PreviewLink slugField="slug" path={'/blog'} />
+					</Conditional>
+					<Conditional showIf={(accessor) => accessor.getField('base.role').value === 'error404Page'}>
+						<PreviewLink slugField="slug" path={'/404'} />
+					</Conditional>
 				</>
+				<DateTimeField
+					field="publishAt"
+					label={locale['Publish date']}
+					defaultValue={new Date().toISOString()}
+				/>
 			</LocaleSideDimension>
 			<SelectField
 				field="role"

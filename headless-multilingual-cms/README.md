@@ -7,13 +7,13 @@ With this template we'll use Contember platform as headless CMS and [Next.js](ht
 - Blog and articles with powerful WYSIWYG editor
 - Messages for saving forms from the frontend website
 - Website settings (upload logotype, set up navigation)
-- [ACL rules](https://docs.contember.com/schema/acl) for administrators and public access for frontend website
+- [Access control rules](https://docs.contember.com/schema/acl) for administrators and public access for frontend website
 - Basic Next.js website intentionally without any styling. See how you can easily query GraphQL API Contember provides
 - Pages and Articles with SEO support
 
 Thanks to Contember platform you can change anything. If you have any questions, we're happy to help in [Discord](https://discord.com/invite/EkhsuAK2Fg).
 
-![Screenshot 2022-02-16 at 9 18 33](https://user-images.githubusercontent.com/47249487/154224017-fadc28af-d8fe-460b-8283-70fad176b53b.png)
+![Contember admin - edit page](https://user-images.githubusercontent.com/176694/149993498-f3ce5901-2f6d-4b2d-bc2d-08bd12de6efa.png)
 
 ## Multilingual support
 
@@ -66,7 +66,7 @@ Then select:
 - API key description: anything (e.g. `frontend`)
 - Are you sure you want to create this API key?: `y` (yes)
 
-Set `NEXT_PUBLIC_TOKEN` in `head/.env` to newly generated API token (replace the default superadmin token) and restart Docker containers (`docker-compose restart`).
+Set `NEXT_PUBLIC_TOKEN` in `headless-multilingual-cms/head/.env` to newly generated API token (replace the default superadmin token) and restart Docker containers (`docker-compose restart`).
 
 ### 🌍 Localization
 

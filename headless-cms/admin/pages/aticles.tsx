@@ -36,7 +36,7 @@ export const ArticleCreate = (
 export const ArticleEdit = (
 	<EditPage
 		entity="Article(id=$id)"
-		rendererProps={{ title: locale['Edit article'], side: <ArticleSideForm isEditPage /> }}
+		rendererProps={{ title: locale['Edit article'], side: <ArticleSideForm /> }}
 	>
 		<ArticleForm />
 	</EditPage>

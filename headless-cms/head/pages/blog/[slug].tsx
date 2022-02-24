@@ -21,9 +21,7 @@ export default function Article(props: any) {
 
 	return (
 		<div>
-			<Seo
-				seo={articleData.seo}
-			/>
+			<Seo seo={articleData?.seo} />
 			<Head>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
@@ -50,6 +48,12 @@ export default function Article(props: any) {
 
 export async function getStaticProps({ params }: any) {
 	const { data, errors } = await serverSideFetch(getArticleBySlug, { slug: params.slug })
+
+	if (!data?.getArticle) {
+		return {
+			notFound: true,
+		}
+	}
 
 	return {
 		props: {

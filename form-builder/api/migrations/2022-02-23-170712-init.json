@@ -1,0 +1,1276 @@
+{
+	"formatVersion": 3,
+	"modifications": [
+		{
+			"modification": "createEnum",
+			"enumName": "ContentBlockType",
+			"values": [
+				"shortAnswer",
+				"paragraph",
+				"multipeChoice",
+				"checkBoxes",
+				"dropDown",
+				"fileUpload",
+				"date",
+				"dateTime"
+			]
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Content",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "content"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "ContentPart",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "content_part"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "ContentReference",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "content_reference"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "File",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "file"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Form",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "form"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "FormDetails",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "form_details"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "FormInput",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "form_input"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "FormOption",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "form_option"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Image",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "image"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Response",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "response"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "ResponseAnswer",
+				"primary": "id",
+				"primaryColumn": "id",
+				"unique": {},
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"tableName": "response_answer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ContentPart",
+			"field": {
+				"name": "order",
+				"columnName": "order",
+				"nullable": false,
+				"type": "Integer",
+				"columnType": "integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ContentPart",
+			"field": {
+				"name": "json",
+				"columnName": "json",
+				"nullable": false,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "File",
+			"field": {
+				"name": "url",
+				"columnName": "url",
+				"nullable": false,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "File",
+			"field": {
+				"name": "size",
+				"columnName": "size",
+				"nullable": true,
+				"type": "Integer",
+				"columnType": "integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "File",
+			"field": {
+				"name": "type",
+				"columnName": "type",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "File",
+			"field": {
+				"name": "alt",
+				"columnName": "alt",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Form",
+			"field": {
+				"name": "publishAt",
+				"columnName": "publish_at",
+				"nullable": true,
+				"default": "now",
+				"type": "DateTime",
+				"columnType": "timestamptz"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Form",
+			"field": {
+				"name": "title",
+				"columnName": "title",
+				"nullable": false,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Form",
+			"field": {
+				"name": "slug",
+				"columnName": "slug",
+				"nullable": false,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormDetails",
+			"field": {
+				"name": "responsesCount",
+				"columnName": "responses_count",
+				"nullable": false,
+				"type": "Integer",
+				"columnType": "integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormInput",
+			"field": {
+				"name": "order",
+				"columnName": "order",
+				"nullable": false,
+				"type": "Integer",
+				"columnType": "integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormInput",
+			"field": {
+				"name": "type",
+				"columnName": "type",
+				"nullable": false,
+				"type": "Enum",
+				"columnType": "ContentBlockType"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormInput",
+			"field": {
+				"name": "question",
+				"columnName": "question",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormInput",
+			"field": {
+				"name": "placeholder",
+				"columnName": "placeholder",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormInput",
+			"field": {
+				"name": "date",
+				"columnName": "date",
+				"nullable": true,
+				"type": "Date",
+				"columnType": "date"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormInput",
+			"field": {
+				"name": "dateTime",
+				"columnName": "date_time",
+				"nullable": true,
+				"type": "DateTime",
+				"columnType": "timestamptz"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormInput",
+			"field": {
+				"name": "required",
+				"columnName": "required",
+				"nullable": false,
+				"default": false,
+				"type": "Bool",
+				"columnType": "boolean"
+			},
+			"fillValue": false
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormOption",
+			"field": {
+				"name": "order",
+				"columnName": "order",
+				"nullable": false,
+				"type": "Integer",
+				"columnType": "integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "FormOption",
+			"field": {
+				"name": "value",
+				"columnName": "value",
+				"nullable": false,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "url",
+				"columnName": "url",
+				"nullable": false,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "width",
+				"columnName": "width",
+				"nullable": true,
+				"type": "Integer",
+				"columnType": "integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "height",
+				"columnName": "height",
+				"nullable": true,
+				"type": "Integer",
+				"columnType": "integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "size",
+				"columnName": "size",
+				"nullable": true,
+				"type": "Integer",
+				"columnType": "integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "type",
+				"columnName": "type",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "alt",
+				"columnName": "alt",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Response",
+			"field": {
+				"name": "createdAt",
+				"columnName": "created_at",
+				"nullable": false,
+				"default": "now",
+				"type": "DateTime",
+				"columnType": "timestamptz"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ResponseAnswer",
+			"field": {
+				"name": "value",
+				"columnName": "value",
+				"nullable": false,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ContentPart",
+			"owningSide": {
+				"name": "content",
+				"inversedBy": "parts",
+				"nullable": false,
+				"type": "ManyHasOne",
+				"target": "Content",
+				"joiningColumn": {
+					"columnName": "content_id",
+					"onDelete": "cascade"
+				}
+			},
+			"inverseSide": {
+				"name": "parts",
+				"ownedBy": "content",
+				"type": "OneHasMany",
+				"target": "ContentPart",
+				"orderBy": [
+					{
+						"path": [
+							"order"
+						],
+						"direction": "asc"
+					}
+				]
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ContentReference",
+			"owningSide": {
+				"name": "contentPart",
+				"inversedBy": "references",
+				"nullable": false,
+				"type": "ManyHasOne",
+				"target": "ContentPart",
+				"joiningColumn": {
+					"columnName": "content_part_id",
+					"onDelete": "cascade"
+				}
+			},
+			"inverseSide": {
+				"name": "references",
+				"ownedBy": "contentPart",
+				"type": "OneHasMany",
+				"target": "ContentReference"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Form",
+			"owningSide": {
+				"name": "content",
+				"nullable": true,
+				"type": "OneHasOne",
+				"target": "Content",
+				"joiningColumn": {
+					"columnName": "content_id",
+					"onDelete": "set null"
+				},
+				"orphanRemoval": true
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "FormDetails",
+			"owningSide": {
+				"name": "form",
+				"inversedBy": "details",
+				"nullable": false,
+				"type": "OneHasOne",
+				"target": "Form",
+				"joiningColumn": {
+					"columnName": "form_id",
+					"onDelete": "restrict"
+				}
+			},
+			"inverseSide": {
+				"name": "details",
+				"ownedBy": "form",
+				"target": "FormDetails",
+				"type": "OneHasOne",
+				"nullable": false
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "FormInput",
+			"owningSide": {
+				"name": "form",
+				"inversedBy": "inputs",
+				"nullable": false,
+				"type": "ManyHasOne",
+				"target": "Form",
+				"joiningColumn": {
+					"columnName": "form_id",
+					"onDelete": "cascade"
+				}
+			},
+			"inverseSide": {
+				"name": "inputs",
+				"ownedBy": "form",
+				"type": "OneHasMany",
+				"target": "FormInput",
+				"orderBy": [
+					{
+						"path": [
+							"order"
+						],
+						"direction": "asc"
+					}
+				]
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "FormInput",
+			"owningSide": {
+				"name": "file",
+				"nullable": true,
+				"type": "OneHasOne",
+				"target": "File",
+				"joiningColumn": {
+					"columnName": "file_id",
+					"onDelete": "set null"
+				}
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "FormOption",
+			"owningSide": {
+				"name": "formInput",
+				"inversedBy": "options",
+				"nullable": false,
+				"type": "ManyHasOne",
+				"target": "FormInput",
+				"joiningColumn": {
+					"columnName": "form_input_id",
+					"onDelete": "cascade"
+				}
+			},
+			"inverseSide": {
+				"name": "options",
+				"ownedBy": "formInput",
+				"type": "OneHasMany",
+				"target": "FormOption",
+				"orderBy": [
+					{
+						"path": [
+							"order"
+						],
+						"direction": "asc"
+					}
+				]
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Response",
+			"owningSide": {
+				"name": "form",
+				"inversedBy": "responses",
+				"nullable": false,
+				"type": "ManyHasOne",
+				"target": "Form",
+				"joiningColumn": {
+					"columnName": "form_id",
+					"onDelete": "cascade"
+				}
+			},
+			"inverseSide": {
+				"name": "responses",
+				"ownedBy": "form",
+				"type": "OneHasMany",
+				"target": "Response"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ResponseAnswer",
+			"owningSide": {
+				"name": "input",
+				"nullable": false,
+				"type": "ManyHasOne",
+				"target": "FormInput",
+				"joiningColumn": {
+					"columnName": "input_id",
+					"onDelete": "restrict"
+				}
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ResponseAnswer",
+			"owningSide": {
+				"name": "response",
+				"inversedBy": "answers",
+				"nullable": false,
+				"type": "ManyHasOne",
+				"target": "Response",
+				"joiningColumn": {
+					"columnName": "response_id",
+					"onDelete": "cascade"
+				}
+			},
+			"inverseSide": {
+				"name": "answers",
+				"ownedBy": "response",
+				"type": "OneHasMany",
+				"target": "ResponseAnswer"
+			}
+		},
+		{
+			"modification": "createUniqueConstraint",
+			"entityName": "Form",
+			"unique": {
+				"fields": [
+					"slug"
+				],
+				"name": "unique_Form_slug_e3207a"
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/admin",
+					"value": {
+						"variables": {},
+						"stages": "*",
+						"entities": {
+							"Content": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"parts": true
+									},
+									"read": {
+										"id": true,
+										"parts": true
+									},
+									"update": {
+										"id": true,
+										"parts": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"ContentPart": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"order": true,
+										"content": true,
+										"json": true,
+										"references": true
+									},
+									"read": {
+										"id": true,
+										"order": true,
+										"content": true,
+										"json": true,
+										"references": true
+									},
+									"update": {
+										"id": true,
+										"order": true,
+										"content": true,
+										"json": true,
+										"references": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"ContentReference": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"contentPart": true
+									},
+									"read": {
+										"id": true,
+										"contentPart": true
+									},
+									"update": {
+										"id": true,
+										"contentPart": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"File": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"url": true,
+										"size": true,
+										"type": true,
+										"alt": true
+									},
+									"read": {
+										"id": true,
+										"url": true,
+										"size": true,
+										"type": true,
+										"alt": true
+									},
+									"update": {
+										"id": true,
+										"url": true,
+										"size": true,
+										"type": true,
+										"alt": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"Form": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"publishAt": true,
+										"title": true,
+										"slug": true,
+										"content": true,
+										"inputs": true,
+										"responses": true,
+										"details": true
+									},
+									"read": {
+										"id": true,
+										"publishAt": true,
+										"title": true,
+										"slug": true,
+										"content": true,
+										"inputs": true,
+										"responses": true,
+										"details": true
+									},
+									"update": {
+										"id": true,
+										"publishAt": true,
+										"title": true,
+										"slug": true,
+										"content": true,
+										"inputs": true,
+										"responses": true,
+										"details": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"FormDetails": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"form": true,
+										"responsesCount": true
+									},
+									"read": {
+										"id": true,
+										"form": true,
+										"responsesCount": true
+									},
+									"update": {
+										"id": true,
+										"form": true,
+										"responsesCount": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"FormInput": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"order": true,
+										"type": true,
+										"form": true,
+										"question": true,
+										"placeholder": true,
+										"options": true,
+										"file": true,
+										"date": true,
+										"dateTime": true,
+										"required": true
+									},
+									"read": {
+										"id": true,
+										"order": true,
+										"type": true,
+										"form": true,
+										"question": true,
+										"placeholder": true,
+										"options": true,
+										"file": true,
+										"date": true,
+										"dateTime": true,
+										"required": true
+									},
+									"update": {
+										"id": true,
+										"order": true,
+										"type": true,
+										"form": true,
+										"question": true,
+										"placeholder": true,
+										"options": true,
+										"file": true,
+										"date": true,
+										"dateTime": true,
+										"required": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"FormOption": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"order": true,
+										"value": true,
+										"formInput": true
+									},
+									"read": {
+										"id": true,
+										"order": true,
+										"value": true,
+										"formInput": true
+									},
+									"update": {
+										"id": true,
+										"order": true,
+										"value": true,
+										"formInput": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"Image": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"url": true,
+										"width": true,
+										"height": true,
+										"size": true,
+										"type": true,
+										"alt": true
+									},
+									"read": {
+										"id": true,
+										"url": true,
+										"width": true,
+										"height": true,
+										"size": true,
+										"type": true,
+										"alt": true
+									},
+									"update": {
+										"id": true,
+										"url": true,
+										"width": true,
+										"height": true,
+										"size": true,
+										"type": true,
+										"alt": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"Response": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"form": true,
+										"answers": true,
+										"createdAt": true
+									},
+									"read": {
+										"id": true,
+										"form": true,
+										"answers": true,
+										"createdAt": true
+									},
+									"update": {
+										"id": true,
+										"form": true,
+										"answers": true,
+										"createdAt": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							},
+							"ResponseAnswer": {
+								"predicates": {},
+								"operations": {
+									"create": {
+										"id": true,
+										"value": true,
+										"input": true,
+										"response": true
+									},
+									"read": {
+										"id": true,
+										"value": true,
+										"input": true,
+										"response": true
+									},
+									"update": {
+										"id": true,
+										"value": true,
+										"input": true,
+										"response": true
+									},
+									"delete": true,
+									"customPrimary": true
+								}
+							}
+						},
+						"s3": {
+							"**": {
+								"upload": true,
+								"read": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/public",
+					"value": {
+						"variables": {},
+						"stages": "*",
+						"s3": {
+							"**": {
+								"upload": true,
+								"read": true
+							}
+						},
+						"entities": {
+							"Content": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"parts": true
+									}
+								}
+							},
+							"ContentPart": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"order": true,
+										"content": true,
+										"json": true,
+										"references": true
+									}
+								}
+							},
+							"ContentReference": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"contentPart": true
+									}
+								}
+							},
+							"File": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"url": true,
+										"size": true,
+										"type": true,
+										"alt": true
+									}
+								}
+							},
+							"Form": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"publishAt": true,
+										"title": true,
+										"slug": true,
+										"content": true,
+										"inputs": true,
+										"responses": true,
+										"details": true
+									}
+								}
+							},
+							"FormOption": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"order": true,
+										"value": true,
+										"formInput": true
+									}
+								}
+							},
+							"FormInput": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"order": true,
+										"type": true,
+										"form": true,
+										"question": true,
+										"placeholder": true,
+										"options": true,
+										"file": true,
+										"date": true,
+										"dateTime": true,
+										"required": true
+									},
+									"create": {
+										"id": false,
+										"order": false,
+										"type": false,
+										"form": false,
+										"question": false,
+										"placeholder": false,
+										"options": false,
+										"file": false,
+										"date": false,
+										"dateTime": false,
+										"required": false
+									},
+									"update": {
+										"id": true,
+										"order": true,
+										"type": true,
+										"form": true,
+										"question": true,
+										"placeholder": true,
+										"options": true,
+										"file": true,
+										"date": true,
+										"dateTime": true,
+										"required": true
+									},
+									"delete": false
+								}
+							},
+							"Image": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": true,
+										"url": true,
+										"width": true,
+										"height": true,
+										"size": true,
+										"type": true,
+										"alt": true
+									}
+								}
+							},
+							"Response": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": false,
+										"form": false,
+										"answers": false,
+										"createdAt": false
+									},
+									"create": {
+										"id": true,
+										"form": true,
+										"answers": true,
+										"createdAt": true
+									},
+									"update": {
+										"id": true,
+										"form": true,
+										"answers": true,
+										"createdAt": true
+									},
+									"delete": false
+								}
+							},
+							"ResponseAnswer": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"id": false,
+										"value": false,
+										"input": false,
+										"response": false
+									},
+									"create": {
+										"id": true,
+										"value": true,
+										"input": true,
+										"response": true
+									},
+									"update": {
+										"id": true,
+										"value": true,
+										"input": true,
+										"response": true
+									},
+									"delete": false
+								}
+							}
+						}
+					}
+				}
+			]
+		}
+	]
+}

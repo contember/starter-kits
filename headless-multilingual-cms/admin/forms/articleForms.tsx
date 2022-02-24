@@ -7,17 +7,11 @@ import { ContentField } from '../components/ContentField'
 import locale from '../locales'
 import { LocaleSideDimension } from '../components/LocaleSideDimension'
 
-type ArticleSideFormProps = {
-	isEditPage?: boolean
-}
-
-export const ArticleSideForm = Component<ArticleSideFormProps>(
-	({ isEditPage }) => (
+export const ArticleSideForm = Component(
+	() => (
 		<LocaleSideDimension>
 			<>
-				{isEditPage &&
-					<PreviewLink slugField="slug" prefix={(environment) => `/${environment.getValue('currentLocaleCode')}/blog/`} />
-				}
+				<PreviewLink slugField="slug" prefix={(environment) => `/${environment.getValue('currentLocaleCode')}/blog/`} />
 				<DateTimeField
 					field="publishAt"
 					label={locale['Publish date']}

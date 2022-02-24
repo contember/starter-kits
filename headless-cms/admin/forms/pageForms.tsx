@@ -7,29 +7,22 @@ import { PreviewLink } from '../components/PreviewLink'
 import { Seo } from '../components/Seo'
 import locale from '../locales'
 
-type PageSideFormProps = {
-	isEditPage?: boolean
-}
-
-export const PageSideForm = Component<PageSideFormProps>(
-	({ isEditPage }) => (
+export const PageSideForm = Component(
+	() => (
 		<>
-			{isEditPage &&
-				<>
-					<Conditional showIf={(accessor) => accessor.getField('role').value === null}>
-						<PreviewLink slugField="slug" />
-					</Conditional>
-					<Conditional showIf={(accessor) => accessor.getField('role').value === 'homePage'}>
-						<PreviewLink slugField="slug" path={'/'} />
-					</Conditional>
-					<Conditional showIf={(accessor) => accessor.getField('role').value === 'blogPage'}>
-						<PreviewLink slugField="slug" path={'/blog'} />
-					</Conditional>
-					<Conditional showIf={(accessor) => accessor.getField('role').value === 'error404Page'}>
-						<PreviewLink slugField="slug" path={'/404'} />
-					</Conditional>
-				</>
-			}
+			<Conditional showIf={(accessor) => accessor.getField('role').value === null}>
+				<PreviewLink slugField="slug" />
+			</Conditional>
+			<Conditional showIf={(accessor) => accessor.getField('role').value === 'homePage'}>
+				<PreviewLink slugField="slug" path={'/'} />
+			</Conditional>
+			<Conditional showIf={(accessor) => accessor.getField('role').value === 'blogPage'}>
+				<PreviewLink slugField="slug" path={'/blog'} />
+			</Conditional>
+			<Conditional showIf={(accessor) => accessor.getField('role').value === 'error404Page'}>
+				<PreviewLink slugField="slug" path={'/404'} />
+			</Conditional>
+
 			<DateTimeField
 				field="publishAt"
 				label={locale['Publish date']}
