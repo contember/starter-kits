@@ -12,12 +12,12 @@ export const PreviewLink = Component<PreviewLinkProps>(
 	({ slugField, path, prefix }) => (
 		<FieldView
 			field={slugField}
-			render={({ value }) => {
+			render={({ value, valueOnServer }) => {
 				const environment = useEnvironment()
 				const webUrl = environment.getValue('WEB_URL')
 				const prefixValue = typeof prefix === 'function' ? prefix(environment) : prefix
 
-				if (!value) {
+				if (!valueOnServer && !path) {
 					return null
 				}
 
