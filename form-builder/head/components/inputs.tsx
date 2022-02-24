@@ -21,8 +21,8 @@ function MultipeChoice({ question, options, id: questionId }) {
 		<fieldset key={questionId}>
 			<legend><h4>{question}</h4></legend>
 			{options?.map(({ id, value }) => (
-				<label>
-					<input type="radio" key={id} name={questionId} value={value} />
+				<label key={id}>
+					<input type="radio" name={questionId} value={value} />
 					{value}
 				</label>
 			))}
@@ -35,8 +35,8 @@ function CheckBoxes({ question, options, id: questionId }) {
 		<fieldset key={questionId}>
 			<legend><h4>{question}</h4></legend>
 			{options?.map(({ id, value }) => (
-				<label htmlFor={id}>
-					<input type="checkbox" id={id} key={id} name={questionId} value={value} />
+				<label key={id}>
+					<input type="checkbox" name={questionId} value={value} />
 					{value}
 				</label>
 			))}
