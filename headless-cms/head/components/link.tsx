@@ -3,6 +3,8 @@ import Link from "next/link"
 type CustomLinkProps = {
 	label: string
 	url?: any
+	role?: 'button' | 'link'
+	type?: 'primrary' | 'secondary'
 }
 
 export default function CustomLink(props: CustomLinkProps) {
@@ -24,10 +26,10 @@ export default function CustomLink(props: CustomLinkProps) {
 
 	if (href) {
 		if (url.type === 'url') {
-			return (<a href={href} target="_blank">{label}</a>)
+			return (<a href={href} target="_blank" role={props.role} className={props.type}>{label}</a>)
 		}
 		return (
-			<Link href={href}><a>{label}</a></Link>
+			<Link href={href}><a role={props.role} className={props.type}>{label}</a></Link>
 		)
 	} else {
 		return <span>{label}</span>
