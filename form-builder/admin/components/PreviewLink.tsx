@@ -15,6 +15,10 @@ export const PreviewLink = Component<PreviewLinkProps>(
 			render={({ value }) => {
 				const webUrl = useEnvironment().getValue('WEB_URL')
 
+				if (!value) {
+					return null
+				}
+
 				if (!path) {
 					path = prefix ? `${prefix}${value}` : `/${value}`
 				}

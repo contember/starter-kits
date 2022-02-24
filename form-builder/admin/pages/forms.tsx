@@ -36,7 +36,7 @@ export const FormCreate = (
 export const FormEdit = (
 	<EditPage
 		entity="Form(id=$id)"
-		rendererProps={{ title: locale['Edit form'], side: <FormSideForm isEditPage /> }}
+		rendererProps={{ title: locale['Edit form'], side: <FormSideForm /> }}
 	>
 		<FormForm />
 	</EditPage>

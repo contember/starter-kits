@@ -5,16 +5,10 @@ import { PreviewLink } from '../components/PreviewLink'
 import locale from '../locales'
 import { ContentField } from '../components/ContentField'
 
-type FormSideFormProps = {
-	isEditPage?: boolean
-}
-
-export const FormSideForm = Component<FormSideFormProps>(
-	({ isEditPage }) => (
+export const FormSideForm = Component(
+	() => (
 		<>
-			{isEditPage &&
-				<PreviewLink slugField="slug" prefix="/form/" />
-			}
+			<PreviewLink slugField="slug" prefix="/form/" />
 			<DateTimeField
 				field="publishAt"
 				label={locale['Publish date']}
