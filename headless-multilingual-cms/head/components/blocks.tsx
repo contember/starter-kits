@@ -1,14 +1,10 @@
-import { RichTextRenderer } from "@contember/react-client"
-import { useCallback, useState } from "react"
-import { clientSideFetch } from "../lib/graphql/gqlfetch"
-import createMessage from "../lib/graphql/mutations/createMessage"
-import Link from "./link"
+import { useCallback, useState } from 'react'
 
-type ReferenceProps = {
-	id: string,
-	type: string
-	target: any
-}
+import { clientSideFetch } from '../lib/graphql/gqlfetch'
+import createMessage from '../lib/graphql/mutations/createMessage'
+
+import RichTextRenderer from './richTextRenderer'
+import Link from './link'
 
 function HeroSection({ primaryText, content, image, buttons }) {
 	return (
@@ -18,27 +14,10 @@ function HeroSection({ primaryText, content, image, buttons }) {
 					{primaryText}
 				</h1>
 				{content?.parts &&
-					<RichTextRenderer<any>
-						blocks={content.parts}
-						renderElement={(props) => {
-							if (props.element.type === 'link' && props.reference) {
-								const reference = props.reference as ReferenceProps
-
-								return (
-									<Link
-										label={props.element.children[0].text}
-										url={reference.target}
-									/>
-								)
-							}
-
-							return props.fallback
-						}}
-						sourceField="json"
-					/>
+					<RichTextRenderer blocks={content.parts} sourceField="json" />
 				}
 				<div>
-					{buttons && buttons.map(({ id, button }) => (
+					{buttons?.map(({ id, button }) => (
 						<Link key={id} url={button.target} {...button} />
 					))}
 				</div>
@@ -55,7 +34,7 @@ function HeroSection({ primaryText, content, image, buttons }) {
 function LogoSection({ content, images }) {
 	return (
 		<section>
-			{content && content.parts &&
+			{content.parts &&
 				<RichTextRenderer blocks={content.parts} sourceField="json" />
 			}
 			<div>
@@ -72,7 +51,7 @@ function LogoSection({ content, images }) {
 function ContentSection({ content }) {
 	return (
 		<section>
-			{content && content.parts &&
+			{content?.parts &&
 				<RichTextRenderer blocks={content.parts} sourceField="json" />
 			}
 		</section>
@@ -117,7 +96,7 @@ function TestimonialSection({ primaryText, content, testimonials }) {
 	return (
 		<section>
 			<h2>{primaryText}</h2>
-			{content && content.parts &&
+			{content?.parts &&
 				<RichTextRenderer blocks={content.parts} sourceField="json" />
 			}
 			<div>
@@ -172,7 +151,7 @@ function ContactSection({ primaryText, content }) {
 	return (
 		<section>
 			<h2>{primaryText}</h2>
-			{content && content.parts &&
+			{content?.parts &&
 				<RichTextRenderer blocks={content.parts} sourceField="json" />
 			}
 			<div>
@@ -211,7 +190,7 @@ function ContactSection({ primaryText, content }) {
 function ImageWithText({ content, image }) {
 	return (
 		<section>
-			{content && content.parts &&
+			{content?.parts &&
 				<RichTextRenderer blocks={content.parts} sourceField="json" />
 			}
 			<div>
