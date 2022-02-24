@@ -12,18 +12,20 @@ export const PageSideForm = Component(
 	() => (
 		<>
 			<LocaleSideDimension>
-				<Conditional showIf={(accessor) => accessor.getField('base.role').value === null}>
-					<PreviewLink slugField="slug" />
-				</Conditional>
-				<Conditional showIf={(accessor) => accessor.getField('base.role').value === 'homePage'}>
-					<PreviewLink slugField="slug" path={'/'} />
-				</Conditional>
-				<Conditional showIf={(accessor) => accessor.getField('base.role').value === 'blogPage'}>
-					<PreviewLink slugField="slug" path={'/blog'} />
-				</Conditional>
-				<Conditional showIf={(accessor) => accessor.getField('base.role').value === 'error404Page'}>
-					<PreviewLink slugField="slug" path={'/404'} />
-				</Conditional>
+				<>
+					<Conditional showIf={(accessor) => accessor.getField('base.role').value === null}>
+						<PreviewLink slugField="slug" />
+					</Conditional>
+					<Conditional showIf={(accessor) => accessor.getField('base.role').value === 'homePage'}>
+						<PreviewLink slugField="slug" path={'/'} />
+					</Conditional>
+					<Conditional showIf={(accessor) => accessor.getField('base.role').value === 'blogPage'}>
+						<PreviewLink slugField="slug" path={'/blog'} />
+					</Conditional>
+					<Conditional showIf={(accessor) => accessor.getField('base.role').value === 'error404Page'}>
+						<PreviewLink slugField="slug" path={'/404'} />
+					</Conditional>
+				</>
 				<DateTimeField
 					field="publishAt"
 					label={locale['Publish date']}
