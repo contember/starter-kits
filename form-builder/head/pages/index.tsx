@@ -1,4 +1,3 @@
-import type { NextPage } from 'next'
 import Head from 'next/head'
 
 import { serverSideFetch } from '../lib/graphql/gqlfetch'
@@ -26,9 +25,7 @@ export default function Home(props: any) {
 
 	return (
 		<>
-			<Seo
-				seo={{ title: 'Forms' }}
-			/>
+			<Seo seo={{ title: 'Forms' }} />
 			<Head>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>

@@ -49,10 +49,8 @@ export default function Form(props: any) {
 
 	return (
 		<>
+			<Seo seo={{ title: form.title }} />
 			<Head>
-				<Seo
-					seo={{ title: 'Forms' }}
-				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
@@ -84,7 +82,7 @@ export default function Form(props: any) {
 
 export async function getStaticProps({ params }: any) {
 	const { data, errors } = await serverSideFetch(getFormBySlug, { slug: params.slug })
-	
+
 	if (!data?.getForm) {
 		return {
 			notFound: true,
