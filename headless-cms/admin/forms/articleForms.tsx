@@ -6,14 +6,10 @@ import { Seo } from '../components/Seo'
 import { ContentField } from '../components/ContentField'
 import locale from '../locales'
 
-type ArticleSideFormProps = {
-	isEditPage?: boolean
-}
-
-export const ArticleSideForm = Component<ArticleSideFormProps>(
-	({ isEditPage }) => (
+export const ArticleSideForm = Component(
+	() => (
 		<>
-			{isEditPage && <PreviewLink slugField="slug" prefix="/blog/" />}
+			<PreviewLink slugField="slug" prefix="/blog/" />
 			<DateTimeField
 				field="publishAt"
 				label={locale['Publish date']}
