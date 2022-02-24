@@ -65,7 +65,7 @@ export const PageCreate = () => (
 export const PageEdit = () => (
 	<EditPage
 		entity="Page(id=$id)"
-		rendererProps={{ title: locale['Edit page'], side: <PageSideForm isEditPage /> }}
+		rendererProps={{ title: locale['Edit page'], side: <PageSideForm /> }}
 		onBeforePersist={(entityAccessor) => clearSlugWhenPageHasRole(entityAccessor)}
 	>
 		<PageForm />

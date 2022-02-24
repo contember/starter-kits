@@ -17,6 +17,10 @@ export const PreviewLink = Component<PreviewLinkProps>(
 				const webUrl = environment.getValue('WEB_URL')
 				const prefixValue = typeof prefix === 'function' ? prefix(environment) : prefix
 
+				if (!value) {
+					return null
+				}
+
 				if (!path) {
 					path = prefixValue ? `${prefixValue}${value}` : `/${value}`
 				}
