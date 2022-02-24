@@ -10,53 +10,53 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 
 
-export default function Home (props: any) {
-  const homePageData = props.data?.getPage
-  const headerMenu = props.data?.getHeaderMenu
-  const footerMenu = props.data?.getFooterMenu
-  const setting = props.data?.getSetting
+export default function Home(props: any) {
+	const homePageData = props.data?.getPage
+	const headerMenu = props.data?.getHeaderMenu
+	const footerMenu = props.data?.getFooterMenu
+	const setting = props.data?.getSetting
 
-  if (props.errors) {
-    return (
-      <>
-        {
-          props.errors.map((error: { message: string, code: string }) => (
-            <>
-              <p>{error.message}</p>
-              <p>{error.code}</p>
-            </>
-          ))
-        }
-      </>
-    )
-  }
+	if (props.errors) {
+		return (
+			<>
+				{
+					props.errors.map((error: { message: string, code: string }) => (
+						<>
+							<p>{error.message}</p>
+							<p>{error.code}</p>
+						</>
+					))
+				}
+			</>
+		)
+	}
 
-  return (
-    <div>
-      <Seo seo={homePageData?.seo} />
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+	return (
+		<>
+			<Seo seo={homePageData?.seo} />
+			<Head>
+				<link rel="icon" href="/favicon.ico" />
+			</Head>
 
-      <Header menu={headerMenu} logo={setting?.logo} />
+			<Header menu={headerMenu} logo={setting?.logo} />
 
-      <main>
-        <Blocks blocks={homePageData?.blocks} />
-      </main>
+			<main>
+				<Blocks blocks={homePageData?.blocks} />
+			</main>
 
-      <Footer menu={footerMenu} content={setting?.footerCopyright} />
-    </div>
-  )
+			<Footer menu={footerMenu} content={setting?.footerCopyright} />
+		</>
+	)
 }
 
 export async function getStaticProps() {
-  const { data, errors } = await serverSideFetch(getHomePage)
+	const { data, errors } = await serverSideFetch(getHomePage)
 
-  return {
-    props: {
-      data: data ?? null,
-      errors: errors ?? null
-    },
-	 revalidate: 10,
-  }
+	return {
+		props: {
+			data: data ?? null,
+			errors: errors ?? null
+		},
+		revalidate: 10,
+	}
 }

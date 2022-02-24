@@ -20,7 +20,7 @@ export default function Article(props: any) {
 	}
 
 	return (
-		<div>
+		<>
 			<Seo seo={articleData?.seo} />
 			<Head>
 				<link rel="icon" href="/favicon.ico" />
@@ -42,7 +42,7 @@ export default function Article(props: any) {
 			</main>
 
 			<Footer menu={footerMenu} content={setting?.footerCopyright} />
-		</div>
+		</>
 	)
 }
 

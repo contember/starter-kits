@@ -19,7 +19,7 @@ export default function Blog(props: any) {
 	}
 
 	return (
-		<div>
+		<>
 			<Seo seo={blogPage?.seo} />
 			<Head>
 				<title>{blogPage?.seo?.title}</title>
@@ -47,7 +47,7 @@ export default function Blog(props: any) {
 			</main>
 
 			<Footer menu={footerMenu} content={setting?.footerCopyright} />
-		</div>
+		</>
 	)
 }
 

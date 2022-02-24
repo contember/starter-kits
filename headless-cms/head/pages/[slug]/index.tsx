@@ -20,7 +20,7 @@ export default function Page(props: any) {
 	}
 
 	return (
-		<div>
+		<>
 			<Seo seo={pageData?.seo} />
 			<Head>
 				<link rel="icon" href="/favicon.ico" />
@@ -33,7 +33,7 @@ export default function Page(props: any) {
 			</main>
 
 			<Footer menu={footerMenu} content={setting?.footerCopyright} />
-		</div>
+		</>
 	)
 }
 
@@ -57,8 +57,9 @@ export async function getStaticProps({ params }: any) {
 
 export async function getStaticPaths() {
 	const { data } = await serverSideFetch(listPage)
-	const pages = data.listPage
-	const paths = pages.map((page: any) => (
+
+	const pages = data?.listPage
+	const paths = pages?.map((page: any) => (
 		{ params: { slug: page.slug ?? '' } }
 	))
 

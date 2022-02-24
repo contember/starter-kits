@@ -4,17 +4,21 @@ import Link from "./link"
 export default function Footer(props: any) {
 	const { menu, content } = props
 	return (
-		<footer>
+		<nav className="container-fluid">
 			{content &&
-				<RichTextRenderer blocks={content.parts} sourceField="json" />
+				<ul>
+					<li><RichTextRenderer blocks={content.parts} sourceField="json" /></li>
+				</ul>
 			}
 			{menu &&
-				menu.items.map((item: any) => (
-					<li key={item.id}>
-						<Link {...item} />
-					</li>
-				))
+				<ul>
+					{menu.items.map((item: any) => (
+						<li key={item.id}>
+							<Link {...item} />
+						</li>
+					))}
+				</ul>
 			}
-		</footer>
+		</nav>
 	)
 }

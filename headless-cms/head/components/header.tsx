@@ -3,17 +3,23 @@ import Link from "./link"
 export default function Header(props: any) {
 	const { menu, logo } = props
 	return (
-		<header>
+		<nav className="container-fluid">
 			{logo &&
-				<img src={logo.url} width={logo.width} height={logo.height} alt={logo.alt} />
+				<ul>
+					<li>
+						<img src={logo.url} width={logo.width} height={logo.height} alt={logo.alt} />
+					</li>
+				</ul>
 			}
 			{menu &&
-				menu.items.map((item: any) => (
-					<li key={item.id}>
-						<Link {...item} />
-					</li>
-				))
+				<ul>
+					{menu.items.map((item: any) => (
+						<li key={item.id}>
+							<Link {...item} />
+						</li>
+					))}
+				</ul>
 			}
-		</header>
+		</nav>
 	)
 }
