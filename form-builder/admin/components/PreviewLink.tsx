@@ -12,10 +12,10 @@ export const PreviewLink = Component<PreviewLinkProps>(
 	({ slugField, path, prefix }) => (
 		<FieldView
 			field={slugField}
-			render={({ value }) => {
+			render={({ value, valueOnServer }) => {
 				const webUrl = useEnvironment().getValue('WEB_URL')
 
-				if (!value) {
+				if (!valueOnServer && !path) {
 					return null
 				}
 
