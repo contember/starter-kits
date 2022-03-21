@@ -1,8 +1,8 @@
-import { useRedirect } from '@contember/admin'
-import { useEffect } from 'react'
+import * as React from 'react'
+import { GenericPage } from '@contember/admin'
 
-export const index = () => {
-	const redirect = useRedirect()
-	useEffect(() => redirect('pageList'), [redirect])
-	return null
-}
+export default () => (
+	<GenericPage>
+		Welcome to Contember Admin!
+	</GenericPage>
+)
