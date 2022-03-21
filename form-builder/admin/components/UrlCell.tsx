@@ -1,6 +1,5 @@
-import { Component, Scalar, StaticRender, TextCell, useEnvironment } from '@contember/admin'
+import { Component, Scalar, TextCell, useEnvironment } from '@contember/admin'
 import * as React from 'react'
-import locale from '../locales'
 
 export type UrlCellProps = {
 	field: string,
@@ -8,7 +7,7 @@ export type UrlCellProps = {
 	header?: string,
 }
 
-type UrlCellFromatProps = {
+type UrlCellFormatProps = {
 	value: Scalar,
 	prefix?: string,
 }
@@ -27,7 +26,7 @@ export const UrlCell = Component<UrlCellProps>(
 )
 
 
-const UrlCellFormat = ({ value, prefix }: UrlCellFromatProps) => {
+const UrlCellFormat = ({ value, prefix }: UrlCellFormatProps) => {
 	const webUrl = useEnvironment().getValue('WEB_URL')
 	const url = prefix ? `${webUrl}/${prefix}` : `${webUrl}`
 

@@ -1,10 +1,9 @@
 import * as React from 'react'
-import { CreatePage, DataGridPage, DateCell, EditPage, FieldView, GenericCell, LinkButton, TextCell } from '@contember/admin'
-import { FormForm, FormSideForm } from '../forms/formForms'
+import { DataGridPage, DateCell, GenericCell, LinkButton, TextCell } from '@contember/admin'
 import { UrlCell } from '../components/UrlCell'
 import locale from '../locales'
 
-export const FormList = (
+export default () => (
 	<DataGridPage
 		entities="Form"
 		itemsPerPage={50}
@@ -18,26 +17,7 @@ export const FormList = (
 			<LinkButton to="formEdit(id: $entity.id)">{locale['Edit']}</LinkButton>
 		</GenericCell>
 		<GenericCell shrunk canBeHidden={false}>
-			<LinkButton to="responseList(id: $entity.id)" >{locale['See responses']}</LinkButton>
+			<LinkButton to="responseList(id: $entity.id)">{locale['See responses']}</LinkButton>
 		</GenericCell>
 	</DataGridPage>
-)
-
-export const FormCreate = (
-	<CreatePage
-		entity="Form"
-		rendererProps={{ title: locale['Add form'], side: <FormSideForm /> }}
-		redirectOnSuccess="formEdit(id: $entity.id)"
-	>
-		<FormForm />
-	</CreatePage>
-)
-
-export const FormEdit = (
-	<EditPage
-		entity="Form(id=$id)"
-		rendererProps={{ title: locale['Edit form'], side: <FormSideForm /> }}
-	>
-		<FormForm />
-	</EditPage>
 )
