@@ -1,5 +1,6 @@
 {
 	"compilerOptions": {
+		"experimentalDecorators": true,
 		"isolatedModules": true,
 		"lib": ["esnext"],
 		"module": "esnext",
@@ -7,7 +8,6 @@
 		"noEmit": true,
 		"skipLibCheck": true,
 		"strict": true,
-		"target": "esnext",
-		"experimentalDecorators": true
+		"target": "esnext"
 	}
 }
