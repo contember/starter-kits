@@ -5,7 +5,7 @@ import { LocaleSideDimension } from '../components/LocaleSideDimension'
 import { ImageField } from '../components/ImageField'
 import locale from '../locales'
 
-export const settings = (
+export default () => (
 	<EditPage
 		entity="Setting(unique = One)"
 		setOnCreate="(unique = One)"

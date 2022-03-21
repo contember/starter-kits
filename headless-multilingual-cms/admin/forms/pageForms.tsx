@@ -1,12 +1,23 @@
 import * as React from 'react'
 
-import { Component, DateTimeField, Section, SelectField } from '@contember/admin'
+import { Component, DateTimeField, EntityAccessor, Section, SelectField } from '@contember/admin'
 import { ContentBlocks } from '../components/ContentBlocks'
 import { Conditional } from '../components/Conditional'
 import { PreviewLink } from '../components/PreviewLink'
 import { Seo } from '../components/Seo'
 import locale from '../locales'
 import { LocaleSideDimension } from '../components/LocaleSideDimension'
+
+export function clearSlugWhenPageHasRole(getEntityAccessor: EntityAccessor.GetEntityAccessor) {
+	const entity = getEntityAccessor()
+	const locales = entity.environment.getDimension('locale')
+
+	if (entity.getField('role').value !== null) {
+		locales.map(localeCode => (
+			entity.getField(`locales(locale.code = '${localeCode}').slug`).updateValue(null)
+		))
+	}
+}
 
 export const PageSideForm = Component(
 	() => (
