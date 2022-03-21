@@ -1,8 +1,6 @@
-version: '2.4'
-
 services:
   contember-engine:
-    image: contember/engine:1.0.0-rc.7
+    image: contember/engine:1.0.0-rc.15
 
     environment:
       NODE_ENV: 'development'
@@ -12,14 +10,11 @@ services:
       CONTEMBER_ROOT_PASSWORD: 'contember'
       CONTEMBER_ROOT_TOKEN: '0000000000000000000000000000000000000000' # generate token for production by running `openssl rand -hex 20` in console
       CONTEMBER_LOGIN_TOKEN: '1111111111111111111111111111111111111111' # generate token for production by running `openssl rand -hex 20` in console
-
-      CONTEMBER_CONFIG_YAML: |
-        projectDefaults:
-          s3:
-            prefix: '%project.slug%'
+      CONTEMBER_ENCRYPTION_KEY: '2222222222222222222222222222222222222222222222222222222222222222' # generate token for production by running `openssl rand -hex 32` in console
 
       DEFAULT_DB_HOST: 'postgres'
       DEFAULT_DB_PORT: '5432'
+      DEFAULT_DB_NAME: 'contember'
       DEFAULT_DB_USER: 'contember'
       DEFAULT_DB_PASSWORD: 'contember'
 
@@ -30,7 +25,6 @@ services:
       DEFAULT_S3_SECRET: 'contember'
       DEFAULT_S3_PROVIDER: 'minio'
 
-      TENANT_DB_NAME: 'tenant'
       TENANT_MAILER_HOST: 'mailhog'
       TENANT_MAILER_PORT: '1025'
       TENANT_MAILER_FROM: 'contember@localhost'
@@ -39,7 +33,7 @@ services:
       - '1481:4000'
 
     healthcheck:
-      test: ['CMD-SHELL', 'curl --fail http://localhost:4000']
+      test: 'curl --fail http://localhost:4000'
       interval: 5s
       timeout: 5s
       retries: 10
@@ -49,18 +43,19 @@ services:
         condition: service_healthy
 
   contember-cli:
-    image: contember/cli:1.0.0-rc.7
+    image: contember/cli:1.0.0-rc.15
     user: '1000:1000'
-    scale: 0
+
+    deploy:
+      replicas: 0
 
     environment:
       CONTEMBER_API_URL: 'http://contember-engine:4000/'
       CONTEMBER_API_TOKEN: '0000000000000000000000000000000000000000'
       CONTEMBER_PROJECT_NAME: 'headless-cms'
 
-    working_dir: /src
     volumes:
-      - ./:/src:cached
+      - ./:/src
 
     depends_on:
       contember-engine:
@@ -70,8 +65,8 @@ services:
     image: postgres:14-alpine
 
     environment:
-      POSTGRES_PASSWORD: 'contember'
       POSTGRES_USER: 'contember'
+      POSTGRES_PASSWORD: 'contember'
       POSTGRES_DB: 'contember'
 
     ports:
@@ -81,12 +76,12 @@ services:
       - pgsql-data:/var/lib/postgresql/data
 
     healthcheck:
-      test: ['CMD-SHELL', 'pg_isready -U contember']
+      test: 'pg_isready --username contember'
       interval: 5s
       timeout: 5s
       retries: 10
 
-  s3:
+  minio:
     image: bitnami/minio
 
     environment:
@@ -98,7 +93,7 @@ services:
       - '1483:9000'
 
     volumes:
-      - s3-data:/data
+      - minio-data:/data
 
   mailhog:
     image: mailhog/mailhog
@@ -126,4 +121,4 @@ services:
 
 volumes:
   pgsql-data: ~
-  s3-data: ~
+  minio-data: ~
