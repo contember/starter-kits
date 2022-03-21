@@ -1,6 +1,5 @@
 import * as React from 'react'
-import { BooleanCell, DataGridPage, DateCell, EditPage, Field, Link, TextCell } from '@contember/admin'
-import { ViewedMarker } from '../components/ViewedMarker'
+import { BooleanCell, DataGridPage, DateCell, Link, TextCell } from '@contember/admin'
 import locale from '../locales'
 
 const viewedDotStyle = {
@@ -8,10 +7,10 @@ const viewedDotStyle = {
 	height: '0.5em',
 	display: 'block',
 	borderRadius: '50%',
-	backgroundColor: 'rgb(var(--cui-theme-success-500))'
+	backgroundColor: 'rgb(var(--cui-theme-success-500))',
 }
 
-export const MessageList = (
+export default () => (
 	<DataGridPage
 		entities="ContactMessage"
 		itemsPerPage={50}
@@ -32,20 +31,4 @@ export const MessageList = (
 		<TextCell field="lastName" header={locale['Last name']} />
 		<TextCell field="email" header={locale['E-mail']} />
 	</DataGridPage>
-)
-
-
-export const MessageEdit = (
-	<EditPage
-		entity="ContactMessage(id = $id)"
-		rendererProps={{ title: locale['Show contact message'] }}
-	>
-		<ViewedMarker />
-		{locale['Created at']}: <Field field="createdAt" /><br />
-		{locale['First name']}: <Field field="firstName" /><br />
-		{locale['Last name']}: <Field field="lastName" /><br />
-		{locale['E-mail']}: <Field field="email" /><br />
-		{locale['Phone number']}: <Field field="phone" /><br />
-		{locale['Message']}: <Field field="message" />
-	</EditPage>
 )
