@@ -1,6 +1,6 @@
 # Headless Multilingual CMS starter
 
-With this template we'll use Contember platform as headless CMS and [Next.js](https://nextjs.org/) for frontend site. You'll get:
+With this starter kit we'll use Contember platform as headless CMS and [Next.js](https://nextjs.org/) for frontend site. You'll get:
 
 - Multilingual support (add as many languages as you want)
 - Pages with 7 blocks (Hero section, Logos section, Content section, Features section, CTA section, Testimonial section, Contact section)
@@ -19,7 +19,7 @@ Thanks to Contember platform you can change anything. If you have any questions,
 
 All your data will be clearly stored in the database, thanks to the support of multiple languages directly in the model. No more unexpected problems when adding a new language or the inability to translate any piece of the application.
 
-## How to use this template
+## How to use this starter kit
 
 You'll need:
 
@@ -28,8 +28,8 @@ You'll need:
 
 ### 🚀 Run Headless CMS starter locally
 
-1. Clone this template (`git clone git@github.com:contember/templates.git`)
-2. Go to templates > headless-multilingual-cms (`cd templates/headless-multilingual-cms`)
+1. Clone this starter kit (`git clone git@github.com:contember/starter-kit.git`)
+2. Go to starter-kits > headless-multilingual-cms (`cd starter-kits/headless-multilingual-cms`)
 3. Install dependencies:
 
 ```bash
