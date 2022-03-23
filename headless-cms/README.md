@@ -1,6 +1,6 @@
 # Headless CMS starter
 
-With this template we'll use Contember platform as headless CMS and [Next.js](https://nextjs.org/) for frontend site. You'll get:
+With this starter kit we'll use Contember platform as headless CMS and [Next.js](https://nextjs.org/) for frontend site. You'll get:
 
 - Pages with 7 blocks (Hero section, Logos section, Content section, Features section, CTA section, Testimonial section, Contact section)
 - Blog and articles with powerful WYSIWYG editor
@@ -14,7 +14,7 @@ Thanks to Contember platform you can change anything. If you have any questions,
 
 ![Contember admin - edit page](https://user-images.githubusercontent.com/176694/149993498-f3ce5901-2f6d-4b2d-bc2d-08bd12de6efa.png)
 
-## How to use this template
+## How to use this starter kit
 
 You'll need:
 
@@ -23,8 +23,8 @@ You'll need:
 
 ### 🚀 Run Headless CMS starter locally
 
-1. Clone this template (`git clone git@github.com:contember/templates.git`)
-2. Go to templates > headless-cms (`cd templates/headless-cms`)
+1. Clone this starter kit (`git clone git@github.com:contember/starter-kits.git`)
+2. Go to starter-kits > headless-cms (`cd starter-kits/headless-cms`)
 3. Install dependencies:
 
 ```bash
