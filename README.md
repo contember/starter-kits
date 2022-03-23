@@ -1,5 +1,5 @@
-<img src="https://user-images.githubusercontent.com/47249487/159668136-7fda799d-59a6-440c-b37c-4e91c352e8ef.svg#gh-light-mode-only" width="100%" />
-<img src="https://user-images.githubusercontent.com/47249487/159668221-51617825-9411-4b1b-b9d1-c5fad3d65bc4.svg#gh-dark-mode-only" width="100%" />
+<img src="https://user-images.githubusercontent.com/47249487/159670980-2ccedc7c-90ca-4262-957d-9d000f4a4a25.svg#gh-light-mode-only" width="100%" />
+<img src="https://user-images.githubusercontent.com/47249487/159670893-6ac23242-386a-482b-98b5-481488208403.svg#gh-dark-mode-only" width="100%" />
 
 # Contember starter kits 🚀
 
