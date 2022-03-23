@@ -1,3 +1,6 @@
+<img src="https://user-images.githubusercontent.com/47249487/159668136-7fda799d-59a6-440c-b37c-4e91c352e8ef.svg#gh-light-mode-only" width="100%" />
+<img src="https://user-images.githubusercontent.com/47249487/159668221-51617825-9411-4b1b-b9d1-c5fad3d65bc4.svg#gh-dark-mode-only" width="100%" />
+
 # Contember starter kits 🚀
 
 With Contember's open source development platform, you can create many things. To help you with what you're building, we create templates that you can use and customize or just use as inspiration.
