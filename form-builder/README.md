@@ -1,6 +1,6 @@
 # Form builder starter
 
-With this template we'll use Contember platform as headless form builder and [Next.js](https://nextjs.org/) for frontend site. You'll get:
+With this start kit we'll use Contember platform as headless form builder and [Next.js](https://nextjs.org/) for frontend site. You'll get:
 
 - Forms with 8 input blocks (Short answer, Long answer, Multiple choise, Check boxes, Drop down, File upload, Date, Date and time)
 - Saving form responses from the frontend website
@@ -15,7 +15,7 @@ Thanks to Contember platform you can change anything. If you have any questions,
 ### Frontend preview
 ![Form builder frontend](https://user-images.githubusercontent.com/47249487/155488988-f0310383-3db4-40cb-9154-9394f2aaa1f3.png)
 
-## How to use this template
+## How to use this starter kit
 
 You'll need:
 
@@ -24,8 +24,8 @@ You'll need:
 
 ### 🚀 Run Form builder starter locally
 
-1. Clone this template (`git clone git@github.com:contember/templates.git`)
-2. Go to templates > form-builder (`cd templates/form-builder`)
+1. Clone this starter kit (`git clone git@github.com:contember/starter-kits.git`)
+2. Go to starter-kits > form-builder (`cd starter-kits/form-builder`)
 3. Install dependencies:
 
 ```bash
