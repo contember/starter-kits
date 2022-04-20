@@ -28,7 +28,7 @@ You'll need:
 
 ### 🚀 Run Headless CMS starter locally
 
-1. Clone this starter kit (`git clone git@github.com:contember/starter-kit.git`)
+1. Clone this starter kit (`git clone git@github.com:contember/starter-kits.git`)
 2. Go to starter-kits > headless-multilingual-cms (`cd starter-kits/headless-multilingual-cms`)
 3. Install dependencies:
 
