@@ -20,6 +20,7 @@ export default () => {
 					field={`locales(locale.code = '${localeCode}').headline`}
 					header={`${locale['Headline']} (${localeCode})`}
 					format={(scalar) => <Link to="articleEdit(id: $entity.id)">{scalar}</Link>}
+					disableOrder
 				/>
 			))}
 			{request?.dimensions.locale.map(localeCode => (
@@ -27,10 +28,15 @@ export default () => {
 					field={`locales(locale.code = '${localeCode}').slug`}
 					header={`${locale['Url']} (${localeCode})`}
 					prefix={`${localeCode}/blog`}
+					disableOrder
 				/>
 			))}
 			{request?.dimensions.locale.map(localeCode => (
-				<DateCell field={`locales(locale.code = '${localeCode}').publishAt`} header={`${locale['Publish date']} (${localeCode})`} />
+				<DateCell
+					field={`locales(locale.code = '${localeCode}').publishAt`}
+					header={`${locale['Publish date']} (${localeCode})`}
+					disableOrder
+				/>
 			))}
 		</DataGridPage>
 	)

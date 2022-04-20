@@ -5,6 +5,7 @@ export type UrlCellProps = {
 	field: string,
 	prefix?: string | ((environment: Environment) => string),
 	header?: string,
+	disableOrder?: boolean,
 }
 
 type UrlCellFromatProps = {
@@ -13,12 +14,13 @@ type UrlCellFromatProps = {
 }
 
 export const UrlCell = Component<UrlCellProps>(
-	({ field, prefix, header }) => {
+	({ field, prefix, header, disableOrder }) => {
 		return (
 			<TextCell
 				field={field}
 				header={header}
 				format={(value) => <UrlCellFormat value={value} prefix={prefix} />}
+				disableOrder={disableOrder}
 			/>
 		)
 	},
