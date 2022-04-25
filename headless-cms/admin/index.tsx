@@ -2,6 +2,7 @@ import * as React from 'react'
 import { ApplicationEntrypoint, Pages, runReactApp } from '@contember/admin'
 import { Layout } from './components/Layout'
 import '@contember/admin/style.css'
+import './index.css'
 
 runReactApp(
 	<ApplicationEntrypoint

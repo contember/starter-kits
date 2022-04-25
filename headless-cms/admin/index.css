@@ -1,0 +1,8 @@
+.question {
+	margin: 0;
+}
+
+.answer {
+	margin: 0 0 20px 0;
+	color: var(--cui-color--strong)
+}
