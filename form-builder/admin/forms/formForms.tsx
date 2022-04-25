@@ -25,7 +25,13 @@ export const FormForm = Component(
 		<>
 			<Section heading={locale['Content']}>
 				<TextField field="title" label={locale['Title']} />
-				<SlugField field="slug" label={locale['Url']} derivedFrom="title" unpersistedHardPrefix={(environment) => `${environment.getValue('WEB_URL')}/form/`} />
+				<SlugField
+					field="slug"
+					label={locale['Url']}
+					derivedFrom="title"
+					linkToExternalUrl
+					unpersistedHardPrefix={(environment) => `${environment.getValue('WEB_URL')}/form/`}
+				/>
 				<ContentField />
 			</Section>
 			<Section heading={locale['Fields']}>
