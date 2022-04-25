@@ -8,7 +8,7 @@ import {
 	ImageUploadField,
 	LinkButton,
 	SlugField,
-	TextAreaField,
+	TextareaField,
 	TextField,
 } from '@contember/admin'
 import { Conditional } from './Conditional'
@@ -62,6 +62,7 @@ const SeoSlugField = Component<SeoFieldsProps>(
 						field={fieldSlug}
 						derivedFrom={fieldTitle}
 						label={locale['Url']}
+						linkToExternalUrl
 						unpersistedHardPrefix={(environment) => {
 							return getSlugPrefix(environment, unpersistedHardPrefix)
 						}}
@@ -74,6 +75,7 @@ const SeoSlugField = Component<SeoFieldsProps>(
 					field={fieldSlug}
 					derivedFrom={fieldTitle}
 					label={locale['Url']}
+					linkToExternalUrl
 					unpersistedHardPrefix={(environment) => {
 						return getSlugPrefix(environment, unpersistedHardPrefix)
 					}}
@@ -98,7 +100,7 @@ const SeoFields = Component<SeoFieldsProps>(
 			<>
 				<TextField field={fieldTitle} label={locale['Title']} required />
 				<SeoSlugField {...props} />
-				<TextAreaField
+				<TextareaField
 					field={fieldDescription}
 					label={locale['Description']}
 					description={locale['Short summary of the page. Keep it between 120 and 158 characters.']}
@@ -106,7 +108,7 @@ const SeoFields = Component<SeoFieldsProps>(
 				{advancedOptions &&
 					<>
 						<TextField field={fieldOgTitle} label={locale['OG title']} />
-						<TextAreaField field={fieldOgDescription} label={locale['OG description']} />
+						<TextareaField field={fieldOgDescription} label={locale['OG description']} />
 					</>
 				}
 				<ImageUploadField

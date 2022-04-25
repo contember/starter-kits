@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Component, DateTimeField, Section, TextAreaField, TextField } from '@contember/admin'
+import { Component, DateTimeField, Section, TextareaField, TextField } from '@contember/admin'
 import { PreviewLink } from '../components/PreviewLink'
 import { ImageField } from '../components/ImageField'
 import { Seo } from '../components/Seo'
@@ -32,7 +32,7 @@ export const ArticleForm = Component(
 				</LocaleSideDimension>
 				<ImageField field="coverPhoto" label={locale['Cover photo']} />
 				<LocaleSideDimension>
-					<TextAreaField field="lead" label={locale['Lead']} />
+					<TextareaField field="lead" label={locale['Lead']} />
 					<ContentField label={locale['Text']} size="large" />
 				</LocaleSideDimension>
 			</Section>
