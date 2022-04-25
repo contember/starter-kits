@@ -15,6 +15,7 @@ export const Button = Component<ButtonProps>(
 			<RadioField
 				field="type"
 				label={locale['Type']}
+				orientation="horizontal"
 				options={[
 					{ value: 'primary', label: locale['Primary'] },
 					{ value: 'secondary', label: locale['Secondary'] }
