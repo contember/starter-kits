@@ -33,7 +33,7 @@ export const ArticleForm = Component(
 				imageUrlDerivedFrom="coverPhoto.url"
 				seoPage="seoArticles"
 				seoFieldsProps={{
-					unpersistedHardPrefix: '/blog/',
+					unpersistedHardPrefix: '/blog',
 				}}
 			/>
 		</>

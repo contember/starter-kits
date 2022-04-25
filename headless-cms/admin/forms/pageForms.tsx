@@ -61,7 +61,6 @@ export const PageForm = Component(
 			<Seo
 				seoPage="seoPages"
 				seoFieldsProps={{
-					unpersistedHardPrefix: '/',
 					hasRoleField: true,
 				}}
 			/>

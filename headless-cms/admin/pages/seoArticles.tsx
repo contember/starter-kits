@@ -9,6 +9,6 @@ export default () => (
 		pageName="seoArticles"
 		rendererProps={{ title: locale['SEO articles'], enableAddingNew: false, enableRemoving: false }}
 	>
-		<SeoFields advancedOptions referenceEntity="article" />
+		<SeoFields advancedOptions unpersistedHardPrefix="/blog" referenceEntity="article" />
 	</MultiEditPage>
 )
