@@ -13,7 +13,7 @@ With this starter kit we'll use Contember platform as headless CMS and [Next.js]
 
 Thanks to Contember platform you can change anything. If you have any questions, we're happy to help in [Discord](https://discord.com/invite/EkhsuAK2Fg).
 
-![Contember admin - edit page](https://user-images.githubusercontent.com/176694/149993498-f3ce5901-2f6d-4b2d-bc2d-08bd12de6efa.png)
+![Contember admin - edit page](https://user-images.githubusercontent.com/47249487/165333300-fcde9280-3c41-4f9e-9443-542bf6986f7e.png)
 
 ## Multilingual support
 
