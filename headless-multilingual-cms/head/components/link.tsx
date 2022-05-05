@@ -24,7 +24,7 @@ export default function CustomLink(props: CustomLinkProps) {
 
 	if (href) {
 		if (url.type === 'url') {
-			return (<a href={href} target="_blank">{label}</a>)
+			return (<a href={href} target="_blank" rel="noreferrer">{label}</a>)
 		}
 		return (
 			<Link href={href}><a>{label}</a></Link>
