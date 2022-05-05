@@ -71,9 +71,7 @@ export async function getStaticProps({ locales, locale, params }: GetStaticProps
 export async function getStaticPaths() {
 	const { data } = await serverSideFetch(listArticleSlug)
 
-	const articles = data.listArticle
-	const paths = articles?.map((article: any) => {
-		const loacles = article.locales.map((locale: any) => (
+	const articles = data.listArticle ?? []
 			{ params: { slug: locale.slug ?? '' }, locale: locale.locale.code }
 		))
 		return loacles
