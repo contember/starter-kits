@@ -24,7 +24,7 @@ export const PreviewLink = Component<PreviewLinkProps>(
 				}
 
 				return (
-					<a href={`${webUrl}${path}`} target="_blank">
+					<a href={`${webUrl}${path}`} target="_blank" rel="noreferrer">
 						{locale['Preview']}
 					</a>
 				)
