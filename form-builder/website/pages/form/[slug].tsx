@@ -14,11 +14,6 @@ import createResponse from '../../lib/graphql/mutations/createResponse'
 
 export default function Form(props: any) {
 	const form = props.data?.getForm
-
-	if (props.errors) {
-		return <Errors errors={props.errors} />
-	}
-
 	const [submitState, setSubmitState] = React.useState<any[]>([])
 	const [sendingState, setSendingState] = React.useState<boolean>(false)
 
@@ -45,7 +40,11 @@ export default function Form(props: any) {
 		}
 
 		setSendingState(false)
-	}, [])
+	}, [form])
+
+	if (props.errors) {
+		return <Errors errors={props.errors} />
+	}
 
 	return (
 		<>
@@ -100,7 +99,7 @@ export async function getStaticProps({ params }: any) {
 
 export async function getStaticPaths() {
 	const { data } = await serverSideFetch(listForms)
-	const forms = data.listForm
+	const forms = data?.listForm ?? []
 	const paths = forms.map((form: any) => (
 		{ params: { slug: form.slug ?? '' } }
 	))
