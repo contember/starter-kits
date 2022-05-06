@@ -18,6 +18,10 @@ jobs:
       working-directory: ./form-builder
       run: npm install
 
+    - name: Start engine
+      working-directory: ./form-builder
+      run: npm run start-engine
+
     - name: Build Form Builder
       working-directory: ./form-builder
       run: npm run build
