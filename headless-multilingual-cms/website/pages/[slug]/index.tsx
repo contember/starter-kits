@@ -56,11 +56,11 @@ export async function getStaticPaths() {
 	const { data } = await serverSideFetch(listPage)
 
 	const pages = data?.listPage ?? []
-	const paths = pages?.faltMap((page: any) => {
+	const paths = pages?.map((page: any) => {
 		return page.locales.map((locale: any) => (
 			{ params: { slug: locale.slug ?? '' }, locale: locale.locale.code }
 		))
-	})
+	}).flat()
 
 	return { paths: paths, fallback: 'blocking' }
 }
