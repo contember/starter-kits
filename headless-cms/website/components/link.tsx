@@ -26,13 +26,11 @@ export default function CustomLink(props: CustomLinkProps) {
 
 	if (href) {
 		if (url.type === 'url') {
-			return (<a href={href} role={props.role} className={props.type} target="_blank" rel="noreferrer">{label}</a>)
+			return <a href={href} role={props.role} className={props.type}>{label}</a>
 		}
-		return (
-			<Link href={href}><a role={props.role} className={props.type}>{label}</a></Link>
-		)
-	} else {
-		return <span>{label}</span>
+		return <Link href={href}><a role={props.role} className={props.type}>{label}</a></Link>
 	}
+
+	return <span>{label}</span>
 
 }
