@@ -54,12 +54,12 @@ export async function getStaticProps({ params, locale, locales }: GetStaticProps
 
 export async function getStaticPaths() {
 	const { data } = await serverSideFetch(listPage)
-	const pages = data?.listPage
+
+	const pages = data?.listPage ?? []
 	const paths = pages?.map((page: any) => {
-		const loacles = page.locales.map((locale: any) => (
+		return page.locales.map((locale: any) => (
 			{ params: { slug: locale.slug ?? '' }, locale: locale.locale.code }
 		))
-		return loacles
 	}).flat()
 
 	return { paths: paths, fallback: 'blocking' }

@@ -1,0 +1,30 @@
+name: Form builder
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        folder: [form-builder, headless-cms, headless-multilingual-cms]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      working-directory: ./${{ matrix.folder }}
+      run: npm install
+
+    - name: Start engine
+      working-directory: ./${{ matrix.folder }}
+      run: npm run start-engine
+
+    - name: Build
+      working-directory: ./${{ matrix.folder }}
+      run: npm run build

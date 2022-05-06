@@ -1,14 +1,14 @@
 {
   "scripts": {
     "contember": "docker-compose run contember-cli",
-    "start": "npm run start-engine && concurrently npm:start-admin npm:start-head",
-    "start-engine": "docker-compose up --detach && npm run contember migrations:execute . --yes",
+    "start": "npm run start-engine && concurrently npm:start-admin npm:start-website",
+    "start-engine": "docker-compose up --detach && npm run contember migrations:execute . -- --yes",
     "start-admin": "vite admin --port 1480 --host 0.0.0.0",
-    "start-head": "next dev head",
-    "build": "concurrently npm:build-admin npm:build-api npm:build-head",
+    "start-website": "next dev website",
+    "build": "concurrently npm:build-admin npm:build-api npm:build-website",
     "build-admin": "tsc --project admin && vite build admin",
     "build-api": "tsc --project api",
-    "build-head": "tsc --project head && next build head",
+    "build-website": "tsc --project website && next build website",
     "deploy": "npm run build && docker-compose run contember-cli deploy"
   },
   "dependencies": {

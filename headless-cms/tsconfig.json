@@ -4,6 +4,6 @@
 	"references": [
 		{ "path": "./admin"},
 		{ "path": "./api"},
-		{ "path": "./head"},
+		{ "path": "./website"},
 	]
 }

@@ -1,4 +1,4 @@
-export default `#graphql
+const signedUpload = `#graphql
 	mutation($contentType: String!) {
 		signedUpload: generateUploadUrl(contentType: $contentType) {
 			url
@@ -11,3 +11,4 @@ export default `#graphql
 		}
 	}
 `
+export default signedUpload

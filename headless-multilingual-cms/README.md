@@ -66,7 +66,7 @@ Then select:
 - API key description: anything (e.g. `frontend`)
 - Are you sure you want to create this API key?: `y` (yes)
 
-Set `NEXT_PUBLIC_TOKEN` in `headless-multilingual-cms/head/.env` to newly generated API token (replace the default superadmin token) and restart Docker containers (`docker-compose restart`).
+Set `NEXT_PUBLIC_TOKEN` in `headless-multilingual-cms/website/.env` to newly generated API token (replace the default superadmin token) and restart Docker containers (`docker-compose restart`).
 
 ### 🌍 Localization
 

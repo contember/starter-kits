@@ -11,12 +11,12 @@ export default function LocaleSwitcher({ options }: any) {
 			<p>Locale switcher:</p>
 			<ul>
 				{otherLocales?.map((locale) => {
-					const slug = options.locales?.filter((l: any) => l.locale.code === locale)[0].slug
-					const pathname = slug ? `/${slug}` : router.pathname
+					const slug = options.locales?.find((l: any) => l.locale?.code === locale)?.slug
+					const pathname = slug ? `${options.prefix}/${slug}` : '/'
 
 					return (
 						<li key={locale}>
-							<Link href={options.prefix ? options.prefix + pathname : pathname} locale={locale}>
+							<Link href={pathname} locale={locale}>
 								<a>{locale}</a>
 							</Link>
 						</li>

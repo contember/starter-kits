@@ -38,7 +38,7 @@ export default function Blog(props: any) {
 			/>
 			<main>
 				<ul>
-					{articles.length && articles?.map(({ id, localesByLocale: article, coverPhoto }) => (
+					{articles?.map(({ id, localesByLocale: article, coverPhoto }) => (
 						<li key={id}>
 							<Link href={`/blog/${article.slug}`}>
 								<a>

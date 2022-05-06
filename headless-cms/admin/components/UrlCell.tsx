@@ -32,7 +32,7 @@ const UrlCellFormat = ({ value, prefix }: UrlCellFromatProps) => {
 	const url = prefix ? `${webUrl}/${prefix}` : `${webUrl}`
 
 	return (
-		<a href={`${url}/${value}`} target="_blank">
+		<a href={`${url}/${value}`} target="_blank" rel="noreferrer">
 			{`${url}/${value}`}
 		</a>
 	)

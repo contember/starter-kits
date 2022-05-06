@@ -58,7 +58,7 @@ export async function getStaticProps({ params }: any) {
 export async function getStaticPaths() {
 	const { data } = await serverSideFetch(listPage)
 
-	const pages = data?.listPage
+	const pages = data?.listPage ?? []
 	const paths = pages?.map((page: any) => (
 		{ params: { slug: page.slug ?? '' } }
 	))
