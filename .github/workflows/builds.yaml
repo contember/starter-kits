@@ -9,36 +9,22 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        folder: [form-builder, headless-cms, headless-multilingual-cms]
 
     steps:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Install Form Builder dependencies
-      working-directory: ./form-builder
+    - name: Install dependencies
+      working-directory: ./${{ matrix.folder }}
       run: npm install
 
     - name: Start engine
-      working-directory: ./form-builder
+      working-directory: ./${{ matrix.folder }}
       run: npm run start-engine
 
-    - name: Build Form Builder
-      working-directory: ./form-builder
+    - name: Build
+      working-directory: ./${{ matrix.folder }}
       run: npm run build
-
-    - name: Install Headless CMS dependencies
-      working-directory: ./headless-cms
-      run: npm install
-
-    - name: Build Headless CMS
-      working-directory: ./headless-cms
-      run: npm run build
-
-    - name: Install Headless Multilingual CMS dependencies
-      working-directory: ./headless-multilingual-cms
-      run: npm install
-
-    - name: Build Headless Multilingual CMS
-      working-directory: ./headless-multilingual-cms
-      run: npm run build
-      
