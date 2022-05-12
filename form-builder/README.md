@@ -24,8 +24,8 @@ You'll need:
 
 ### 🚀 Run Form builder starter locally
 
-1. Clone this starter kit (`git clone https://github.com/contember/starter-kits.git`)
-2. Go to starter-kits > form-builder (`cd starter-kits/form-builder`)
+1. Clone this starter kit (`npx degit contember/starter-kits/form-builder form-builder`)
+2. Go to form-builder (`cd form-builder`)
 3. Install dependencies:
 
 ```bash

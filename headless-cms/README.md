@@ -23,8 +23,8 @@ You'll need:
 
 ### 🚀 Run Headless CMS starter locally
 
-1. Clone this starter kit (`git clone https://github.com/contember/starter-kits.git`)
-2. Go to starter-kits > headless-cms (`cd starter-kits/headless-cms`)
+1. Clone this starter kit (`npx degit contember/starter-kits/headless-cms headless-cms`)
+2. Go to headless-cms (`cd headless-cms`)
 3. Install dependencies:
 
 ```bash

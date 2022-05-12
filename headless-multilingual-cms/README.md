@@ -28,8 +28,8 @@ You'll need:
 
 ### 🚀 Run Headless CMS starter locally
 
-1. Clone this starter kit (`git clone https://github.com/contember/starter-kits.git`)
-2. Go to starter-kits > headless-multilingual-cms (`cd starter-kits/headless-multilingual-cms`)
+1. Clone this starter kit (`npx degit contember/starter-kits/headless-cms headless-multilingual-cms`)
+2. Go to headless-multilingual-cms (`cd headless-multilingual-cms`)
 3. Install dependencies:
 
 ```bash
