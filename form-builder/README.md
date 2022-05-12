@@ -24,7 +24,7 @@ You'll need:
 
 ### 🚀 Run Form builder starter locally
 
-1. Clone this starter kit (`git clone git@github.com:contember/starter-kits.git`)
+1. Clone this starter kit (`git clone https://github.com/contember/starter-kits.git`)
 2. Go to starter-kits > form-builder (`cd starter-kits/form-builder`)
 3. Install dependencies:
 
