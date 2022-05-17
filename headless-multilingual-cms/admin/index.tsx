@@ -12,6 +12,6 @@ runReactApp(
 		stage="live"
 		defaultDimensions={{ locale: ['en'] }}
 		envVariables={{ WEB_URL: import.meta.env.VITE_CONTEMBER_ADMIN_WEB_URL }}
-		children={<Pages layout={Layout} children={import.meta.glob('./pages/**/*.tsx')} />}
+		children={<Pages layout={Layout} children={import.meta.globEager('./pages/**/*.tsx')} />}
 	/>,
 )
