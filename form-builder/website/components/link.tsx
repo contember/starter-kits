@@ -1,11 +1,11 @@
 import Link from "next/link"
 
-type CustomLinkProps = {
+export type CustomLinkProps = {
 	label: string
 	url?: any
 }
 
-export default function CustomLink(props: CustomLinkProps) {
+export default function (props: CustomLinkProps) {
 	const { label, url } = props
 
 	const pageUrlRole: any = {

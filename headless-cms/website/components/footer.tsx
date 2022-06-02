@@ -1,7 +1,7 @@
 import { RichTextRenderer } from "@contember/react-client"
 import Link from "./link"
 
-export default function Footer(props: any) {
+export default function (props: any) {
 	const { menu, content } = props
 	return (
 		<nav className="container-fluid">

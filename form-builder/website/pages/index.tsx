@@ -5,7 +5,7 @@ import getHomePage from '../lib/graphql/queries/getHomePage'
 
 import Seo from '../components/seo'
 
-export default function Home(props: any) {
+export default function (props: any) {
 	const forms = props.data?.listForm
 
 	if (props.errors) {

@@ -10,7 +10,7 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 
 
-export default function Home(props: any) {
+export default function (props: any) {
 	const homePageData = props.data?.getPage
 	const headerMenu = props.data?.getHeaderMenu
 	const footerMenu = props.data?.getFooterMenu

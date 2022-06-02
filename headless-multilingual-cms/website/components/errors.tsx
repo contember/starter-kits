@@ -1,4 +1,4 @@
-export default function Button(props: any) {
+export default function (props: any) {
 	const { errors } = props
 
 	return (

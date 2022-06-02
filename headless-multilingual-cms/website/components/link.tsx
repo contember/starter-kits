@@ -5,7 +5,7 @@ type CustomLinkProps = {
 	url?: any
 }
 
-export default function CustomLink(props: CustomLinkProps) {
+export default function (props: CustomLinkProps) {
 	const { label, url } = props
 	const articlePrefix = '/blog'
 

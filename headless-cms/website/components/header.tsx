@@ -1,6 +1,6 @@
 import Link from "./link"
 
-export default function Header(props: any) {
+export default function (props: any) {
 	const { menu, logo } = props
 	return (
 		<nav className="container-fluid">

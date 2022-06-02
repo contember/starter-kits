@@ -12,7 +12,7 @@ import { serverSideFetch } from '../../lib/graphql/gqlfetch'
 import getArticleBySlug from '../../lib/graphql/queries/getArticleBySlug'
 import listArticleSlug from '../../lib/graphql/queries/listArticleSlug'
 
-export default function Article(props: any) {
+export default function (props: any) {
 	const articleData = props.data?.getArticle
 	const articleLocalizedData = articleData?.localesByLocale
 	const headerMenu = props.data?.getHeaderMenu
