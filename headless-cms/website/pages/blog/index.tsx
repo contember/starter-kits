@@ -7,7 +7,7 @@ import Header from '../../components/header'
 import Link from 'next/link'
 import Footer from '../../components/footer'
 
-export default function Blog(props: any) {
+export default function (props: any) {
 	const blogPage = props.data?.getPage
 	const articles = props.data?.listArticle
 	const headerMenu = props.data?.getHeaderMenu

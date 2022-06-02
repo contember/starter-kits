@@ -9,7 +9,7 @@ import { serverSideFetch } from '../../lib/graphql/gqlfetch'
 import Footer from '../../components/footer'
 import Header from '../../components/header'
 
-export default function Page(props: any) {
+export default function (props: any) {
 	const pageData = props.data?.getPage
 	const headerMenu = props.data?.getHeaderMenu
 	const footerMenu = props.data?.getFooterMenu

@@ -15,7 +15,7 @@ export type ReferenceProps = {
 	target: any
 }
 
-export default function CustomRichTextRenderer({ blocks, sourceField, source, referenceDiscriminationField }: CustomRichTextRendererProps) {
+export default function ({ blocks, sourceField, source, referenceDiscriminationField }: CustomRichTextRendererProps) {
 	const props: any = {
 		referenceDiscriminationField,
 		sourceField,

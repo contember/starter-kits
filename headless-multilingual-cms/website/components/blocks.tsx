@@ -204,7 +204,7 @@ function ImageWithText({ content, image }) {
 	)
 }
 
-export default function Blocks({ blocks }) {
+export default function ({ blocks }) {
 	return blocks ? blocks.map((block) => {
 		const blocksElements = {
 			heroSection: <HeroSection {...block} key={block.id} />,

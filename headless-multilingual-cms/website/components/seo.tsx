@@ -14,7 +14,7 @@ export type SeoProps = {
 	locales?: any[],
 }
 
-export default function Seo({ seo, locales }: SeoProps) {
+export default function ({ seo, locales }: SeoProps) {
 	const router = useRouter()
 
 	const { title, description, ogTitle, ogDescription, ogImage } = seo ?? {}

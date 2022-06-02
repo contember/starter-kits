@@ -10,7 +10,7 @@ import Seo from '../../components/seo'
 import { serverSideFetch } from '../../lib/graphql/gqlfetch'
 import getBlogPage from '../../lib/graphql/queries/getBlogPage'
 
-export default function Blog(props: any) {
+export default function (props: any) {
 	const blogPage = props.data?.getPage
 	const blogPageLocalized = blogPage?.localesByLocale
 	const articles = props.data?.listArticle

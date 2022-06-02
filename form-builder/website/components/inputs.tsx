@@ -84,7 +84,7 @@ function DateTime({ question, id }) {
 	)
 }
 
-export default function Inputs({ inputs }) {
+export default function ({ inputs }) {
 	return inputs ? inputs.map((input: any) => {
 		const inputElements = {
 			shortAnswer: <ShortAnswer {...input} key={input.id} />,

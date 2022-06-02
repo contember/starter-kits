@@ -9,7 +9,7 @@ export type HeaderProps = {
 	localeSwitcherOptions?: any
 }
 
-export default function Header(props: HeaderProps) {
+export default function (props: HeaderProps) {
 	const { menu, logo, locale, localeSwitcherOptions } = props
 	return (
 		<header>

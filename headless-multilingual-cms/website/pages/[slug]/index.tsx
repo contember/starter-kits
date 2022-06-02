@@ -12,7 +12,7 @@ import Footer from '../../components/footer'
 import Header from '../../components/header'
 import Seo from '../../components/seo'
 
-export default function Page(props: any) {
+export default function (props: any) {
 	const pageData = props.data?.getPage
 	const pageLocalizedData = pageData?.localesByLocale
 	const headerMenu = props.data?.getHeaderMenu

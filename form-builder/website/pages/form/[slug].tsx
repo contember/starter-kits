@@ -12,7 +12,7 @@ import listForms from '../../lib/graphql/queries/listForms'
 import getFormBySlug from '../../lib/graphql/queries/getFormBySlug'
 import createResponse from '../../lib/graphql/mutations/createResponse'
 
-export default function Form(props: any) {
+export default function (props: any) {
 	const form = props.data?.getForm
 	const [submitState, setSubmitState] = React.useState<any[]>([])
 	const [sendingState, setSendingState] = React.useState<boolean>(false)

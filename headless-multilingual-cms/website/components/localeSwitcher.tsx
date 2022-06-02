@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-export default function LocaleSwitcher({ options }: any) {
+export default function ({ options }: any) {
 	const router = useRouter()
 	const { locales, locale: activeLocale } = router
 	const otherLocales = locales?.filter((locale) => locale !== activeLocale)

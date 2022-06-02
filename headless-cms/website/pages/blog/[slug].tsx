@@ -9,7 +9,7 @@ import { serverSideFetch } from '../../lib/graphql/gqlfetch'
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 
-export default function Article(props: any) {
+export default function (props: any) {
 	const articleData = props.data?.getArticle
 	const headerMenu = props.data?.getHeaderMenu
 	const footerMenu = props.data?.getFooterMenu
@@ -67,7 +67,7 @@ export async function getStaticProps({ params }: any) {
 export async function getStaticPaths() {
 	const { data } = await serverSideFetch(listArticle)
 	
-	const articles = data.listArticle ?? []
+	const articles = data?.listArticle ?? []
 	const paths = articles.map((article: any) => (
 		{ params: { slug: article.slug ?? '' } }
 	))
