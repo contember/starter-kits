@@ -28,7 +28,7 @@ You'll need:
 
 ### 🚀 Run Headless CMS starter locally
 
-1. Clone this starter kit (`npx degit contember/starter-kits/headless-cms headless-multilingual-cms`)
+1. Clone this starter kit (`npx degit contember/starter-kits/headless-multilingual-cms headless-multilingual-cms`)
 2. Go to headless-multilingual-cms (`cd headless-multilingual-cms`)
 3. Install dependencies:
 
