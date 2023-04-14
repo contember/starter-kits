@@ -1,8 +1,7 @@
-import { SchemaDefinition as def } from '@contember/schema-definition'
+import { SchemaDefinition as def, AclDefinition as acl } from '@contember/schema-definition'
 import { File } from './File'
 import { Form } from './Form'
-import { Image } from './Image'
-import { ResponseAnswer } from './Response'
+import { publicRole } from './acl'
 
 export const ContentBlockType = def.createEnum(
 	'shortAnswer', // question, image, textAnswer, required
@@ -15,6 +14,9 @@ export const ContentBlockType = def.createEnum(
 	'dateTime', // question, image, dateTime, required
 )
 
+@acl.allow(publicRole, {
+	read: true,
+})
 export class FormInput {
 	order = def.intColumn().notNull()
 	type = def.enumColumn(ContentBlockType).notNull()
@@ -29,6 +31,10 @@ export class FormInput {
 	required = def.boolColumn().notNull().default(false)
 }
 
+@acl.allow(publicRole, {
+	when: { formInput: acl.canRead('options') },
+	read: true,
+})
 export class FormOption {
 	order = def.intColumn().notNull()
 	value = def.stringColumn().notNull()

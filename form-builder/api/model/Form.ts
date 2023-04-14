@@ -1,8 +1,12 @@
-import { SchemaDefinition as def } from '@contember/schema-definition'
+import { SchemaDefinition as def, AclDefinition as acl } from '@contember/schema-definition'
 import { Content } from './Content'
 import { FormInput } from './FormInput'
 import { Response } from './Response'
+import { publicRole } from './acl'
 
+@acl.allow(publicRole, {
+	read: true,
+})
 export class Form {
 	publishAt = def.dateTimeColumn().default('now')
 	title = def.stringColumn().notNull()
