@@ -7,7 +7,7 @@ import { ResponseAnswer } from './Response'
 export const ContentBlockType = def.createEnum(
 	'shortAnswer', // question, image, textAnswer, required
 	'paragraph', // question, image, textAnswer, required
-	'multipeChoice', // question, image, options, required
+	'multipleChoice', // question, image, options, required
 	'checkBoxes', // question, image, options, required
 	'dropDown', // question, image, options, required
 	'fileUpload', // question, image, file, required

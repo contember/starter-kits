@@ -16,7 +16,7 @@ function Paragraph({ id, question, placeholder, required }) {
 	)
 }
 
-function MultipeChoice({ question, options, id: questionId }) {
+function MultipleChoice({ question, options, id: questionId }) {
 	return (
 		<fieldset key={questionId}>
 			<legend><h4>{question}</h4></legend>
@@ -89,7 +89,7 @@ export default function ({ inputs }) {
 		const inputElements = {
 			shortAnswer: <ShortAnswer {...input} key={input.id} />,
 			paragraph: <Paragraph {...input} key={input.id} />,
-			multipeChoice: <MultipeChoice {...input} key={input.id} />,
+			multipleChoice: <MultipleChoice {...input} key={input.id} />,
 			checkBoxes: <CheckBoxes {...input} key={input.id} />,
 			dropDown: <DropDown {...input} key={input.id} />,
 			fileUpload: <FileUpload {...input} key={input.id} />,
