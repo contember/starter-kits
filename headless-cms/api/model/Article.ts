@@ -1,9 +1,14 @@
-import { SchemaDefinition as def } from '@contember/schema-definition'
+import { SchemaDefinition as def, AclDefinition as acl } from '@contember/schema-definition'
 import { Content } from './Content'
 import { Image } from './Image'
 import { Link } from './Link'
 import { Seo } from './Seo'
+import { publicRole } from './acl'
 
+@acl.allow(publicRole, {
+	when: { publishAt: { lte: 'now' } },
+	read: true,
+})
 export class Article {
 	publishAt = def.dateTimeColumn()
 	headline = def.stringColumn().notNull()

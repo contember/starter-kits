@@ -1,8 +1,18 @@
-import { SchemaDefinition as def } from '@contember/schema-definition'
+import { SchemaDefinition as def, AclDefinition as acl } from '@contember/schema-definition'
 import { Article } from './Article'
 import { Image } from './Image'
 import { Page } from './Page'
+import { publicRole } from './acl'
 
+@acl.allow(publicRole, {
+	when: {
+		or: [
+			{ article: acl.canRead('seo') },
+			{ page: acl.canRead('seo') },
+		],
+	},
+	read: true,
+})
 export class Seo {
 	title = def.stringColumn().notNull()
 	description = def.stringColumn()

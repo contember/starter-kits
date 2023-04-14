@@ -6,7 +6,7 @@ const getMenu = `#graphql
 			items {
 				id
 				label
-				url {
+				target {
 					id
 					type
 					url
