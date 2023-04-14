@@ -50,7 +50,7 @@ export default function (props: any) {
 		<>
 			<Seo seo={{ title: form.title }} />
 			<Head>
-				<link rel="icon" href="/favicon.ico" />
+				<link rel="icon" href="/favicon.png" />
 			</Head>
 
 			<main className="container">
