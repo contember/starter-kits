@@ -30,7 +30,7 @@ export const FormInputs = Component(
 			</Block>
 
 			<Block
-				discriminateBy="multipeChoice"
+				discriminateBy="multipleChoice"
 				label={locale['Multipe choice']}
 			>
 				<TextField field="question" label={locale['Question']} />
