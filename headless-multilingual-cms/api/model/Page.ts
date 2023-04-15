@@ -1,16 +1,25 @@
-import { SchemaDefinition as def } from '@contember/schema-definition'
+import { SchemaDefinition as def, AclDefinition as acl } from '@contember/schema-definition'
 import { ContentBlock } from './ContentBlock'
 import { Link } from './Link'
 import { Locale } from './Locale'
 import { Seo } from './Seo'
+import { publicRole } from './acl'
 
 export const PageTypeEnum = def.createEnum('homePage', 'blogPage', 'error404Page')
 
+@acl.allow(publicRole, {
+	when: { locales: acl.canRead('base') },
+	read: true,
+})
 export class Page {
 	locales = def.oneHasMany(PageLocale, 'base')
 	role = def.enumColumn(PageTypeEnum).unique().nullable()
 }
 
+@acl.allow(publicRole, {
+	when: { publishAt: { lte: 'now' } },
+	read: true,
+})
 @def.Unique('base', 'locale')
 @def.Unique('locale', 'slug')
 export class PageLocale {
