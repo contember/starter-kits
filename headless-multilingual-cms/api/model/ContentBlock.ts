@@ -1,9 +1,10 @@
-import { SchemaDefinition as def } from '@contember/schema-definition'
+import { SchemaDefinition as def, AclDefinition as acl } from '@contember/schema-definition'
 import { Article } from './Article'
 import { Button } from './Button'
 import { Content } from './Content'
 import { Image } from './Image'
 import { PageLocale } from './Page'
+import { publicRole } from './acl'
 
 export const ContentBlockType = def.createEnum(
 	'heroSection', // primaryText, content, images, buttons
@@ -15,6 +16,10 @@ export const ContentBlockType = def.createEnum(
 	'contactSection', // primaryText, content
 )
 
+@acl.allow(publicRole, {
+	when: { page: acl.canRead('blocks') },
+	read: true,
+})
 export class ContentBlock {
 	order = def.intColumn().notNull()
 	type = def.enumColumn(ContentBlockType).notNull()
@@ -31,41 +36,72 @@ export class ContentBlock {
 	blogPosts = def.oneHasMany(ContentBlogPost, 'contentBlock').orderBy('order')
 }
 
+@acl.allow(publicRole, {
+	when: { contentBlock: acl.canRead('images') },
+	read: true,
+})
 export class ContentImage {
 	order = def.intColumn().notNull()
 	image = def.manyHasOne(Image).setNullOnDelete()
+	
 	contentBlock = def.manyHasOne(ContentBlock, 'images').notNull().cascadeOnDelete()
 }
 
+@acl.allow(publicRole, {
+	when: { contentBlock: acl.canRead('buttons') },
+	read: true,
+})
 export class ContentButton {
 	order = def.intColumn().notNull()
 	button = def.oneHasOne(Button).notNull().removeOrphan()
+
 	contentBlock = def.manyHasOne(ContentBlock, 'buttons').notNull().cascadeOnDelete()
 }
 
+@acl.allow(publicRole, {
+	when: { contentBlock: acl.canRead('featureList') },
+	read: true,
+})
 export class ContentFeatureItem {
 	order = def.intColumn().notNull()
 	primaryText = def.stringColumn()
 	content = def.oneHasOne(Content).removeOrphan().setNullOnDelete()
 	icon = def.manyHasOne(Image).setNullOnDelete()
+
 	contentBlock = def.manyHasOne(ContentBlock, 'featureList').notNull().cascadeOnDelete()
 }
 
+@acl.allow(publicRole, {
+	when: { contentBlock: acl.canRead('testimonials') },
+	read: true,
+})
 export class ContentTestimonial {
 	order = def.intColumn().notNull()
 	content = def.oneHasOne(Content).notNull().removeOrphan()
 	author = def.oneHasOne(TestimonialAuthor).notNull().removeOrphan()
+
 	contentBlock = def.manyHasOne(ContentBlock, 'testimonials').notNull().cascadeOnDelete()
 }
 
+@acl.allow(publicRole, {
+	when: { testimonial: acl.canRead('author') },
+	read: true,
+})
 export class TestimonialAuthor {
 	name = def.stringColumn().notNull()
 	title = def.stringColumn()
 	image = def.manyHasOne(Image).setNullOnDelete()
+
+	testimonial = def.oneHasOneInverse(ContentTestimonial, 'author')
 }
 
+@acl.allow(publicRole, {
+	when: { contentBlock: acl.canRead('blogPosts') },
+	read: true,
+})
 export class ContentBlogPost {
 	order = def.intColumn().notNull()
 	blogPost = def.manyHasOne(Article).setNullOnDelete()
+
 	contentBlock = def.manyHasOne(ContentBlock, 'blogPosts').notNull().cascadeOnDelete()
 }
