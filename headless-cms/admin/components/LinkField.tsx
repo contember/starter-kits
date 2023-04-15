@@ -11,7 +11,7 @@ function customRenderOptions(accessor: EntityAccessor) {
 	const slug = accessor.getField('slug').value
 	const role = accessor.getField('role').value
 
-	return slug ?? role
+	return <>{slug ?? role}</>
 }
 
 export const LinkField = Component<LinkFieldProps>(
