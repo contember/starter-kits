@@ -1,20 +1,31 @@
+import { ApplicationEntrypoint, DataBindingProvider, FeedbackRenderer, PageModule, Pages, runReactApp } from '@contember/admin'
+import '@contember/admin/index.css'
+import '@contember/cms-layout/index.css'
+import { LayoutSlotsProvider } from '@contember/layout'
 import * as React from 'react'
 import { createRoot } from 'react-dom/client'
-import { ApplicationEntrypoint, Pages, runReactApp } from '@contember/admin'
+import { DirectivesProvider } from './components/Directives'
 import { Layout } from './components/Layout'
-import '@contember/admin/style.css'
 import './index.css'
 
 runReactApp(
-	<ApplicationEntrypoint
-		basePath={import.meta.env.BASE_URL}
-		apiBaseUrl={import.meta.env.VITE_CONTEMBER_ADMIN_API_BASE_URL}
-		sessionToken={import.meta.env.VITE_CONTEMBER_ADMIN_SESSION_TOKEN}
-		project={import.meta.env.VITE_CONTEMBER_ADMIN_PROJECT_NAME}
-		stage="live"
-		envVariables={{ WEB_URL: import.meta.env.VITE_CONTEMBER_ADMIN_WEB_URL }}
-		children={<Pages layout={Layout} children={import.meta.glob('./pages/**/*.tsx', {eager: true})} />}
-	/>,
+	<DirectivesProvider>
+		<ApplicationEntrypoint
+			basePath={import.meta.env.BASE_URL}
+			apiBaseUrl={import.meta.env.VITE_CONTEMBER_ADMIN_API_BASE_URL}
+			sessionToken={import.meta.env.VITE_CONTEMBER_ADMIN_SESSION_TOKEN}
+			project={import.meta.env.VITE_CONTEMBER_ADMIN_PROJECT_NAME}
+			stage="live"
+			envVariables={{ WEB_URL: import.meta.env.VITE_CONTEMBER_ADMIN_WEB_URL }}
+			children={
+				<DataBindingProvider stateComponent={FeedbackRenderer}>
+					<LayoutSlotsProvider>
+						<Pages children={import.meta.glob<PageModule>('./pages/**/*.tsx')} layout={Layout} />
+					</LayoutSlotsProvider>
+				</DataBindingProvider>
+			}
+		/>
+	</DirectivesProvider>,
 	null,
 	(dom, react, onRecoverableError) => createRoot(dom, { onRecoverableError }).render(react),
 )

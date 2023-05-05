@@ -1,14 +1,36 @@
+import { CreateScope, NavigateBackLink, PersistButton } from '@contember/admin'
 import * as React from 'react'
-import { CreatePage } from '@contember/admin'
+import { LAYOUT_BREAKPOINT } from '../components/Constants'
+import { Directive, Title } from '../components/Directives'
+import { Slots } from '../components/Slots'
 import { ArticleForm, ArticleSideForm } from '../forms/articleForms'
 import locale from '../locales'
 
 export default () => (
-	<CreatePage
-		entity="Article"
-		rendererProps={{ title: locale['Add article'], side: <ArticleSideForm /> }}
-		redirectOnSuccess="articleEdit(id: $entity.id)"
-	>
-		<ArticleForm />
-	</CreatePage>
+	<>
+		<Directive name="cms-layout.content.maxWidth" content={LAYOUT_BREAKPOINT} />
+
+		<Title>{locale['Add article']}</Title>
+
+		<Slots.Back>
+			<NavigateBackLink to="articleList">Back to articles</NavigateBackLink>
+		</Slots.Back>
+
+		<CreateScope
+			entity="Article"
+			redirectOnSuccess="articleEdit(id: $entity.id)"
+		>
+			<Slots.Actions>
+				<PersistButton />
+			</Slots.Actions>
+
+			<Slots.ContentStack>
+				<ArticleForm />
+			</Slots.ContentStack>
+
+			<Slots.SidebarStack>
+				<ArticleSideForm />
+			</Slots.SidebarStack>
+		</CreateScope>
+	</>
 )

@@ -17,9 +17,12 @@
     "react-dom": "^18"
   },
   "devDependencies": {
-    "@contember/admin": "^1.1.0",
-    "@contember/admin-i18n": "^1.1.0",
-    "@contember/react-client": "^1.1.0",
+    "@contember/admin": "^1.2.0-alpha.2",
+    "@contember/layout": "^1.2.0-alpha.2",
+    "@contember/brand": "^1.2.0-alpha.2",
+    "@contember/cms-layout": "^1.2.0-alpha.2",
+    "@contember/admin-i18n": "^1.2.0-alpha.2",
+    "@contember/react-client": "^1.2.0-alpha.2",
     "@contember/schema": "^1.2.1",
     "@contember/schema-definition": "^1.2.1",
     "@picocss/pico": "^1.5.9",

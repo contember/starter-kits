@@ -1,6 +1,5 @@
-import * as React from 'react'
 import { Component } from '@contember/admin'
-import './Icons.css'
+import * as React from 'react'
 
 export const IconContactSection = Component(
 	() => (

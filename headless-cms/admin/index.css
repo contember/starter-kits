@@ -1,3 +1,7 @@
+body > div {
+	display: contents;
+}
+
 .question {
 	margin: 0;
 }
@@ -5,4 +9,10 @@
 .answer {
 	margin: 0 0 20px 0;
 	color: var(--cui-color--strong)
+}
+
+/* TODO: Shoul be able to remove after PR #494 is merged */
+.cui-section {
+	--cui-section-padding-bottom: calc(6 * var(--cui-gap));
+	--cui-section-padding-top: calc(6 * var(--cui-gap));
 }

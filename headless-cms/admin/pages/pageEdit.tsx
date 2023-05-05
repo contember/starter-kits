@@ -1,14 +1,36 @@
+import { EditScope, NavigateBackLink, PersistButton } from '@contember/admin'
 import * as React from 'react'
-import { EditPage } from '@contember/admin'
-import { clearSlugWhenPageHasRole, PageForm, PageSideForm } from '../forms/pageForms'
+import { LAYOUT_BREAKPOINT } from '../components/Constants'
+import { Directive, Title } from '../components/Directives'
+import { Slots } from '../components/Slots'
+import { PageForm, PageSideForm, clearSlugWhenPageHasRole } from '../forms/pageForms'
 import locale from '../locales'
 
 export default () => (
-	<EditPage
-		entity="Page(id=$id)"
-		rendererProps={{ title: locale['Edit page'], side: <PageSideForm /> }}
-		onBeforePersist={(entityAccessor) => clearSlugWhenPageHasRole(entityAccessor)}
-	>
-		<PageForm />
-	</EditPage>
+	<>
+		<Directive name="cms-layout.content.maxWidth" content={LAYOUT_BREAKPOINT} />
+
+		<Title>{locale['Edit page']}</Title>
+
+		<Slots.Back>
+			<NavigateBackLink to="pageList">Back to pages</NavigateBackLink>
+		</Slots.Back>
+
+		<EditScope
+			entity="Page(id=$id)"
+			onBeforePersist={(entityAccessor) => clearSlugWhenPageHasRole(entityAccessor)}
+		>
+			<Slots.Actions>
+				<PersistButton />
+			</Slots.Actions>
+
+			<Slots.ContentStack>
+				<PageForm />
+			</Slots.ContentStack>
+
+			<Slots.SidebarStack>
+				<PageSideForm />
+			</Slots.SidebarStack>
+		</EditScope>
+	</>
 )
