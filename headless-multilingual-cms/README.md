@@ -98,7 +98,7 @@ import csCZ from './csCZ'
 export default csCZ
 ```
 
-#### Deploy
+### 🎢 Deploy
 
 Api and Admin can be deployed to Contember Cloud. See [Deploy to Contember Cloud](https://docs.contember.com/guides/deploy-contember).
 
