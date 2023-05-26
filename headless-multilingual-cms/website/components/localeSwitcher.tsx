@@ -16,9 +16,7 @@ export default function ({ options }: any) {
 
 					return (
 						<li key={locale}>
-							<Link href={pathname} locale={locale}>
-								<a>{locale}</a>
-							</Link>
+							<Link href={pathname} locale={locale}>{locale}</Link>
 						</li>
 					)
 				})}

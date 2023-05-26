@@ -41,18 +41,16 @@ export default function (props: any) {
 					{articles?.map(({ id, localesByLocale: article, coverPhoto }) => (
 						<li key={id}>
 							<Link href={`/blog/${article.slug}`}>
-								<a>
-									{coverPhoto &&
-										<img
-											src={coverPhoto.url}
-											width={coverPhoto.width}
-											height={coverPhoto.height}
-											alt={coverPhoto.alt}
-										/>
-									}
-									<h3>{article.headline}</h3>
-									<p>{article.lead}</p>
-								</a>
+								{coverPhoto &&
+									<img
+										src={coverPhoto.url}
+										width={coverPhoto.width}
+										height={coverPhoto.height}
+										alt={coverPhoto.alt}
+									/>
+								}
+								<h3>{article.headline}</h3>
+								<p>{article.lead}</p>
 							</Link>
 						</li>
 					))}
