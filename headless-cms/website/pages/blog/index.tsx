@@ -33,13 +33,11 @@ export default function (props: any) {
 					{articles.map((article) => (
 						<li key={article.id}>
 							<Link href={`/blog/${article.slug}`}>
-								<a>
-									{article.coverPhoto &&
-										<img src={article.coverPhoto.url} width={article.coverPhoto.width} height={article.coverPhoto.height} alt={article.coverPhoto.alt} />
-									}
-									<h3>{article.headline}</h3>
-									<p>{article.lead}</p>
-								</a>
+								{article.coverPhoto &&
+									<img src={article.coverPhoto.url} width={article.coverPhoto.width} height={article.coverPhoto.height} alt={article.coverPhoto.alt} />
+								}
+								<h3>{article.headline}</h3>
+								<p>{article.lead}</p>
 							</Link>
 						</li>
 					))}
