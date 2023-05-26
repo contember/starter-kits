@@ -93,4 +93,10 @@ import csCZ from "./csCZ"
 export default csCZ
 ```
 
+#### Deploy
+
+Api and Admin can be deployed to Contember Cloud. See [Deploy to Contember Cloud](https://docs.contember.com/guides/deploy-contember).
+
+Frontend website can be deployed to any hosting provider. See [Deploy Next.js to Vercel](https://nextjs.org/docs/deployment). Be aware that frontend website is in `website` directory, not in the root directory. So you need to set `Build Command` to `npm run build` and `Output Directory` to `website/.next`.
+
 You are ready to go!
