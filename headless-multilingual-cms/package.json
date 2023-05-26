@@ -5,10 +5,10 @@
     "start-engine": "docker-compose up --detach && npm run contember migrations:execute -- --yes",
     "start-admin": "vite admin --port 1480 --host 0.0.0.0",
     "start-website": "next dev website",
-    "build": "concurrently npm:build-admin npm:build-api npm:build-website",
+    "build": "concurrently npm:build-admin npm:build-api",
     "build-admin": "tsc --project admin && vite build admin",
     "build-api": "tsc --project api",
-    "build-website": "tsc --project website && next build website",
+    "build-website": "next build website",
     "deploy": "npm run build && docker-compose run contember-cli deploy"
   },
   "dependencies": {
