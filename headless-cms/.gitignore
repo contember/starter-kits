@@ -1,5 +1,6 @@
+.DS_store
+.next
+
 /admin/dist
 /node_modules
 /docker-compose.override.yaml
-package-lock.json
-.next
