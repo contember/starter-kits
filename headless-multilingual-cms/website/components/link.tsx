@@ -2,7 +2,19 @@ import Link from "next/link"
 
 type CustomLinkProps = {
 	label: string
-	url?: any
+	url: {
+		url?: string
+		type?: string
+		page?: {
+			slug?: string
+			base?: {
+				role?: string
+			}
+		}
+		article?: {
+			slug?: string
+		}
+	}
 }
 
 export default function (props: CustomLinkProps) {
@@ -26,7 +38,7 @@ export default function (props: CustomLinkProps) {
 		if (url.type === 'url') {
 			return <a href={href}>{label}</a>
 		}
-		return <Link href={href}><a>{label}</a></Link>
+		return <Link href={href}>{label}</Link>
 	}
 
 	return <span>{label}</span>
