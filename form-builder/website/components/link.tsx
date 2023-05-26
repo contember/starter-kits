@@ -23,9 +23,7 @@ export default function (props: CustomLinkProps) {
 
 	if (href) {
 		return (
-			<Link href={href}>
-				<a>{label}</a>
-			</Link>
+			<Link href={href}>{label}</Link>
 		)
 	} else {
 		return <span>{label}</span>
