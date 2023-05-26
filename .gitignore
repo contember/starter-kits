@@ -1,2 +1,5 @@
-package-lock.json
-.next
+.DS_store
+.vscode
+
+*/yarn.lock
+*/package-lock.json
