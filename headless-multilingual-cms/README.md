@@ -11,7 +11,7 @@ With this starter kit we'll use Contember platform as headless CMS and [Next.js]
 - Basic Next.js website intentionally without any styling. See how you can easily query GraphQL API Contember provides
 - Pages and Articles with SEO support
 
-Thanks to Contember platform you can change anything. If you have any questions, we're happy to help in [Discord](https://discord.com/invite/EkhsuAK2Fg).
+Thanks to Contember platform you can change anything. If you have any questions, we're happy to help in [Github Discussions](https://github.com/orgs/contember/discussions/categories/support).
 
 ![Contember admin - edit page](https://user-images.githubusercontent.com/47249487/165333300-fcde9280-3c41-4f9e-9443-542bf6986f7e.png)
 
@@ -28,8 +28,18 @@ You'll need:
 
 ### 🚀 Run Headless CMS starter locally
 
-1. Clone this starter kit (`npx degit contember/starter-kits/headless-multilingual-cms headless-multilingual-cms`)
-2. Go to headless-multilingual-cms (`cd headless-multilingual-cms`)
+1. Clone this starter kit
+
+```bash
+npx degit contember/starter-kits/headless-multilingual-cms headless-multilingual-cms
+```
+
+2. Go to headless-multilingual-cms
+
+```bash
+cd headless-multilingual-cms
+```
+
 3. Install dependencies:
 
 ```bash
@@ -103,8 +113,33 @@ export default csCZ
 Api and Admin can be deployed to Contember Cloud. See [Deploy to Contember Cloud](https://docs.contember.com/guides/deploy-contember).
 
 > **Note**
-> You should deploy Admin and API to Contember Cloud and then deploy frontend website to any hosting provider. This is because frontend website needs frontend website needs to be able to access API.
+> You should deploy Admin and API to Contember Cloud and then deploy frontend website. This is because frontend website needs to be able to access API in order to work properly.
 
-Frontend website can be deployed to any hosting provider. See [Deploy Next.js to Vercel](https://nextjs.org/docs/deployment). Be aware that frontend website is in `website` directory, not in the root directory. So you need to set `Build Command` to `npm run build-website` and `Output Directory` to `website/.next`.
+Frontend website can be deployed to any hosting provider. 
+
+#### Deploy to Vercel
+See [Deploy Next.js to Vercel](https://nextjs.org/docs/deployment). 
+
+> **Warning**
+> Be aware that frontend website is in `website` directory, not in the root directory. 
+> So you need to set up the following:
+>
+> | Setting | Value |
+> | -------- | ----------- |
+> | Build Command | `npm run build-website` |
+> | Output Directory | `website/.next` |
+
+##### Environment variables
+
+| Variable | Description |
+| -------- | ----------- |
+| `NEXT_PUBLIC_TOKEN` | API token for public role (you can create new api token from [Contember Cloud](https://contember.cloud)) [^1] |
+| `NEXT_PUBLIC_API_URL` | URL of API (e.g. `https://api-example.contember.cloud/content/example/live`) [^2] |
+| `NEXT_PUBLIC_WEB_URL` | URL of frontend website (e.g. `https://example.com`) |
 
 You are ready to go!
+
+[^1]: You can create new API token from [Contember Cloud](https://contember.cloud) in the project settings. Select project and then click on `Create new API token` button. Select `public` role and click on `Create API key` button. Copy the token and use it as `NEXT_PUBLIC_TOKEN` environment variable.
+
+
+[^2]: You can find API URL in the project settings in [Contember Cloud](https://contember.cloud). Select project and then look for **Content GraphQL API**. Copy the URL and use it as `NEXT_PUBLIC_API_URL` environment variable.
