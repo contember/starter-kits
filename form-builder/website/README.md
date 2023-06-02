@@ -27,8 +27,27 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+#### Deploy to Vercel
+See [Deploy Next.js to Vercel](https://nextjs.org/docs/deployment). 
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+> **Warning**
+> Be aware that frontend website is in `website` directory, not in the root directory. 
+> So you need to set up the following:
+>
+> | Setting | Value |
+> | -------- | ----------- |
+> | Build Command | `npm run build-website` |
+> | Output Directory | `website/.next` |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+##### Environment variables
+
+| Variable | Description |
+| -------- | ----------- |
+| `NEXT_PUBLIC_TOKEN` | API token for public role (you can create new api token from [Contember Cloud](https://contember.cloud)) [^1] |
+| `NEXT_PUBLIC_API_URL` | URL of API (e.g. `https://api-example.contember.cloud/content/example/live`) [^2] |
+
+You are ready to go!
+
+[^1]: You can create new API token from [Contember Cloud](https://contember.cloud) in the project settings. Select project and then click on `Create new API token` button. Select `public` role and click on `Create API key` button. Copy the token and use it as `NEXT_PUBLIC_TOKEN` environment variable.
+
+[^2]: You can find API URL in the project settings in [Contember Cloud](https://contember.cloud). Select project and then look for **Content GraphQL API**. Copy the URL and use it as `NEXT_PUBLIC_API_URL` environment variable.

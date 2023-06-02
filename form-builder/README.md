@@ -7,7 +7,7 @@ With this start kit we'll use Contember platform as headless form builder and [N
 - [Access control rules](https://docs.contember.com/schema/acl) for administrators and public access for frontend website
 - Basic Next.js website. See how you can easily query GraphQL API Contember provides
 
-Thanks to Contember platform you can change anything. If you have any questions, we're happy to help in [Discord](https://discord.com/invite/EkhsuAK2Fg).
+Thanks to Contember platform you can change anything. If you have any questions, we're happy to help in [Github Discussions](https://github.com/orgs/contember/discussions/categories/support).
 
 ### Administration preview
 ![Contember admin - edit forms](https://user-images.githubusercontent.com/47249487/155489327-f87384a3-a4ad-41a9-8989-1d19c07e8867.png)
@@ -24,8 +24,18 @@ You'll need:
 
 ### 🚀 Run Form builder starter locally
 
-1. Clone this starter kit (`npx degit contember/starter-kits/form-builder form-builder`)
-2. Go to form-builder (`cd form-builder`)
+1. Clone this starter kit
+
+```bash
+npx degit contember/starter-kits/form-builder form-builder
+```
+
+2. Go to form-builder
+
+```bash
+cd form-builder
+```
+
 3. Install dependencies:
 
 ```bash
@@ -99,8 +109,20 @@ export default csCZ
 Api and Admin can be deployed to Contember Cloud. See [Deploy to Contember Cloud](https://docs.contember.com/guides/deploy-contember).
 
 > **Note**
-> You should deploy Admin and API to Contember Cloud and then deploy frontend website to any hosting provider. This is because frontend website needs frontend website needs to be able to access API.
+> You should deploy Admin and API to Contember Cloud and then deploy frontend website. This is because frontend website needs to be able to access API in order to work properly.
 
-Frontend website can be deployed to any hosting provider. See [Deploy Next.js to Vercel](https://nextjs.org/docs/deployment). Be aware that frontend website is in `website` directory, not in the root directory. So you need to set `Build Command` to `npm run build-website` and `Output Directory` to `website/.next`.
+Frontend website can be deployed to any hosting provider. 
+
+#### Deploy to Vercel
+See [Deploy Next.js to Vercel](https://nextjs.org/docs/deployment). 
+
+Be aware that frontend website is in `website` directory, not in the root directory. So you need to set `Build Command` to `npm run build-website` and `Output Directory` to `website/.next`.
+
+##### Environment variables
+
+| Variable | Description |
+| -------- | ----------- |
+| `NEXT_PUBLIC_TOKEN` | API token for public role |
+| `NEXT_PUBLIC_API_URL` | URL of API (e.g. `https://api-example.contember.cloud/content/example/live`) |
 
 You are ready to go!
