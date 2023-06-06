@@ -11,7 +11,7 @@
 
 With Contember's open source development platform, you can create many things. To help you with what you're building, we've created templates for you. You can use them as they are. You can customize them as you like. Or just use them as inspiration for your next project.
 
-If you're struggling with something check our [documentation](https://docs.contember.com) and don't hesitate to [join our Discord](https://discord.com/invite/EkhsuAK2Fg). We'll be happy to help!
+If you're struggling with something check our [documentation](https://docs.contember.com) and don't hesitate to [join our Github Discussions](https://github.com/orgs/contember/discussions/categories/support). We'll be happy to help!
 
 ## List of starter kits:
 
