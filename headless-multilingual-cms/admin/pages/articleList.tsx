@@ -17,6 +17,7 @@ export default () => {
 		>
 			{request?.dimensions.locale.map(localeCode => (
 				<TextCell
+					key={localeCode}
 					field={`locales(locale.code = '${localeCode}').headline`}
 					header={`${locale['Headline']} (${localeCode})`}
 					format={(scalar) => <Link to="articleEdit(id: $entity.id)">{scalar}</Link>}
@@ -25,6 +26,7 @@ export default () => {
 			))}
 			{request?.dimensions.locale.map(localeCode => (
 				<UrlCell
+					key={localeCode}
 					field={`locales(locale.code = '${localeCode}').slug`}
 					header={`${locale['Url']} (${localeCode})`}
 					prefix={`${localeCode}/blog`}
@@ -33,6 +35,7 @@ export default () => {
 			))}
 			{request?.dimensions.locale.map(localeCode => (
 				<DateCell
+					key={localeCode}
 					field={`locales(locale.code = '${localeCode}').publishAt`}
 					header={`${locale['Publish date']} (${localeCode})`}
 					disableOrder

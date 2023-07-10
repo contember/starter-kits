@@ -14,6 +14,7 @@ export default () => {
 		>
 			{request?.dimensions.locale.map(localeCode => (
 				<TextCell
+					key={localeCode}
 					field={`locales(locale.code = '${localeCode}').seo.title`}
 					header={`${locale['Title']} (${localeCode})`}
 					format={(scalar) => <Link to="pageEdit(id: $entity.id)">{scalar}</Link>}
@@ -31,6 +32,7 @@ export default () => {
 			/>
 			{request?.dimensions.locale.map(localeCode => (
 				<UrlCell
+					key={localeCode}
 					field={`locales(locale.code = '${localeCode}').slug`}
 					header={`${locale['Url']} (${localeCode})`}
 					prefix={`${localeCode}`}
